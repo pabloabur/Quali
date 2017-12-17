@@ -1,0 +1,105 @@
+\documentclass [a4paper,normaltoc,normalfigtabnum, header, espacoumemeio, capchap, capsec, cappre, 12pt,notimes]{abntpoli}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{acronym}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{tocbibind}
+\usepackage[labelsep=endash, font=footnotesize]{caption}
+\usepackage[alf, abnt-emphasize=bf]{abntcitepoli}
+\usepackage[final]{listofsymbols}
+\usepackage{url}
+\usepackage{textcomp}
+\usepackage{imakeidx}
+\usepackage{subfig}
+\usepackage[section]{placeins}
+\usepackage{etoolbox}
+\usepackage{dsfont} % fontes matemáticas duplas como N, Z, R, para designar conjuntos
+\usepackage[subfigure]{tocloft}
+\usepackage[final]{pdfpages}
+
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\makeindex[title=Índice]
+
+
+% 
+
+\setcounter{lofdepth}{1}
+
+
+\newlength\tablelen
+\settowidth\tablelen{\tablename\;}
+\addtolength\cfttabnumwidth{\tablelen}
+\renewcommand\cfttabpresnum{\tablename\;}
+\renewcommand\cfttabaftersnum{\,--\;}
+
+\newlength\figlen
+\settowidth\figlen{\figurename\;}
+\addtolength\cftfignumwidth{\figlen}
+\renewcommand\cftfigpresnum{\figurename\;}
+\renewcommand\cftfigaftersnum{\,--\;}
+
+
+\graphicspath{{./figuras/}}
+
+\allowdisplaybreaks
+
+
+   
+   %\lhead{\thechapter}
+   
+   
+
+\begin{document}
+	\pagenumbering{roman}
+	
+	\include{capa}
+	%\include{sections/agradecimentos}
+	
+	%\newpage
+	%\include{sections/resumo}
+	
+%	\renewcommand\listfigurename{Lista de Figuras}
+	
+	\listadefiguras
+	\listadetabelas
+%	\include{siglas}
+	\include{simbolos}
+	\listofsymbols	
+	%\lhead{\thechapter}
+	
+	\include{siglas}
+	
+	\sumario	
+	
+	%\pagestyle{fancyplain}
+	\include{sections/introducao}
+		
+ 	\include{sections/metodo}
+	
+	\include{sections/conclusao}
+	
+	\ProximoForaDoSumario
+	\bibliography{library}
+	\setboolean{ABNTNextOutOfTOC}{false}
+	
+	\apendice
+	
+	\include{sections/apendice}
+	
+	
+	\anexo	
+	\include{sections/anexo}
+	\setboolean{ABNTNextOutOfTOC}{false}
+  
+  \printindex
+	
+	
+\end{document}
+

@@ -1,0 +1,37 @@
+%%% modifica a maneira de apresentar a lista de siglas
+	\def\bflabel#1{{{\textsf{#1}}\hfill}}
+	\renewenvironment{AC@deflist}[1]%
+	      {\if AC@nolist%
+		\else%
+		    \raggedright\begin{list}{}%
+		    {\settowidth{\labelwidth}{\textsf{#1}+8pt}%
+		    \setlength{\leftmargin}{\labelwidth}%
+		    \setlength{\itemsep}{0.5pt}%
+		    \addtolength{\leftmargin}{\labelsep}%
+		    \renewcommand{\makelabel}{\bflabel}}%
+		 \fi}%
+		{\if AC@nolist%
+		  \else%
+		    \end{list}%
+		\fi}%
+
+\pretextualchapter{Lista de Siglas}
+
+\begin{acronym}[NARMAX]
+	\acro{USP}[USP]{Universidade de São Paulo}
+    \acro{CNS}[CNS]{Central Nervous System}
+    \acro{SC}[SC]{Spinal Cord}
+    \acro{MN}[MN]{Motorneuron}
+    \acro{IN}[IN]{Interneuron}
+    \acro{MN}[MN]{Motor Unit}
+    \acro{EPSP}[EPSP]{Excitatory PostSynaptic Potential}
+    \acro{FF}[FF]{Fast Fatiguing}
+    \acro{FR}[FR]{Fast Fatigue Resistant}
+    \acro{S}[S]{Slow}
+    \acro{RC}[RC]{Renshaw Cell}
+    \acro{IPSP}[IPSP]{Inhibitory PostSynaptic Potential}
+    \acro{ACh}[ACh]{Acetylcholine}
+\end{acronym}
+
+
+
