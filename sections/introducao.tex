@@ -1,41 +1,70 @@
 \chapter{Introdução}
 \label{cap:intro}
 
-The goal of the present work is to study the Renshaw cells and its functions
-using realistic computational models. Most of the data used here comes from
-experiments carried out on the cat hindlimb. As cat experiments are seldom
-performed nowadays, most of the recent data on the Renshaw cells come from 
-rat. Therefore, rat data will be used with caution and expressly indicated.
+O objetivo desse trabalho é estudar as Células de Renshaw e suas funções 
+usando modelos computacionais realistas. A maioria dos dados usados aqui vêm
+de experimentos realizados em membros inferiores de gatos. Como esse tipo de
+experimento raramente é realizado hoje em dia, esses dados atualmente são
+obtidos de ratos. Dessa forma, dados de ratos serão usados com cautela, com 
+o devido aviso.
+%The goal of the present work is to study the Renshaw cells and its functions
+%using realistic computational models. Most of the data used here comes from
+%experiments carried out on the cat hindlimb. As cat experiments are seldom
+%performed nowadays, most of the recent data on the Renshaw cells come from 
+%rat. Therefore, rat data will be used with caution and expressly indicated.
 
-\section{The motor system}
-The \textbf{central nervous system} (CNS) comprises the brain and the
-\textbf{spinal cord} (SC).
-The latter is further subdivided into cervical, thoracic, lumbar, and sacral,
-where each of these regions contains several segments.
-The SC receives and processes information from muscles, joints, and skin and 
-controls movement. In this context, the term \textbf{afferent} is used to
-identify
-the signals reaching the SC, whereas signals delivered to muscles are named
-\textbf{efferent} \cite{kandel13}.
+\section{O Sistema Motor}
+O \textbf{Sistema Nervoso Central} (SNC) é composto pelo cérebro e pela 
+\textbf{coluna espinhal}. O segundo é subdividido em cervical, torácico,
+lombar e sacral, sendo cada um desses divididos em vários segmentos. A
+coluna espinhal recebe e processa informação de músculos, articulações e pele
+e controla movimentos. Nesse contexto, o termo \textbf{aferente} é usado para
+identificar sinais chegando à coluna espinhal, enquanto sinais entregues aos
+músculos são chamados de \textbf{eferentes} \cite{kandel13}.
+%The \textbf{central nervous system} (CNS) comprises the brain and the
+%\textbf{spinal cord} (SC).
+%The latter is further subdivided into cervical, thoracic, lumbar, and sacral,
+%where each of these regions contains several segments.
+%The SC receives and processes information from muscles, joints, and skin and 
+%controls movement. In this context, the term \textbf{afferent} is used to
+%identify
+%the signals reaching the SC, whereas signals delivered to muscles are named
+%\textbf{efferent} \cite{kandel13}.
 
-The type of muscle studied herein is the \textbf{skeletal muscle}, which
-functions to move bones around joints, eyes within the head,
-inhalation/exhalation, control facial expression, and speech \cite{bear16}.
-Movements that decrease the angle between a segment and its proximal segment are
-described as flexion, whereas movements that increase it are called extension
-\cite{oxford}. Therefore, muscles can be classified as 
-\textbf{flexors} and \textbf{extensors}. If muscles work together, they are
-called
-\textbf{synergists} of one another. If they pull a joint on the opposite
-direction, they are called \textbf{antagonists} to one another \cite{bear16}.
 
-Within each skeletal muscle there are hundreds of muscle fibers. They are
-important not only for force generation, but also for \textbf{proprioception},
-since the \textbf{muscle spindle}, which consists of several types of specialzed
-skeletal muscle fibers contained in a fibrous capsule, provides feedback about
-muscle length.
+O tipo de músculo estudado aqui é o \textbf{músculo esquelético}, que é
+responsável por movimentar os ossos, olhos, inalação e exalação, controlar
+expressões faciais e fala \cite{bear16}. Movimentos que diminuem o ângulo
+entre um segmento e seu segmento proximal são chamados de flexão,
+enquanto movimentos que aumentam esse ângulo são chamados de
+extensão \cite{oxford}. Sendo assim, músculos podem ser
+classificados como \textbf{flexores} e \textbf{extensores}. Se eles têm a 
+mesma função, são chamados de \textbf{sinergistas} um do outro. Por outro
+lado, se puxam a articulação para lados opostos, são chamados de
+\textbf{antagonistas} \cite{bear16}.
+%The type of muscle studied herein is the \textbf{skeletal muscle}, which
+%functions to move bones around joints, eyes within the head,
+%inhalation/exhalation, control facial expression, and speech \cite{bear16}.
+%Movements that decrease the angle between a segment and its proximal segment are
+%described as flexion, whereas movements that increase it are called extension
+%\cite{oxford}. Therefore, muscles can be classified as 
+%\textbf{flexors} and \textbf{extensors}. If muscles work together, they are
+%called
+%\textbf{synergists} of one another. If they pull a joint on the opposite
+%direction, they are called \textbf{antagonists} to one another \cite{bear16}.
 
-\section{The Spinal Cord Circuitry}
+Em cada músculo esquelético existem centenas de fibras musculares. Elas são
+importantes não somente para a geração de força, mas também para
+\textbf{propriocepção}, já que o \textbf{fuso muscular}, que consiste em
+várias fibras esqueléticas especializadas contidas em umas cápsula fibrosa,
+fornece informação sobre o comprimento do músculo.
+%Within each skeletal muscle there are hundreds of muscle fibers. They are
+%important not only for force generation, but also for \textbf{proprioception},
+%since the \textbf{muscle spindle}, which consists of several types of specialzed
+%skeletal muscle fibers contained in a fibrous capsule, provides feedback about
+%muscle length.
+
+\section{A Circuitaria da Coluna Espinhal}
 A cross section of the SC is shown in
 Fig. \ref{fig:sc}. The central core is the
 \textbf{gray matter}, which contains nerve cell bodies. The surrounding
@@ -118,7 +147,7 @@ and recurrent inhibitory postsynaptic potentials (IPSPs).
 
 % TODO The connections shown is Figure ___ is a simplified view.
 
-\subsection{Inputs to Renshaw Cells}
+\subsection{Entradas das Células de Renshaw}
 \subsubsection{From $\alpha$MNs}
 Activation of RCs are obtained from stimulation of several nerves and smoothly
 increase with increasing intensity of stimulation of individual nerves,
@@ -142,18 +171,41 @@ It should be noted that not all MNs give off recurrent collaterals.
 Despite always being given off by MNs innervating ankle and knee muscles, they
 are absent in MNs of short plantar foot muscles \cite{cullheim78}.
 
-\subsubsection{From $\gamma$MNs}
+\subsubsection{De Vias Aferentes}
+Outra via de ativação descrita na literatura é a excitação e inibição
+polissináptica ocasionada pela estimulação de aferentes cutâneos, raízes
+dorsais, fibras aferentes ipsilaterais dos grupos II e III e aferentes
+contralaterais de alto limiar \cite{baldissera11}.
 
-\subsection{Outputs from Renshaw Cells}
-% TODO distribution of IPSPs, here and later? There must be more to it
+\subsubsection{De Vias Descendentes}
+As CRs estão podem apresentar efeitos inibitórios e/ou excitatórios quando
+estímulos elétricos são aplicados em alguns centros supra espinhais, como o
+córtex cerebral \cite{maclean67}, o núcleo vestibular \cite{pompeiano85}, o tálamo \cite{maclean67}, entre
+outros. Esses efeitos podem se expressar direta ou indiretamente por meio dos MNs $\alpha$.
+
+
+\subsection{Saídas das Células de Renshaw}
+\subsubsection{Para MNs $\gamma$}
+Os MNs $\gamma$ do tipo estático e dinâmico recebem inibição recorrente das
+CRs \cite{ellaway81,appelberg83}.
+
+Vale ressaltar que MNs $\gamma$ apenas ocasionalmente dão origem a ramais
+colaterais recorrentes e não parecem ser de grande influência na ativação das
+CRs \cite{westbury82,granit57,kato74}, sugerindo, assim, que MNs $\gamma$
+recebem inibição recorrente via CR predominantemente por meio de MNs $\alpha$
+\cite{ellaway81,appelberg83}.
+
+% TODO RC functions
+
+\section{Distribuição do Potencial Inibitório Pós Sináptico Recorrente}
 Recurrent inhibition is evoked in a number of motor nuclei after the stimulation
 of the MNs of a given muscle. The recurrent IPSPs in the homonymous MNs are found
 to be larger, but many other MNs are also strongly inhibitied
 \cite{eccles54,eccles61b}.
+% Windhorst 90, sec. 5, 2 (1)
+\subsection{Aspectos Topográficos}
 
-% TODO RC functions
-
-\section{Renshaw Cells Characteristics}
+\subsection{Aspectos Funcionais}
 
 \section{ReMoto}
 % TODO why exactly am I using a computational model here?

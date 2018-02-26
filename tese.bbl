@@ -5,6 +5,25 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.53 }
 
+\bibitem[Appelberg et al. 1983]{appelberg83}
+\abntrefinfo{Appelberg et al.}{APPELBERG et al.}{1983}
+{APPELBERG, B. et al. Recurrent actions on gamma-motoneurones mediated via
+  large and small ventral root fibres in the cat.
+\emph{The Journal of Physiology}, v.~335, n.~1, p. 293--305, fev. 1983.
+ISSN 1469-7793.
+Dispon{\'\i}vel em:
+  $<$http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.1983.sp014534/abstract$>$.}
+
+\bibitem[Baldissera, Hultborn e Illert 2011]{baldissera11}
+\abntrefinfo{Baldissera, Hultborn e Illert}{BALDISSERA; HULTBORN; ILLERT}{2011}
+{BALDISSERA, F.; HULTBORN, H.; ILLERT, M. Integration in {Spinal} {Neuronal}
+  {Systems}. In:  \emph{Comprehensive {Physiology}}. John Wiley \& Sons, Inc.,
+  2011.
+ISBN 978-0-470-65071-4.
+DOI: 10.1002/cphy.cp010212.
+Dispon{\'\i}vel em:
+  $<$http://onlinelibrary.wiley.com/doi/10.1002/cphy.cp010212/abstract$>$.}
+
 \bibitem[Bear, Connors e Paradiso 2016]{bear16}
 \abntrefinfo{Bear, Connors e Paradiso}{BEAR; CONNORS; PARADISO}{2016}
 {BEAR, M.~F.; CONNORS, B.~W.; PARADISO, M.~A. \emph{Neuroscience: exploring the
@@ -46,6 +65,24 @@ ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1365877/$>$.}
 
+\bibitem[Ellaway e Murphy 1981]{ellaway81}
+\abntrefinfo{Ellaway e Murphy}{ELLAWAY; MURPHY}{1981}
+{ELLAWAY, P.~H.; MURPHY, P.~R. A comparison of the recurrent inhibition of
+  alpha- and gamma-motoneurones in the cat.
+\emph{The Journal of Physiology}, v.~315, p. 43--58, jun. 1981.
+ISSN 0022-3751.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1249366/$>$.}
+
+\bibitem[Granit, Pascoe e Steg 1957]{granit57}
+\abntrefinfo{Granit, Pascoe e Steg}{GRANIT; PASCOE; STEG}{1957}
+{GRANIT, R.; PASCOE, J.~E.; STEG, G. The behaviour of tonic α and β
+  motoneurones during stimulation of recurrent collaterals.
+\emph{The Journal of Physiology}, v.~138, n.~3, p. 381--400, out. 1957.
+ISSN 1469-7793.
+Dispon{\'\i}vel em:
+  $<$http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.1957.sp005857/abstract$>$.}
+
 \bibitem[Jankowska e Lindström 1971]{jankowska71}
 \abntrefinfo{Jankowska e Lindström}{JANKOWSKA; LINDSTRöM}{1971}
 {JANKOWSKA, E.; LINDSTRöM, S. Morphological identification of {Renshaw} cells.
@@ -68,6 +105,15 @@ Dispon{\'\i}vel em:
 ISBN 978-0-07-139011-8 978-0-07-181001-2 978-1-283-65624-5. Dispon{\'\i}vel em:
   $<$http://www.myilibrary.com?id=396874$>$.}
 
+\bibitem[Kato e Fukushima 1974]{kato74}
+\abntrefinfo{Kato e Fukushima}{KATO; FUKUSHIMA}{1974}
+{KATO, M.; FUKUSHIMA, K. Effect of differential blocking of motor axons on
+  antidromic activation of {Renshaw} cells in the cat.
+\emph{Experimental Brain Research}, v.~20, n.~2, p. 135--143, maio 1974.
+ISSN 0014-4819, 1432-1106.
+Dispon{\'\i}vel em:
+  $<$https://link.springer.com/article/10.1007/BF00234008$>$.}
+
 \bibitem[Liddell et al. 1925]{liddell25}
 \abntrefinfo{Liddell et al.}{LIDDELL et al.}{1925}
 {LIDDELL, E. G.~T. et al. Recruitment and some other features of reflex
@@ -76,6 +122,24 @@ ISBN 978-0-07-139011-8 978-0-07-181001-2 978-1-283-65624-5. Dispon{\'\i}vel em:
 ISSN 0950-1193, 2053-9185.
 Dispon{\'\i}vel em:
   $<$http://rspb.royalsocietypublishing.org/content/97/686/488$>$.}
+
+\bibitem[MacLean e Leffman 1967]{maclean67}
+\abntrefinfo{MacLean e Leffman}{MACLEAN; LEFFMAN}{1967}
+{MACLEAN, J.~B.; LEFFMAN, H. Supraspinal control of {Renshaw} cells.
+\emph{Experimental Neurology}, v.~18, n.~1, p. 94--104, maio 1967.
+ISSN 0014-4886.
+Dispon{\'\i}vel em:
+  $<$http://www.sciencedirect.com/science/article/pii/001448866790091X$>$.}
+
+\bibitem[Pompeiano, Wand e Srivastava 1985]{pompeiano85}
+\abntrefinfo{Pompeiano, Wand e Srivastava}{POMPEIANO; WAND; SRIVASTAVA}{1985}
+{POMPEIANO, O.; WAND, P.; SRIVASTAVA, U.~C. Influence of {Renshaw} cells on the
+  response gain of hindlimb extensor muscles to sinusoidal labyrinth
+  stimulation.
+\emph{Pflügers Archiv}, v.~404, n.~2, p. 107--118, maio 1985.
+ISSN 0031-6768, 1432-2013.
+Dispon{\'\i}vel em:
+  $<$https://link.springer.com/article/10.1007/BF00585405$>$.}
 
 \bibitem[Renshaw 1941]{renshaw41}
 \abntrefinfo{Renshaw}{RENSHAW}{1941}
@@ -116,5 +180,14 @@ Dispon{\'\i}vel em:
   Clarendon Press, 1989.  (The Oxford English Dictionary, v. 17).
 ISBN 9780198612292. Dispon{\'\i}vel em:
   $<$https://books.google.com.br/books?id=4qcRAQAAMAAJ$>$.}
+
+\bibitem[Westbury 1982]{westbury82}
+\abntrefinfo{Westbury}{WESTBURY}{1982}
+{WESTBURY, D.~R. A comparison of the structures of α- and γ-spinal
+  motoneurones of the cat.
+\emph{The Journal of Physiology}, v.~325, n.~1, p. 79--91, abr. 1982.
+ISSN 1469-7793.
+Dispon{\'\i}vel em:
+  $<$http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.1982.sp014137/abstract$>$.}
 
 \end{thebibliography}
