@@ -74,6 +74,14 @@ ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1249366/$>$.}
 
+\bibitem[Friedman et al. 1981]{friedman81}
+\abntrefinfo{Friedman et al.}{FRIEDMAN et al.}{1981}
+{FRIEDMAN, W.~A. et al. Recurrent inhibition in type-identified motoneurons.
+\emph{Journal of Neurophysiology}, v.~46, n.~6, p. 1349--1359, dez. 1981.
+ISSN 0022-3077.
+Dispon{\'\i}vel em:
+  $<$http://www.physiology.org/doi/abs/10.1152/jn.1981.46.6.1349$>$.}
+
 \bibitem[Granit, Pascoe e Steg 1957]{granit57}
 \abntrefinfo{Granit, Pascoe e Steg}{GRANIT; PASCOE; STEG}{1957}
 {GRANIT, R.; PASCOE, J.~E.; STEG, G. The behaviour of tonic α and β
@@ -82,6 +90,22 @@ Dispon{\'\i}vel em:
 ISSN 1469-7793.
 Dispon{\'\i}vel em:
   $<$http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.1957.sp005857/abstract$>$.}
+
+\bibitem[Hultborn, Katz e Mackel 1988]{hultborn88a}
+\abntrefinfo{Hultborn, Katz e Mackel}{HULTBORN; KATZ; MACKEL}{1988a}
+{HULTBORN, H.; KATZ, R.; MACKEL, R. Distribution of recurrent inhibition within
+  a motor nucleus. {II}. {Amount} of recurrent inhibition in motoneurones to
+  fast and slow units.
+\emph{Acta Physiologica Scandinavica}, v.~134, n.~3, p. 363--374, nov. 1988.
+ISSN 0001-6772.}
+
+\bibitem[Hultborn, Katz e Mackel 1988]{hultborn88b}
+\abntrefinfo{Hultborn, Katz e Mackel}{HULTBORN; KATZ; MACKEL}{1988b}
+{HULTBORN, H.; KATZ, R.; MACKEL, R. Distribution of recurrent inhibition within
+  a motor nucleus. {II}. {Amount} of recurrent inhibition in motoneurones to
+  fast and slow units.
+\emph{Acta Physiologica Scandinavica}, v.~134, n.~3, p. 363--374, nov. 1988.
+ISSN 0001-6772.}
 
 \bibitem[Jankowska e Lindström 1971]{jankowska71}
 \abntrefinfo{Jankowska e Lindström}{JANKOWSKA; LINDSTRöM}{1971}
@@ -114,6 +138,16 @@ ISSN 0014-4819, 1432-1106.
 Dispon{\'\i}vel em:
   $<$https://link.springer.com/article/10.1007/BF00234008$>$.}
 
+\bibitem[Keulen 1979]{vankeulen79}
+\abntrefinfo{Keulen}{KEULEN}{1979}
+{KEULEN, L. C.~M. V. Axon trajectories of {Renshaw} cells in the lumbar spinal
+  cord of the cat, as reconstructed after intracellular staining with
+  horseradish peroxidase.
+\emph{Brain Research}, v.~167, n.~1, p. 157--162, maio 1979.
+ISSN 0006-8993.
+Dispon{\'\i}vel em:
+  $<$http://www.sciencedirect.com/science/article/pii/0006899379902701$>$.}
+
 \bibitem[Liddell et al. 1925]{liddell25}
 \abntrefinfo{Liddell et al.}{LIDDELL et al.}{1925}
 {LIDDELL, E. G.~T. et al. Recruitment and some other features of reflex
@@ -130,6 +164,13 @@ Dispon{\'\i}vel em:
 ISSN 0014-4886.
 Dispon{\'\i}vel em:
   $<$http://www.sciencedirect.com/science/article/pii/001448866790091X$>$.}
+
+\bibitem[Pierrot-Deseilligny e Burke 2012]{pierrot12}
+\abntrefinfo{Pierrot-Deseilligny e Burke}{PIERROT-DESEILLIGNY; BURKE}{2012}
+{PIERROT-DESEILLIGNY, E.; BURKE, D.~J. \emph{The circuitry of the human spinal
+  cord: spinal and corticospinal mechanisms of movement}. Cambridge, England ;
+  New York: Cambridge University Press, 2012.
+ISBN 978-0-521-19258-3.}
 
 \bibitem[Pompeiano, Wand e Srivastava 1985]{pompeiano85}
 \abntrefinfo{Pompeiano, Wand e Srivastava}{POMPEIANO; WAND; SRIVASTAVA}{1985}
@@ -189,5 +230,11 @@ ISBN 9780198612292. Dispon{\'\i}vel em:
 ISSN 1469-7793.
 Dispon{\'\i}vel em:
   $<$http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.1982.sp014137/abstract$>$.}
+
+\bibitem[Windhorst 1990]{windhorst90}
+\abntrefinfo{Windhorst}{WINDHORST}{1990}
+{WINDHORST, U. Activation of {Renshaw} cells.
+\emph{Progress in Neurobiology}, v.~35, n.~2, p. 135--179, 1990.
+ISSN 0301-0082.}
 
 \end{thebibliography}
