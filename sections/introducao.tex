@@ -244,10 +244,25 @@ experimentação, entre outros \cite{sterratt11}.
 
 Com o intuito de criar um simulador de propósito geral, \citeonline{cisi08}
 desenvolveram um sistema em que se pudesse observar o comportamento da
-circuitaria da coluna espinhal com diferentes arranjos, sendo capaz de
+circuitaria da coluna espinhal em diferentes situações, sendo capaz de
 reproduzir experimentos fisiológicos. A partir desse trabalho, várias outras
 extensões e estudos foram realizados \cite{elias14,watanabe15,watanabe17}.
 
-Esse modelo computacional, entretanto, não foi parametrizado % TODO
+Nesse modelo computacional, entretanto, a presença das CRs pode causar 
+comportamentos não esperados, como mostrado na Figura \ref{fig:remotojavaspk},
+que foi gerada por meio de uma simulação com 800 MNs do tipo S, 50 do tipo
+FR, 50 do tipo FF, 350 CRs e uma corrente de 10 nA injetada no soma de todos
+os MNs. Os instantes de disparo mostram que os MNs não são recrutados de forma
+contínua durante a estimulação, ou seja, em alguns instantes, algumas células
+deixam de disparar, apesar de outras maiores que estas estarem disparando.
 
-% TODO why exactly am I using a computational model here?
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.4]{remotojavaspk.png}
+	\caption{Momentos de disparo de todos os motoneurônios simulados. O eixo 
+             das ordenadas representa o índice de cada motoneurônio em ordem
+             crescente de tamanho.}
+	\label{fig:ce}
+\end{figure}
+
+% por que mudar a parametrização afinal??? (python)
