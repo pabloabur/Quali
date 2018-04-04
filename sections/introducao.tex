@@ -38,7 +38,7 @@ fornece informação sobre o comprimento do músculo.
 \section{A Circuitaria da Coluna Espinhal}
 Um corte transversal da coluna espinhal é mostrado na Figura \ref{fig:ce}. O
 núcleo central é a \textbf{matéria cinzenta}, que contém o corpo de células
-nervosas. A \textbf{substância branca} em volta dessa região é abriga axônios
+nervosas. A \textbf{substância branca} em volta dessa região abriga axônios
 ascendentes e descendentes. A substância cinza ainda é subdividida em
 \textbf{corno ventral} e \textbf{corno dorsal}.
 
@@ -58,6 +58,26 @@ vários circuitos neuronais, seja no nível do segmento ou conectando com
 estruturas de níveis superiores. O conjunto de um MN, seu axônio e todas as
 fibras musculares que este inerva é chamado de \textbf{unidade motora}
 \cite{liddell25,sherrington25}.
+
+Apesar de existirem diferentes tipos de fibras musculares em um dado músculo,
+uma unidade motora inerva fibras de apenas um tipo. Essas fibras são 
+classificadas como: fibras lentas (do inglês \textit{slow}, S), que são lentas,
+mas podem sustentar uma contração por um longo sem fadigar; fibras resistentes
+à fadiga, que geram forças moderadas e contrações rápidas com relativa
+resistência à fadiga; e fibras rapidamente fadigáveis (do inglês
+\textit{fast, fatiguing}, FF), que geram as contrações mais fortes e rápidas,
+porém são as mais sensíveis à fadiga \cite{bear16}.
+
+A partir dessas distinções, uma unidade motora que inerva fibras do tipo S é
+chamada de \textbf{unidade motora lenta}. Analogamente, uma
+\textbf{unidade motora rápida} contém fibras do tipo FR ou FF. Essa
+classificação é importante por que as propriedades dos MNs também mudam de
+acordo com o tipo de fibras que estes inervam. Um exemplo é o fato de que MNs
+de unidades FF são os maiores, os FR são intermediários e os S são os menores
+\cite{bear16}. Vale ressaltar que o tamanho de um MN é uma característica
+morfológica importância pois, de acordo com o \textbf{princípio do tamanho},
+a ordem de ativação de unidades motoras ocorre das menores para as maiores 
+\cite{enoka08}.
 
 O axônio de um MN geralmente surge do corpo celular desse neurônio e, na
 maioria dos MNs lumbosacrais, dá origem a uma até cinco ramificações chamadas
@@ -79,15 +99,6 @@ uma região especializado da membrana muscular contendo uma alta densidade de
 receptores de ACh nicotínico. Como resultado, ACh liberada dos terminais dos
 axônios motores interagem com esses receptores para produzir um
 \textbf{potencial excitatório pós sináptico} (PEPS) \cite{kandel13}.
-
-O MN\A é subdividido em diferentes tipos dependendo das propriedades dos
-próprios neurônios e das fibras musculares que eles inervam: contração rápida
-e fadiga rápida (do inglês \textit{fast, fatiguing}, FF); contração rápida e
-resistente à fadiga (do inglês \textit{fast, fatigue resistant}, FR); e lenta
-(do inglês \textit{slow}, S).% TODO ref and enoka obs and pool not homogeneous
-% bear p 461, try to write it properly (fiber type and MU type)
-
-% TODO anatomy figure of SC? (p 828)
 
 \section{As Células de Renshaw}
 A \textbf{Célula de Renshaw} (CR) é um IN localizado na corno ventral da coluna
@@ -248,14 +259,23 @@ circuitaria da coluna espinhal em diferentes situações, sendo capaz de
 reproduzir experimentos fisiológicos. A partir desse trabalho, várias outras
 extensões e estudos foram realizados \cite{elias14,watanabe15,watanabe17}.
 
-Nesse modelo computacional, entretanto, a presença das CRs pode causar 
+O simulador foi originalmente desenvolvido para ser uma aplicação \textit{web},
+acessada remotamente pelo endereço http://remoto.leb.usp.br. Atualmente, existe
+ainda uma versão em Python do simulador, que pode ser baixada pelo \textit{link}
+https://github.com/rnwatanabe/projectPR.
+
+Nesse modelo computacional, entretanto, a presença das CRs poderia causar 
 comportamentos não esperados, como mostrado na Figura \ref{fig:remotojavaspk},
 que foi gerada por meio de uma simulação com 800 MNs do tipo S, 50 do tipo
 FR, 50 do tipo FF, 350 CRs e uma corrente de 10 nA injetada no soma de todos
-os MNs. Os instantes de disparo mostram que os MNs não são recrutados de forma
-contínua durante a estimulação, ou seja, em alguns instantes, algumas células
-deixam de disparar, apesar de outras maiores que estas estarem disparando.
+os MNs. Nesse gráfico, os instantes de disparo dos MNs, representados por 
+índices, mostram que, em alguns momentos, MNs com índices menores disparam 
+depois de outros com índices maiores. Como esses índices, na simulação, estão
+relacionados com o tamanho dos MNs, pode-se dizer que ocorreu um certa inversão
+na ordem de recrutamento. A parametrização das CRs que gerou esse resultado 
+será identificada como \textbf{parametrização antiga}. 
 
+% TODO put figure in which FR and FF also fire
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.4]{remotojavaspk.png}
@@ -265,4 +285,8 @@ deixam de disparar, apesar de outras maiores que estas estarem disparando.
 	\label{fig:ce}
 \end{figure}
 
-% por que mudar a parametrização afinal??? (python)
+Uma outra parametrização para as CRs foi adotada por \citeonline{watanabe15} e
+apresentou resultados mais %... TODO
+
+% TODO I expect to see something wrong in new parametrization because it is
+% based on 5%MVC
