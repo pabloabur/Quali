@@ -263,30 +263,47 @@ O simulador foi originalmente desenvolvido para ser uma aplicação \textit{web},
 acessada remotamente pelo endereço http://remoto.leb.usp.br. Atualmente, existe
 ainda uma versão em Python do simulador, que pode ser baixada pelo \textit{link}
 https://github.com/rnwatanabe/projectPR.
+% TODO Fix links
 
 Nesse modelo computacional, entretanto, a presença das CRs poderia causar 
-comportamentos não esperados, como mostrado na Figura \ref{fig:remotojavaspk},
+comportamentos não esperados, como mostrado na Figura
+\subref*{fig:remotojavaspka},
 que foi gerada por meio de uma simulação com 800 MNs do tipo S, 50 do tipo
-FR, 50 do tipo FF, 350 CRs e uma corrente de 10 nA injetada no soma de todos
+FR, 50 do tipo FF, 350 CRs e uma corrente de 40 nA injetada no soma de todos
 os MNs. Nesse gráfico, os instantes de disparo dos MNs, representados por 
-índices, mostram que, em alguns momentos, MNs com índices menores disparam 
+índices, mostram MNs com índices menores disparando
 depois de outros com índices maiores. Como esses índices, na simulação, estão
 relacionados com o tamanho dos MNs, pode-se dizer que ocorreu um certa inversão
 na ordem de recrutamento. A parametrização das CRs que gerou esse resultado 
-será identificada como \textbf{parametrização antiga}. 
+será aqui identificada como \textbf{parametrização antiga}. 
 
 % TODO put figure in which FR and FF also fire
 \begin{figure}[ht!]
-	\center
-	\includegraphics[scale=0.4]{remotojavaspk.png}
-	\caption{Momentos de disparo de todos os motoneurônios simulados. O eixo 
+    \centering
+    \subfloat[][]{
+        \label{fig:remotojavaspka}
+        \includegraphics[scale=0.3]{remotojavaspk.png}
+    }
+    ~ 
+    \subfloat[][]{
+        \label{fig:remotojavaspkb}
+        \includegraphics[scale=0.3]{remotojavaspk.png}
+    }
+    \caption[Momentos de disparo de todos os motoneurônios simulados.]{
+             Momentos de disparo de todos os motoneurônios simulados. O eixo 
              das ordenadas representa o índice de cada motoneurônio em ordem
-             crescente de tamanho.}
-	\label{fig:ce}
+             crescente de tamanho.
+             \subref{fig:remotojavaspkb}.
+             \subref{fig:remotojavaspka}.
+         }
 \end{figure}
 
 Uma outra parametrização para as CRs foi adotada por \citeonline{watanabe15} e
 apresentou resultados mais %... TODO
+
+% TODO Use these as results/discussion. In here I could just say that 
+% parametrizations will be evaluated or something. Furthermore, I can just say
+% that the fragmentation is unexpected.
 
 % TODO I expect to see something wrong in new parametrization because it is
 % based on 5%MVC
