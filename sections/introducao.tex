@@ -243,6 +243,7 @@ espinhal para o cerebelo \cite{kandel13}.
 % \section{Renshaw Cells Characteristics}?
 
 \section{Modelagem Computacional}
+\subsection{O ReMoto}
 Como mostrado nas seções anteriores, o circuito de inibição recorrente é
 consideravelmente complexo e acredita-se que tenha funções importantes no sinal
 entregue ao músculo. Apesar dos esforços para se compreender o papel da CR
@@ -256,54 +257,96 @@ experimentação, entre outros \cite{sterratt11}.
 Com o intuito de criar um simulador de propósito geral, \citeonline{cisi08}
 desenvolveram um sistema em que se pudesse observar o comportamento da
 circuitaria da coluna espinhal em diferentes situações, sendo capaz de
-reproduzir experimentos fisiológicos. A partir desse trabalho, várias outras
+reproduzir experimentos fisiológicos. Esse sistema recebeu o nome de 
+\textbf{ReMoto}. A partir desse trabalho, várias outras
 extensões e estudos foram realizados \cite{elias14,watanabe15,watanabe17}.
 
 O simulador foi originalmente desenvolvido para ser uma aplicação \textit{web},
-acessada remotamente pelo endereço http://remoto.leb.usp.br. Atualmente, existe
-ainda uma versão em Python do simulador, que pode ser baixada pelo \textit{link}
-https://github.com/rnwatanabe/projectPR.
-% TODO Fix links
+acessada remotamente pelo endereço \url{http://remoto.leb.usp.br}. Atualmente,
+existe
+ainda uma versão em Python do simulador, que pode ser baixada pelo
+GitHub em \url{https://github.com/rnwatanabe/projectPR}.
 
-Nesse modelo computacional, entretanto, a presença das CRs poderia causar 
-comportamentos não esperados, como mostrado na Figura
-\subref*{fig:remotojavaspka},
-que foi gerada por meio de uma simulação com 800 MNs do tipo S, 50 do tipo
-FR, 50 do tipo FF, 350 CRs e uma corrente de 40 nA injetada no soma de todos
-os MNs. Nesse gráfico, os instantes de disparo dos MNs, representados por 
-índices, mostram MNs com índices menores disparando
-depois de outros com índices maiores. Como esses índices, na simulação, estão
-relacionados com o tamanho dos MNs, pode-se dizer que ocorreu um certa inversão
-na ordem de recrutamento. A parametrização das CRs que gerou esse resultado 
-será aqui identificada como \textbf{parametrização antiga}. 
+\subsection{Parametrizações}
+A parametrização original das CRs nesse simulador foi baseada em dados
+fisiológicos obtidos de experimentos em gatos e mostrou uma elevada
+influência destas no comportamento dos MNs. Outra parametrização para as CRs,
+baseada nos trabalhos de \citeonline{williams09}, foi adotada por
+\citeonline{watanabe15}. Esta não leva em consideração as
+diferenças de condutâncias sinápticas de acordo com os tipos de MNs envolvidos 
+e considera que a conectividade entre CRs e MNs são menores, mas seria adequada
+para estudos de níveis de força reduzidos \cite{williams09}.
 
-% TODO put figure in which FR and FF also fire
-\begin{figure}[ht!]
-    \centering
-    \subfloat[][]{
-        \label{fig:remotojavaspka}
-        \includegraphics[scale=0.3]{remotojavaspk.png}
-    }
-    ~ 
-    \subfloat[][]{
-        \label{fig:remotojavaspkb}
-        \includegraphics[scale=0.3]{remotojavaspk.png}
-    }
-    \caption[Momentos de disparo de todos os motoneurônios simulados.]{
-             Momentos de disparo de todos os motoneurônios simulados. O eixo 
-             das ordenadas representa o índice de cada motoneurônio em ordem
-             crescente de tamanho.
-             \subref{fig:remotojavaspkb}.
-             \subref{fig:remotojavaspka}.
-         }
-\end{figure}
+A parametrização de \citeonline{cisi08}, a partir de agora, será identificada
+como \textbf{parametrização antiga}, enquanto que a de \citeonline{watanabe15},
+como \textbf{parametrização nova}. Seus valores são apresentados na Tabela 
+\ref{tab:params}.
 
-Uma outra parametrização para as CRs foi adotada por \citeonline{watanabe15} e
-apresentou resultados mais %... TODO
+\begin{table}[ht!]
+\caption{Principais diferenças entre valores conectividade, condutância e
+    morfologia nas parametrizações antiga e nova.}
+\label{tab:params}
+\centering
+    \begin{tabular}{c C{3cm} C{3cm}}\hline 
+	Parâmetro & Parametrização Antiga & Parametrização Nova \\ \hline 
+    Conectividade CR-MN S [\%] & 100 & 4  \\ 
+    Conectividade CR-MN FR [\%] & 100 & 4  \\ 
+    Conectividade CR-MN FF [\%] & 100 & 4  \\ 
+    Conectividade MN S-CR [\%] & 100 & 6  \\ 
+    Conectividade MN FR-CR [\%] & 100 & 6  \\ 
+    Conectividade MN FF-CR [\%] & 100 & 6  \\ 
+    Condutância máxima MN S-CR [nS] & 150 & 150 \\
+    Condutância máxima MN FR-CR [nS] & 170 & 150 \\
+    Condutância máxima MN FF-CR [nS] & 300 & 150 \\
+    Condutância máxima CR-MN S [nS] & 440 & 440 \\
+    Condutância máxima CR-MN FR [nS] & 300 & 440 \\
+    Condutância máxima CR-MN FF [nS] & 240 & 440 \\
+    Resistência específica de membrana da CR [$\Omega\text{cm}^2$] & 200 & 760\\
+    Diâmetro do soma da CR [$\mu\text{m}$] & 65 & 25\\
+    Comprimento do soma da CR [$\mu\text{m}$] & 285 & 242\\
+	\hline
+    \end{tabular}
+\end{table}
 
-% TODO Use these as results/discussion. In here I could just say that 
-% parametrizations will be evaluated or something. Furthermore, I can just say
-% that the fragmentation is unexpected.
+\subsection{Performance Computacional}
+% TODO fala do python e vantagens, também de fala como 
 
-% TODO I expect to see something wrong in new parametrization because it is
-% based on 5%MVC
+% TODO Apresenta diferença de tempo java vs python, mostrando alguma sim um pouco mais complexa
+
+% TODO Mostra papers com intuito de melhorar performance, i.e. isso importa
+
+\section{Objetivos Globais}
+\subsection{Avaliação do Circuito de Inibição Recorrente}
+O primeiro objetivo deste trabalho é avaliar como as CRs afetam o
+comportamento dos MNs envolvidos na inibição recorrente, analisando se os
+resultados são consistentes com dados fisiológicos. Como a estimação de 
+parâmetros já foi realizada em \citeonline{cisi08}, o foco aqui serão os
+comportamentos globais desse circuito.
+
+Esses aspectos serão analisados comparando os resultados obtidos com
+simulações com a parametrização antiga e nova. Isso deve trazer informações
+sobre qual parametrização é mais adequada em cada situação e porquê.
+
+\subsection{Melhora de Performance}
+Como mostrado anteriormente, o tempo de execução de uma simulação se torna um 
+fator limitante quando se deseja estudar sistemas mais realistas. Sendo assim,
+outro objetivo desse trabalho é melhorar a performance computacional do
+simulador em Python. Apesar deste ser significativamente mais lento que a
+versão em Java, optou-se por trabalhar com esta porque, atualmente, ela está em
+constante manutenção e desenvolvimento, além de ser mais facilmente estendida
+para realizar simulações mais completas.
+
+Vale ressaltar que esse não é o foco desse trabalho, pois esse tipo de
+desenvolvimento pode ser bastante complexo e demorado por si só.
+
+\subsection{Variabilidade de Força}
+Como objetivo final, deseja-se estudar o efeito das CRs na variabilidade de
+força em tarefas de força em um pedal fixo e solto.
+
+%\section{Trabalhos Relacionados}
+%O estudo de CRs por meio de simulações pode trazer informações valiosas sobre
+%esse interneurônio, já que o estudo do circuito de inibição recorrente é de difícil 
+%acesso do ponto de vista experimental.
+%Nesta seção, três trabalhos com resultados relevantes serão apresentados.
+%Estes servirão como base para validar e analisar os resultados do simulador 
+%aqui abordado.
