@@ -38,7 +38,7 @@ fornece informação sobre o comprimento do músculo.
 \section{A Circuitaria da Coluna Espinhal}
 Um corte transversal da coluna espinhal é mostrado na Figura \ref{fig:ce}. O
 núcleo central é a \textbf{matéria cinzenta}, que contém o corpo de células
-nervosas. A \textbf{substância branca} em volta dessa região é abriga axônios
+nervosas. A \textbf{substância branca} em volta dessa região abriga axônios
 ascendentes e descendentes. A substância cinza ainda é subdividida em
 \textbf{corno ventral} e \textbf{corno dorsal}.
 
@@ -61,6 +61,26 @@ estruturas de níveis superiores. O conjunto de um MN, seu axônio e todas as
 fibras musculares que este inerva é chamado de \textbf{unidade motora}
 \cite{liddell25,sherrington25}.
 
+Apesar de existirem diferentes tipos de fibras musculares em um dado músculo,
+uma unidade motora inerva fibras de apenas um tipo. Essas fibras são 
+classificadas como: fibras lentas (do inglês \textit{slow}, S), que são lentas,
+mas podem sustentar uma contração por um longo sem fadigar; fibras resistentes
+à fadiga, que geram forças moderadas e contrações rápidas com relativa
+resistência à fadiga; e fibras rapidamente fadigáveis (do inglês
+\textit{fast, fatiguing}, FF), que geram as contrações mais fortes e rápidas,
+porém são as mais sensíveis à fadiga \cite{bear16}.
+
+A partir dessas distinções, uma unidade motora que inerva fibras do tipo S é
+chamada de \textbf{unidade motora lenta}. Analogamente, uma
+\textbf{unidade motora rápida} contém fibras do tipo FR ou FF. Essa
+classificação é importante por que as propriedades dos MNs também mudam de
+acordo com o tipo de fibras que estes inervam. Um exemplo é o fato de que MNs
+de unidades FF são os maiores, os FR são intermediários e os S são os menores
+\cite{bear16}. Vale ressaltar que o tamanho de um MN é uma característica
+morfológica importância pois, de acordo com o \textbf{princípio do tamanho},
+a ordem de ativação de unidades motoras ocorre das menores para as maiores 
+\cite{enoka08}.
+
 O axônio de um MN geralmente surge do corpo celular desse neurônio e, na
 maioria dos MNs lumbosacrais, dá origem a uma até cinco ramificações chamadas
 \textbf{ramos colaterais} antes de deixar a coluna espinhal \cite{cullheim78}.
@@ -81,15 +101,6 @@ uma região especializado da membrana muscular contendo uma alta densidade de
 receptores de ACh nicotínico. Como resultado, ACh liberada dos terminais dos
 axônios motores interagem com esses receptores para produzir um
 \textbf{potencial excitatório pós sináptico} (PEPS) \cite{kandel13}.
-
-O MN\A é subdividido em diferentes tipos dependendo das propriedades dos
-próprios neurônios e das fibras musculares que eles inervam: contração rápida
-e fadiga rápida (do inglês \textit{fast, fatiguing}, FF); contração rápida e
-resistente à fadiga (do inglês \textit{fast, fatigue resistant}, FR); e lenta
-(do inglês \textit{slow}, S).% TODO ref and enoka obs and pool not homogeneous
-% bear p 461, try to write it properly (fiber type and MU type)
-
-% TODO anatomy figure of SC? (p 828)
 
 \section{As Células de Renshaw}
 A \textbf{Célula de Renshaw} (CR) é um IN localizado na corno ventral da coluna
@@ -234,6 +245,7 @@ espinhal para o cerebelo \cite{kandel13}.
 % \section{Renshaw Cells Characteristics}?
 
 \section{Modelagem Computacional}
+\subsection{O ReMoto}
 Como mostrado nas seções anteriores, o circuito de inibição recorrente é
 consideravelmente complexo e acredita-se que tenha funções importantes no sinal
 entregue ao músculo. Apesar dos esforços para se compreender o papel da CR
@@ -247,24 +259,96 @@ experimentação, entre outros \cite{sterratt11}.
 Com o intuito de criar um simulador de propósito geral, \citeonline{cisi08}
 desenvolveram um sistema em que se pudesse observar o comportamento da
 circuitaria da coluna espinhal em diferentes situações, sendo capaz de
-reproduzir experimentos fisiológicos. A partir desse trabalho, várias outras
+reproduzir experimentos fisiológicos. Esse sistema recebeu o nome de 
+\textbf{ReMoto}. A partir desse trabalho, várias outras
 extensões e estudos foram realizados \cite{elias14,watanabe15,watanabe17}.
 
-Nesse modelo computacional, entretanto, a presença das CRs pode causar 
-comportamentos não esperados, como mostrado na Figura \ref{fig:remotojavaspk},
-que foi gerada por meio de uma simulação com 800 MNs do tipo S, 50 do tipo
-FR, 50 do tipo FF, 350 CRs e uma corrente de 10 nA injetada no soma de todos
-os MNs. Os instantes de disparo mostram que os MNs não são recrutados de forma
-contínua durante a estimulação, ou seja, em alguns instantes, algumas células
-deixam de disparar, apesar de outras maiores que estas estarem disparando.
+O simulador foi originalmente desenvolvido para ser uma aplicação \textit{web},
+acessada remotamente pelo endereço \url{http://remoto.leb.usp.br}. Atualmente,
+existe
+ainda uma versão em Python do simulador, que pode ser baixada pelo
+GitHub em \url{https://github.com/rnwatanabe/projectPR}.
 
-\begin{figure}[ht!]
-	\center
-	\includegraphics[scale=0.4]{remotojavaspk.png}
-	\caption{Momentos de disparo de todos os motoneurônios simulados. O eixo 
-             das ordenadas representa o índice de cada motoneurônio em ordem
-             crescente de tamanho.}
-	\label{fig:ce}
-\end{figure}
+\subsection{Parametrizações}
+A parametrização original das CRs nesse simulador foi baseada em dados
+fisiológicos obtidos de experimentos em gatos e mostrou uma elevada
+influência destas no comportamento dos MNs. Outra parametrização para as CRs,
+baseada nos trabalhos de \citeonline{williams09}, foi adotada por
+\citeonline{watanabe15}. Esta não leva em consideração as
+diferenças de condutâncias sinápticas de acordo com os tipos de MNs envolvidos 
+e considera que a conectividade entre CRs e MNs são menores, mas seria adequada
+para estudos de níveis de força reduzidos \cite{williams09}.
 
-% por que mudar a parametrização afinal??? (python)
+A parametrização de \citeonline{cisi08}, a partir de agora, será identificada
+como \textbf{parametrização antiga}, enquanto que a de \citeonline{watanabe15},
+como \textbf{parametrização nova}. Seus valores são apresentados na Tabela 
+\ref{tab:params}.
+
+\begin{table}[ht!]
+\caption{Principais diferenças entre valores conectividade, condutância e
+    morfologia nas parametrizações antiga e nova.}
+\label{tab:params}
+\centering
+    \begin{tabular}{c C{3cm} C{3cm}}\hline 
+	Parâmetro & Parametrização Antiga & Parametrização Nova \\ \hline 
+    Conectividade CR-MN S [\%] & 100 & 4  \\ 
+    Conectividade CR-MN FR [\%] & 100 & 4  \\ 
+    Conectividade CR-MN FF [\%] & 100 & 4  \\ 
+    Conectividade MN S-CR [\%] & 100 & 6  \\ 
+    Conectividade MN FR-CR [\%] & 100 & 6  \\ 
+    Conectividade MN FF-CR [\%] & 100 & 6  \\ 
+    Condutância máxima MN S-CR [nS] & 150 & 150 \\
+    Condutância máxima MN FR-CR [nS] & 170 & 150 \\
+    Condutância máxima MN FF-CR [nS] & 300 & 150 \\
+    Condutância máxima CR-MN S [nS] & 440 & 440 \\
+    Condutância máxima CR-MN FR [nS] & 300 & 440 \\
+    Condutância máxima CR-MN FF [nS] & 240 & 440 \\
+    Resistência específica de membrana da CR [$\Omega\text{cm}^2$] & 200 & 760\\
+    Diâmetro do soma da CR [$\mu\text{m}$] & 65 & 25\\
+    Comprimento do soma da CR [$\mu\text{m}$] & 285 & 242\\
+	\hline
+    \end{tabular}
+\end{table}
+
+\subsection{Performance Computacional}
+% TODO fala do python e vantagens, também de fala como 
+
+% TODO Apresenta diferença de tempo java vs python, mostrando alguma sim um pouco mais complexa
+
+% TODO Mostra papers com intuito de melhorar performance, i.e. isso importa
+
+\section{Objetivos Globais}
+\subsection{Avaliação do Circuito de Inibição Recorrente}
+O primeiro objetivo deste trabalho é avaliar como as CRs afetam o
+comportamento dos MNs envolvidos na inibição recorrente, analisando se os
+resultados são consistentes com dados fisiológicos. Como a estimação de 
+parâmetros já foi realizada em \citeonline{cisi08}, o foco aqui serão os
+comportamentos globais desse circuito.
+
+Esses aspectos serão analisados comparando os resultados obtidos com
+simulações com a parametrização antiga e nova. Isso deve trazer informações
+sobre qual parametrização é mais adequada em cada situação e porquê.
+
+\subsection{Melhora de Performance}
+Como mostrado anteriormente, o tempo de execução de uma simulação se torna um 
+fator limitante quando se deseja estudar sistemas mais realistas. Sendo assim,
+outro objetivo desse trabalho é melhorar a performance computacional do
+simulador em Python. Apesar deste ser significativamente mais lento que a
+versão em Java, optou-se por trabalhar com esta porque, atualmente, ela está em
+constante manutenção e desenvolvimento, além de ser mais facilmente estendida
+para realizar simulações mais completas.
+
+Vale ressaltar que esse não é o foco desse trabalho, pois esse tipo de
+desenvolvimento pode ser bastante complexo e demorado por si só.
+
+\subsection{Variabilidade de Força}
+Como objetivo final, deseja-se estudar o efeito das CRs na variabilidade de
+força em tarefas de força em um pedal fixo e solto.
+
+%\section{Trabalhos Relacionados}
+%O estudo de CRs por meio de simulações pode trazer informações valiosas sobre
+%esse interneurônio, já que o estudo do circuito de inibição recorrente é de difícil 
+%acesso do ponto de vista experimental.
+%Nesta seção, três trabalhos com resultados relevantes serão apresentados.
+%Estes servirão como base para validar e analisar os resultados do simulador 
+%aqui abordado.
