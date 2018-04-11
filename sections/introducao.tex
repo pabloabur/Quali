@@ -23,10 +23,10 @@ responsável por movimentar os ossos, olhos, inalação e exalação, controlar
 expressões faciais e fala \cite{bear16}. Movimentos que diminuem o ângulo
 entre um segmento e seu segmento proximal são chamados de flexão,
 enquanto movimentos que aumentam esse ângulo são chamados de
-extensão \cite{oxford}. Sendo assim, músculos podem ser
+extensão \cite{oxford}. Dessa forma, músculos podem ser
 classificados como \textbf{flexores} e \textbf{extensores}. Se eles têm a 
 mesma função, são chamados de \textbf{sinergistas} um do outro. Músculos
-\textbf{agonistas} proporciona aceleração em direção a um objeto e o músculo
+\textbf{agonistas} proporcionam aceleração em direção a um objeto e o músculo
 \textbf{antagonista} gera aceleração na direção oposta \cite{enoka08}.
 
 Em cada músculo esquelético existem centenas de fibras musculares. Elas são
@@ -56,10 +56,19 @@ O corno ventral contém tipos especializados de neurônios: o
 \textbf{motoneurônio} (MN), que possui \textbf{axônios motores} inervando
 músculos específicos, e o \textbf{interneurônio} (IN), que está envolvido em
 vários circuitos neuronais, seja no nível do segmento ou conectando com
-estruturas de níveis superiores. O conjunto de um MN, seu axônio e todas as
-fibras musculares que este inerva é chamado de \textbf{unidade motora}
-\cite{liddell25,sherrington25}.
+estruturas de níveis superiores.
 
+A raiz dorsal consiste em fibras nervosas aferentes que carregam informações
+dos músculos, tendões, articulações e pele para a coluna espinal, enquanto que
+a raiz ventral, por sua vez, consiste em axônios inervando músculos e fusos
+musculares. Existem duas categorias de MN: alfa (MN \A) e gama
+(MN \G). O primeiro inicia diretamente as contrações de fibras musculares.
+O conjunto de MNs \A que inervam um único músculo é chamado de
+\textbf{núcleo motor} ou \textbf{pool de MN}. Núcleos motores formam colunas
+que percorrem o comprimento da coluna espinhal \cite{kandel13,bear16}.
+
+O conjunto de um MN, seu axônio e todas as fibras musculares que este inerva
+é chamado de \textbf{unidade motora} \cite{liddell25,sherrington25}.
 Apesar de existirem diferentes tipos de fibras musculares em um dado músculo,
 uma unidade motora inerva fibras de apenas um tipo. Essas fibras são 
 classificadas como: fibras lentas (do inglês \textit{slow}, S), que são lentas,
@@ -80,18 +89,10 @@ morfológica importância pois, de acordo com o \textbf{princípio do tamanho},
 a ordem de ativação de unidades motoras ocorre das menores para as maiores 
 \cite{enoka08}.
 
+Os padr¿s de conectividade também são características importantes.
 O axônio de um MN geralmente surge do corpo celular desse neurônio e, na
 maioria dos MNs lumbosacrais, dá origem a uma até cinco ramificações chamadas
 \textbf{ramos colaterais} antes de deixar a coluna espinhal \cite{cullheim78}.
-
-A raiz dorsal consiste em fibras nervosas aferentes que carregam informações
-dos músculos, tendões, articulações e pele para a coluna espinal, enquanto que
-a raiz ventral, por sua vez, consiste em axônios inervando músculos e fusos
-musculares. Existem duas categorias de MN: alfa (MN \A) e gama
-(MN \G). O primeiro inicia diretamente as contrações de fibras musculares.
-O conjunto de MNs \A que inervam um único músculo é chamado de
-\textbf{núcleo motor} ou \textbf{pool de MN}. Núcleos motores formam colunas
-que percorrem o comprimento da coluna espinhal \cite{kandel13,bear16}.
 
 As terminações dos axônios motores inervando um músculo se separam em diversos
 ramos e formam inchaços chamados de \textbf{botões sinápticos}, de onde os MNs
@@ -117,10 +118,20 @@ de ramos colaterais de axônios motores fornecendo entradas sinápticas
 excitatórias para CRs, que por sua vez inibem diversos MNs que inervam o
 respectivo músculo \cite{eccles54}.
 
+Na Figura
+\ref{fig:circuit}, um diagrama com as principais conexões envolvidas 
+com as CRs é apresentado.
+Para facilitar a compreensão, a inibição, por meio das CRs, dos INIa
+mediando inibição recíproca no sentido do músculo extensor para o flexor foi
+omitida.
+
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.6]{circuit.png}
-	\caption{Circuito}
+	\caption{Circuitaria espinhal na qual as células de Renshaw estão inseridas.
+             Os triângulos representam sinapses, que podem ser excitatórias 
+             (brancas) ou inibitórias (pretas). Os símbolos $\alpha$ e $\gamma$ 
+             se referem ao tipo de motoneurônio.}
 	\label{fig:circuit}
 \end{figure}
 
@@ -132,19 +143,8 @@ Outros elementos envolvidos nesse esquema também recebem esse termo, como, por
 exemplo, ramos colaterais recorrentes e potencial inibitório pós sináptico
 (PIPS) recorrente.
 
-% TODO The connections shown is Figure ___ is a simplified view.
-% unidirectional MN-RC connections, MN synapses on RC (hultborn88), RC synapses
-% on MN (Fyffe 91)
-\begin{figure}[ht!]
-	\center
-	\includegraphics[scale=0.6]{circuitRC.png}
-	\caption{Circuito}
-	\label{fig:circuitRC}
-\end{figure}
-
 \subsection{Entradas das Células de Renshaw}
 \subsubsection{De motoneurônios $\alpha$}
-% TODO citar aqui tb a conexão RC-RC
 Ativações de CRs são obtidas de estimulações de vários nervos e aumentam
 gradativamente com o acréscimo de intensidade de estimulação de nervos
 individuais, sugerindo que uma única CR é excitada por ramos colaterais de
@@ -202,7 +202,7 @@ Fatores funcionais também podem determinar a distribuição de colaterais de CRs.
 Uma inibição recorrente é evocada em grupos de núcleos motores após um estímulo
 de MNs de um dado músculo. Esse PIPS recorrente é mais forte em MNs homônimos,
 mas também muitos outros MNs podem ser fortemente inibidos. Essa inibição
-recorrente \textbf{heterônima} é pode ser observada em MNs de músculos
+recorrente \textbf{heterônima} pode ser observada em MNs de músculos
 sinergistas de uma mesma ou outra articulação \cite{eccles54,eccles61b}. Vale
 notar que núcleos motores de músculos ligados por sinergismo Ia são conectados
 por inibição recorrente apesar de suas posições na coluna espinhal, e.g. um
@@ -212,7 +212,10 @@ Também nesse tipo de conexão existe uma dependência do tipo do MN. O PIPS
 recorrente é maior em MNs do tipo S do que no tipo FR, que por sua vez é maior
 do que no tipo FF \cite{friedman81}. Entretanto, existem evidências de que
 esses efeitos desaparecem quando os MNs \A estão próximos ao limiar
-\cite{hultborn88b}.
+\cite{hultborn88b}. Além disso, medições da corrente efetiva mostram um valor 
+médio constante que é entregue igualmente aos MNs, independente de seus tipos.
+Dessa forma, essa variação de amplitudes dos PIPS em um núcleo motor pode ser
+causada pelas variações nas propriedades dos MNs.
 
 \subsubsection{Para motoneurônios $\gamma$}
 Os MNs \G do tipo estático e dinâmico recebem inibição recorrente das
@@ -246,13 +249,33 @@ projetar para alguns neurônios de origem do trato espino cerebelar anterior
 espinhal para o cerebelo \cite{kandel13}.
 
 % TODO RC functions
-% (McCurdy&Hamm94) "altough these studies uniformly report that recurrent
-% inhibition is found between MNs innervationg muscles that have disparate
-% mechanical actions, recurrent inhibition is not found between motor pools 
-% that innervate direct antagonists at a joint" - I don't quite understand that
-
-% TODO RC functions
 % \section{Renshaw Cells Characteristics}?
+
+\subsection{Considerações Sobre o Circuito de Inibição Recorrente}
+O diagrama mostrado na Figura \ref{fig:circuit}, na verdade, é uma simplificação.
+Primeiramente, deve-se considerar que os elementos representados nesse circuito
+são populações que interagem entre si, sendo que estas podem não ser exatamente
+homogêneas. Um exemplo disso é o fato de, além das interações mútuas entre
+CRs e MNs, existem casos de MNs ativando CRs, mas que não recebem inibição
+das mesmas, e de CRs ativando MNs sem serem ativadas por estes \cite{vankeulen81}.
+Isso é ilustrado na Figura \ref{fig:circuitRC}.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.6]{circuitRC.png}
+	\caption{Conexões observadas entre células de Renshaw e motoneurônios.}
+	\label{fig:circuitRC}
+\end{figure}
+
+Outro fator não explicitado no diagrama é o fato de 
+existirem evidências mostrando que as sinapses das CRs sobre os 
+MNs são localizadas sobre nos dendritos, com 64 até 705 $\mu$m de distância do 
+soma \cite{fyffe91}. Outros trabalhos de estimação e simulação também mostraram
+resultados compartíveis \cite{maltenfort04}.
+
+A distribuição espacial de inibição recorrente também é um aspecto importante. 
+Estudos mostram que, até para músculos diferentes, esta é mais forte entre MNs
+que estejam separados por distâncias menores do que 14 mm \cite{mccurdy94}.
 
 \section{Modelagem Computacional}
 \subsection{O ReMoto}
@@ -321,11 +344,43 @@ como \textbf{parametrização nova}. Seus valores são apresentados na Tabela
 \end{table}
 
 \subsection{Performance Computacional}
-% TODO fala do python e vantagens, também de fala como 
+Uma das maiores vantagens da linguagem de programação Python é a facilidade
+de modularização do código sendo desenvolvido. Esse aspecto, quando usado
+apropriadamente, pode ser de grande utilidade para a neurociência computacional,
+pois esta frequentemente envolve processamento de grande volume de dados e
+simulações de sistemas complexos \cite{muller15}.
 
-% TODO Apresenta diferença de tempo java vs python, mostrando alguma sim um pouco mais complexa
+De fato, a popularidade do Python na neurociência computacional vem crescendo,
+de forma que hoje é possível importar o NEURON, que é uma poderosa ferramenta 
+para realizar simulações de neurônios e redes neuronais \cite{carnevale06},
+para dentro do Python ou até mesmo utilizar outros simuladores escritos nesta
+linguagem, como o Brian \cite{goodman09}.
 
-% TODO Mostra papers com intuito de melhorar performance, i.e. isso importa
+Nesse contexto, entretanto, à medida mais detalhes são adicionados às simulações,
+o tempo de execução desta se torna maior. Isso pode ser uma fator limitante em
+pesquisas que exigem um alto grau de realismo, de forma que muitos esforços têm
+sido realizados para melhorar essa performance computacional de diferentes maneiras
+\cite{morrison05,thibeault11,hoang13}. % TODO python does not go that well here, but it depends (book)
+
+A performance computacional do simulador estudado aqui, como esperado, também pode
+ser um fator limitante. Na verdade, como a máquina virtual do Java é conhecida por
+suas otimizações, uma comparação entre esta versão e a em Python é inevitável. Sendo
+assim, a Tabela \ref{tab:javaxpython} traz informações sobre o tempo de execução das 
+duas versões para dois tipos de simulação: uma mais simples, com TODO; e outra um
+pouco mais complexa, com TODO. TODO Simulações foram rodadas para que se pudesse obter
+a média e o desvio padrão.
+
+\begin{table}[ht!]
+\caption{Tempo de TODO}
+\label{tab:javaxpython}
+\centering
+    \begin{tabular}{c C{3cm} C{3cm}}\hline 
+	Parâmetro & Parametrização Antiga & Parametrização Nova \\ \hline 
+	\hline
+    \end{tabular}
+\end{table}
+
+Pode-se perceber que a versão em Java é muito mais rápida % TODO
 
 \section{Objetivos Globais}
 \subsection{Avaliação do Circuito de Inibição Recorrente}
