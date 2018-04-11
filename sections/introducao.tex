@@ -360,27 +360,34 @@ Nesse contexto, entretanto, à medida mais detalhes são adicionados às simulações
 o tempo de execução desta se torna maior. Isso pode ser uma fator limitante em
 pesquisas que exigem um alto grau de realismo, de forma que muitos esforços têm
 sido realizados para melhorar essa performance computacional de diferentes maneiras
-\cite{morrison05,thibeault11,hoang13}. % TODO python does not go that well here, but it depends (book)
+\cite{morrison05,thibeault11,hoang13}. Python, nesse
+sentido, parece ser uma escolha inapropriada por ser uma linguagem de alto nível
+de abstração e, consequentemente, mais lenta do que outras linguagens como C ou 
+Java, por exemplo. Entretanto, existem muitas técnicas, ferramentas e estratégias
+para fazer com que um código escrito em Python seja rápido %\cite{TODO}.
 
 A performance computacional do simulador estudado aqui, como esperado, também pode
 ser um fator limitante. Na verdade, como a máquina virtual do Java é conhecida por
 suas otimizações, uma comparação entre esta versão e a em Python é inevitável. Sendo
 assim, a Tabela \ref{tab:javaxpython} traz informações sobre o tempo de execução das 
-duas versões para dois tipos de simulação: uma mais simples, com TODO; e outra um
-pouco mais complexa, com TODO. TODO Simulações foram rodadas para que se pudesse obter
-a média e o desvio padrão.
+duas versões para dois tipos de simulação: uma mais simples, com apenas alguns
+MNs e comandos descendentes (Cenário 1); e outra um pouco mais complexa, com maior 
+quantidade de MNs, comandos descendentes e alguns INs (Cenário 2). Cada
+simulação foi 
+executada cinco vezes para que se pudesse obter a média do tempo de execução.
 
 \begin{table}[ht!]
-\caption{Tempo de TODO}
+\caption{Comparação do tempo de execução das duas versões do simulador em
+         dois cenários distintos.}
 \label{tab:javaxpython}
 \centering
     \begin{tabular}{c C{3cm} C{3cm}}\hline 
-	Parâmetro & Parametrização Antiga & Parametrização Nova \\ \hline 
+	 & Java & Python \\ \hline 
+	 Cenário 1 & & \\ \hline 
+	 Cenário 2 & & \\
 	\hline
     \end{tabular}
 \end{table}
-
-Pode-se perceber que a versão em Java é muito mais rápida % TODO
 
 \section{Objetivos Globais}
 \subsection{Avaliação do Circuito de Inibição Recorrente}
