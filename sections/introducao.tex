@@ -2,7 +2,7 @@
 \label{cap:intro}
 
 O objetivo desse trabalho é estudar as Células de Renshaw e suas funções 
-usando modelos computacionais realistas. A maioria dos dados usados aqui vêm
+usando modelos computacionais baseados em dados experimentais. A maioria dos dados usados aqui vêm
 de experimentos realizados em membros inferiores de gatos. Como esse tipo de
 experimento raramente é realizado hoje em dia, esses dados atualmente são
 obtidos de ratos. Dessa forma, dados de ratos serão usados com cautela, com 
@@ -89,7 +89,7 @@ morfológica importância pois, de acordo com o \textbf{princípio do tamanho},
 a ordem de ativação de unidades motoras ocorre das menores para as maiores 
 \cite{enoka08}.
 
-Os padr¿s de conectividade também são características importantes.
+Os padrões de conectividade também são características importantes.
 O axônio de um MN geralmente surge do corpo celular desse neurônio e, na
 maioria dos MNs lumbosacrais, dá origem a uma até cinco ramificações chamadas
 \textbf{ramos colaterais} antes de deixar a coluna espinhal \cite{cullheim78}.
@@ -123,7 +123,8 @@ Na Figura
 com as CRs é apresentado.
 Para facilitar a compreensão, a inibição, por meio das CRs, dos INIa
 mediando inibição recíproca no sentido do músculo extensor para o flexor foi
-omitida.
+omitida. Os detalhes de cada uma dessas conexões serão apresentados na 
+seção \ref{sec:conns}.
 
 \begin{figure}[ht!]
 	\center
@@ -143,8 +144,9 @@ Outros elementos envolvidos nesse esquema também recebem esse termo, como, por
 exemplo, ramos colaterais recorrentes e potencial inibitório pós sináptico
 (PIPS) recorrente.
 
-\subsection{Entradas das Células de Renshaw}
-\subsubsection{De motoneurônios $\alpha$}
+\subsection{Origens das Entradas das Células de Renshaw}
+\label{sec:conns}
+\subsubsection{Motoneurônios $\alpha$}
 Ativações de CRs são obtidas de estimulações de vários nervos e aumentam
 gradativamente com o acréscimo de intensidade de estimulação de nervos
 individuais, sugerindo que uma única CR é excitada por ramos colaterais de
@@ -173,13 +175,13 @@ excitatórias para CRs de MNs FF, FR e S seriam 4:2:1 \cite{cullheim78}. Isso,
 entretanto, é observado em média e não significa que CRs individuais recebem
 uma entrada homogênea de tipos de MNs \cite{hultborn88a}.
 
-\subsubsection{De Vias Aferentes}
+\subsubsection{Vias Aferentes}
 Outra via de ativação descrita na literatura é a excitação e inibição
 polissináptica ocasionada pela estimulação de aferentes cutâneos, raízes
 dorsais, fibras aferentes ipsilaterais dos grupos II e III e aferentes
 contralaterais de alto limiar \cite{baldissera11}.
 
-\subsubsection{De Vias Descendentes}
+\subsubsection{Vias Descendentes}
 As CRs estão podem apresentar efeitos inibitórios e/ou excitatórios quando
 estímulos elétricos são aplicados em alguns centros supra espinhais, como o
 córtex cerebral \cite{maclean67}, o núcleo vestibular \cite{pompeiano85}, o
@@ -187,8 +189,8 @@ tálamo \cite{maclean67}, entre outros. Esses efeitos podem se expressar direta
 ou indiretamente por meio dos MNs \A.
 
 
-\subsection{Saídas das Células de Renshaw}
-\subsubsection{Para motoneurônios $\alpha$}
+\subsection{Núcleos Alvo das Células de Renshaw}
+\subsubsection{Motoneurônios $\alpha$}
 As ramificações axonais de uma CR são de alta densidade em regiões proximais ao
 soma e decrescem a medida em que a distância da ramificação ao soma aumenta
 \cite{jankowska73,vankeulen79}. Dessa forma, é de se esperar que o efeito de
@@ -217,7 +219,7 @@ médio constante que é entregue igualmente aos MNs, independente de seus tipos.
 Dessa forma, essa variação de amplitudes dos PIPS em um núcleo motor pode ser
 causada pelas variações nas propriedades dos MNs.
 
-\subsubsection{Para motoneurônios $\gamma$}
+\subsubsection{Motoneurônios $\gamma$}
 Os MNs \G do tipo estático e dinâmico recebem inibição recorrente das
 CRs \cite{ellaway81,appelberg83}.
 
@@ -227,14 +229,14 @@ CRs \cite{westbury82,granit57,kato74}, sugerindo, assim, que MNs \G
 recebem inibição recorrente via CR predominantemente por meio de MNs \A
 \cite{ellaway81,appelberg83}.
 
-\subsubsection{Para interneurônios Ia}
+\subsubsection{Interneurônios Ia}
 Uma CR também pode inibir um INIa realizando inibição recíproca entre músculos
 antagonistas \cite{hultborn71}. Dessa forma, CRs excitadas por MNs de um núcleo
 motor agonista inibem INIas, que por sua vez inibem MNs antagonistas e recebem
 entradas excitatórias homônimas ou sinergistas de aferentes Ia.
 
 
-\subsubsection{Para outras células de Renshaw}
+\subsubsection{Outras Células de Renshaw}
 Existem estudos que mostram CRs se inibindo mutamente, de modo que a inibição
 mais forte ocorre entre CRs recebendo a maioria de suas entrada excitatórias de
 MNs \A antagonistas \cite{ryall81}. Essa inibição, juntamente com a apresentada
@@ -242,11 +244,13 @@ anteriormente sobre INsIa, pode explicar
 a facilitação recorrente de MNs observada em alguns casos
 \cite{renshaw41,windhorst90}.
 
-\subsubsection{Para o Trato Espino cerebelar Anterior}
+\subsubsection{Neurônios do Trato Espinocerebelar Anterior}
 As mesmas CRs que projetam seus colaterais para MNs \A e INIas também podem os
 projetar para alguns neurônios de origem do trato espino cerebelar anterior
 \cite{lindstrom73}, que são responsáveis por transmitir sinais da coluna
-espinhal para o cerebelo \cite{kandel13}.
+espinhal para o cerebelo \cite{kandel13}. A significância quantitativa dessas
+conexões parecem ser pequenas e sua relevância fisiológica não está clara 
+\cite{windhorst96}.
 
 % TODO RC functions
 % \section{Renshaw Cells Characteristics}?
@@ -277,8 +281,7 @@ A distribuição espacial de inibição recorrente também é um aspecto importante.
 Estudos mostram que, até para músculos diferentes, esta é mais forte entre MNs
 que estejam separados por distâncias menores do que 14 mm \cite{mccurdy94}.
 
-\section{Modelagem Computacional}
-\subsection{O ReMoto}
+\section{Modelagens Computacionais Descritas na Literatura}
 Como mostrado nas seções anteriores, o circuito de inibição recorrente é
 consideravelmente complexo e acredita-se que tenha funções importantes no sinal
 entregue ao músculo. Apesar dos esforços para se compreender o papel da CR
@@ -289,6 +292,30 @@ podem ser usados para testar teorias, fornecer representações adequadas da
 neurobiologia, inferir comportamentos muitas difíceis de serem observados na
 experimentação, entre outros \cite{sterratt11}.
 
+O estudo de CRs por meio de simulações pode trazer informações valiosas sobre
+esse interneurônio, já que o estudo do circuito de inibição recorrente é de difícil 
+acesso do ponto de vista experimental.
+A seguir, será apresentada uma breve revisão sobre alguns trabalhos de
+simulações envolvendo CRs.
+
+\subsection{Windhorst}
+\subsection{Maltenfort, Heckman e Rymer}
+\citeonline{maltenfort98} fizeram um modelo com 256 MNs que foram posicionados
+em uma matriz de quatro colunas por sessenta e quatro linhas (direções
+mediolaterais por rostrocaudais). De forma semelhante, as CRs foram posicionadas
+em uma única coluna com 64 elementos, de forma que cada CR fizesse contato com
+quatro MNs em uma mesma linha.
+
+A condutância máxima e a constante de tempo das CRs foram determinadas
+empiricamente para reproduzir os resultados experimentais descritos em 
+\cite{hultborn79}. A resistência de entrada utilizada foi estimada como
+4 M$\Omega$, de acordo com comparações entre o tamanho desse neurônio com
+o de MNs do tipo S. Um limiar de disparo negativo foi responsável por reproduzir
+a atividade espontânea das CRs.
+
+\subsection{Williams e Baker}
+
+\subsection{Cisi e Kohn}
 Com o intuito de criar um simulador de propósito geral, \citeonline{cisi08}
 desenvolveram um sistema em que se pudesse observar o comportamento da
 circuitaria da coluna espinhal em diferentes situações, sendo capaz de
@@ -302,6 +329,7 @@ existe
 ainda uma versão em Python do simulador, que pode ser baixada pelo
 GitHub em \url{https://github.com/rnwatanabe/projectPR}.
 
+\section{Comparação das Duas Versões do ReMoto}
 \subsection{Parametrizações}
 A parametrização original das CRs nesse simulador foi baseada em dados
 fisiológicos obtidos de experimentos em gatos e mostrou uma elevada
@@ -364,63 +392,32 @@ sido realizados para melhorar essa performance computacional de diferentes manei
 sentido, parece ser uma escolha inapropriada por ser uma linguagem de alto nível
 de abstração e, consequentemente, mais lenta do que outras linguagens como C ou 
 Java, por exemplo. Entretanto, existem muitas técnicas, ferramentas e estratégias
-para fazer com que um código escrito em Python seja rápido %\cite{TODO}.
+para fazer com que um código escrito em Python seja rápido \cite{gorelick14}.
 
 A performance computacional do simulador estudado aqui, como esperado, também pode
 ser um fator limitante. Na verdade, como a máquina virtual do Java é conhecida por
 suas otimizações, uma comparação entre esta versão e a em Python é inevitável. Sendo
 assim, a Tabela \ref{tab:javaxpython} traz informações sobre o tempo de execução das 
 duas versões para dois tipos de simulação: uma mais simples, com apenas alguns
-MNs e comandos descendentes (Cenário 1); e outra um pouco mais complexa, com maior 
-quantidade de MNs, comandos descendentes e alguns INs (Cenário 2). Cada
+MNs e comandos descendentes (Cenário 1); e outra um pouco mais complexa, com a mesma 
+quantidade de MNs e comandos descendentes, mas com algumas CRs (Cenário 2). Cada
 simulação foi 
 executada cinco vezes para que se pudesse obter a média do tempo de execução.
 
 \begin{table}[ht!]
-\caption{Comparação do tempo de execução das duas versões do simulador em
-         dois cenários distintos.}
+    \caption{Comparação do tempo de execução (em segundos) das duas versões do
+             simulador em dois cenários distintos.}
 \label{tab:javaxpython}
 \centering
     \begin{tabular}{c C{3cm} C{3cm}}\hline 
 	 & Java & Python \\ \hline 
-	 Cenário 1 & & \\ \hline 
-	 Cenário 2 & & \\
+	 Cenário 1 & 1 & 38.4 \\ \hline 
+	 Cenário 2 & 1.8 & 70.4 \\
 	\hline
     \end{tabular}
 \end{table}
 
-\section{Objetivos Globais}
-\subsection{Avaliação do Circuito de Inibição Recorrente}
-O primeiro objetivo deste trabalho é avaliar como as CRs afetam o
-comportamento dos MNs envolvidos na inibição recorrente, analisando se os
-resultados são consistentes com dados fisiológicos. Como a estimação de 
-parâmetros já foi realizada em \citeonline{cisi08}, o foco aqui serão os
-comportamentos globais desse circuito.
-
-Esses aspectos serão analisados comparando os resultados obtidos com
-simulações com a parametrização antiga e nova. Isso deve trazer informações
-sobre qual parametrização é mais adequada em cada situação e porquê.
-
-\subsection{Melhora de Performance}
-Como mostrado anteriormente, o tempo de execução de uma simulação se torna um 
-fator limitante quando se deseja estudar sistemas mais realistas. Sendo assim,
-outro objetivo desse trabalho é melhorar a performance computacional do
-simulador em Python. Apesar deste ser significativamente mais lento que a
-versão em Java, optou-se por trabalhar com esta porque, atualmente, ela está em
-constante manutenção e desenvolvimento, além de ser mais facilmente estendida
-para realizar simulações mais completas.
-
-Vale ressaltar que esse não é o foco desse trabalho, pois esse tipo de
-desenvolvimento pode ser bastante complexo e demorado por si só.
-
-\subsection{Variabilidade de Força}
-Como objetivo final, deseja-se estudar o efeito das CRs na variabilidade de
-força em tarefas de força em um pedal fixo e solto.
-
-%\section{Trabalhos Relacionados}
-%O estudo de CRs por meio de simulações pode trazer informações valiosas sobre
-%esse interneurônio, já que o estudo do circuito de inibição recorrente é de difícil 
-%acesso do ponto de vista experimental.
-%Nesta seção, três trabalhos com resultados relevantes serão apresentados.
-%Estes servirão como base para validar e analisar os resultados do simulador 
-%aqui abordado.
+A simulação do Cenário 1 consiste em 100 MNs do tipo, 100 axônios descendentes
+com uma média de 3 ms entre seus disparos distribuídos como uma distribuição 
+poisson, 200 ms de simulação e com passo de integração de 0.05 ms. Já na do 
+Cenário 2, as configurações foram mantidas, mas foram adicionadas 100 CRs.

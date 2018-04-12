@@ -7,3 +7,5 @@ Para utilizá-lo, faça o download do conteúdo do repositório e o armazene em 
 Para mudar os dados da capa e folha de rosto, edite o arquivo capa.tex.
 
 O conteúdo deste repositório foi fortemente baseado na classe abnTex. 
+
+Use :set fileencoding=latin1 para fazer a conversão no vim

@@ -14,7 +14,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg2006"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
    sodipodi:docname="circuitRC.svg">
   <defs
      id="defs2000" />
@@ -25,16 +25,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="324.84836"
-     inkscape:cy="803.02836"
+     inkscape:zoom="1.979899"
+     inkscape:cx="357.49494"
+     inkscape:cy="908.34062"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="708"
+     inkscape:window-width="1280"
+     inkscape:window-height="950"
      inkscape:window-x="0"
-     inkscape:window-y="31"
+     inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata2003">
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -173,7 +173,7 @@
        inkscape:export-ydpi="95.007301" />
     <path
        style="display:inline;fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 82.393649,58.97255 c 0,0 1.031024,-1.62376 1.215823,-2.545848 0.262928,-1.311929 -0.287291,-2.673846 -0.200451,-4.009041 0.08081,-1.242444 -0.119616,-2.710808 0.668174,-3.674957 0.645065,-0.789472 1.827784,-1.012109 2.839738,-1.135896 1.294385,-0.158336 2.573455,0.460912 3.875408,0.534538 0.997049,0.05638 2.995057,-0.07215 2.995057,-0.07215"
+       d="m 82.393649,58.97255 c 0,0 0.753753,-1.726771 1.215823,-2.545848 0.489496,-0.867692 1.057108,-1.690797 1.642183,-2.497136 0.565478,-0.779331 1.201676,-1.504812 1.802103,-2.257547 0.553106,-0.69341 1.011555,-1.4741 1.658562,-2.080836 0.616489,-0.578118 1.276824,-1.186865 2.080021,-1.449837 0.949069,-0.310732 2.995057,-0.07215 2.995057,-0.07215"
        id="path1577"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="caaaaac"

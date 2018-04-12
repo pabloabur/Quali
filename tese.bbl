@@ -131,6 +131,12 @@ ISSN 16624548, 1662453X.
 Dispon{\'\i}vel em:
   $<$http://journal.frontiersin.org/article/10.3389/neuro.01.026.2009/abstract$>$.}
 
+\bibitem[Gorelick e Ozsvald 2014]{gorelick14}
+\abntrefinfo{Gorelick e Ozsvald}{GORELICK; OZSVALD}{2014}
+{GORELICK, M.; OZSVALD, I. \emph{High performance {Python}}. First edition.
+  Sebastopol, CA: O'Reilly, 2014. OCLC: ocn868080968.
+ISBN 978-1-4493-6159-4.}
+
 \bibitem[Granit, Pascoe e Steg 1957]{granit57}
 \abntrefinfo{Granit, Pascoe e Steg}{GRANIT; PASCOE; STEG}{1957}
 {GRANIT, R.; PASCOE, J.~E.; STEG, G. The behaviour of tonic α and β
@@ -185,6 +191,16 @@ ISSN 0001-6772.}
   fast and slow units.
 \emph{Acta Physiologica Scandinavica}, v.~134, n.~3, p. 363--374, nov. 1988.
 ISSN 0001-6772.}
+
+\bibitem[Hultborn e Pierrot-Deseilligny 1979]{hultborn79}
+\abntrefinfo{Hultborn e Pierrot-Deseilligny}{HULTBORN;
+  PIERROT-DESEILLIGNY}{1979}
+{HULTBORN, H.; PIERROT-DESEILLIGNY, E. Input-output relations in the pathway of
+  recurrent inhibition to motoneurones in the cat.
+\emph{The Journal of Physiology}, v.~297, p. 267--287, dez. 1979.
+ISSN 0022-3751.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1458719/$>$.}
 
 \bibitem[Jankowska e Lindstr\"{O}m 1971]{jankowska71}
 \abntrefinfo{Jankowska e Lindstr\"{O}m}{JANKOWSKA; LINDSTR\"{O}M}{1971}
@@ -266,6 +282,13 @@ ISSN 0001-6772.}
 ISSN 0014-4886.
 Dispon{\'\i}vel em:
   $<$http://www.sciencedirect.com/science/article/pii/001448866790091X$>$.}
+
+\bibitem[Maltenfort, Heckman e Rymer 1998]{maltenfort98}
+\abntrefinfo{Maltenfort, Heckman e Rymer}{MALTENFORT; HECKMAN; RYMER}{1998}
+{MALTENFORT, M.~G.; HECKMAN, C.~J.; RYMER, W.~Z. Decorrelating actions of
+  {Renshaw} interneurons on the firing of spinal motoneurons within a motor
+  nucleus: a simulation study.
+\emph{Journal of neurophysiology}, v.~80, n.~1, p. 309--323, 1998.}
 
 \bibitem[Maltenfort et al. 2004]{maltenfort04}
 \abntrefinfo{Maltenfort et al.}{MALTENFORT et al.}{2004}
@@ -419,5 +442,11 @@ Dispon{\'\i}vel em:
 {WINDHORST, U. Activation of {Renshaw} cells.
 \emph{Progress in Neurobiology}, v.~35, n.~2, p. 135--179, 1990.
 ISSN 0301-0082.}
+
+\bibitem[Windhorst 1996]{windhorst96}
+\abntrefinfo{Windhorst}{WINDHORST}{1996}
+{WINDHORST, U. On {The} {Role} {Of} {Recurrent} {Inhibitory} {Feedback} {In}
+  {Motor} {Control}.
+1996.}
 
 \end{thebibliography}
