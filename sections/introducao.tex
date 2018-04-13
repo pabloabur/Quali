@@ -217,7 +217,7 @@ esses efeitos desaparecem quando os MNs \A estão próximos ao limiar
 \cite{hultborn88b}. Além disso, medições da corrente efetiva mostram um valor 
 médio constante que é entregue igualmente aos MNs, independente de seus tipos.
 Dessa forma, essa variação de amplitudes dos PIPS em um núcleo motor pode ser
-causada pelas variações nas propriedades dos MNs.
+causada pelas variações nas propriedades dos MNs \cite{lindsay91}.
 
 \subsubsection{Motoneurônios $\gamma$}
 Os MNs \G do tipo estático e dinâmico recebem inibição recorrente das
@@ -296,24 +296,104 @@ O estudo de CRs por meio de simulações pode trazer informações valiosas sobre
 esse interneurônio, já que o estudo do circuito de inibição recorrente é de difícil 
 acesso do ponto de vista experimental.
 A seguir, será apresentada uma breve revisão sobre alguns trabalhos de
-simulações envolvendo CRs.
+simulações envolvendo CRs. O \textbf{ReMoto}, entretanto, será o foco deste
+trabalho.
 
-\subsection{Windhorst}
 \subsection{Maltenfort, Heckman e Rymer}
 \citeonline{maltenfort98} fizeram um modelo com 256 MNs que foram posicionados
 em uma matriz de quatro colunas por sessenta e quatro linhas (direções
 mediolaterais por rostrocaudais). De forma semelhante, as CRs foram posicionadas
-em uma única coluna com 64 elementos, de forma que cada CR fizesse contato com
-quatro MNs em uma mesma linha.
+em uma única coluna com 64 elementos.
 
 A condutância máxima e a constante de tempo das CRs foram determinadas
-empiricamente para reproduzir os resultados experimentais descritos em 
-\cite{hultborn79}. A resistência de entrada utilizada foi estimada como
+empiricamente para reproduzir os resultados experimentais descritos por
+\citeonline{hultborn79}, como duração da hiperpolarização e curvas de relação
+entre corrente injetada e taxa de disparos. A resistência de entrada utilizada foi estimada como
 4 M$\Omega$, de acordo com comparações entre o tamanho desse neurônio com
 o de MNs do tipo S. Um limiar de disparo negativo foi responsável por reproduzir
 a atividade espontânea das CRs.
 
-\subsection{Williams e Baker}
+A magnitude das sinapses dos MNs sobre as CRs foi ajustada de acordo com
+as proporções de axônios colaterais providos por cada tipo de MN. Sendo
+assim, esses valores estão distribuídos entre 7 e 35 nS. Foi utilizada uma
+constante de tempo de 15 ms para o decaimento dessa condutância excitatória,
+de forma que o PEPS gerado na CR decaísse a 10\% de seu pico após 55 ms e,
+portanto, fosse semelhante aos PEPS descritos por \citeonline{walmsley81}.
+
+O valor de condutância máximo adotado para o PIPS das CRs sobre os MNs foi 
+de 36 nS, com -7.5 mV de potencial de equilíbrio e constante de tempo de 
+decaimento de 5 ms. O PIPS médio resultado obtido foi semelhante ao que foi
+observado por \citeonline{vankeulen81}.
+
+Uma estimativa do número de sinapses de CRs em MNs, baseada em trabalhos com 
+dados fisiológicos \cite{eccles61a,cleveland81,lindsay91}, resultou em
+CRs com alcance de $\pm$15 linhas no modelo. Esse valor, considerando o
+núcleo motor do músculo gastrocnemius medial do gato, equivale a uma 
+distribuição espacial de aproximadamente $\pm$1.6 mm e foi usado no 
+cálculo de um fator dependente da distância entre o neurônio disparando
+e seu alvo, que foi multiplicado pelos valores de condutância das
+CRs para incorporar um decaimento da eficácia sináptica ao longo da direção
+rostrocaudal ao modelo. Esse fator produziu uma gaussiana e sua utilização,
+junto com as propriedades do MNs, geraram PIPS de CRs com mesmo valores de
+máximos, mínimos e médias (55, 1.6 e 12.5$\mu$V) descritos em
+\citeonline{vankeulen81}.
+
+Um procedimento semelhante foi realizado para o número de sinapses de MNs nas
+CRs, mas dessa vez baseado nos trabalhos de \citeonline{hamm87a,vankeulen81}.
+Essa estimativa em um alcance de $\pm$2 linhas, de forma que cada MN fizesse
+sinapse com cinco CRs.
+
+O principal resultado desse trabalho é que a inibição recorrente pode agir
+como um mecanismo de realimentação negativa que descorrelaciona a atividade
+dos MNs envolvidos com ela.
+
+\subsection{Uchiyama, Johansson e Windhorst}
+Em \citeonline{uchiyama03a}, os autores criaram um modelo com 300 MNs \A
+(150 do tipo FF, 75 do tipo FR e 75 do tipo S) e 300 CRs, que foram modeladas 
+apenas como trens de pulsos que reproduzem algumas de suas características 
+fisiológicas.
+
+Para modelar a organização topográfica da inibição recorrente nesse trabalho,
+os autores utilizaram dados de número e distribuição espacial de botões
+sinápticos distribuídos pelos MNs \cite{cullheim78} e distribuição espacial 
+de botões sinápticos de CRs \cite{vankeulen79,lagerback85}. Foram assumidos
+78.5 $\pm$
+7.5, 43.0 $\pm$ 4.2 e 35.5 $\pm$ 3 botões sinápticos (média $\pm$ erro)
+fornecidos por unidades motoras do tipo FF, FR e S, respectivamente. Suas 
+distribuições, que são usadas como peso das entradas excitatórias dos MNs nas
+CRs, seguiram uma gaussiana centrada na posição do MN e com desvio padrão de
+1/6 mm. A força sináptica de uma CR para um MN depende da distância destes e
+segue uma gaussiana com desvio padrão de 3.5/3 mm.
+
+O grau de excitação fornecido às CR por determinado tipo de MN também foi 
+estimado de acordo com o número de botões sinápticos fornecidos, como mostrado
+anteriormente. O PIPS recorrente em cada tipo de MN foi descrito por uma soma
+de duas exponenciais, uma constante de tempo de decaimento de 2 ms e outra com
+constante de tempo de membrana média de 5.9 (tipo FF), 8 (tipo FR) e 10.4 (tipo
+S) ms. As amplitudes adotadas foram de 7.0 $\pm$ 1.4 (tipo FF), 14.0 $\pm$ 3.0 
+(tipo FR) e 26.0 $\pm$ 3.9 (tipo S) $\mu$V (média $\pm$ erro), estimadas por 
+meio de médias e normalizações de resultados experimentais
+\cite{friedman81,hultborn88b,vankeulen81}.
+
+O método dos mínimos quadrados foi utilizado para aproximar a taxa de
+disparos das CRs descritos por \citeonline{eccles61b} por uma expressão
+analítica. Nela, foram incorporados uma taxa de disparos espontâneos de 7 pps
+\cite{walmsley81} e uma constante de tempo proporcional ao nível de ativação
+da CR, com valor máximo e mínimo de 15 e 0.7 ms, respectivamente.
+
+Para de fato computar os disparos das CRs, primeiramente, o número de botões
+sinápticos de uma dados MN é distribuído entre todas as CRs dentro de seu
+alcance de acordo com uma gaussiana normalizada. Esse procedimento é repetido
+para todos os MNs para que se determine o número total de botões sinápticos em
+cada CR. Dentre esse número total, apenas os que estão ativos e
+alguns recentemente ativados contribuem para o nível de ativação de uma CR que 
+foi citado no parágrafo anterior. Muito dos parâmetros usados nesses cálculos
+foram determinados empiricamente para satisfazer características fisiológicas,
+como por exemplo a saturação da taxa de disparo de CRs em 250 pps.
+
+Esse modelo foi utilizado por \citeonline{uchiyama03b} para investigar o papel
+da inibição recorrente nos disparos de MNs e CRs e na força muscular em 
+diferentes situações, sejam elas hipotéticas ou fisiológicas.
 
 \subsection{Cisi e Kohn}
 Com o intuito de criar um simulador de propósito geral, \citeonline{cisi08}
@@ -323,11 +403,34 @@ reproduzir experimentos fisiológicos. Esse sistema recebeu o nome de
 \textbf{ReMoto}. A partir desse trabalho, várias outras
 extensões e estudos foram realizados \cite{elias14,watanabe15,watanabe17}.
 
+Muitos dos parâmetros das CRs foram ajustados empiricamente para reproduzir o que é
+mostrado na literatura. Isso resultou em 2 mV de amplitude e 30 ms de duração da pós
+hiperpolarização, taxa de disparo de até 1000 pps por meio de um período
+refratário absoluto de 1 ms e disparos espontâneos gerados como condutâncias
+excitatórias máximas de 15 nS gerando potenciais de ação distribuídas conforme uma 
+gaussiana truncada de média 7 pps e desvio padrão de 0.3 \cite{hultborn79}.
+
+% depressão sináptica
+
+Utilizando estudos sobre sinapses de MNs sobre CRs \cite{hultborn88a} e saturação
+da taxa de disparos das CRs \cite{cleveland81}, a condutância sináptica máxima
+de MNs em CRs foi ajustada iterativamente até se obter resultados satisfatórios.
+Dessa forma, o valor final adotado foi 150 (tipo S), 170 (tipo FR) e 300
+(tipo FF) nS.
+
+Os PEPS gerados nas CRs pelos MNs foram parametrizados para apresentar tempo
+para atingir o pico de 3 ms e constante de decaimento entre 10 e 15 ms % TODO other MN-RC info
+
+Por fim, vale ressaltar que o ReMoto foi disponibilizado com um
+\textit{software open source} que poderia ser utilizado por quem estivesse 
+interessado.
 O simulador foi originalmente desenvolvido para ser uma aplicação \textit{web},
 acessada remotamente pelo endereço \url{http://remoto.leb.usp.br}. Atualmente,
 existe
 ainda uma versão em Python do simulador, que pode ser baixada pelo
 GitHub em \url{https://github.com/rnwatanabe/projectPR}.
+
+\subsection{Williams e Baker}
 
 \section{Comparação das Duas Versões do ReMoto}
 \subsection{Parametrizações}

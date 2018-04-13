@@ -53,6 +53,15 @@ ISBN 978-0-521-84321-8.}
 ISSN 0929-5313, 1573-6873.
 Dispon{\'\i}vel em: $<$http://link.springer.com/10.1007/s10827-008-0092-8$>$.}
 
+\bibitem[Cleveland, Kuschmierz e Ross 1981]{cleveland81}
+\abntrefinfo{Cleveland, Kuschmierz e Ross}{CLEVELAND; KUSCHMIERZ; ROSS}{1981}
+{CLEVELAND, S.; KUSCHMIERZ, A.; ROSS, H.-G. Static input-output relations in
+  the spinal recurrent inhibitory pathway.
+\emph{Biological Cybernetics}, v.~40, n.~3, p. 223--231, maio 1981.
+ISSN 0340-1200, 1432-0770.
+Dispon{\'\i}vel em:
+  $<$https://link.springer.com/article/10.1007/BF00453372$>$.}
+
 \bibitem[Cullheim e Kellerth 1978]{cullheim78}
 \abntrefinfo{Cullheim e Kellerth}{CULLHEIM; KELLERTH}{1978}
 {CULLHEIM, S.; KELLERTH, J.~O. A morphological study of the axons and recurrent
@@ -63,8 +72,16 @@ ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1282697/$>$.}
 
+\bibitem[Eccles et al. 1961]{eccles61a}
+\abntrefinfo{Eccles et al.}{ECCLES et al.}{1961a}
+{ECCLES, J.~C. et al. Distribution of recurrent inhibition among motoneurones.
+\emph{The Journal of Physiology}, v.~159, n.~3, p. 479--499, dez. 1961.
+ISSN 0022-3751.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1359546/$>$.}
+
 \bibitem[Eccles et al. 1961]{eccles61b}
-\abntrefinfo{Eccles et al.}{ECCLES et al.}{1961}
+\abntrefinfo{Eccles et al.}{ECCLES et al.}{1961b}
 {ECCLES, J.~C. et al. Electrophysiological investigations on {Renshaw} cells.
 \emph{The Journal of Physiology}, v.~159, n.~3, p. 461--478, dez. 1961.
 ISSN 0022-3751.
@@ -146,6 +163,15 @@ ISSN 1469-7793.
 Dispon{\'\i}vel em:
   $<$http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.1957.sp005857/abstract$>$.}
 
+\bibitem[Hamm et al. 1987]{hamm87a}
+\abntrefinfo{Hamm et al.}{HAMM et al.}{1987}
+{HAMM, T.~M. et al. Distribution of single-axon recurrent inhibitory
+  post-synaptic potentials in a single spinal motor nucleus in the cat.
+\emph{The Journal of Physiology}, v.~388, p. 653--664, jul. 1987.
+ISSN 0022-3751.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1192570/$>$.}
+
 \bibitem[Hoang et al. 2013]{hoang13}
 \abntrefinfo{Hoang et al.}{HOANG et al.}{2013}
 {HOANG, R.~V. et al. A novel {CPU}/{GPU} simulation environment for large-scale
@@ -155,10 +181,10 @@ ISSN 1662-5196.
 Dispon{\'\i}vel em:
   $<$http://journal.frontiersin.org/article/10.3389/fninf.2013.00019/abstract$>$.}
 
-\bibitem[Hultborn, Jankowska e Lindström 1971]{hultborn71}
-\abntrefinfo{Hultborn, Jankowska e Lindström}{HULTBORN; JANKOWSKA;
-  LINDSTRöM}{1971a}
-{HULTBORN, H.; JANKOWSKA, E.; LINDSTRöM, S. Recurrent inhibition from motor
+\bibitem[Hultborn, Jankowska e Lindstr\"{O}m 1971]{hultborn71}
+\abntrefinfo{Hultborn, Jankowska e Lindstr\"{O}m}{HULTBORN; JANKOWSKA;
+  LINDSTR\"{O}M}{1971}
+{HULTBORN, H.; JANKOWSKA, E.; LINDSTR\"{O}M, S. Recurrent inhibition from motor
   axon collaterals of transmission in the {Ia} inhibitory pathway to
   motoneurones.
 \emph{The Journal of Physiology}, v.~215, n.~3, p. 591--612, jul. 1971.
@@ -168,7 +194,7 @@ Dispon{\'\i}vel em:
 
 \bibitem[Hultborn, Jankowska e Lindström 1971]{hultborn71b}
 \abntrefinfo{Hultborn, Jankowska e Lindström}{HULTBORN; JANKOWSKA;
-  LINDSTRöM}{1971b}
+  LINDSTRöM}{1971}
 {HULTBORN, H.; JANKOWSKA, E.; LINDSTRöM, S. Relative contribution from
   different nerves to recurrent depression of {Ia} {IPSPs} in motoneurones.
 \emph{The Journal of Physiology}, v.~215, n.~3, p. 637--664, jul. 1971.
@@ -176,20 +202,20 @@ ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1331905/$>$.}
 
-\bibitem[Hultborn, Katz e Mackel 1988]{hultborn88a}
-\abntrefinfo{Hultborn, Katz e Mackel}{HULTBORN; KATZ; MACKEL}{1988a}
+\bibitem[Hultborn, Katz e Mackel 1988]{hultborn88b}
+\abntrefinfo{Hultborn, Katz e Mackel}{HULTBORN; KATZ; MACKEL}{1988}
 {HULTBORN, H.; KATZ, R.; MACKEL, R. Distribution of recurrent inhibition within
   a motor nucleus. {II}. {Amount} of recurrent inhibition in motoneurones to
   fast and slow units.
 \emph{Acta Physiologica Scandinavica}, v.~134, n.~3, p. 363--374, nov. 1988.
 ISSN 0001-6772.}
 
-\bibitem[Hultborn, Katz e Mackel 1988]{hultborn88b}
-\abntrefinfo{Hultborn, Katz e Mackel}{HULTBORN; KATZ; MACKEL}{1988b}
-{HULTBORN, H.; KATZ, R.; MACKEL, R. Distribution of recurrent inhibition within
-  a motor nucleus. {II}. {Amount} of recurrent inhibition in motoneurones to
-  fast and slow units.
-\emph{Acta Physiologica Scandinavica}, v.~134, n.~3, p. 363--374, nov. 1988.
+\bibitem[Hultborn et al. 1988]{hultborn88a}
+\abntrefinfo{Hultborn et al.}{HULTBORN et al.}{1988}
+{HULTBORN, H. et al. Distribution of recurrent inhibition within a motor
+  nucleus. {I}. {Contribution} from slow and fast motor units to the excitation
+  of {Renshaw} cells.
+\emph{Acta Physiologica Scandinavica}, v.~134, n.~3, p. 347--361, nov. 1988.
 ISSN 0001-6772.}
 
 \bibitem[Hultborn e Pierrot-Deseilligny 1979]{hultborn79}
@@ -259,6 +285,16 @@ ISSN 0304-3940.
 Dispon{\'\i}vel em:
   $<$http://www.sciencedirect.com/science/article/pii/0304394081902202$>$.}
 
+\bibitem[Lagerbäck e Kellerth 1985]{lagerback85}
+\abntrefinfo{Lagerbäck e Kellerth}{LAGERBäCK; KELLERTH}{1985}
+{LAGERBäCK, P.-�.; KELLERTH, J.-O. Light microscopic observations on cat
+  {Renshaw} cells after intracellular staining with horseradish peroxidase.
+  {I}. {The} axonal systems.
+\emph{Journal of Comparative Neurology}, v.~240, n.~4, p. 359--367, out. 1985.
+ISSN 1096-9861.
+Dispon{\'\i}vel em:
+  $<$https://onlinelibrary.wiley.com/doi/abs/10.1002/cne.902400404$>$.}
+
 \bibitem[Liddell et al. 1925]{liddell25}
 \abntrefinfo{Liddell et al.}{LIDDELL et al.}{1925}
 {LIDDELL, E. G.~T. et al. Recruitment and some other features of reflex
@@ -268,9 +304,18 @@ ISSN 0950-1193, 2053-9185.
 Dispon{\'\i}vel em:
   $<$http://rspb.royalsocietypublishing.org/content/97/686/488$>$.}
 
-\bibitem[Lindström e Schomburg 1973]{lindstrom73}
-\abntrefinfo{Lindström e Schomburg}{LINDSTRöM; SCHOMBURG}{1973}
-{LINDSTRöM, S.; SCHOMBURG, E.~D. Recurrent inhibition from motor axon
+\bibitem[Lindsay e Binder 1991]{lindsay91}
+\abntrefinfo{Lindsay e Binder}{LINDSAY; BINDER}{1991}
+{LINDSAY, A.~D.; BINDER, M.~D. Distribution of effective synaptic currents
+  underlying recurrent inhibition in cat triceps surae motoneurons.
+\emph{Journal of Neurophysiology}, v.~65, n.~2, p. 168--177, fev. 1991.
+ISSN 0022-3077.
+Dispon{\'\i}vel em:
+  $<$https://www.physiology.org/doi/abs/10.1152/jn.1991.65.2.168$>$.}
+
+\bibitem[Lindstr\"{O}m e Schomburg 1973]{lindstrom73}
+\abntrefinfo{Lindstr\"{O}m e Schomburg}{LINDSTR\"{O}M; SCHOMBURG}{1973}
+{LINDSTR\"{O}M, S.; SCHOMBURG, E.~D. Recurrent inhibition from motor axon
   collaterals of ventral spinocerebellar tract neurones.
 \emph{Acta Physiologica Scandinavica}, v.~88, n.~4, p. 505--515, ago. 1973.
 ISSN 0001-6772.}
@@ -399,6 +444,35 @@ ISBN 978-0-521-87795-4.}
 \abntrefinfo{Thibeault, Hoang e Jr}{THIBEAULT; HOANG; JR}{2011}
 {THIBEAULT, C.~M.; HOANG, R.~V.; JR, F.~C. H. A {Novel} {Multi}-{GPU} {Neural}
   {Simulator}. In:  \emph{{BICoB}}. [S.l.: s.n.], 2011. p. 146--151.}
+
+\bibitem[Uchiyama, Johansson e Windhorst 2003]{uchiyama03a}
+\abntrefinfo{Uchiyama, Johansson e Windhorst}{UCHIYAMA; JOHANSSON;
+  WINDHORST}{2003a}
+{UCHIYAMA, T.; JOHANSSON, H.; WINDHORST, U. A model of the feline medial
+  gastrocnemius motoneuron-muscle system subjected to recurrent inhibition.
+\emph{Biological Cybernetics}, v.~89, n.~2, p. 139--151, ago. 2003.
+ISSN 0340-1200, 1432-0770.
+Dispon{\'\i}vel em:
+  $<$https://link.springer.com/article/10.1007/s00422-003-0413-y$>$.}
+
+\bibitem[Uchiyama, Johansson e Windhorst 2003]{uchiyama03b}
+\abntrefinfo{Uchiyama, Johansson e Windhorst}{UCHIYAMA; JOHANSSON;
+  WINDHORST}{2003b}
+{UCHIYAMA, T.; JOHANSSON, H.; WINDHORST, U. Static and dynamic input-output
+  relations of the feline medial gastrocnemius motoneuron-muscle system
+  subjected to recurrent inhibition: a model study.
+\emph{Biological Cybernetics}, v.~89, n.~4, p. 264--273, out. 2003.
+ISSN 0340-1200, 1432-0770.
+Dispon{\'\i}vel em:
+  $<$https://link.springer.com/article/10.1007/s00422-003-0417-7$>$.}
+
+\bibitem[Walmsley e Tracey 1981]{walmsley81}
+\abntrefinfo{Walmsley e Tracey}{WALMSLEY; TRACEY}{1981}
+{WALMSLEY, B.; TRACEY, D.~J. An intracellular study of {Renshaw} cells.
+\emph{Brain Research}, v.~223, n.~1, p. 170--175, out. 1981.
+ISSN 0006-8993.
+Dispon{\'\i}vel em:
+  $<$http://www.sciencedirect.com/science/article/pii/0006899381908180$>$.}
 
 \bibitem[Watanabe e Kohn 2015]{watanabe15}
 \abntrefinfo{Watanabe e Kohn}{WATANABE; KOHN}{2015}
