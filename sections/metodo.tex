@@ -1,5 +1,57 @@
 \chapter{Metodologia}
 \section{performance computacional}
+% TODO multiprocessing, MPI, cluster (many processes), Numpy (vectorization), Cython
 
-\section{estudo das parametrizações}
-% TODO usar ordem de recrutamento, freqs e padrão de disparos
+\section{Estudo das Parametrizações}
+O modelo estudado aqui passará por etapas de comparação com resultados descritos
+na literatura. Inicialmente, as parametrizações antiga e nova serão usadas 
+nessas avaliações, mas a ideia é que se tenha uma nova parametrização ao final 
+desse processo que será usada nos estudos de variabilidade de força
+explicitados na seção \ref{sec:for}.
+
+\subsection{Validação do Modelo}
+Essa etapa será realizada de forma qualitativa e semiquantitativa. Primeiramente, serão 
+analisadas características de frequência e padrão de disparos de MNs e CRs,
+assim como a ordem de recrutamento de MNs sob o efeito das CRs.
+
+As simulações para esse estudo foram
+realizadas em um núcleo motor do músculo soleus, com 800 MNs do tipo S, 50 do
+tipo FR, 50 do tipo FF e 350 CRs. Esses valores foram estimados de a partir de
+dados experimentais de humanos e gatos \cite{cisi08}. Foi fornecida ao soma dos
+MNs uma rampa. Esta entrada é uma corrente injetada que começa em zero e
+aumenta linearmente até o valor final de 20 nA ao final da simulação, que teve
+duração de 1000 ms. Sob a ótica de neurofisiologia motora, os resultados sobre
+os instantes de disparos dos neurônios envolvidos na simulação serão analisados.
+Além disso, espera-se que a inibição recorrente não altere a ordem de 
+recrutamento dos MNs, de acordo com o que foi mostrado por \citeonline{clamann74}.
+
+\subsection{Comparações entre Modelos}
+O objetivo desta etapa é entender como o simulador aqui estudado se comporta 
+em algumas situações propostas por outros trabalhos de simulação. Dessa forma,
+serão configuradas simulações que sejam o mais semelhante possível a esses 
+trabalhos para que os resultados possam ser apropriadamente comparados.
+
+Os trabalhos em questão, juntamente com os resultados que serão aqui abordados,
+são apresentados abaixo. Vale ressaltar que os métodos utilizados para a 
+obtenção dos resultados serão os mesmos empregados pelos autores, que foram
+analisados com e sem CRs.
+
+\begin{itemize}
+	\item \citeonline{maltenfort98}, com espectro de potência da atividade da
+		  população de MNs;
+	\item \citeonline{uchiyama03b}, com relações de comandos descendentes com
+		  taxa de disparos de MNs e CRs e força muscular resultante;
+	\item \citeonline{williams09}, com espectro de potência dos disparos de uma
+		  população de MNs e da força muscular.
+\end{itemize}
+
+\section{Variabilidade da Força}
+\label{sec:for}
+Para essa análise, dois cenários foram consideradas: um que simule o controle
+de força exercida pelo calcanhar em um pedal fixo e outro em um pedal livre.
+Em ambos os casos, os primeiros 500 ms segundos do sinal da força gerada são
+ignorados. A quantidade de elementos neuronais foi a mesma da mostrada
+na seção anterior, mas o tempo de simulação foi entendido para 3500 ms.
+
+Uma força com 20\% da contração máxima voluntária foi gerada e dela foram
+calculados a densidade espectral de potência e o coeficiente de variação.
