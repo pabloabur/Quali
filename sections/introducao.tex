@@ -305,10 +305,12 @@ em uma matriz de quatro colunas por sessenta e quatro linhas (direções
 mediolaterais por rostrocaudais). De forma semelhante, as CRs foram posicionadas
 em uma única coluna com 64 elementos.
 
-A condutância máxima e a constante de tempo das CRs foram determinadas
+Além de uma constante de tempo de membrana de aproximadamente 8 ms, a
+condutância máxima e a constante de tempo das CRs foram determinadas
 empiricamente para reproduzir os resultados experimentais descritos por
 \citeonline{hultborn79}, como duração da hiperpolarização e curvas de relação
-entre corrente injetada e taxa de disparos. A resistência de entrada utilizada foi estimada como
+entre corrente injetada e taxa de disparos. A resistência de entrada utilizada
+foi estimada como
 4 M$\Omega$, de acordo com comparações entre o tamanho desse neurônio com
 o de MNs do tipo S. Um limiar de disparo negativo foi responsável por reproduzir
 a atividade espontânea das CRs.
@@ -322,7 +324,7 @@ portanto, fosse semelhante aos PEPS descritos por \citeonline{walmsley81}.
 
 O valor de condutância máximo adotado para o PIPS das CRs sobre os MNs foi 
 de 36 nS, com -7.5 mV de potencial de equilíbrio e constante de tempo de 
-decaimento de 5 ms. O PIPS médio resultado obtido foi semelhante ao que foi
+decaimento de 5 ms. O PIPS médio obtido foi semelhante ao que foi
 observado por \citeonline{vankeulen81}.
 
 Uma estimativa do número de sinapses de CRs em MNs, baseada em trabalhos com 
@@ -330,17 +332,18 @@ dados fisiológicos \cite{eccles61a,cleveland81,lindsay91}, resultou em
 CRs com alcance de $\pm$15 linhas no modelo. Esse valor, considerando o
 núcleo motor do músculo gastrocnemius medial do gato, equivale a uma 
 distribuição espacial de aproximadamente $\pm$1.6 mm e foi usado no 
-cálculo de um fator dependente da distância entre o neurônio disparando
-e seu alvo, que foi multiplicado pelos valores de condutância das
+cálculo de uma função dependente da distância entre o neurônio disparando
+e seu alvo que foi multiplicada pelos valores de condutância das
 CRs para incorporar um decaimento da eficácia sináptica ao longo da direção
-rostrocaudal ao modelo. Esse fator produziu uma gaussiana e sua utilização,
+rostrocaudal ao modelo. Essa função produziu uma gaussiana e sua utilização,
 junto com as propriedades do MNs, geraram PIPS de CRs com mesmo valores de
-máximos, mínimos e médias (55, 1.6 e 12.5$\mu$V) descritos em
+máximos, mínimos e médias (55, 1.6 e 12.5$\mu$V) descritos por
 \citeonline{vankeulen81}.
 
 Um procedimento semelhante foi realizado para o número de sinapses de MNs nas
-CRs, mas dessa vez baseado nos trabalhos de \citeonline{hamm87a,vankeulen81}.
-Essa estimativa em um alcance de $\pm$2 linhas, de forma que cada MN fizesse
+CRs, mas dessa vez baseado nos trabalhos de \citeonline{hamm87a} e 
+\citeonline{vankeulen81}.
+Essa estimativa resultou em um alcance de $\pm$2 linhas, de forma que cada MN fizesse
 sinapse com cinco CRs.
 
 O principal resultado desse trabalho é que a inibição recorrente pode agir
@@ -368,7 +371,7 @@ segue uma gaussiana com desvio padrão de 3.5/3 mm.
 O grau de excitação fornecido às CR por determinado tipo de MN também foi 
 estimado de acordo com o número de botões sinápticos fornecidos, como mostrado
 anteriormente. O PIPS recorrente em cada tipo de MN foi descrito por uma soma
-de duas exponenciais, uma constante de tempo de decaimento de 2 ms e outra com
+de duas exponenciais, uma com constante de tempo de decaimento de 2 ms e outra com
 constante de tempo de membrana média de 5.9 (tipo FF), 8 (tipo FR) e 10.4 (tipo
 S) ms. As amplitudes adotadas foram de 7.0 $\pm$ 1.4 (tipo FF), 14.0 $\pm$ 3.0 
 (tipo FR) e 26.0 $\pm$ 3.9 (tipo S) $\mu$V (média $\pm$ erro), estimadas por 
@@ -376,8 +379,8 @@ meio de médias e normalizações de resultados experimentais
 \cite{friedman81,hultborn88b,vankeulen81}.
 
 O método dos mínimos quadrados foi utilizado para aproximar a taxa de
-disparos das CRs descritos por \citeonline{eccles61b} por uma expressão
-analítica. Nela, foram incorporados uma taxa de disparos espontâneos de 7 pps
+disparos das CRs descritos por \citeonline{eccles61b} por uma 
+função. Nela, foram incorporados uma taxa de disparos espontâneos de 7 pps
 \cite{walmsley81} e uma constante de tempo proporcional ao nível de ativação
 da CR, com valor máximo e mínimo de 15 e 0.7 ms, respectivamente.
 
@@ -410,16 +413,35 @@ refratário absoluto de 1 ms e disparos espontâneos gerados como condutâncias
 excitatórias máximas de 15 nS gerando potenciais de ação distribuídas conforme uma 
 gaussiana truncada de média 7 pps e desvio padrão de 0.3 \cite{hultborn79}.
 
-% depressão sináptica
-
-Utilizando estudos sobre sinapses de MNs sobre CRs \cite{hultborn88a} e saturação
+Os PEPS gerados nas CRs pelos MNs foram parametrizados para apresentar tempo
+para atingir o pico de 3 ms e constante de decaimento entre 10 e 15 ms.
+Utilizando estudos sobre essas sinapses \cite{hultborn88a} e saturação
 da taxa de disparos das CRs \cite{cleveland81}, a condutância sináptica máxima
 de MNs em CRs foi ajustada iterativamente até se obter resultados satisfatórios.
 Dessa forma, o valor final adotado foi 150 (tipo S), 170 (tipo FR) e 300
-(tipo FF) nS.
+(tipo FF) nS. Além disso, para reproduzir uma depressão pós-ativação entre os
+colaterais dos MNs e as CRs descritos por \cite{hultborn79}, essas condutâncias
+foram multiplicadas por funções dependentes de número de neurotransmissores e
+suas dinâmicas.
 
-Os PEPS gerados nas CRs pelos MNs foram parametrizados para apresentar tempo
-para atingir o pico de 3 ms e constante de decaimento entre 10 e 15 ms % TODO other MN-RC info
+Para determinar as condutâncias máximas da sinápse de um MN para um CR, os valores de
+PIPS recorrentes homônimos e heterônimos de \cite{hultborn88b} foram usados como
+base. Após várias simulações e ajustes, foram obtidos os valores de 220 (tipo S),
+150 (tipo FR) e 120 (tipo FF) nS. Entretanto, com o intuito de reduzir o tempo 
+execução neste simulador, os autores adotaram uma densidade de CRs na coluna 
+neuronal reduzida pela metade, mas com o dobro dos valores de condutâncias
+obtidos.
+
+O decaimento da força sináptica da conexão dos MNs nas CRs \cite{cullheim78}
+foi modelado
+multiplicando uma função dependente da distância entre esses neurônios pela 
+condutância máxima da sinapse em questão. Dessa forma, para uma distância de 
+1 mm, a influência sináptica vale 1\% do valor máximo. O mesmo foi feito para 
+sinapses de CRs para MNs, mas para fazer com que, a 1.4 mm, a influência valesse
+10\% do valor máximo.
+
+A condutância de um ruído sináptico atribuída a CR foi de 15 nS para reproduzir
+os 7 pps descrito por \citeonline{walmsley81}.
 
 Por fim, vale ressaltar que o ReMoto foi disponibilizado com um
 \textit{software open source} que poderia ser utilizado por quem estivesse 
@@ -431,6 +453,33 @@ ainda uma versão em Python do simulador, que pode ser baixada pelo
 GitHub em \url{https://github.com/rnwatanabe/projectPR}.
 
 \subsection{Williams e Baker}
+O modelo de \citeonline{williams09} consiste em 377 MNs que recebem entradas do
+córtex motor. A inibição recorrente foi adicionada por meio de 64 CRs com
+modelo semelhante ao de \citeonline{maltenfort98}, de forma que a pós
+hiperpolarização tiveram duração de 36 ms e pico de 2.3 mV.
+
+As entradas sinápticas dos MNs nas CRs produziram PEPS com 7.6 ms de tempo de 
+subida, 50 ms de duração e pico de 0.6 mV, semelhante ao que foi reportado por 
+\citeonline{walmsley81}. As CRs receberam, ainda, um ruído gaussiano branco
+capaz de gerar uma taxa de disparo espontâneo de 11 Hz.
+
+A distribuição de inibição recorrente adotada é uniforme e independente do tipo
+do MN no modelo. O número de CRs fazendo sinapse com cada MN variou de 10 até
+20, enquanto que o número de MNs para cada CR, por sua vez, variou de 20 até 50.
+Esses valores foram baseados em dados de conectividade retirados de
+experimentos em ratos \cite{alvarez99} e gatos \cite{vankeulen81,hamm87b}. O
+atraso de condução, tanto dos MNs para CRs, quanto na direção contrária, foi
+de 1 ms.
+
+As sinapses das CRs foram posicionadas no compartimento dendrítico dos MNs, de
+acordo com \citeonline{fyffe91}. Os PIPS unitários gerados nos MNs no potencial
+de repouso tiveram amplitude de 46.2 $\mu$V, tempo de subida de 5.5 ms e
+\textit{half-width} 18.5 ms. Esses valores estão próximos de resultados
+experimentais \cite{hamm87b}.
+
+Com esse modelo, os autores propuseram que a presença da inibição recorrente 
+ajuda a reduzir oscilações de 10 Hz que são transmitidas por tratos
+corticoespinhais para os músculos.
 
 \section{Comparação das Duas Versões do ReMoto}
 \subsection{Parametrizações}
@@ -485,7 +534,7 @@ De fato, a popularidade do Python na neurociência computacional vem crescendo,
 de forma que hoje é possível importar o NEURON, que é uma poderosa ferramenta 
 para realizar simulações de neurônios e redes neuronais \cite{carnevale06},
 para dentro do Python ou até mesmo utilizar outros simuladores escritos nesta
-linguagem, como o Brian \cite{goodman09}.
+linguagem, como o Brian \cite{goodman09} ou o PyMUS \cite{kim18}.
 
 Nesse contexto, entretanto, à medida mais detalhes são adicionados às simulações,
 o tempo de execução desta se torna maior. Isso pode ser uma fator limitante em

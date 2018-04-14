@@ -5,6 +5,15 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.53 }
 
+\bibitem[Alvarez et al. 1999]{alvarez99}
+\abntrefinfo{Alvarez et al.}{ALVAREZ et al.}{1999}
+{ALVAREZ, F.~J. et al. Distribution of cholinergic contacts on {Renshaw} cells
+  in the rat spinal cord: a light microscopic study.
+\emph{The Journal of Physiology}, v.~515, n.~Pt 3, p. 787--797, mar. 1999.
+ISSN 0022-3751.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2269191/$>$.}
+
 \bibitem[Appelberg et al. 1983]{appelberg83}
 \abntrefinfo{Appelberg et al.}{APPELBERG et al.}{1983}
 {APPELBERG, B. et al. Recurrent actions on gamma-motoneurones mediated via
@@ -164,13 +173,22 @@ Dispon{\'\i}vel em:
   $<$http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.1957.sp005857/abstract$>$.}
 
 \bibitem[Hamm et al. 1987]{hamm87a}
-\abntrefinfo{Hamm et al.}{HAMM et al.}{1987}
+\abntrefinfo{Hamm et al.}{HAMM et al.}{1987a}
 {HAMM, T.~M. et al. Distribution of single-axon recurrent inhibitory
   post-synaptic potentials in a single spinal motor nucleus in the cat.
 \emph{The Journal of Physiology}, v.~388, p. 653--664, jul. 1987.
 ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1192570/$>$.}
+
+\bibitem[Hamm et al. 1987]{hamm87b}
+\abntrefinfo{Hamm et al.}{HAMM et al.}{1987b}
+{HAMM, T.~M. et al. The measurement of single motor-axon recurrent inhibitory
+  post-synaptic potentials in the cat.
+\emph{The Journal of Physiology}, v.~388, p. 631--651, jul. 1987.
+ISSN 0022-3751.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1192569/$>$.}
 
 \bibitem[Hoang et al. 2013]{hoang13}
 \abntrefinfo{Hoang et al.}{HOANG et al.}{2013}
@@ -284,6 +302,13 @@ Dispon{\'\i}vel em:
 ISSN 0304-3940.
 Dispon{\'\i}vel em:
   $<$http://www.sciencedirect.com/science/article/pii/0304394081902202$>$.}
+
+\bibitem[Kim e Kim 2018]{kim18}
+\abntrefinfo{Kim e Kim}{KIM; KIM}{2018}
+{KIM, H.; KIM, M. {PyMUS}: {Python}-{Based} {Simulation} {Software} for
+  {Virtual} {Experiments} on {Motor} {Unit} {System}.
+\emph{Frontiers in Neuroinformatics}, v.~12, 2018.
+ISSN 1662-5196.}
 
 \bibitem[Lagerbäck e Kellerth 1985]{lagerback85}
 \abntrefinfo{Lagerbäck e Kellerth}{LAGERBäCK; KELLERTH}{1985}
