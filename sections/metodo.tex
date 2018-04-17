@@ -1,6 +1,42 @@
 \chapter{Metodologia}
 \section{performance computacional}
-% TODO multiprocessing, MPI, cluster (many processes), Numpy (vectorization), Cython
+Três abordagens distintas serão consideradas nessa parte: A utilização de um 
+\textit{cluster}, Python na sua implementação original (CPython) e Cython.
+
+\subsection{Cluster Águia}
+O \textit{cluster} Águia é composto por 64 servidores físicos com 20 \textit{cores} e 
+512 GB de RAM. Seu processador é um Intel(R) Xeon(R) CPU E7-2870 com 2.4 GHz.
+A versão do Python disponível para utilização nesse sistema é 2.7.13, da
+distribuição Anaconda 4.4.0.
+
+Primeiramente, o uso de ferramentas para passagem de mensagens em um sistema
+distribuído será analisado para simulações simples, com apenas MNs e comandos
+descendentes em 1, 2, 4 e 16 servidores. Para esse fim, o pacote
+Python MPI4Py, que possibilita o uso do todos os recursos do \textit{cluster},
+será utilizado.
+Com o intuito de se verificar o benefício dos vários \textit{cores} em um
+único servidor,
+será também observada a performance do simulador em uma configuração serial.
+
+\subsection{Python}
+Essa estratégia se baseia no uso do conceito de vetorização. O código atual 
+utiliza uma matriz de condutâncias de cada compartimento do modelo para
+realizar cálculos sobre os potenciais de membrana. O objetivo é criar uma
+matriz maior que contenha cada uma dessas matrizes menores, de forma que o 
+processo de vetorização possa trazer otimizações. Isso será realizado para 
+todos os MNs, INs e algumas outras variáveis envolvidas no cálculo do potencial
+de membrana.
+
+\subsection{Cython}
+A biblioteca relativa a esse compilador pode ser carregada de forma simples no
+Python. A estrutura do código, entretanto, terá que passar por algumas
+modificações. De forma geral, as maiores diferenças entre um código que usa
+Cython um com Python puro são algumas chamadas de funções e declaração de
+variáveis. Considerando o tamanho e complexidade do código do simulador e o
+fato de algumas declarações do Cython serem opcionais, pretende-se iniciar uma
+conversão de um parte desse código, de forma que, ao final desse processo, os
+módulos principais usados nas simulações possam ser compilados com
+Cython.
 
 \section{Estudo das Parametrizações}
 O modelo estudado aqui passará por etapas de comparação com resultados descritos

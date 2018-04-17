@@ -543,8 +543,24 @@ sido realizados para melhorar essa performance computacional de diferentes manei
 \cite{morrison05,thibeault11,hoang13}. Python, nesse
 sentido, parece ser uma escolha inapropriada por ser uma linguagem de alto nível
 de abstração e, consequentemente, mais lenta do que outras linguagens como C ou 
-Java, por exemplo. Entretanto, existem muitas técnicas, ferramentas e estratégias
-para fazer com que um código escrito em Python seja rápido \cite{gorelick14}.
+Java, por exemplo. Mais especificamente, suas características de gerenciamento
+de memória, tipagem dinâmica e não ser compilado são um dos
+principais fatores que prejudicam otimizações \cite{gorelick14}.
+
+Entretanto, existem muitas técnicas, ferramentas e estratégias
+para fazer com que um código escrito em Python seja rápido.
+Uma maneira simples de fazer isso, independente da linguagem de programação,
+é considerando a capacidade de
+\textbf{vetorização} de CPUs, em que um instrução pode ser executada em
+múltiplos dados dentro de um único ciclo de \textit{clock}. Esta prática,
+possível em Python por meio da biblioteca \textbf{Numpy},
+pode ser aliada com poucos acessos à memória para atingir algumas otimizações.
+Outra possibilidade é a utilização do \textbf{Cython}, um compilador que
+converte um código Python com sintaxe diferente em um módulo compilado e pode trazer grandes
+diminuições no tempo de execução de programas. Além disso, com bibliotecas 
+apropriadas, é possível rodar códigos em Python em \textit{clusters}, que são 
+basicamente vários computadores interligados entre si. Essa opção exige mais 
+recursos, mas pode trazer melhoras significativas \cite{gorelick14}.
 
 A performance computacional do simulador estudado aqui, como esperado, também pode
 ser um fator limitante. Na verdade, como a máquina virtual do Java é conhecida por
