@@ -1,38 +1,61 @@
 \chapter{resultados preliminares}
-\section{Qual foi o foco}
-\subsection{Disparos dos Elementos Neuronais}
-como mostrado na Figura
-\subref*{fig:remotojavaspka},
-que foi gerada por meio de uma simulação com 800 MNs do tipo S, 50 do tipo
-FR, 50 do tipo FF, 350 CRs e uma corrente de 40 nA injetada no soma de todos
-os MNs. Nesse gráfico, os instantes de disparo dos MNs, representados por 
-índices, mostram MNs com índices menores disparando
-depois de outros com índices maiores. Como esses índices, na simulação, estão
-relacionados com o tamanho dos MNs, pode-se dizer que ocorreu um certa inversão
-na ordem de recrutamento. 
+\section{Desempenho Computacional}
+Na Figura \ref{fig:clustera} são apresentados os valores de \textit{speed up} das
+simulações com diferentes números de processadores. Como se pode perceber, foi 
+possível alcançar uma diminuição no tempo de execução com as simulações feitas em
+paralelo, de forma que os valores de \textit{speed up} aumentam de forma linear,
+aproximadamente. Na Figura \ref{fig:clusterb}, por sua vez, são apresentados os valores das
+eficiências calculadas. Esses valores são
+bem próximos para 2, 4 e 8 processos, mas uma queda começa a se tornar visível em
+16 processos, sugerindo que, a partir desse número, a queda de eficiência se 
+acentue.
 
-% TODO put figure in which FR and FF also fire
 \begin{figure}[ht!]
     \centering
     \subfloat[][]{
-        \label{fig:remotojavaspka}
-        \includegraphics[scale=0.3]{remotojavaspk.png}
+        \label{fig:clustera}
+        \includegraphics[scale=0.3]{linear}
     }
     ~ 
     \subfloat[][]{
-        \label{fig:remotojavaspkb}
-        \includegraphics[scale=0.3]{remotojavaspk.png}
+        \label{fig:clusterb}
+        \includegraphics[scale=0.3]{efs}
     }
-    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
-             Momentos de disparo dos somas de todos os motoneurônios simulados. O eixo 
-             das ordenadas representa o índice de cada motoneurônio em ordem
-             crescente de tamanho.
-             \subref{fig:remotojavaspkb}.
-             \subref{fig:remotojavaspka}.
+    \caption[Resultados de aceleração e eficiência em função do número de processadores]{
+        \subref{fig:clustera} Os círculos representam o \textit{speed up} obtido para cada
+        número de processador utilizado. A reta em azul mostra uma regressão linear dos
+        resultados. \subref{fig:clusterb} eficiência em função do número de processadores.
          }
 \end{figure}
 
-
-\section{Características no Domínio da Frequência}
-
-\section{Desempenho Computacional}
+\section{Disparos dos Elementos Neuronais}
+%como mostrado na Figura
+%\subref*{fig:remotojavaspka},
+%que foi gerada por meio de uma simulação com 800 MNs do tipo S, 50 do tipo
+%FR, 50 do tipo FF, 350 CRs e uma corrente de 40 nA injetada no soma de todos
+%os MNs. Nesse gráfico, os instantes de disparo dos MNs, representados por 
+%índices, mostram MNs com índices menores disparando
+%depois de outros com índices maiores. Como esses índices, na simulação, estão
+%relacionados com o tamanho dos MNs, pode-se dizer que ocorreu um certa inversão
+%na ordem de recrutamento. 
+%
+%% TODO put figure in which FR and FF also fire
+%\begin{figure}[ht!]
+%    \centering
+%    \subfloat[][]{
+%        \label{fig:remotojavaspka}
+%        \includegraphics[scale=0.3]{remotojavaspk.png}
+%    }
+%    ~ 
+%    \subfloat[][]{
+%        \label{fig:remotojavaspkb}
+%        \includegraphics[scale=0.3]{remotojavaspk.png}
+%    }
+%    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
+%             Momentos de disparo dos somas de todos os motoneurônios simulados. O eixo 
+%             das ordenadas representa o índice de cada motoneurônio em ordem
+%             crescente de tamanho.
+%             \subref{fig:remotojavaspkb}.
+%             \subref{fig:remotojavaspka}.
+%         }
+%\end{figure}

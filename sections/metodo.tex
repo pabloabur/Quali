@@ -10,10 +10,46 @@ A versão do Python disponível para utilização nesse sistema é 2.7.13, da
 distribuição Anaconda 4.4.0.
 
 Primeiramente, o uso de ferramentas para passagem de mensagens em um sistema
-distribuído será analisado para simulações simples, com apenas MNs e comandos
-descendentes em 1, 2, 4 e 16 servidores. Para esse fim, o pacote
+distribuído será analisado para simulações simples, com uma corrente injetada
+de 10 nA no soma de MNs. O cálculo da força gerada também será computado.
+Para esse fim, o pacote
 Python MPI4Py, que possibilita o uso do todos os recursos do \textit{cluster},
 será utilizado.
+
+Para possibilitar que o problema abordado pudesse ser unidades menores de 
+computação, foram identificados algumas \textit{tasks} primitivas: os cálculos
+da força e das equações diferenciais das unidades motoras. As unidades
+motoras são independentes entre si e não precisam receber mensagens durante a
+simulação, mas a parte de cálculo de força precisa receber, a cada passo de
+tempo, valores relativos de disparos das unidades motoras. Sendo assim,  as
+unidades motoras enviam, no final de cada passo da simulação,
+seus valores de disparos para as \textit{tasks} de cálculo de força, que
+apenas as recebem e realizam suas computações.
+
+Serão utilizados 2, 4, 8 e 16 \textit{cores} de um único servidor. As unidades
+motoras serão divididas igualmente entre os processadores disponíveis, 
+enquanto que a \textit{task} de cálculo da força deve ocupar sozinha um único
+processador.
+
+Os parâmetros que serão usados para analisar a qualidade do programa paralelo são
+o \textit{speed up} (ou aceleração), calculado pela equação
+
+\begin{equation}
+    S = \frac{t_s}{t_p},
+\end{equation}
+
+em que $t_s$ e $t_p$ são o tempo de execução serial e paralelo, respectivamente,
+e a eficiência, calculada por
+
+\begin{equation}
+    E = \frac{t_s}{N t_p},
+\end{equation}
+
+sendo $N$ o número de processadores utilizados.
+
+Os valores de $t_s$ e $t_p$ são obtidos a partir da média de 10 simulações com
+400 unidades motoras e duração de 0.5 segundos.
+
 Com o intuito de se verificar o benefício dos vários \textit{cores} em um
 único servidor,
 será também observada a performance do simulador em uma configuração serial.
