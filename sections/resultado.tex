@@ -28,6 +28,41 @@ acentue.
          }
 \end{figure}
 
+Outro resultado sobre desempenho computacional obtido foi o de tempo de
+execução com as matrizes de condutância alteradas no Python. Como mostrado na 
+Tabela \ref{tab:matrixG}, não é observada uma melhora de performance quando se 
+usa a $G_g$ para 10 MNs. Entretanto, a medida em que se aumentam
+o número de elementos neuronais para 50, 100 e 400 MNs, esta implementação
+apresenta uma diminuição do tempo de execução de aproximadamente 23\%, 29\% e
+26\% em relação à $G_c$ com
+10, 50, 100 e 400 MNs, respectivamente.
+
+\begin{table}[ht!]
+\caption{Tempo de execução das simulações relacionadas 
+         à matriz de condutância para diferentes quantidades de MNs.}
+\label{tab:matrixG}
+\centering
+    \begin{tabular}{ccccc}\hline 
+        & 10 MNs & 50 MNs & 100 MNs & 400 MNs \\ \hline 
+        $G_c$ & 5.21 s & 21.22 s & 42.34 s & 170.97 s \\ 
+        $G_g$ & 5.63 s & 16.50 s & 30.01 s & 125.31 s \\ 
+	\hline
+    \end{tabular}
+\end{table}
+
+%\begin{table}[ht!]
+%\caption{Tempo de execução das simulações relacionadas 
+%         à matriz de condutância para diferentes tempos simulados.}
+%\label{tab:matrixGt}
+%\centering
+%    \begin{tabular}{cccc}\hline 
+%        & 200 ms & 500 ms & 1000 ms \\ \hline 
+%        $G_c$ & 21.52 s & 53.03129 s &  s \\ 
+%        $G_g$ & 16.55 s & 41.15 s &  s \\ 
+%	\hline
+%    \end{tabular}
+%\end{table}
+
 \section{Disparos dos Elementos Neuronais}
 %como mostrado na Figura
 %\subref*{fig:remotojavaspka},

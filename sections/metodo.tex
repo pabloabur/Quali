@@ -2,12 +2,16 @@
 \section{performance computacional}
 Três abordagens distintas serão consideradas nessa parte: A utilização de um 
 \textit{cluster}, Python na sua implementação original (CPython) e Cython.
+As medições do tempo de execução, realizadas por meio da biblioteca \textit{time},
+levarão em conta apenas os trechos do código
+que se repetem várias vezes e que, consequentemente, contém os maiores
+``gargalos'' na simulação.
 
 \subsection{Cluster Águia}
 O \textit{cluster} Águia é composto por 64 servidores físicos com 20 \textit{cores} e 
 512 GB de RAM. Seu processador é um Intel(R) Xeon(R) CPU E7-2870 com 2.4 GHz.
 A versão do Python disponível para utilização nesse sistema é 2.7.13, da
-distribuição Anaconda 4.4.0.
+distribuição Anaconda2 4.4.0.
 
 Primeiramente, o uso de ferramentas para passagem de mensagens em um sistema
 distribuído será analisado para simulações simples, com uma corrente injetada
@@ -50,10 +54,6 @@ sendo $N$ o número de processadores utilizados.
 Os valores de $t_s$ e $t_p$ são obtidos a partir da média de 10 simulações com
 400 unidades motoras e duração de 0.5 segundos.
 
-Com o intuito de se verificar o benefício dos vários \textit{cores} em um
-único servidor,
-será também observada a performance do simulador em uma configuração serial.
-
 \subsection{Python}
 Essa estratégia se baseia no uso do conceito de vetorização. O código atual 
 utiliza uma matriz de condutâncias de cada compartimento do modelo para
@@ -61,7 +61,17 @@ realizar cálculos sobre os potenciais de membrana. O objetivo é criar uma
 matriz maior que contenha cada uma dessas matrizes menores, de forma que o 
 processo de vetorização possa trazer otimizações. Isso será realizado para 
 todos os MNs, INs e algumas outras variáveis envolvidas no cálculo do potencial
-de membrana.
+de membrana. A implementação antiga das matrizes será identificada como $G_c$ e
+a nova proposta, como $G_g$.
+
+Nessa parte será utilizado um sistema operacional Linux
+64 bits com oito processadores Intel Core i7-2600 a 3.40 GHz e 7.8 GB de RAM.
+A versão do Python utilizada é a 2.7.14, da distribuição Anaconda2 5.0.1-1.
+De forma geral, as simulações consistirão de comandos descendentes ativando
+MNs.
+O tempo de execução será obtido a partir da média de 5 resultados
+para diferentes quantidades de MNs
+(variação no tamanho da matriz de condutância).
 
 \subsection{Cython}
 A biblioteca relativa a esse compilador pode ser carregada de forma simples no
