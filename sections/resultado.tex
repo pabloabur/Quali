@@ -64,33 +64,42 @@ apresenta uma diminuição do tempo de execução de aproximadamente 23\%, 29\% e
 %\end{table}
 
 \section{Disparos dos Elementos Neuronais}
-%como mostrado na Figura
-%\subref*{fig:remotojavaspka},
-%que foi gerada por meio de uma simulação com 800 MNs do tipo S, 50 do tipo
-%FR, 50 do tipo FF, 350 CRs e uma corrente de 40 nA injetada no soma de todos
-%os MNs. Nesse gráfico, os instantes de disparo dos MNs, representados por 
-%índices, mostram MNs com índices menores disparando
-%depois de outros com índices maiores. Como esses índices, na simulação, estão
-%relacionados com o tamanho dos MNs, pode-se dizer que ocorreu um certa inversão
-%na ordem de recrutamento. 
-%
-%% TODO put figure in which FR and FF also fire
-%\begin{figure}[ht!]
-%    \centering
-%    \subfloat[][]{
-%        \label{fig:remotojavaspka}
-%        \includegraphics[scale=0.3]{remotojavaspk.png}
-%    }
-%    ~ 
-%    \subfloat[][]{
-%        \label{fig:remotojavaspkb}
-%        \includegraphics[scale=0.3]{remotojavaspk.png}
-%    }
-%    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
-%             Momentos de disparo dos somas de todos os motoneurônios simulados. O eixo 
-%             das ordenadas representa o índice de cada motoneurônio em ordem
-%             crescente de tamanho.
-%             \subref{fig:remotojavaspkb}.
-%             \subref{fig:remotojavaspka}.
-%         }
-%\end{figure}
+Na Figura \ref{fig:spkTimes}, cada MN é representado por índices, que 
+são distribuídos em ordem crescente no eixo vertical da figura e atribuídos de
+forma que seus valores sejam diretamente proporcionais ao tamanho dos
+neurônios aos quais estão associados. O eixo horizontal representa os instantes
+de disparo, que podem ser observados para cada índice. 
+
+Como visto na Figura \ref{fig:spkTimes}\subref{fig:spkOldxNew}, o uso das
+parametrizações nova e antiga resulta em padrões de disparos claramente
+distintos. Na nova, os MNs disparam de forma ordenada, do menor para o maior 
+(com algumas pequenas variações).
+Por outro lado, na antiga, a alta inibição das CRs nos MNs faz com que
+alguns destes, em certos instantes, atrasem seus disparos. Como resultado, o
+gráfico dos instantes de disparos, nesse caso, possui um aspecto ``fragmentado''.
+
+Isso pode ser melhor observado na Figura 
+\ref{fig:spkTimes}\subref{fig:spkOldZoom}. É possível perceber que existem MNs
+maiores disparando antes de outros menores, indicando,
+assim, que ocorreu uma certa inversão na ordem de recrutamento.
+
+\begin{figure}[ht!]
+    \centering
+    \subfloat[][]{
+        \label{fig:spkOldxNew}
+        \includegraphics[scale=0.3]{oldxnew.png}
+    }
+    ~ 
+    \subfloat[][]{
+        \label{fig:spkOldZoom}
+        \includegraphics[scale=0.3]{oldxnew.png}
+    }
+    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
+             Momentos de disparo dos somas de todos os motoneurônios simulados.
+             O eixo das ordenadas representa os MNs e o eixo das abcissas, os
+             instantes de disparo. \subref{fig:spkOldxNew} Disparos da
+             parametrização nova sobreposta à antiga. \subref{fig:spkOldZoom} 
+             Zoom em uma parte do gráfico com parametrização antiga.
+         }
+    \label{fig:spkTimes}
+\end{figure}
