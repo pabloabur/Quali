@@ -1,5 +1,5 @@
 \chapter{Metodologia}
-\section{performance computacional}
+\section{Desempenho Computacional}
 Três abordagens distintas serão consideradas nessa parte: A utilização de um 
 \textit{cluster}, Python na sua implementação original (CPython) e Cython.
 As medições do tempo de execução, realizadas por meio da biblioteca \textit{time},
@@ -18,10 +18,10 @@ distribuído será analisado para simulações simples, com uma corrente injetada
 de 10 nA no soma de MNs. O cálculo da força gerada também será computado.
 Para esse fim, o pacote
 Python MPI4Py, que possibilita o uso do todos os recursos do \textit{cluster},
-será utilizado.
+será utilizado. Serão utilizados 2, 4, 8 e 16 processos em um único servidor.
 
-Para possibilitar que o problema abordado pudesse ser unidades menores de 
-computação, foram identificados algumas \textit{tasks} primitivas: os cálculos
+Para possibilitar que o problema abordado pudesse ser divididos em unidades menores
+de computação, foram identificados algumas \textit{tasks} primitivas: os cálculos
 da força e das equações diferenciais das unidades motoras. As unidades
 motoras são independentes entre si e não precisam receber mensagens durante a
 simulação, mas a parte de cálculo de força precisa receber, a cada passo de
@@ -30,13 +30,11 @@ unidades motoras enviam, no final de cada passo da simulação,
 seus valores de disparos para as \textit{tasks} de cálculo de força, que
 apenas as recebem e realizam suas computações.
 
-Serão utilizados 2, 4, 8 e 16 \textit{cores} de um único servidor. As unidades
-motoras serão divididas igualmente entre os processadores disponíveis, 
+As computações das unidades
+motoras serão divididas igualmente entre os processos criados, 
 enquanto que a \textit{task} de cálculo da força deve ocupar sozinha um único
-processador.
-
-Os parâmetros que serão usados para analisar a qualidade do programa paralelo são
-o \textit{speed up} (ou aceleração), calculado pela equação
+processo. Os parâmetros que serão usados para analisar a qualidade do programa
+paralelo são o \textit{speed up} (ou aceleração), calculado pela equação
 
 \begin{equation}
     S = \frac{t_s}{t_p},
@@ -80,7 +78,7 @@ modificações. De forma geral, as maiores diferenças entre um código que usa
 Cython um com Python puro são algumas chamadas de funções e declaração de
 variáveis. Considerando o tamanho e complexidade do código do simulador e o
 fato de algumas declarações do Cython serem opcionais, pretende-se iniciar uma
-conversão de um parte desse código, de forma que, ao final desse processo, os
+conversão de uma parte desse código, de forma que, ao final desse processo, os
 módulos principais usados nas simulações possam ser compilados com
 Cython.
 
@@ -98,12 +96,12 @@ assim como a ordem de recrutamento de MNs sob o efeito das CRs.
 
 As simulações para esse estudo foram
 realizadas em um núcleo motor do músculo soleus, com 800 MNs do tipo S, 50 do
-tipo FR, 50 do tipo FF e 350 CRs. Esses valores foram estimados de a partir de
-dados experimentais de humanos e gatos \cite{cisi08}. Foi fornecida ao soma dos
-MNs uma rampa. Esta entrada é uma corrente injetada que começa em zero e
+tipo FR, 50 do tipo FF e 350 CRs. Essas quantidades foram estimadas a partir de
+dados experimentais de humanos \cite{cisi08}. Foi injetada no soma dos MNs uma
+corrente em rampa. Esta corrente injetada começa em zero e
 aumenta linearmente até o valor final de 20 nA ao final da simulação, que teve
-duração de 1000 ms. Sob a ótica de neurofisiologia motora, os resultados sobre
-os instantes de disparos dos neurônios envolvidos na simulação serão analisados.
+duração de 1000 ms. Os
+instantes de disparos dos neurônios envolvidos na simulação serão analisados.
 Além disso, espera-se que a inibição recorrente não altere a ordem de 
 recrutamento dos MNs, de acordo com o que foi mostrado por \citeonline{clamann74}.
 
@@ -116,7 +114,7 @@ trabalhos para que os resultados possam ser apropriadamente comparados.
 Os trabalhos em questão, juntamente com os resultados que serão aqui abordados,
 são apresentados abaixo. Vale ressaltar que os métodos utilizados para a 
 obtenção dos resultados serão os mesmos empregados pelos autores, que foram
-analisados com e sem CRs.
+analisados com e sem CRs. Os trabalhos alvo são:
 
 \begin{itemize}
 	\item \citeonline{maltenfort98}, com espectro de potência da atividade da
@@ -129,11 +127,12 @@ analisados com e sem CRs.
 
 \section{Variabilidade da Força}
 \label{sec:for}
-Para essa análise, dois cenários foram consideradas: um que simule o controle
+Para essa análise, dois cenários foram considerados: um que simule o controle
 de força exercida pelo calcanhar em um pedal fixo e outro em um pedal livre.
-Em ambos os casos, os primeiros 500 ms segundos do sinal da força gerada são
-ignorados. A quantidade de elementos neuronais foi a mesma da mostrada
-na seção anterior, mas o tempo de simulação foi entendido para 3500 ms.
+Em ambos os casos, os primeiros 500 ms segundos do sinal da força gerada serão
+ignorados. A quantidade de elementos neuronais é a mesma da mostrada
+na seção anterior, mas o tempo de simulação foi estendido para 3500 ms.
 
-Uma força com 20\% da contração máxima voluntária será gerada e dela foram
-calculados a densidade espectral de potência e o coeficiente de variação.
+Uma força a 20\% da contração máxima voluntária será tomada como referência e
+o seu coeficiente de variação e sua densidade espectral de potência serão
+calculados.

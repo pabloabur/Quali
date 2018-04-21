@@ -90,6 +90,23 @@ ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1282697/$>$.}
 
+\bibitem[Destexhe, Mainen e Sejnowski 1994]{destexhe94a}
+\abntrefinfo{Destexhe, Mainen e Sejnowski}{DESTEXHE; MAINEN; SEJNOWSKI}{1994a}
+{DESTEXHE, A.; MAINEN, Z.~F.; SEJNOWSKI, T.~J. An {Efficient} {Method} for
+  {Computing} {Synaptic} {Conductances} {Based} on a {Kinetic} {Model} of
+  {Receptor} {Binding}.
+\emph{Neural Computation}, v.~6, n.~1, p. 14--18, jan. 1994.
+ISSN 0899-7667.}
+
+\bibitem[Destexhe, Mainen e Sejnowski 1994]{destexhe94b}
+\abntrefinfo{Destexhe, Mainen e Sejnowski}{DESTEXHE; MAINEN; SEJNOWSKI}{1994b}
+{DESTEXHE, A.; MAINEN, Z.~F.; SEJNOWSKI, T.~J. Synthesis of models for
+  excitable membranes, synaptic transmission and neuromodulation using a common
+  kinetic formalism.
+\emph{Journal of Computational Neuroscience}, v.~1, n.~3, p. 195--230, ago.
+  1994.
+ISSN 0929-5313.}
+
 \bibitem[Eccles et al. 1961]{eccles61a}
 \abntrefinfo{Eccles et al.}{ECCLES et al.}{1961a}
 {ECCLES, J.~C. et al. Distribution of recurrent inhibition among motoneurones.
@@ -208,9 +225,9 @@ ISSN 1662-5196.
 Dispon{\'\i}vel em:
   $<$http://journal.frontiersin.org/article/10.3389/fninf.2013.00019/abstract$>$.}
 
-\bibitem[Hultborn, Jankowska e Lindstr\"{O}m 1971]{hultborn71}
+\bibitem[Hultborn, Jankowska e Lindstr\"{O}m 1971]{hultborn71a}
 \abntrefinfo{Hultborn, Jankowska e Lindstr\"{O}m}{HULTBORN; JANKOWSKA;
-  LINDSTR\"{O}M}{1971}
+  LINDSTR\"{O}M}{1971a}
 {HULTBORN, H.; JANKOWSKA, E.; LINDSTR\"{O}M, S. Recurrent inhibition from motor
   axon collaterals of transmission in the {Ia} inhibitory pathway to
   motoneurones.
@@ -219,10 +236,10 @@ ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1331903/$>$.}
 
-\bibitem[Hultborn, Jankowska e Lindström 1971]{hultborn71b}
-\abntrefinfo{Hultborn, Jankowska e Lindström}{HULTBORN; JANKOWSKA;
-  LINDSTRöM}{1971}
-{HULTBORN, H.; JANKOWSKA, E.; LINDSTRöM, S. Relative contribution from
+\bibitem[Hultborn, Jankowska e Lindstr\"{O}m 1971]{hultborn71b}
+\abntrefinfo{Hultborn, Jankowska e Lindstr\"{O}m}{HULTBORN; JANKOWSKA;
+  LINDSTR\"{O}M}{1971b}
+{HULTBORN, H.; JANKOWSKA, E.; LINDSTR\"{O}M, S. Relative contribution from
   different nerves to recurrent depression of {Ia} {IPSPs} in motoneurones.
 \emph{The Journal of Physiology}, v.~215, n.~3, p. 637--664, jul. 1971.
 ISSN 0022-3751.
@@ -271,10 +288,10 @@ ISSN 1365-201X.
 Dispon{\'\i}vel em:
   $<$http://onlinelibrary.wiley.com/doi/10.1111/j.1748-1716.1973.tb05447.x/abstract$>$.}
 
-\bibitem[Kandel 2013]{kandel13}
-\abntrefinfo{Kandel}{KANDEL}{2013}
-{KANDEL, E.~R. \emph{Principles of neural science}. {McGraw}-Hill Medical,
-  2013. {OCLC}: 852737181.
+\bibitem[Kandel et al. 2013]{kandel13}
+\abntrefinfo{Kandel et al.}{KANDEL et al.}{2013}
+{KANDEL, E.~R. et al. \emph{Principles of neural science}. {McGraw}-Hill
+  Medical, 2013. {OCLC}: 852737181.
 ISBN 978-0-07-139011-8 978-0-07-181001-2 978-1-283-65624-5. Dispon{\'\i}vel em:
   $<$http://www.myilibrary.com?id=396874$>$.}
 
@@ -353,6 +370,13 @@ Dispon{\'\i}vel em:
   collaterals of ventral spinocerebellar tract neurones.
 \emph{Acta Physiologica Scandinavica}, v.~88, n.~4, p. 505--515, ago. 1973.
 ISSN 0001-6772.}
+
+\bibitem[Lytton 1996]{lytton96}
+\abntrefinfo{Lytton}{LYTTON}{1996}
+{LYTTON, W.~W. Optimizing synaptic conductance calculation for network
+  simulations.
+\emph{Neural Computation}, v.~8, n.~3, p. 501--509, abr. 1996.
+ISSN 0899-7667.}
 
 \bibitem[MacLean e Leffman 1967]{maclean67}
 \abntrefinfo{MacLean e Leffman}{MACLEAN; LEFFMAN}{1967}

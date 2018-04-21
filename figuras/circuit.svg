@@ -731,12 +731,12 @@
        inkscape:export-xdpi="95.007301"
        inkscape:export-ydpi="95.007301" />
     <rect
-       style="opacity:0.98000004;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ff6600;stroke-width:0.39906749;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:0.39906753, 0.39906753;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="opacity:0.98000004;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ff6600;stroke-width:0.47520974;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:0.47520978, 0.47520978;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect1758"
        width="71.345924"
-       height="13.232087"
+       height="18.763174"
        x="30.081142"
-       y="64.106758"
+       y="58.575672"
        inkscape:export-xdpi="95.007301"
        inkscape:export-ydpi="95.007301" />
     <rect
@@ -790,23 +790,31 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="30.452234"
-       y="62.859165"
+       x="30.184965"
+       y="49.495689"
        id="text1783"
        inkscape:export-xdpi="95.007301"
        inkscape:export-ydpi="95.007301"><tspan
          sodipodi:role="line"
          id="tspan1781"
-         x="30.452234"
-         y="62.859165"
-         style="font-size:5.64444447px;stroke-width:0.26458332px"
-         dx="0"
-         dy="7.48">Neurônios do Trato</tspan><tspan
+         x="30.184965"
+         y="49.495689"
+         style="font-size:5.64444447px;letter-spacing:0.00000007px;word-spacing:-0.17197917px;stroke-width:0.26458332px"
+         dy="14.83"
+         dx="0.14">Intereurônios que dão</tspan><tspan
          sodipodi:role="line"
-         x="30.452234"
-         y="76.088326"
-         style="font-size:5.64444447px;stroke-width:0.26458332px"
-         id="tspan3986">Espinocerebelar Anterior</tspan></text>
+         x="30.184965"
+         y="62.724857"
+         style="font-size:5.64444447px;letter-spacing:0.00000007px;word-spacing:-0.17197917px;stroke-width:0.26458332px"
+         id="tspan232"
+         dx="0"
+         dy="7.2199998">origem ao Trato</tspan><tspan
+         sodipodi:role="line"
+         x="30.184965"
+         y="75.954018"
+         style="font-size:5.64444447px;letter-spacing:0.00000007px;word-spacing:-0.17197917px;stroke-width:0.26458332px"
+         id="tspan3986"
+         dy="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">Espinocerebelar Anterior</tspan></text>
     <path
        style="display:inline;opacity:0.98000004;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:0.113;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        d="m 90.344184,82.477408 c -0.314169,-0.538494 -1.949572,-3.399454 -1.945529,-3.403497 0.003,-0.003 0.562353,-0.015 1.243041,-0.02671 0.680689,-0.01172 1.550435,-0.02726 1.932768,-0.03456 0.382337,-0.0073 0.697516,-0.01093 0.700403,-0.008 0.0029,0.0029 -0.01312,0.03911 -0.03559,0.08049 -0.02246,0.04138 -0.445889,0.83798 -0.940954,1.770224 -0.495064,0.932243 -0.901687,1.696728 -0.903602,1.698855 -0.0018,0.0021 -0.02466,-0.03242 -0.05053,-0.07678 z"

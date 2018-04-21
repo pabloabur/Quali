@@ -1,4 +1,4 @@
-\chapter{resultados preliminares}
+\chapter{Resultados Preliminares e Considerações}
 \section{Desempenho Computacional}
 Na Figura \ref{fig:clustera} são apresentados os valores de \textit{speed up} das
 simulações com diferentes números de processadores. Como se pode perceber, foi 
@@ -10,7 +10,7 @@ bem próximos para 2, 4 e 8 processos, mas uma queda começa a se tornar visível e
 16 processos, sugerindo que, a partir desse número, a queda de eficiência se 
 acentue.
 
-\begin{figure}[ht!]
+\begin{figure}[ht]
     \centering
     \subfloat[][]{
         \label{fig:clustera}
@@ -30,14 +30,18 @@ acentue.
 
 Outro resultado sobre desempenho computacional obtido foi o de tempo de
 execução com as matrizes de condutância alteradas no Python. Como mostrado na 
-Tabela \ref{tab:matrixG}, não é observada uma melhora de performance quando se 
+Tabela \ref{tab:matrixG}, não é observada uma melhora de desempenho quando se 
 usa a $G_g$ para 10 MNs. Entretanto, a medida em que se aumentam
 o número de elementos neuronais para 50, 100 e 400 MNs, esta implementação
 apresenta uma diminuição do tempo de execução de aproximadamente 23\%, 29\% e
 26\% em relação à $G_c$ com
-10, 50, 100 e 400 MNs, respectivamente.
+10, 50, 100 e 400 MNs, respectivamente. Isso sugere que as otimizações trazidas
+por essa estratégia só são vantajosas para simulações que envolvam $G_g$
+relativamente grandes. Como essas matrizes são esparsas, algoritmos que se
+aproveitam dessa estrutura podem ser usados para reduzir ainda mais o tempo de
+simulação.
 
-\begin{table}[ht!]
+\begin{table}[ht]
 \caption{Tempo de execução das simulações relacionadas 
          à matriz de condutância para diferentes quantidades de MNs.}
 \label{tab:matrixG}
@@ -49,6 +53,38 @@ apresenta uma diminuição do tempo de execução de aproximadamente 23\%, 29\% e
 	\hline
     \end{tabular}
 \end{table}
+
+Os resultados mostrados anteriormente são positivos, mas possuem muitas
+limitações. Em primeiro lugar, apesar das melhoras obtidas com a matriz
+$G_g$, a diferença de tempo de execução entre as versões Java e Python
+ainda são muito grandes e outras soluções precisariam ser exploradas
+para resolver essa questão.
+
+Em segundo lugar, é preciso enfatizar que os MNs das simulações
+realizadas no \textit{cluster} não recebem nenhuma entrada sináptica
+de INs. A paralelização desse tipo de configuração é
+facilmente obtida e dificilmente apresenta resultados negativos, pois,
+como as unidades motoras são independentes umas das outras, os
+processos podem executar em paralelo sem a necessidade de se comunicar. 
+Em um cenário mais realista, como o que está sendo estudado na Figura
+\ref{fig:circuit}, MNs em um processo podem precisar receber informações
+geradas em outro. Por causa da alta complexidade de conexões
+sinapticas, seriam necessárias muitas comunicações entre os processos
+e isso poderia causar uma diminuição significativa nos valores de
+\textit{speed up}.
+
+Isso, de qualquer forma, não tira a validade desse resultado, visto
+que existem maneiras de paralelizar simuladores de redes neuronais
+complexas mantendo um bom desempenho computacional \cite{morrison05}.
+%Entretanto, junto com as considerações sobre a abordagem das G
+% TODO junta essa de cima com mais de cima pra fazer que vale a pena
+% investir em outras coisas antes de partir pra essa solução, pois
+% é meio que um tiro de canhão e tem outras coisas a serem melhoradas
+% antes disso
+% TODO Fala que o resultado sugere que thread ajudaria, mas isso não
+% possivel por causa do GIL (explica ele). Multiprocessing seria uma boa,
+% mas tem problema também. Aí por fim vem o Cython.
+
 
 %\begin{table}[ht!]
 %\caption{Tempo de execução das simulações relacionadas 
@@ -78,21 +114,22 @@ Por outro lado, na antiga, a alta inibição das CRs nos MNs faz com que
 alguns destes, em certos instantes, atrasem seus disparos. Como resultado, o
 gráfico dos instantes de disparos, nesse caso, possui um aspecto ``fragmentado''.
 
-Isso pode ser melhor observado na Figura 
+Essa característica dos instantes de disparos usando a parametrização antiga
+pode ser melhor observado na Figura 
 \ref{fig:spkTimes}\subref{fig:spkOldZoom}. É possível perceber que existem MNs
 maiores disparando antes de outros menores, indicando,
 assim, que ocorreu uma certa inversão na ordem de recrutamento.
 
-\begin{figure}[ht!]
+\begin{figure}[ht]
     \centering
     \subfloat[][]{
         \label{fig:spkOldxNew}
-        \includegraphics[scale=0.3]{oldxnew.png}
+        \includegraphics[scale=0.25]{spkOldxNew.png}
     }
     ~ 
     \subfloat[][]{
         \label{fig:spkOldZoom}
-        \includegraphics[scale=0.3]{oldxnew.png}
+        \includegraphics[scale=0.275]{spkOldZoom.png}
     }
     \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
              Momentos de disparo dos somas de todos os motoneurônios simulados.

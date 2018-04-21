@@ -1,0 +1,79 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'circuit_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{418.47052789bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.13317177)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{circuit_svg-tex.pdf}}%
+    \put(0.74650636,0.73341712){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}α\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{circuit_svg-tex.pdf}}%
+    \put(0.90340106,0.74674562){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}γ\end{tabular}}}}%
+    \put(0.69850474,0.0971118){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Músculo\\Flexor\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{circuit_svg-tex.pdf}}%
+    \put(0.61706733,0.04566398){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Ia\end{tabular}}}}%
+    \put(0.51190058,0.63173349){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CR\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{circuit_svg-tex.pdf}}%
+    \put(0.21876014,0.7386265){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}α\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{circuit_svg-tex.pdf}}%
+    \put(0.03696321,0.10329296){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Músculo\\Extensor\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{circuit_svg-tex.pdf}}%
+    \put(0.03057992,0.63380917){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CR\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{circuit_svg-tex.pdf}}%
+    \put(0.37645698,0.75211786){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}INIa\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{circuit_svg-tex.pdf}}%
+    \put(0.72207266,1.13192591){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Comando\\Descendente\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{circuit_svg-tex.pdf}}%
+    \put(0.51810119,1.13494305){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Aferentes\\Sensoriais\end{tabular}}}}%
+    \put(0.02946887,1.13925387){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Neurônios do Trato\\Espinocerebelar Anterior\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{circuit_svg-tex.pdf}}%
+  \end{picture}%
+\endgroup%
