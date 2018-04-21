@@ -58,7 +58,7 @@ Os resultados mostrados anteriormente são positivos, mas possuem muitas
 limitações. Em primeiro lugar, apesar das melhoras obtidas com a matriz
 $G_g$, a diferença de tempo de execução entre as versões Java e Python
 ainda são muito grandes e outras soluções precisariam ser exploradas
-para resolver essa questão.
+para diminuir essa discrepância.
 
 Em segundo lugar, é preciso enfatizar que os MNs das simulações
 realizadas no \textit{cluster} não recebem nenhuma entrada sináptica
@@ -69,22 +69,42 @@ processos podem executar em paralelo sem a necessidade de se comunicar.
 Em um cenário mais realista, como o que está sendo estudado na Figura
 \ref{fig:circuit}, MNs em um processo podem precisar receber informações
 geradas em outro. Por causa da alta complexidade de conexões
-sinapticas, seriam necessárias muitas comunicações entre os processos
+sinapticas, seriam necessárias muitas comunicações entre processos
 e isso poderia causar uma diminuição significativa nos valores de
 \textit{speed up}.
 
 Isso, de qualquer forma, não tira a validade desse resultado, visto
 que existem maneiras de paralelizar simuladores de redes neuronais
 complexas mantendo um bom desempenho computacional \cite{morrison05}.
-%Entretanto, junto com as considerações sobre a abordagem das G
-% TODO junta essa de cima com mais de cima pra fazer que vale a pena
-% investir em outras coisas antes de partir pra essa solução, pois
-% é meio que um tiro de canhão e tem outras coisas a serem melhoradas
-% antes disso
-% TODO Fala que o resultado sugere que thread ajudaria, mas isso não
-% possivel por causa do GIL (explica ele). Multiprocessing seria uma boa,
-% mas tem problema também. Aí por fim vem o Cython.
+Entretanto, pode-se perceber que os resultados obtidos no \textit{cluster},
+em essência, poderiam ser reproduzidos em computadores comuns por meio
+da utilização de \textit{threads} ou processos. O uso destas estratégias,
+na verdade, seria preferível à utilização de um \textit{cluster}, pois
+envolvem menos alterações na estrutura do código do simulador e
+possibilitam que outras pessoas interessadas em utilizar esse
+\textit{software} possam fazer simulações com um bom desempenho
+computacional em seus próprios computadores.
 
+A utilização de \textit{threads} no Python, entretanto, não é
+possível por causa do \textit{Global Interpreter Lock} (GIL). Esse
+mecanismo faz com que apenas uma \textit{thread} exista por processo.
+Uma alternativa para essa limitação é o uso de processos para realizar
+a paralelização do código. Esse recurso pode ser explorado no Python
+através da biblioteca \textit{Multiprocessing} e pode trazer melhoras
+significativas, especialmente quando há a possibilidade de se trabalhar
+com memória compartilhada. O código do simulador, no entanto, teria que
+passar por grandes modificações e sua estrutura de orientação a objetos
+não é muito compatível com essa biblioteca. Além disso, a elevado 
+volume de comunicações entre processos aqui também seria um gargalo.
+
+Sendo assim, de acordo com as observações feitas, convém propor outras
+estratégias para alcançar um aumento no desempenho computacional. Para
+esse fim, o Cython surge como uma boa alternativa e será explorado 
+nesse trabalho, já que seu uso pode ocasionar em tempos de execução
+muitas vezes similares ao de um código escrito em C \cite{gorelick14}.
+Vale notar que o uso de \textit{clusters} ainda seria uma boa solução,
+mas por causa da dificuldade de tal implementação e da existência de
+outras opções, esta é postergada para trabalhos futuros.
 
 %\begin{table}[ht!]
 %\caption{Tempo de execução das simulações relacionadas 
@@ -139,4 +159,22 @@ assim, que ocorreu uma certa inversão na ordem de recrutamento.
              Zoom em uma parte do gráfico com parametrização antiga.
          }
     \label{fig:spkTimes}
+\end{figure}
+
+Para verificar se a força inibitória das CRs poderiam estar causando esse
+comportamento, apenas os valores das condutâncias entre CRs e MNs da
+parametrização antiga foram substituídos por aqueles descrito em
+\citeonline{maltenfort98}.  O resultado dessa simulação é mostrado 
+na Figura \ref{fig:spkMaltenfort}. De fato, a aparência fragmentado dos
+disparos de MNs desapareceu. Esse resultado, no entanto, deixa em aberto
+como que as CRs estão influenciado os MNs, sendo necessário realizar
+novamente algumas validações do circuito de inibição recorrente.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.4]{spkOldMaltenfort.png}
+	\caption{Momentos de disparo dos somas de todos os motoneurônios
+            simulados com as condutâncias reportadas por
+            \citeonline{maltenfort98}.}
+	\label{fig:spkMaltenfort}
 \end{figure}
