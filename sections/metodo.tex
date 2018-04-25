@@ -38,6 +38,7 @@ paralelo são o \textit{speed up} (ou aceleração), calculado pela equação
 
 \begin{equation}
     S = \frac{t_s}{t_p},
+\label{eq:speedup}
 \end{equation}
 
 em que $t_s$ e $t_p$ são o tempo de execução serial e paralelo, respectivamente,
@@ -80,7 +81,9 @@ variáveis. Considerando o tamanho e complexidade do código do simulador e o
 fato de algumas declarações do Cython serem opcionais, pretende-se iniciar uma
 conversão de uma parte desse código, de forma que, ao final desse processo, os
 módulos principais usados nas simulações possam ser compilados com
-Cython.
+Cython. A métrica usada para medir o ganho de desempenho é a mesma da 
+equação (\ref{eq:speedup}), mas usando os tempos de execução das soluções em 
+Python e Cython.
 
 \section{Estudo das Parametrizações}
 O modelo estudado aqui passará por etapas de comparação com resultados descritos
@@ -90,7 +93,8 @@ desse processo que será usada nos estudos de variabilidade de força
 explicitados na seção \ref{sec:for}.
 
 \subsection{Validação do Modelo}
-Essa etapa será realizada de forma qualitativa e semiquantitativa. Primeiramente, serão 
+Essa etapa será realizada de forma qualitativa e semiquantitativa.
+Em primeiro lugar, serão 
 analisadas características de frequência e padrão de disparos de MNs e CRs,
 assim como a ordem de recrutamento de MNs sob o efeito das CRs.
 
@@ -104,6 +108,11 @@ duração de 1000 ms. Os
 instantes de disparos dos neurônios envolvidos na simulação serão analisados.
 Além disso, espera-se que a inibição recorrente não altere a ordem de 
 recrutamento dos MNs, de acordo com o que foi mostrado por \citeonline{clamann74}.
+
+Em segundo lugar, serão analisados características de pós hiperpolarização 
+das CRs e 
+Como esses são aspectos importantes do circuito de inibição recorrente,
+deve ser realizada também após a 
 
 \subsection{Comparações entre Modelos}
 O objetivo desta etapa é entender como o simulador aqui estudado se comporta 

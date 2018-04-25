@@ -302,8 +302,9 @@ em uma matriz de quatro colunas por sessenta e quatro linhas (direções
 mediolaterais por rostrocaudais). De forma semelhante, as CRs foram posicionadas
 em uma única coluna com 64 elementos.
 
-Além de uma constante de tempo de membrana de aproximadamente 8 ms, a
-condutância máxima e a constante de tempo das CRs foram determinadas
+Além de uma constante de tempo de membrana de aproximadamente 8 ms, o
+pico e a constante de tempo de decaimento das condutâncias de potássio sobre
+as CRs foram determinadas
 empiricamente para reproduzir os resultados experimentais descritos por
 \citeonline{hultborn79}, como duração da hiperpolarização e curvas de relação
 entre corrente injetada e taxa de disparos. A resistência de entrada utilizada
@@ -326,7 +327,8 @@ observado por Van \citeonline{vankeulen81}.
 
 Uma estimativa do número de sinapses de CRs em MNs, baseada em trabalhos com 
 dados fisiológicos \cite{eccles61a,cleveland81,lindsay91}, resultou em
-CRs com alcance de $\pm$15 linhas na matriz do modelo. Esse valor, considerando o
+CRs com alcance de $\pm$15 linhas na matriz do modelo, de forma que cada MN
+recebesse entrada inibitória de 31 CRs. Esse valor, considerando o
 núcleo motor do músculo gastrocnemius medial do gato, equivale a uma 
 distribuição espacial de aproximadamente $\pm$1.6 mm e foi usado no 
 cálculo de uma função dependente da distância entre o neurônio disparando
@@ -486,7 +488,7 @@ de 1 ms.
 As sinapses das CRs foram posicionadas no compartimento dendrítico dos MNs, de
 acordo com \citeonline{fyffe91}. Os PIPS unitários gerados nos MNs no potencial
 de repouso tiveram amplitude de 46.2 $\mu$V, tempo de subida de 5.5 ms e
-\textit{half-width} 18.5 ms. Esses valores estão próximos de resultados
+tempo de meia-vida de 18.5 ms. Esses valores estão próximos de resultados
 experimentais \cite{hamm87b}.
 
 Com esse modelo, os autores propuseram que a presença da inibição recorrente 
@@ -533,6 +535,7 @@ a força de inibição das CRs sobre os MNs foi diminuída.
     Resistência específica de membrana da CR [$\Omega\text{cm}^2$] & 200 & 760\\
     Diâmetro do soma da CR [$\mu\text{m}$] & 65 & 25\\
     Comprimento do soma da CR [$\mu\text{m}$] & 285 & 242\\
+    Corrente de reobase [nA] & 0.5 & 1.25 a 3.75\\
 	\hline
     \end{tabular}
 \end{table}
