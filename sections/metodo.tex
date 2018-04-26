@@ -107,12 +107,105 @@ aumenta linearmente até o valor final de 20 nA ao final da simulação, que teve
 duração de 1000 ms. Os
 instantes de disparos dos neurônios envolvidos na simulação serão analisados.
 Além disso, espera-se que a inibição recorrente não altere a ordem de 
-recrutamento dos MNs, de acordo com o que foi mostrado por \citeonline{clamann74}.
+recrutamento dos MNs \cite{clamann74}.
 
 Em segundo lugar, serão analisados características de pós hiperpolarização 
-das CRs e 
-Como esses são aspectos importantes do circuito de inibição recorrente,
-deve ser realizada também após a 
+das CRs, PIPS nos MNs e PEPS nas CRs. Como esses são aspectos importantes
+do circuito de inibição recorrente, é importante que o modelo, independente 
+da parametrização, possa reproduzir esses dados descritos na literatura.
+Caso esse não seja o caso, novos parâmetros serão estimados.
+
+Muitas vezes, o alto grau de liberdade de um modelo pode dificultar
+a obtenção de parâmetros que o adequem à dados experimentais. Para 
+essas situações, será utilizada a abordagem de estratégias evolutivas
+da classe de algoritmos evolutivos disponibilizados no \textit{inspyred},
+que é uma biblioteca do Python para encontrar parâmetros de redes
+neuronais capazes de reproduzir determinadas propriedades. De forma
+geral, os parâmetros escolhidos são iterativamente alterados até 
+que se obtenha uma rede neuronal com a característica próxima à
+desejada.
+
+Sendo assim, as constantes de tempo e condutâncias máximas dos canais
+de potássio da CR serão ajustado para reproduzir as características
+de 2 mV de amplitude e 30 ms de duração de sua pós hiperpolarização
+\cite{hultborn79}, como mostrado na Figura \ref{fig:HP79}\subref{fig:AHPRC}. Essa
+duração, como proposto por \cite{maltenfort98},
+foi também alcançada fixando o valor de constante de tempo da membrana
+em aproximadamente 8 ms. Para testar a robustez da parametrização 
+obtida, o modelo será comparado com características de corrente injetada
+e taxa de disparo, mostrada na Figura \ref{fig:HP79}\subref{fig:fxiRC}.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:AHPRC}
+        \includegraphics[scale=0.5]{AHPRC}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:fxiRC}
+        \includegraphics[scale=0.4]{fxiRC}
+    }
+    \caption[Características de disparos disparos da célula de Renshaw
+            \cite{hultborn79}]{
+        Características de disparos disparos da célula de Renshaw
+        \cite{hultborn79}. \subref{fig:AHPRC} Detalhes de
+        amplitude e duração da pós hiperpolarização.
+        \subref{fig:fxiRC} Relação entre corrente injetada e
+        taxa de disparo de uma célula de Renshaw.
+         }
+    \label{fig:HP79}
+\end{figure}
+
+As condutâncias máximas, bem como sua constante de tempo, foram
+parametrizadas para reproduzir um PEPS causado nas CRs por MNs
+de 7.6 ms de tempo de subida, 50 ms de duração e 0.6 mV de pico
+para um estímulo antidrômico \cite{walmsley81}, como mostrado na Figura
+\ref{fig:PEPS}. Nesse caso, os diferentes
+níveis de excitação fornecidos por cada tipo de MN serão 
+considerados como condutâncias seguindo as proporções descritas
+por \citeonline{hultborn88a}.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.7]{PEPS}
+	\caption{Potencial excitatório pós sináptico recorrente em uma
+             célula de Rewshaw \cite{walmsley81}.}
+	\label{fig:PEPS}
+\end{figure}
+
+Por fim, valores de condutância e constante de tempo de decaimento 
+serão parametrizados para que a média dos PIPS causados pelas CRs 
+em todos os MNs seja o mesmo valor médio de 12.7 $\mu$V observado por Van
+\citeonline{vankeulen79}. A Figura \ref{fig:PIPS} mostra o resultado
+obtido pelos autores, sendo que, a partir disso,
+\citeonline{hamm87b} mediram tempo de subida e tempo de meia vida
+no intervalos de 2-12 ms e 7-14 ms, respectivamente.
+Nessa caso, as condutâncias serão comparadas
+com os valores medidos por \citeonline{maltenfort04}, que tem média de 
+23-27 nS e varia dentro do intervalo de 6.7 nS até 57.9 nS. Para
+testar a robustez da parametrização, também serão testados os 
+comportamentos de amplitude, latência, tempo de subida, decaimento
+com a distância e tempo de 
+meia vida, que também podem estar relacionados com a conectividade
+\cite{hamm87a,hamm87b,mccurdy94}. A sinapse em questão será
+posicionada no compartimento dendrítico do MN.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.6]{PIPS}
+    \caption[Potencial excitatório pós sináptico recorrente em um
+             motoneurônio]{
+                Potencial excitatório pós sináptico recorrente em um
+                motoneurônio. Os gráficos representam a média de potenciais
+                de membrana quando há um disparo, sendo que a linha
+                pontilhada está posicionada 1 ms após o inicio desse disparo.
+                O painel do lado esquerdo mostra o resultado para uma única 
+                célula, enquanto que o direito, para várias. Nas duas, a parte
+                superior representa a resposta para um único disparo da célula
+                de Renshaw, enquanto que a inferior, para dois \cite{vankeulen79}.}
+	\label{fig:PIPS}
+\end{figure}
 
 \subsection{Comparações entre Modelos}
 O objetivo desta etapa é entender como o simulador aqui estudado se comporta 
@@ -126,13 +219,73 @@ obtenção dos resultados serão os mesmos empregados pelos autores, que foram
 analisados com e sem CRs. Os trabalhos alvo são:
 
 \begin{itemize}
-	\item \citeonline{maltenfort98}, com espectro de potência da atividade da
-		  população de MNs;
+	\item \citeonline{maltenfort98}, com foco no espectro de potência da atividade da
+        população de MNs, de acordo com o que é mostrado na Figura
+        \ref{fig:maltenfort98};
 	\item \citeonline{uchiyama03b}, com relações de comandos descendentes com
-		  taxa de disparos de MNs e CRs e força muscular resultante;
+		  taxa de disparos de MNs e CRs e força muscular resultante, de
+          acordo com o que é mostrado na Figura \ref{fig:uchiyama03};
 	\item \citeonline{williams09}, com espectro de potência dos disparos de uma
-		  população de MNs e da força muscular.
+		  população de MNs e da força muscular, de acordo com o que é
+          mostrado na Figura \ref{fig:williams09}.
 \end{itemize}
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.7]{maltenfort98}
+    \caption[Espectro de potência da dos disparos de uma população de motoneurônios
+             \cite{maltenfort98}]{Espectro de potência da atividade da
+             população de motoneurônios para diferentes níveis de ativações e
+             banda de frequências da entrada (A: 15 pps, com 65\% de
+             recrutamento; B:21 pps, com 90\% de recrutamento; C: 30 pps, com
+             100\% de recrutamento). Linhas grossas e finas são usadas para
+             representar a presença e ausência de inibição recorrente, 
+             respectivamente \cite{maltenfort98}.
+             }
+	\label{fig:maltenfort98}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:uchiyama03a}
+        \includegraphics[scale=0.4]{uchiyama03a}
+    }
+    ~
+    \subfloat[][]{
+        \label{fig:uchiyama03b}
+        \includegraphics[scale=0.4]{uchiyama03b}
+    }
+    \caption[Relações de entrada (comando descendente) e saída (taxa
+             de disparos) de motoneurônios e células de Renshaw
+             \cite{uchiyama03b}]{Relações de entrada (comando descendente)
+             e saída (taxa de disparos) de motoneurônios e células de
+             Renshaw, com e sem inibição recorrente. \subref{fig:uchiyama03a}
+             Motoneurônios. \subref{fig:uchiyama03b} Células de Renshaw.
+             \cite{uchiyama03b}}
+	\label{fig:uchiyama03}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+    \subfloat[][]{
+        \label{fig:williams09a}
+        \includegraphics[scale=0.3]{williams09a}
+    }
+    ~
+    \subfloat[][]{
+        \label{fig:williams09b}
+        \includegraphics[scale=0.3]{williams09b}
+    }
+    \caption[Efeitos da ausência e presença da célula de Renshaw em espectros de potência
+             \cite{williams09}
+            ]{Efeitos da ausência e presença da célula de Renshaw em espectros de potência:
+             \cite{williams09} \subref{fig:williams09a} dos disparos de uma 
+             população de motoneurônios. \subref{fig:williams09b} da força
+             muscular.
+             }
+	\label{fig:williams09}
+\end{figure}
 
 \section{Variabilidade da Força}
 \label{sec:for}
