@@ -1,0 +1,89 @@
+O sistema motor é, basicamente, composto por músculos e
+os neurônios que os controlam. Ele está envolvido
+com a geração de movimento, e, por isso,
+está presente em praticamente todas as tarefas do nosso
+dia-a-dia.
+Ok, mas por que eu resolvi começar minha apresentação
+com essa foto bem estranha de uma galinha sem
+cabeça? É para falar sobre o foco desse estudo.
+Esse é um caso bem famoso que vocês já devem conhecer:
+Esse é o Mike. O dono dele foi cortar a cabeça dele
+para poder preparar um jantar, mas isso não deu muito
+certo. Mike continuou vivo e conseguia caminhar e 
+se alimentar quase normalmente.
+É claro que Mike foi uma exceção. O dono dele
+acidentalmente fez um corte que manteve a veia 
+jugular e o tronco encefálico, então ele ainda
+conseguia manter funções básicas pra sua sobrevivência.
+Mas eu queria mostrar isso pra exemplificar como que 
+a medula espinhal por si, mesmo na ausência do cérebro,
+é importante para esse sistema motor; e é essa medula
+espinhal
+
+que é o foco desse estudo. Aqui nessa figura nós vemos uma representação
+da medula espinhal com alguns cortes transversais em alguns segmentos. Com
+esses cortes, como mostrado nessa outra figura, nós podemos ver como que 
+ocorre a ativação de um músculo. Essa região aqui é chamada de corno ventral
+e nela existem esses neurônios que inervam diretamente a musculatura do corpo
+para causar uma contração. Eles são conhecidos como motoneurônios, ou
+neurônios motores, e
+classificados como do tipo alfa. Outro tipo existente é o gama e motoneurônios
+desse tipo inervam um tipo diferenciado de fibra muscular. Mas isso não é
+o único tipo de neurônio encontrado nessa região. Aqui também existem
+interneurônios. Ao contrário dos motoneurônios, que fazem sinapses com
+os músculos, os interneurônios formam conexões com outros neurônios.
+
+Existe, ainda, outra classificação que vai ser útil para a gente, que
+está relacionada com os motoneurônios e as fibras que eles inervam. Aqui
+nessa figura nós temos um motoneurônio, seu axônio e todas as fibras
+musculares que ele inerva e a esse conjunto nós damos o nome de unidade
+motora. Cada unidade motora contém fibras muscular de um único tipo e
+fibras musculares, por sua vez, podem ser de três tipos:
+lentas pra contrair, mas com
+contração sustentada por um bom tempo sem fadiga; uma que gera
+contrações relativamente rápidas e fortes e são resistentes à fadiga; e
+outra que gera contrações mais rápidas e fortes, mas rapidamente entram
+em exaustão.
+É comum ser referir a elas como do tipo S, FR e FF, que vêm das iniciais
+do inglês Slow, fast fatigue resistant e fast fatiguing. A partir disso,
+então, nós temos unidades motoras lentas e unidades motoras rápidas. É
+importante dizer que o tamanho dos motoneurônios muda conforme o tipo
+de unidade, de forma que os de unidades SS são menores, enquanto que
+os de unidades FF são as maiores.
+
+Bom, agora, com esse corpo teórico, nós já podemos falar de motoneurônios
+e interneurônios para estudar alguns circuitos neuronais e nesse estudo
+o foco vai ser no circuito de inibição recorrente, que tem como protagonista
+um interneurônio conhecido como célula de Renshaw. Uma simplificação desse
+circuito é mostrada nessa figura aqui, onde nós podemos ver a relação
+entre a célula de Renshaw e o motoneurônio. Aqui nós vemos que do axônio
+do motoneurônio alfa é emitido o que é conhecido como ramo colateral. Esse ramo
+colateral alcança a célula de Renshaw e faz nela uma sinapse excitatória.
+A Renshaw, por sua vez, faz uma sinapse inibitória nesse motoneurônio
+e fenômeno é conhecido como inibição recorrente. Além do motoneurônio, a
+célula de Renshaw inibe outros neurônios. A descrição dessas conexões não
+é tão detalhada quanto a do par motoneurônio-célula de Renshaw, mas sabe-se
+que ela também inibe motoneurônios do tipo gama, outras células de Renshaw 
+e alguns neurônios de origem do trato espinocerebelar anterior, que são 
+responsáveis por transmitir sinais da coluna espinhal para o cerebelo.
+A célula de Renhsaw também se conecta com um interneurônio chamado de Ia,
+que é responsável pela inibição recíproca entre músculos antagonistas.
+Esse tipo de inibição ocorre quando uma contração de um conjunto de músculos
+é acompanhada pelo relaxamento de músculos antagonistas e também pode
+ser visto aqui nessa figura. Por exemplo, a ativação desse motoneurônio 
+causa uma contração nesse músculo flexor, que por sua vez estimula esse
+neurônio sensorial Ia. Ele vai então ativar esse interneurônio, que 
+inibe esse motoneurônio fazendo sinapse com esse músculo antagonista.
+Ok, esses foram os alvos das células de Renshaw. Agora a gente vai dar 
+uma olhada nas entradas que a célula de Renshaw recebe. A primeira, já 
+comentada aqui, é a dos motoneurônios. Mas além disso existem também 
+as dos aferentes sensoriais e de vias descendentes. Bom, com isso a gente
+fecha mais ou menos esse circuito de inibição recorrente, mas é bom
+lembrar que isso é uma simplificação. Essas conexões na verdade envolvem
+populações que não necessariamente são homogêneas, conexões que não 
+são exatamente de 1 pra 1, e outros detalhes que deixam isso aqui bem
+mais complexo.
+Apesar de toda essa descrição do circuito de inibição recorrente, ainda
+não está muito claro qual seria a função da célula de Renshaw. Muitos
+autores já proporam diferentes funções, sendo
+algumas delas dependentes da tarefa motora sendo realizada. 
