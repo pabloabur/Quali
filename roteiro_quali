@@ -3,18 +3,20 @@ os neurônios que os controlam. Ele está envolvido
 com a geração de movimento, e, por isso,
 está presente em praticamente todas as tarefas do nosso
 dia-a-dia.
-Ok, mas por que eu resolvi começar minha apresentação
-com essa foto bem estranha de uma galinha sem
-cabeça? É para falar sobre o foco desse estudo.
+Ok, eu ia colocar na apresentação uma foto do Mike, que é
+um galo sem cabeça, mas eu imaginei que talvez isso pudesse
+deixar alguém incomodado, então eu resolvi tirar.
+Mas eu ainda gostaria de comentar sobre ele para falar sobre
+o foco desse estudo.
 Esse é um caso bem famoso que vocês já devem conhecer:
-Esse é o Mike. O dono dele foi cortar a cabeça dele
+Um fazendeiro foi cortar a cabeça do Mike
 para poder preparar um jantar, mas isso não deu muito
 certo. Mike continuou vivo e conseguia caminhar e 
-se alimentar quase normalmente.
+se alimentar quase que normalmente, mesmo sem cabeça.
 É claro que Mike foi uma exceção. O dono dele
 acidentalmente fez um corte que manteve a veia 
-jugular e o tronco encefálico, então ele ainda
-conseguia manter funções básicas pra sua sobrevivência.
+jugular e o tronco encefálico, de forma que ele não sangrou
+até a morte e conseguiu manter funções básicas pra sua sobrevivência.
 Mas eu queria mostrar isso pra exemplificar como que 
 a medula espinhal por si, mesmo na ausência do cérebro,
 é importante para esse sistema motor; e é essa medula
@@ -26,7 +28,7 @@ esses cortes, como mostrado nessa outra figura, nós podemos ver como que
 ocorre a ativação de um músculo. Essa região aqui é chamada de corno ventral
 e nela existem esses neurônios que inervam diretamente a musculatura do corpo
 para causar uma contração. Eles são conhecidos como motoneurônios, ou
-neurônios motores, e
+neurônios motores, e são
 classificados como do tipo alfa. Outro tipo existente é o gama e motoneurônios
 desse tipo inervam um tipo diferenciado de fibra muscular. Mas isso não é
 o único tipo de neurônio encontrado nessa região. Aqui também existem
@@ -60,7 +62,7 @@ entre a célula de Renshaw e o motoneurônio. Aqui nós vemos que do axônio
 do motoneurônio alfa é emitido o que é conhecido como ramo colateral. Esse ramo
 colateral alcança a célula de Renshaw e faz nela uma sinapse excitatória.
 A Renshaw, por sua vez, faz uma sinapse inibitória nesse motoneurônio
-e fenômeno é conhecido como inibição recorrente. Além do motoneurônio, a
+e esse fenômeno é conhecido como inibição recorrente. Além do motoneurônio, a
 célula de Renshaw inibe outros neurônios. A descrição dessas conexões não
 é tão detalhada quanto a do par motoneurônio-célula de Renshaw, mas sabe-se
 que ela também inibe motoneurônios do tipo gama, outras células de Renshaw 
@@ -87,3 +89,155 @@ Apesar de toda essa descrição do circuito de inibição recorrente, ainda
 não está muito claro qual seria a função da célula de Renshaw. Muitos
 autores já proporam diferentes funções, sendo
 algumas delas dependentes da tarefa motora sendo realizada. 
+
+Essas conclusões foram tiradas tanto de experimentos com animais quanto
+de simulações computacionais, e essa última abordagem é a que vai ser
+utilizada aqui, por meio do simulador ReMoto. Ele foi apresentado e
+descrito nesse artigo de 2008 e pode ser acessado por esse link.
+Ele foi desenvolvido em Java e é uma aplicação web, mas, recentemente,
+ele foi reescrito em Python e pode ser obtido pelo download do conteúdo
+disponibilizado nesse link do GitHub.
+Bom, a linguagem de programação 
+não é a única diferença entre essas duas implementações. A forma como
+a célula de Renshaw participa no circuito de inibição recorrente também
+foi alterada.
+
+Os parâmetros usados em cada implementação podem ser vistos nessa tabela
+aqui. A parametrização antiga é o que vamos usar para nos referir à 
+parametrização do remoto em Java, disponível online, e parametrização 
+nova é o que vamos usar para a em Python, do Github. Aqui embaixo nos
+vemos algums diferenças na morfologia da célula de Renshaw, como o
+diâmetro e comprimento da célula, que vão afetar o diâmetro, e a
+resistência. Isso basicamente vai afetar os potenciais pós sinápticos
+ocorrendo nessas células. Essa corrente de reobase vai ditar a corrente
+necessária para que se gere um potencial de ação. Aqui no meio nós temos
+as condutâncias das sinapses entre motoneurônios e células de Renshaw,
+e nós podemos ver que, da antiga pra nova, foi considerado que não há
+uma dependência da condutância com o tipo de neurônio envolvido na
+inibição recorrente. Por fim, há uma grande diminuição na conectividade
+entre esses elementos, ou seja, antes, uma células de Renshaw se
+conectava com todos os motoneurônios dentro do seu alcance, e vice-versa,
+e na nova, isso foi abaixado para quatro e seis por cento, respectivamente.
+De forma geral, essas mudanças causam uma diminuição da força de inibição
+das células de Renshaw sobre os motoneurônios.
+
+A outra diferença, que é mais óbvia, é a da linguagem de programação 
+utilizada, e, nesse sentido, nós estamos interessados no desempenho 
+computacional. O Java e sua máquina virtual são conhecidos por suas 
+otimizações, de forma que, quando se fazem benchmarks para comparações com outras
+linguagens de alto nível de abstração, ele apresenta um tempo de 
+execução reduzido. Sendo assim, é de se esperar que o ReMoto Java seja mais
+rápido do que o ReMoto Python, e é exatamente isso que se observa. O Python
+traz vantagens de facilidade de desenvolvimento, disponibilidade de 
+bibliotecas e até popularidade, mas, por ser uma linguagem de programação
+com declaração dinâmica e não compilada, ela pode ser bem lenta quando
+comparada com outras implementações. Isso começa a ser um fator crítico
+quando começamos a querer simular circuitos neuronais, como o de inibição
+recorrente, que envolvem uma quantidade muito grande de neurônios e ainda
+maior de sinapses. Isso se torna ainda pior na medida em que se deseja tornar a
+simulação um pouco mais realista. Porém, a comunidade utilizando Python 
+é bem grande e engajada, de forma que já existem esforços que tentam 
+solucionar esse problema. Por exemplo, existe o Numpy, que é uma 
+biblioteca que possibilita alguns cálculos sejam automaticamente realizados
+em apenas um ciclo de clock; o multiprocessing, que possibilita a criação de 
+processos para paralelizar o código; o MPI4Py, que é parecido com o
+multiprocessing, mas é adequado para o uso em clusters; Existe também o
+Cython, que traz a possibilidade de compilação e declaração de tipos estáticos
+para o um código em Python; e assim por diante. Essas ferramentas, podem ser
+usadas para trazer um melhora no tempo de execução do ReMoto Python, já que
+algumas simulações, que vão ser usadas nesse trabalho, podem demorar até 
+dois dias e meio para terminar.
+
+Tendo esses conceitos e ideias apresentados, nós podemos então listar os
+objetivos propostos desse trabalho. Um deles é avaliar e validar o modelo
+das células de Renshaw usadas no simulador, tanto na versão antiga, quanto
+na nova. É de se esperar que elas sejam consistentes com dados fisiológicos
+experimentais. Outro objetivo é o de melhora de desempenho do simulador em
+Python, pelos motivos mostrados anteriormente. E por fim, com o intuito de
+trazer alguma contribuição para o entendimento das funções da célula de
+Renshaw, o objetivo de estudar
+como que ela afeta a variabilidade de força em tarefas de
+controle de força e de posição
+
+Bom, isso aqui é como vai ser organizada a metodologia para alcançar esses
+objetivos. Na parte de desempenho computacional serão analisadas as abordagens
+com clusters, O Python na sua implementação original, que é o CPython, e o
+Cython. Na parte dos estudos das parametrizações serão feitas validações
+do modelo, de acordo com o que foi obtido por meio de dados experimentais da
+litaratura, e comparações deste com resultados de outros modelos.
+Quando necessário, será utilizado o pacote Inpsyred para realizar
+parametrizações dos modelos até que se obtenha uma rede neuronal com
+uma característica desejada.
+O objetivo
+é que daqui se obtenha uma parametrização que esteja apropriada e possa ser
+usada na próxima etapa, que é a de variabilidade de força. Agora eu vou
+explicar um pouquinho melhor o que vai ser cada um desses passos.
+
+Aqui vai ser utilizado o cluster águia, disponibilizado pela superintendência
+de tecnologia da informação da USP. Ele é composto por 64 servidores com 20
+cores e 512 GB de memória; um processador Intel Xeon com 2.4GHz; e nele há
+essa versão do Python 2, da distribuição Anaconda 2. O tipo de simulação 
+realizado aqui é bem simplificado, com apenas uma corrente injetada no soma
+de alguns motoneurônios. A biblioteca MPI4Py vai ser usada para criar 2, 4,
+8 e 16 processos em um único servidor. Dessa forma, como as unidades motoras
+simuladas são independentes entre si, é possível dividi-las entre os processos
+disponíveis sem necessidade de comunicações entre elas. Porém, outro processo
+criado exclusivamente para calcular a força gerada, vai receber informações
+dos outros processos a cada passo da simulação. Para medir a performance ganha,
+vão ser usados a métrica de speed up (ou aceleração) em que ts é o tempo de 
+simulação seria e tp é o tempo de execução em paralelo e de eficiência, sendo
+o N aqui o número de processos.
+
+A abordagem do CPython se baseia na vetorização. Ao invés de realizar os
+cálculos sobre matrizes com valores de condutâncias dos compartimentos
+de um motoneurônio, os cálculos serão feitos sobre matrizes maiores que contenham
+valores de condutâncias de todos os motoneurônios. O mesmo vai ser realizado 
+para interneurônios. Com isso, espera-se que a CPU consiga fazer mais
+operações em um único ciclo de clock. A máquina utilizada tem oito processadores
+Intel i7 com 3.40 GHz e é utilizado o Python 2 da distribuição Anaconda2
+
+No caso da abordagem do Cython, vai ser necessário uma mudança de sintaxe
+do código em Python. Isso vai ser uma tarefa trabalhosa, então algumas
+simplificações vão ser adotadas. Como algumas declarações no Cython são
+opcionais, algumas partes do código original serão mantidas. E a métrica usada
+vai ser a mesma de speed up mostrada para o caso do cluster.
+
+Na validação o padrão de disparos dos motoneurônios vai ser analisado. A
+simulação vai ser feita com 800 MNs do tipo S, 50 do tipo FR, 50 do tipo
+FF e 350 CRs; e a entrada vai ser uma corrente injetada em rampa, de forma
+que ela começa em zero e aumenta
+linearmente até o valor final de 20 nA ao final da simulação
+
+A partir daqui algumas características importantes do circuito de inibição
+recorrente serão usadas para validação. Por essa figura nós sabemos que a
+pós hipoerpolarização das CRs possuem 2 mV de amplitude e 30 ms de duração,
+aproximadamente. As constantes de tempo e condutâncias serão parametrizadas
+e, para testar a robustez, vão ser comparadas com essa relação de corrente
+injetada e taxa de disparo.
+
+Os potenciais excitatórios pós sinápticos que os MNs causam nas CRs tem 
+esse aspecto, com 7.6 ms de tempo de subida, 50 ms de duração e 0.6 mV de
+pico. Nesa caso, as condutâncias e constantes de tempo podem ser alteradas para
+reproduzir esse fenômeno.
+
+E nessa figura, o potencial inibitório pós sináptico de um CRs em um MNs
+é mostrado. 
+Aqui, os dados importantes são os valores de pico, o tempo de subida e o tempo
+de meia vida, que podem ser parametrizados de maneira semelhante ao que foi
+mostrado anteriormente.
+
+Na parte de comparação entre modelos, os trabalhos tomados como base são os
+seguintes. O de Maltenfort, com foco no espectro de potência da atividade
+da população de MNs.
+
+Uchiyama, com a relação de comandos descendentes com a taxa de disparos de 
+MNs e CRs
+
+e williams and baker, com o espectro de potência dos disparos de MNs e força
+muscular. Lembrando que essas análises, como visto na figura, serão feitas
+com e sem inibição recorrente.
+
+E finalmente, a variabilidade de força, em que será simulado o controle de
+força de um pedal fixo e outro livre com uma força de 20% de uma contração 
+máxima voluntária. O coeficiente de variação e a densidade espectral de 
+potência da força vão ser calculados com e sem inibição recorrente.
