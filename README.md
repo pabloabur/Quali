@@ -8,4 +8,5 @@ Para mudar os dados da capa e folha de rosto, edite o arquivo capa.tex.
 
 O conteúdo deste repositório foi fortemente baseado na classe abnTex. 
 
-Use :set fileencoding=latin1 para fazer a conversão no vim
+# Troubleshooting
+* If there is an error in bbl file, try deleting it.

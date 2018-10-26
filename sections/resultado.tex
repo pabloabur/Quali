@@ -213,4 +213,37 @@ novamente algumas validações do circuito de inibição recorrente.
              Visão dos disparos em um intervalo reduzido.
          }
     \label{fig:spkMaltenfort}
+
+\section{Parametrizações}
+As parametrizações foram realizadas na ordem em que são apresentadas.
+A dependência de uma parametrização com outra, quando existente, é reportada
+em cada caso.
+
+\subsection{Potencial Excitatório Pós Sinápico nas Células de Renshaw}
+A resistência específica da CR foi ajustada para reproduzir os 
+seguintes resultados descritos na literatura:
+
+\begin{itemize}
+    \item \citeonline{walmsley81}: Medições da atividade intracelular em
+        CRs após uma estimulação de raízes ventrais forneceram alguns
+        dados sobre os PEPSs resultantes.
+    \item \citeonline{williams09}: Nesse trabalho de simulações, os
+        autores adotam 7.6 ms de tempo de subida e 50 ms de duração 
+        dos PEPSs descritos por \citeonline{walmsley81}.
+    \item \citeonline{fyffe91}: Conexões sinápticas de CRs para MNs do 
+        tipo $\alpha$ são localizadas nos dendritos.
+\end{itemize}
+
+Para simular o experimento descrito, corrente foi injetada no soma de um
+MN que fazia sinapse com uma CR.
+
+Um estímulo aplicado nas raízes ventrais irá ativar primeiramente as 
+unidades motoras maiores. Por essa razão, apenas um MNs do tipo FF foram 
+simulados. Além disso, como esse tipo de estimulação pode facilmente 
+recrutar mais de um motoneurônio, a parametrização não levou em conta a
+amplitude do PEPS
+
+\subsubsection{Limitações}
+\subsection{Pós Hiperpolarização das Células de Renshaw}
+\subsubsection{Limitações}
 \end{figure}
