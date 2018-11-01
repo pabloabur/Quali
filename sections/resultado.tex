@@ -213,6 +213,7 @@ novamente algumas validações do circuito de inibição recorrente.
              Visão dos disparos em um intervalo reduzido.
          }
     \label{fig:spkMaltenfort}
+\end{figure}
 
 \section{Parametrizações}
 As parametrizações foram realizadas na ordem em que são apresentadas.
@@ -230,20 +231,24 @@ seguintes resultados descritos na literatura:
     \item \citeonline{williams09}: Nesse trabalho de simulações, os
         autores adotam 7.6 ms de tempo de subida e 50 ms de duração 
         dos PEPSs descritos por \citeonline{walmsley81}.
-    \item \citeonline{fyffe91}: Conexões sinápticas de CRs para MNs do 
-        tipo $\alpha$ são localizadas nos dendritos.
 \end{itemize}
 
 Para simular o experimento descrito, corrente foi injetada no soma de um
-MN que fazia sinapse com uma CR.
-
-Um estímulo aplicado nas raízes ventrais irá ativar primeiramente as 
-unidades motoras maiores. Por essa razão, apenas um MNs do tipo FF foram 
-simulados. Além disso, como esse tipo de estimulação pode facilmente 
-recrutar mais de um motoneurônio, a parametrização não levou em conta a
-amplitude do PEPS
+MN do tipo S que fazia sinapse com uma CR. 
 
 \subsubsection{Limitações}
+O tipo de estimulação utilizado no experimento pode facilmente recrutar
+mais de um MN. Dessa forma, a parametrização não levou em conta a
+amplitude do PEPS. Esse característica, juntamente com a força sináptica
+dessa conexão, foi analisada junto com estudos
+sobre conectividade e será abordado na seção \ref{sec:conn}.
+
+
 \subsection{Pós Hiperpolarização das Células de Renshaw}
 \subsubsection{Limitações}
-\end{figure}
+
+\subsection{Conectividade no Circuito de Inibição Recorrente}
+\subsubsection{Limitações}
+\label{sec:conn}
+    %\item \citeonline{fyffe91}: Conexões sinápticas de CRs para MNs do 
+    %    tipo $\alpha$ são localizadas nos dendritos.
