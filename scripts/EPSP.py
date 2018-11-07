@@ -3,8 +3,8 @@ import numpy as np
 
 # File settings
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
-filenamePath = '/home/pablo/osf/Master-Thesis-Data/cell/AHP/AHP.dat'
-filename = 'AHP'
+filenamePath = '/home/pablo/osf/Master-Thesis-Data/cell/EPSP/EPSP.dat'
+filename = 'EPSP'
 
 t = []
 RCV = []
@@ -15,12 +15,15 @@ for line in lines:
     RCV.append(float(line.split()[1]))
 f.close()
 
+maxPosition = [x for x, y in enumerate(RCV) if y==max(RCV)][0]
+
 plt.figure()
 plt.plot(t, RCV)
 plt.xlabel('tempo (ms)')
 plt.ylabel('Potencial de membrana (mV)')
+plt.axvline(x=t[maxPosition], color='r', label='Pico em t='+str(t[maxPosition])+' ms')
 plt.grid(True)
-plt.xlim([0, 60])
-plt.ylim([-5, 10])
+plt.xlim([5, 70])
+plt.legend()
 #plt.show()
 plt.savefig(figsFolder + filename + '.svg', format='svg')

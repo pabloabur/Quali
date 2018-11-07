@@ -217,11 +217,22 @@ novamente algumas validações do circuito de inibição recorrente.
 
 \section{Parametrizações}
 As parametrizações foram realizadas na ordem em que são apresentadas.
-A dependência de uma parametrização com outra, quando existente, é reportada
-em cada caso.
+Para realizá-las, parâmetros relacionados com as características 
+estudadas foram ajustados em várias simulações até que se fosse obtido
+um resultado razoavelmente próximo ao que é descrito na literatura.
+De forma geral, a forma como os parâmetros foram alterados foi por
+tentativa e erro, mas sempre guiada por um conhecimento sobre a CR 
+ou o circuito de inibição recorrente.
 
 \subsection{Potencial Excitatório Pós Sinápico nas Células de Renshaw}
-A resistência específica da CR foi ajustada para reproduzir os 
+A constante de tempo de membrana dos modelos aqui utilizados é definida 
+como $\tau=R_mC_m$, sendo $R_m$ e $C_m$ a resistência e capacitância 
+específicas, respectivamente. Essa grandeza expressa, de forma geral, 
+quão rápido é o carregamento ou descarregamento da membrana \cite{sterratt11}.
+Dessa forma, optou-se por variar o valor de resistência específica
+da CR, mantendo o padrão de $C_m = \text{1 }\mu\text{Fcm}^{-2}$.
+
+A resistência específica foi ajustada para reproduzir os 
 seguintes resultados descritos na literatura:
 
 \begin{itemize}
@@ -233,8 +244,21 @@ seguintes resultados descritos na literatura:
         dos PEPSs descritos por \citeonline{walmsley81}.
 \end{itemize}
 
-Para simular o experimento descrito, corrente foi injetada no soma de um
-MN do tipo S que fazia sinapse com uma CR. 
+Para simular o experimento descrito, uma corrente suficiente para causar
+um único potencial de ação foi injetada no soma de um
+MN do tipo S que fazia sinapse com uma CR. O resultado mostrado na Figura
+\ref{fig:RCepsp} foi obtido com $R_m=\text{8500 }\Omega\text{cm}^2$. O PEPS é
+iniciado em 10.5 ms e atinge o pico em 16.15 ms, configurando, assim, um
+tempo de subida de 6.10 ms. A duração total observada foi de aproximadamente
+50 ms.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{EPSP.eps}
+    \caption[PEPS em uma CR.]{Potencial excitatório pós sináptico 
+        em uma célula de Renshaw.}
+	\label{fig:RCepsp}
+\end{figure}
 
 \subsubsection{Limitações}
 O tipo de estimulação utilizado no experimento pode facilmente recrutar
@@ -243,12 +267,191 @@ amplitude do PEPS. Esse característica, juntamente com a força sináptica
 dessa conexão, foi analisada junto com estudos
 sobre conectividade e será abordado na seção \ref{sec:conn}.
 
+O tempo de subida foi um pouco maior do que o utilizado por
+\citeonline{williams09}. O aumento da resistência específica aumentaria
+o tempo de subida aqui apresentado, mas isso causaria um aumento
+na duração do PEPS. Sendo assim, a parametrização realizada foi tomada
+para satisfazer razoavelmente as duas características.
 
-\subsection{Pós Hiperpolarização das Células de Renshaw}
+\subsection{Características dos disparos das Células de Renshaw}
+Quando o potencial de membrana do modelo da CR utilizado
+ultrapassa o limiar de disparo, a condutância de sódio é acionada e
+inicia a despolarização da célula. Por outro lado, as condutâncias de 
+potássio rápida e lenta causam a repolarização, sendo que esta
+última tem mais influência sob a pós hiperpolarização (do inglês
+\textit{afterhyperpolarization}, AHP) da célula.
+
+A AHP é uma importante característica da CR. Antes de fazer essa
+parametrização, entretanto, é preciso definir quando ela irá disparar
+um potencial de ação. Sabe-se que essas células possuem
+baixo limiar \cite{uchiyama03a}, mas não existem estudos quantitativos
+especificamente sobre esse parâmetro. O valor do limiar é calculado como
+
+\begin{equation}
+V_{l}=\frac{I_rR_m}{a}
+\label{eq:vth}
+\end{equation}
+
+com $V_l$ sendo a tensão de limiar, $I_r$ a corrente de reobase e $a$ a 
+área superficial total. 
+
+Outra característica afetada pela dinâmica das condutâncias dependentes
+da voltagem é a curva de frequência de disparo \textit{versus} corrente
+injetada (FxI), que também reflete a forma como a CR se adapta a uma
+dada corrente.
+
+Os parâmetros de limiar, comprimento, diâmetro e intensidade e dinâmica
+das condutâncias do modelo da CR podem ser alterados para reproduzir as
+características citadas. As parametrizações feitas 
+para obtê-los são baseadas nas seguintes referências:
+
+\begin{itemize}
+    \item \citeonline{hultborn79}: Curvas de FxI para diferentes correntes
+        (Figura \ref{fig:HP79}\subref{fig:fxiRC}),
+        sendo que os disparos só começam a ocorrer por volta de 0.5 nA;
+        AHP após um breve pulso de corrente injetada apresentou uma 
+        amplitude de -2 mV e duração por volta de 30 ms
+        (Figura \ref{fig:HP79}\subref{fig:AHPRC}).
+    \item \citeonline{fyffe90}: Diâmetro médio de 27 $\mu$m.
+    \item \citeonline{bui03}: Área superficial média do soma e do dendrito
+        de 1753.8 $\mu\text{m}^2$ e 16756 $\mu\text{m}^2$, respectivamente.
+\end{itemize}
+
+Usando o $R_m$ obtido na seção anterior,
+$a=\text{1753.8+16756 }\mu\text{m}^2$ e considerando que $I_r=\text{0.5 }$ nA,
+a Equação (\ref{eq:vth}) resulta em $V_l=\text{22.9678 }$ mV.
+Tomando a CR por um cilindro, sua área superficial total será 
+$a=\text{1753.8+16756}=\pi ld$. Dessa forma, $l=\text{218.2168 }\mu$m.
+
+Com esses valores, torna-se possível parametrizar a AHP e a curva FxI.
+Como o modelo de condutância utilizado é baseado em pulsos \cite{destexhe94a},
+as variáveis de ativação de cada condutância podem ser expressas como 
+exponenciais com taxas de crescimento ou decaimento dependendo de variáveis
+de transição.
+
+As variáveis de transição $\alpha_N$ e $\beta_N$, relacionadas com a
+dinâmica dos canais de potássio rápido, foram aumentadas para que esses
+canais se fechassem antes da membrana voltar ao nível de repouso (0 mV). 
+Sendo assim, os canais de potássio lento, com $\alpha_Q$ e $\beta_Q$,
+puderam ser ajustados para se obter as taxas de disparos e adaptação
+apropriados.
+
+O valor de $\beta_Q$ foi ajustado até se obter uma localização do pico da
+AHP semelhante à da Figura \ref{fig:HP79}\subref{fig:AHPRC},
+que se encontra mais ao centro de sua duração. Isso significa
+alterar a velocidade de fechamento do canal para que este se não se feche
+muito próximo ao início da AHP.
+
+Considerando uma sequência de potenciais
+de ação, uma diminuição no valor de $\alpha_Q$ faz com que o decaimento
+da exponencial da variável de ativação seja mais lento. Isso permite que 
+estes possam se sobrepor, fazendo com que exista uma corrente iônica
+abaixando o potencial de membrana para o equilíbrio do canal de potássio
+lento (-10 mV). Inicialmente, essa corrente é relativamente pequena, mas
+ela cresce de forma cumulativa até o momento em que os efeitos das primeiras
+exponenciais gerando essa corrente desapareça. Esse fenômeno, então, gera 
+uma adaptação na frequência de disparo das CRs.
+
+Por fim, a amplitude do AHP foi obtida ajustando os valores máximos
+das condutâncias de potássio rápida e lenta.
+
+Detalhes sobre a AHP podem ser visto na Figura \ref{fig:RCahp}. O pico 
+observado foi de -2 mV. Sua duração foi de aproximadamente 35 ms,
+calculada de 15 ms até o instante com 10\% do valor do pico, que foi em
+50 ms.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{AHP.eps}
+    \caption[AHP em uma CR.]{Pós hiperpolarização de
+        uma célula de Renshaw.}
+	\label{fig:RCahp}
+\end{figure}
+
+A curva FxI obtida é mostrada na Figura \ref{fig:RCfxi}.
+O primeiro e segundo potencial de ação é entendido como o 
+primeiro potencial, enquanto que o segundo e terceiro é o
+segundo intervalo, e assim por diante. O regime estacionário foi
+considerado como sendo após 80 ms. A saturação observada foi 
+causada pela período refratário absoluto da célula, que é de 1 ms.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{FxI.eps}
+    \caption[FxI em uma CR.]{Curva de frequência de disparo
+    \textit{versus} corrente injetada de uma célula de Renshaw.}
+	\label{fig:RCfxi}
+\end{figure}
+
+Com os resultados obtidos, a resistência de entrada $R_i=\frac{R_m}{a}$
+resultante foi de 45.92 M$\Omega$. Como esperado, esse valor é maior que 
+a resistência de entrada do menor MN.
+
 \subsubsection{Limitações}
+A curva FxI apresentada se aproximou do que foi descrito na literatura, 
+mas o tempo de duração da adaptação, que é maior para correntes mais
+altas, não. Em geral, essa duração foi sempre menor no modelo aqui descrito.
+Isso é ilustrado na Figura \ref{fig:FxIcomp}.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:refmemb}
+        \includegraphics[scale=0.8]{refmemb}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:resmemb}
+        \includegraphics[scale=0.4]{FxI_RC.eps}
+    }
+    \caption[Comparação dos potenciais de membrana para uma corrente injetada
+        de 12 nA]{
+        Comparação dos potenciais de membrana para uma corrente injetada
+        de 12 nA. \subref{fig:refmemb}  Tempo da adaptação em uma
+        CR tem uma duração de aproximadamente 30 ms \cite{hultborn79}.
+        \subref{fig:resmemb} Resultado obtido pelo modelo de uma CR nas
+        mesmas condições.
+         }
+    \label{fig:FxIcomp}
+\end{figure}
+
+\subsection{Potencial inibitório pós sináptico de célula de Renshaw}
+As condutâncias das CRs sobre cada tipo de MN foram ajustadas, levando em
+conta os seguintes dados experimentais:
+
+\begin{itemize}
+    \item \citeonline{vankeulen79}: PIPS em MNs causados por CRs.
+    \item \citeonline{fyffe91}: Conexões sinápticas de CRs para MNs do 
+        tipo $\alpha$ são localizadas nos dendritos.
+    \item \citeonline{uchiyama03a}: Procedimento para estimar PIPS de
+        acordo com o tipo de MN.
+\end{itemize}
+
+Após sucessivas simulações, o resultado final obtido é mostrado na 
+Figura \ref{fig:PIPSres}. Os picos foram de -26.12 $\mu$V, -14.03 $\mu$V e
+7.00 $\mu$V para MNs do tipo S, FR e FF, respectivamente.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{IPSP.eps}
+    \caption[PIPS de uma CR.]{Potencial inibitório pós sináptico
+        de célula de Renshaw em diferentes tipos de motoneurônios.}
+	\label{fig:PIPSres}
+\end{figure}
+
+\subsection{Atividade espontânea da célula de Renshaw}
+Para obter uma taxa de disparos espontâneos de 7 pps \cite{walmsley81},
+foi necessário alterar o valor da condutância máxima do ruído agindo sobre
+a CR. Como visto na Figura \ref{fig:spont}, a taxa está condizente com 
+o esperado.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{spont.eps}
+    \caption[Disparos espontâneos de uma CR.]{Disparos espontâneos de uma CR.}
+	\label{fig:spont}
+\end{figure}
 
 \subsection{Conectividade no Circuito de Inibição Recorrente}
 \subsubsection{Limitações}
 \label{sec:conn}
-    %\item \citeonline{fyffe91}: Conexões sinápticas de CRs para MNs do 
-    %    tipo $\alpha$ são localizadas nos dendritos.

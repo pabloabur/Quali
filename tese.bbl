@@ -39,6 +39,16 @@ Dispon{\'\i}vel em:
   brain}. Fourth edition. [S.l.]: Wolters Kluwer, 2016.
 ISBN 978-0-7817-7817-6.}
 
+\bibitem[Bui 2003]{bui03}
+\abntrefinfo{Bui}{BUI}{2003}
+{BUI, T.~V. Comparison of the {Morphological} and {Electrotonic} {Properties}
+  of {Renshaw} {Cells}, {Ia} {Inhibitory} {Interneurons}, and {Motoneurons} in
+  the {Cat}.
+\emph{Journal of Neurophysiology}, v.~90, n.~5, p. 2900--2918, jul. 2003.
+ISSN 0022-3077, 1522-1598.
+Dispon{\'\i}vel em:
+  $<$http://jn.physiology.org/cgi/doi/10.1152/jn.00533.2003$>$.}
+
 \bibitem[Burke et al. 1977]{burke77}
 \abntrefinfo{Burke et al.}{BURKE et al.}{1977}
 {BURKE, R.~E. et al. Anatomy of medial gastrocnemius and soleus motor nuclei in
@@ -175,6 +185,15 @@ ISSN 0022-3077.
 Dispon{\'\i}vel em:
   $<$http://www.physiology.org/doi/abs/10.1152/jn.1991.65.5.1134$>$.}
 
+\bibitem[Fyffe 1990]{fyffe90}
+\abntrefinfo{Fyffe}{FYFFE}{1990}
+{FYFFE, R. E.~W. Evidence for separate morphological classes of {Renshaw} cells
+  in the cat's spinal cord.
+\emph{Brain Research}, v.~536, n.~1, dez. 1990.
+ISSN 0006-8993.
+Dispon{\'\i}vel em:
+  $<$http://www.sciencedirect.com/science/article/pii/000689939090038D$>$.}
+
 \bibitem[Goodman 2009]{goodman09}
 \abntrefinfo{Goodman}{GOODMAN}{2009}
 {GOODMAN, D. F.~M. The {Brian} simulator.
@@ -310,24 +329,26 @@ Dispon{\'\i}vel em:
   {Scholarship}}. [s.n.], 2006. Dispon{\'\i}vel em:
   $<$http://www.oxfordscholarship.com/view/10.1093/acprof:oso/9780198526551.001.0001/acprof-9780198526551$>$.}
 
-\bibitem[Keulen 1979]{vankeulen79}
-\abntrefinfo{Keulen}{KEULEN}{1979}
-{KEULEN, L. C.~M. V. Axon trajectories of {Renshaw} cells in the lumbar spinal
-  cord of the cat, as reconstructed after intracellular staining with
-  horseradish peroxidase.
-\emph{Brain Research}, v.~167, n.~1, p. 157--162, maio 1979.
-ISSN 0006-8993.
-Dispon{\'\i}vel em:
-  $<$http://www.sciencedirect.com/science/article/pii/0006899379902701$>$.}
-
-\bibitem[Keulen 1981]{vankeulen81}
-\abntrefinfo{Keulen}{KEULEN}{1981}
-{KEULEN, L. V. Autogenetic recurrent inhibition of individual spinal
-  motoneurones of the cat.
+\bibitem[{\VAN{Keulen}{Van Keulen}{van Keulen}} 1981]{vankeulen81}
+\abntrefinfo{{\VAN{Keulen}{Van Keulen}{van Keulen}}}{{\VAN{KEULEN}{VAN
+  KEULEN}{VAN KEULEN}}}{1981}
+{{\VAN{KEULEN}{VAN KEULEN}{VAN KEULEN}}, L. Autogenetic recurrent inhibition of
+  individual spinal motoneurones of the cat.
 \emph{Neuroscience Letters}, v.~21, n.~3, p. 297--300, fev. 1981.
 ISSN 0304-3940.
 Dispon{\'\i}vel em:
   $<$http://www.sciencedirect.com/science/article/pii/0304394081902202$>$.}
+
+\bibitem[{\VAN{Keulen}{Van Keulen}{van Keulen}} 1979]{vankeulen79}
+\abntrefinfo{{\VAN{Keulen}{Van Keulen}{van Keulen}}}{{\VAN{KEULEN}{VAN
+  KEULEN}{VAN KEULEN}}}{1979}
+{{\VAN{KEULEN}{VAN KEULEN}{VAN KEULEN}}, L. C.~M. Axon trajectories of
+  {Renshaw} cells in the lumbar spinal cord of the cat, as reconstructed after
+  intracellular staining with horseradish peroxidase.
+\emph{Brain Research}, v.~167, n.~1, p. 157--162, maio 1979.
+ISSN 0006-8993.
+Dispon{\'\i}vel em:
+  $<$http://www.sciencedirect.com/science/article/pii/0006899379902701$>$.}
 
 \bibitem[Kim e Kim 2018]{kim18}
 \abntrefinfo{Kim e Kim}{KIM; KIM}{2018}
