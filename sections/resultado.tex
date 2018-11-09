@@ -308,7 +308,7 @@ para obtê-los são baseadas nas seguintes referências:
 \begin{itemize}
     \item \citeonline{hultborn79}: Curvas de FxI para diferentes correntes
         (Figura \ref{fig:HP79}\subref{fig:fxiRC}),
-        sendo que os disparos só começam a ocorrer por volta de 0.5 nA;
+        sendo que os disparos só começam a ocorrer por volta de 0.5 nA.
         AHP após um breve pulso de corrente injetada apresentou uma 
         amplitude de -2 mV e duração por volta de 30 ms
         (Figura \ref{fig:HP79}\subref{fig:AHPRC}).
@@ -429,7 +429,7 @@ conta os seguintes dados experimentais:
 
 Após sucessivas simulações, o resultado final obtido é mostrado na 
 Figura \ref{fig:PIPSres}. Os picos foram de -26.12 $\mu$V, -14.03 $\mu$V e
-7.00 $\mu$V para MNs do tipo S, FR e FF, respectivamente.
+-7.00 $\mu$V para MNs do tipo S, FR e FF, respectivamente.
 
 \begin{figure}[ht!]
 	\center
@@ -452,6 +452,31 @@ o esperado.
 	\label{fig:spont}
 \end{figure}
 
-\subsection{Conectividade no Circuito de Inibição Recorrente}
+\subsection{Conectividade do Circuito de Inibição Recorrente}
+O grau de conectividade dos elementos que compõem o circuito de
+inibição recorrente envolve não só a quantidade de elementos se
+conectando, mas também a força de conexão entre eles. Esses dois
+parâmetros serão ajustados baseados em:
+
+\begin{itemize}
+    \item \citeonline{mccurdy94}: Distribuição topográfica das amplitudes
+        de PIPS recorrentes obtida de pares de MNs é inversamente
+        correlacionada com a distância. Os autores fornecem uma visão
+        geral, independente do núcleo motor.
+    %\item \citeonline{}: 
+    \item \citeonline{uchiyama03a}: 
+\end{itemize}
+
+Para reproduzir o experimento como em \citeonline{mccurdy94}, as simulações
+levaram em conta 180 pares, separados por distâncias entre 86 $\mu$m e
+4.7 mm. Os MNs do núcleo motor simulado inervam o músculo gastrocnemius 
+medial e, por isso, a distância que define se estes estão próximos ou
+distantes um do outro é de 1 mm \cite{mccurdy94}.
+
+O padrão de decaimento adotado foi o de uma gaussiana 
+
+Na Figura \ref{fig:topography}, O resultado médio dos PIPS recorrentes
+em pares próximos e distantes foi de , respectivamente.
+
 \subsubsection{Limitações}
 \label{sec:conn}
