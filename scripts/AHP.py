@@ -16,7 +16,7 @@ for line in lines:
 f.close()
 
 plt.figure()
-plt.plot(t, RCV)
+plt.plot(t, RCV, 'k')
 plt.xlabel('tempo (ms)')
 plt.ylabel('Potencial de membrana (mV)')
 plt.grid(True)

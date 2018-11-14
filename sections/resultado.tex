@@ -224,6 +224,13 @@ De forma geral, a forma como os parâmetros foram alterados foi por
 tentativa e erro, mas sempre guiada por um conhecimento sobre a CR 
 ou o circuito de inibição recorrente.
 
+O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
+medial do gato. Em simulações envolvendo populações de neurônios,
+foi considerado um comprimento de 600 mm do núcleo motor \cite{burke77}
+com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
+\citeonline{uchiyama03a}. A quantidade média de CRs adotada foi
+100 CRs para cada 1 mm de extensão da medula \cite{carr98}.
+
 \subsection{Potencial Excitatório Pós Sinápico nas Células de Renshaw}
 A constante de tempo de membrana dos modelos aqui utilizados é definida 
 como $\tau=R_mC_m$, sendo $R_m$ e $C_m$ a resistência e capacitância 
@@ -453,30 +460,157 @@ o esperado.
 \end{figure}
 
 \subsection{Conectividade do Circuito de Inibição Recorrente}
+\label{sec:conn}
 O grau de conectividade dos elementos que compõem o circuito de
 inibição recorrente envolve não só a quantidade de elementos se
 conectando, mas também a força de conexão entre eles. Esses dois
-parâmetros serão ajustados baseados em:
+parâmetros serão ajustados baseados nas referências apresentadas
+abaixo:
 
 \begin{itemize}
     \item \citeonline{mccurdy94}: Distribuição topográfica das amplitudes
         de PIPS recorrentes obtida de pares de MNs é inversamente
         correlacionada com a distância. Os autores fornecem uma visão
-        geral, independente do núcleo motor.
-    %\item \citeonline{}: 
-    \item \citeonline{uchiyama03a}: 
+        geral, independente do núcleo motor. MNs de músculo gastrocnemius
+        medial separados por no máximo 1 mm são classificados como 
+        próximos. Fora dessa zona, são considerados distantes.
+    \item \citeonline{hamm87b}: Distribuição de amplitudes, tempo
+        de meia vida e tempo de subida de PIPS recorrentes.
+    \item \citeonline{uchiyama03a}: Padrão de distribuição topográfica 
+        da força sináptica é o de uma gaussiana que decresce na medida
+        em que se afasta do neurônio pré sináptico. O desvio padrão da
+        curva é de 0.167 mm e 1.164 mm para os MNs e para as CRs, 
+        respectivamente. A quantidade de botões sinápticos também é
+        um indicativo da força sináptica das conexões. Estima-se que os
+        axônios colaterais dos MNs que alcançam a região onde as CRs se
+        encontram possuam 78.5 $\pm$ 7.5, 43.0 $\pm$ 4.2 e 35.5 $\pm$ 3
+        destas estruturas se forem do tipo FF, FR e S, respectivamente.
 \end{itemize}
 
 Para reproduzir o experimento como em \citeonline{mccurdy94}, as simulações
-levaram em conta 180 pares, separados por distâncias entre 86 $\mu$m e
-4.7 mm. Os MNs do núcleo motor simulado inervam o músculo gastrocnemius 
-medial e, por isso, a distância que define se estes estão próximos ou
-distantes um do outro é de 1 mm \cite{mccurdy94}.
+consistiram em correntes injetadas no soma dos MNs por um curto período de 
+tempo. Foram levados em conta 180 pares, separados por distâncias entre
+86 $\mu$m e 4.7 mm. Os MNs do núcleo motor simulado inervam o músculo
+gastrocnêmios medial e, por isso, a distância que define se estes estão
+próximos ou distantes um do outro é de 1 mm \cite{mccurdy94}. 
 
-O padrão de decaimento adotado foi o de uma gaussiana 
+O padrão de decaimento adotado foi o da gaussiana da referência. O número
+de botões sinápticos de cada tipo de MN nas CRs foi implementado como valores
+de condutância seguindo uma proporção de 1:0.55:0.45 (FF:FR:S). Isso
+permitiu que apenas a condutância máxima dos MNs do tipo FF
+($g_{max_{FF}}$) fosse parametrizado, sendo as outras ajustadas
+de acordo com a proporção.
 
-Na Figura \ref{fig:topography}, O resultado médio dos PIPS recorrentes
-em pares próximos e distantes foi de , respectivamente.
+Vale notar
+que, dentre os dados disponíveis, apenas os significativos e provenientes
+de gatos decapitados foram usados \cite{mccurdy94,hamm87b}.
+
+Após uma série de simulações, o valor de $g_{max_{FF}}$ que mostrou os
+resultados mais apropriados de acordo com a literatura foi 32 nS.
+O efeito da utilização desse parâmetro na distribuição topográfica dos
+PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}. O
+padrão de decaimento com distância foi semelhantes ao que foi apresentado
+na referência \cite{mccurdy94} e a média das respostas calculadas entre
+pares distantes e próximos foram de -23,60 $\mu$V e -68,83 $\mu$V,
+respectivamente. Comparados com os -19,63 $\pm$ 2,42 $\mu$V e 
+-41,36 $\pm$ 7,19 $\mu$V para pares distantes e próximos \cite{mccurdy94},
+respectivamente, é possível ver que os valores médios para pares próximos
+na simulação é maior do que na realidade.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{mchammdecay.eps}
+    \caption[Distribuição topográfica de potenciais inibitórios
+            pós sinápticos recorrentes.]{Distribuição topográfica de
+            potenciais inibitórios pós sinápticos recorrentes. Cada
+            ponto representa a amplitude desses potenciais após o estímulo
+            de outro motoneurônio, localizado em zero na abcissa.
+            Se observado em um motoneurônio
+            rostral (caudal) ao motoneurônio estimulado, é apresentado
+            na parte negativa (positiva) da abcissa.}
+	\label{fig:mchammdecay}
+\end{figure}
+
+Um aumento ou diminuição no valor de $g_{max_{FF}}$ mudaria o resultado
+da média dos PIPS recorrentes, mas isso também alteraria as distribuições
+de amplitudes dos PIPS, que, como mostrado na Figura
+\ref{fig:mchammamplitude}, se mostrou dentro das faixas de valores
+descritos na literatura. Pode-se perceber, entretanto,
+que a forma como as alturas dos histogramas se distribuem foi diferente
+do esperado \cite{hamm87b}. Vale notar que, com a condutância
+adotada, apenas MNs do tipo FF, ou seja, aqueles com índice maior do
+que 149, são capazes de causar potenciais de ação nas CRs e, assim, gerar
+PIPS recorrentes.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{mchammamplitude.eps}
+    \caption[Distribuição de amplitudes de potenciais inibitórios
+            pós sinápticos recorrentes.]{Distribuição de amplitudes
+            de potenciais inibitórios pós sinápticos recorrentes. Em
+            cada gráfico, o número na parte superior significa o
+            índice do motoneurônio estimulado. Eixo das abcissas 
+            indica valores de amplitudes, em $\mu$V, e eixo das ordenadas
+            indica quantidade. Gráficos vazios indicam a ausência de 
+            potenciais inibitórios pós sinápticos recorrentes gerados
+            pelo estímulo de determinado motoneurônio.}
+	\label{fig:mchammamplitude}
+\end{figure}
 
 \subsubsection{Limitações}
-\label{sec:conn}
+A comparação por inspeção visual dos resultados da Figura
+\ref{fig:mchammdecay} com os de \citeonline{mccurdy94} mostra
+consistência no decaimento da força sináptica com a distância. 
+Sabe-se que a amplitude de PIPS recorrentes entre pares de MNs próximos
+é relativamente variável, sendo observados valores de -40 $\mu$V e
+-280 $\mu$V para uma mesma distância, por exemplo. Os mecanismos
+responsáveis por essa
+característica, entretanto, são especulativos \citeonline{mccurdy94}.
+Nos resultados aqui obtidos, esta variabilidade não foi observada
+e, por isso, a média de PIPS recorrentes
+para pares de MNs próximos foi maior do que o esperado.
+
+Os histogramas de amplitude da Figura
+\ref{fig:mchammamplitude} estão dentro das faixas descritas na 
+literatura \cite{hamm87b}. Existem registros de PIPS recorrentes 
+maiores \citeonline{mccurdy94}, mas estes se manifestaram esporadicamente
+e apenas para pares de MNs próximos. O fato de alguns MNs não serem capazes 
+de gerar PIPS recorrentes não é inapropriado pois existem estudos
+mostrando que a ativação de CRs pode resultar em respostas como
+ausência, alguns e até \textit{bursts} de potenciais de ação
+\cite{ross72,ross82}.
+
+Vale notar que outros valores maiores de $g_{max_{FF}}$ geraram resultados
+semelhantes, mas com amplitudes máximas e valores médios elevados e
+baixa variabilidade, além de afetar negativamente os resultados de análise
+estática da CR. Menores $g_{max_{FF}}$, por sua vez, faria com que o efeito 
+das CRs fosse muito baixo. Sendo assim, o valor de condutância adotado
+fornece um equilíbrio razoável dos resultados.
+
+\section{Validações}
+Os resultados obtidos para o tempo de subida e tempo de meia vida são
+mostrados na Figura \ref{fig:mchammvalidation} abaixo. Como pode ser visto,
+esses tiveram faixas consideravelmente abaixo dos valores
+esperados \cite{hamm87b}.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:mchammrise}
+        \includegraphics[scale=0.5]{mchammrise.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:mchammwidth}
+        \includegraphics[scale=0.5]{mchammwidth.eps}
+    }
+    \caption[Validação de resultados com \citeonline{hamm87b}.]{
+        Validação de resultados com \citeonline{hamm87b}.
+        \subref{fig:mchammrise} Tempo de subida dos potenciais inibitórios
+        pós sinápticos gravados.
+        \subref{fig:mchammwidth} Tempo de meia vidas dos potenciais
+        inibitórios pós sinápticos gravados.
+         }
+    \label{fig:mchammvalidation}
+\end{figure}
+

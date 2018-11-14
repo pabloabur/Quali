@@ -63,6 +63,14 @@ Dispon{\'\i}vel em: $<$http://jn.physiology.org/content/40/3/667$>$.}
   Cambridge u.a: Cambridge University Press, 2006.
 ISBN 978-0-521-84321-8.}
 
+\bibitem[Carr et al. 1998]{carr98}
+\abntrefinfo{Carr et al.}{CARR et al.}{1998}
+{CARR, P.~A. et al. Calbindin {D}28k expression in immunohistochemically
+  identified {Renshaw} cells.
+\emph{Neuroreport}, v.~9, n.~11, p. 2657--2661, ago. 1998.
+ISSN 0959-4965.
+Dispon{\'\i}vel em: $<$https://insights.ovid.com/pubmed?pmid=9721951$>$.}
+
 \bibitem[Cisi e Kohn 2008]{cisi08}
 \abntrefinfo{Cisi e Kohn}{CISI; KOHN}{2008}
 {CISI, R. R.~L.; KOHN, A.~F. Simulation system of spinal cord motor nuclei and
@@ -480,6 +488,25 @@ Dispon{\'\i}vel em: $<$http://jn.physiology.org/content/4/2/167$>$.}
 ISSN 1096-9861.
 Dispon{\'\i}vel em:
   $<$http://onlinelibrary.wiley.com/doi/10.1002/cne.900940209/abstract$>$.}
+
+\bibitem[Ross, Cleveland e Haase 1972]{ross72}
+\abntrefinfo{Ross, Cleveland e Haase}{ROSS; CLEVELAND; HAASE}{1972}
+{ROSS, H.-G.; CLEVELAND, S.; HAASE, J. Quantitative relation of {Renshaw} cell
+  discharges to monosynaptic reflex height.
+\emph{Pflügers Archiv}, v.~332, n.~1, p. 73--79, mar. 1972.
+ISSN 0031-6768, 1432-2013.
+Dispon{\'\i}vel em:
+  $<$https://link.springer.com/article/10.1007/BF00603815$>$.}
+
+\bibitem[Ross, Cleveland e Kuschmierz 1982]{ross82}
+\abntrefinfo{Ross, Cleveland e Kuschmierz}{ROSS; CLEVELAND; KUSCHMIERZ}{1982}
+{ROSS, H.-G.; CLEVELAND, S.; KUSCHMIERZ, A. Dynamic properties of renshaw
+  cells: {Equivalence} of responses to step changes in recruitment and
+  discharge frequency of motor axons.
+\emph{Pflügers Archiv}, v.~394, n.~3, p. 239--242, set. 1982.
+ISSN 0031-6768, 1432-2013.
+Dispon{\'\i}vel em:
+  $<$https://link.springer.com/article/10.1007/BF00589098$>$.}
 
 \bibitem[Ryall 1972]{ryall72}
 \abntrefinfo{Ryall}{RYALL}{1972}

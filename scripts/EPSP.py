@@ -18,10 +18,10 @@ f.close()
 maxPosition = [x for x, y in enumerate(RCV) if y==max(RCV)][0]
 
 plt.figure()
-plt.plot(t, RCV)
+plt.plot(t, RCV, 'k')
 plt.xlabel('tempo (ms)')
-plt.ylabel('Potencial de membrana (mV)')
-plt.axvline(x=t[maxPosition], color='r', label='Pico em t='+str(t[maxPosition])+' ms')
+plt.ylabel('Potencial de membrana (unidades arbitrárias)')
+plt.axvline(x=t[maxPosition], color='k', linestyle='--', label='Pico em t='+str(t[maxPosition])+' ms')
 plt.grid(True)
 plt.xlim([5, 70])
 plt.legend()

@@ -33,7 +33,7 @@ for line in lines:
 f.close()
 
 plt.figure()
-plt.plot(I, F1, label='Primeiro intervalo')
+plt.plot(I, F1, 'k', label='Primeiro intervalo')
 plt.plot(I, F2, label='Segundo intervalo')
 plt.plot(I, F3, label='Terceiro intervalo')
 plt.plot(I, F4, label='Regime estacionário')
@@ -45,7 +45,7 @@ plt.grid(True)
 plt.savefig(figsFolder + filename + '.svg', format='svg')
 
 plt.figure()
-plt.plot(t, RC)
+plt.plot(t, RC, 'k')
 plt.xlabel('tempo (ms)')
 plt.ylabel('Potencial de membrana (mV)')
 #plt.show()

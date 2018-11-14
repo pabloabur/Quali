@@ -1,4 +1,5 @@
 # TODO does not work if only a new .eps file is created
+# Should work when I just change my python code
 thesis = tese
 texs = $(wildcard *.tex) \
 	   $(wildcard sections/*tex)
