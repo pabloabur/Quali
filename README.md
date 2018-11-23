@@ -10,3 +10,4 @@ O conteúdo deste repositório foi fortemente baseado na classe abnTex.
 
 # Troubleshooting
 * If there is an error in bbl file, try deleting it.
+* Sometimes, error might appear because of encoding. In Vim, this can be solved with the command _set fileencoding=latin1_

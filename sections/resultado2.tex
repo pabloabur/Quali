@@ -1,0 +1,128 @@
+\section{Estudos sobre a parametrização}
+\label{sec:val}
+Nesta seção, a robustez da parametrização adotada foi testada por meio
+da comparação de resultados de procedimentos experimentais com resultados
+obtidos de simulações desses experimentos.
+
+\subsection{Características temporais de potenciais inibitórios
+            pós sinápticos recorrentes}
+Os resultados de simulação para o tempo de subida e tempo de meia vida são
+mostrados na Figura \ref{fig:mchammvalidation} abaixo. Como pode ser visto,
+esses tiveram faixas consideravelmente abaixo dos valores
+esperados \cite{hamm87b}. Apesar disso, algumas semelhanças existem: ambos
+são distorcidos à direita e o histograma do tempo de subida é bimodal.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:mchammrise}
+        \includegraphics[scale=0.5]{mchammrise.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:mchammwidth}
+        \includegraphics[scale=0.5]{mchammwidth.eps}
+    }
+    \caption[Validação de resultados com \citeonline{hamm87b}.]{
+        Validação de resultados com \citeonline{hamm87b}.
+        \subref{fig:mchammrise} Tempo de subida dos potenciais inibitórios
+        pós sinápticos gravados.
+        \subref{fig:mchammwidth} Tempo de meia vidas dos potenciais
+        inibitórios pós sinápticos gravados.
+         }
+    \label{fig:mchammvalidation}
+\end{figure}
+
+\subsection{Relação estática das entradas e saídas das células de renshaw}
+A relação estática de entrada e saída realizada por \citeonline{cleveland81}
+é importante para a caracterização de CRs. Foi observado que os resultados
+obtidos poderiam ser ajustados à uma função hiperbólica, que por
+conveniência foi chamada de função de Langmuir pelos autores. Esta abordagem
+também foi empregada nesse trabalho e a função em questão foi calculada como
+
+\begin{equation}
+    f_{RC}=\frac{cf_{AD}}{k+f_{AD}}
+\end{equation}
+
+em que $f_{AD}$ é a frequência do estímulo, $f_{RC}$ é a taxa de disparo
+média da CR após adaptação, $c$ é a constante de saturação e $k$ é a 
+constante de semi saturação.
+
+Esta análise foi reproduzida
+no modelo parametrizado, passado um período de adaptação da célula e 
+considerando estímulos antidrômicos como entrada e taxas de disparos como
+saída.
+
+Os resultados são apresentados na Figura \ref{fig:static}. A Figura 
+\ref{fig:static24} mostra que as curvas obtidas de 24 CRs diferentes
+não apresentaram uma saturação tão clara quanto as das descritas na
+literatura, de forma que, para taxas menores de estímulos antidrômicos,
+as taxas de disparos das CRs não aumentaram tão rápido quanto deveriam.
+Apesar disso, suas taxas de disparos máximas estiveram dentro das faixas de
+valores esperados, que vão de aproximadamente 50 até 290 pps. A Figura 
+\ref{fig:staticnorm} corrobora com esses resultados e mostra que a média
+também foi menor do que o esperado.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:static24}
+        \includegraphics[scale=0.5]{static24.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:staticnorm}
+        \includegraphics[scale=0.5]{staticnorm.eps}
+    }
+    \caption[Relações de entrada e saída de CRs.]{
+        Relações de entrada e saída de células de Renshaw.
+        \subref{fig:static24} Ajustes de funções de Langmuir à respostas
+        de 24 células de Renshaw escolhidas ao acaso 
+        (representadas cada uma por diferentes
+        cores) sujeitas a diferentes taxas de estímulo.
+        \subref{fig:staticnorm} Média normalizada das curvas obtidas
+        ajustada à uma função de Langmuir. Os pontos são as médias e 
+        as barras verticais são os desvios padrões.
+         }
+    \label{fig:static}
+\end{figure}
+
+Vale notar 
+que o efeito de um estímulo antidrômico em CRs próximas uma das outras
+é muito parecido e em alguns casos, como visto na Figura \ref{fig:static24},
+estas aparecem sobrepostas. Isso é consistente com o fato de que a taxa de 
+disparo de uma CR está relacionada com dois tipos de entrada: a sua taxa de
+ativação e o número de sinapses excitatórias agindo sobre ela
+\cite{cleveland81}, sendo este último, no modelo estudado neste
+trabalho, entendido como condutâncias sinápticas. Dessa forma, é de 
+se esperar que em regiões com populações localmente homogêneas
+de MNs as CRs ali presentes recebam uma entrada parecida.
+
+\subsection{Respostas das células de renshaw sujeitas à um estímulo
+            antidrômico}
+Outro resultado bem conhecido das CRs é o de que estas, quando estimuladas
+por um único pulso capaz de ativar todos os axônios motores fornecendo
+inibição recorrente para as mesmas, exibem disparos que
+podem durar até algumas dezenas de milissegundos \cite{eccles61b,uchiyama03a}.
+Como mostrado na Figura \ref{fig:firing}, o modelo parametrizado não é
+capaz de reproduzir essa
+característica, apresentando disparos que curtos e que não diminuem suas
+taxas com o tempo. Além disso, intensidades de estímulos menores não
+resultaram em taxas menores. O tipo de estímulo utilizado, entretanto, ativa muitos
+axônios motores sincronizadamente, criando uma resposta artificial que 
+raramente ocorre naturalmente \cite{uchiyama03a}.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{firing.eps}
+    \caption[Taxa de disparos intantâneos de CRs após um estímulo
+             antidrômico.]{Taxa de disparos intantâneos da CRs de índice
+             552 após um estímulo antidrômico. Os valores de correntes na
+             parte superior de cada gráfico indicam a intensidade do estímulo.
+             }
+	\label{fig:firing}
+\end{figure}
+
+Vale notar que a taxa máxima de disparos não ultrapassou 1000 pps, conforme
+mostram \citeonline{hultborn79}. Isso é causado pela definição de
+1 ms como período refratário absoluto das CRs.

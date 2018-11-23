@@ -107,7 +107,7 @@ for filenumber, filename in enumerate(files):
             
         binswidth = np.linspace(min(half_width),max(half_width),len(half_width)/20)
 
-    # Iterating over each chosen MN to get topotraphic recordings
+    # Iterating over each chosen MN to get topographic recordings
     recordedCount = 0
     while recordedCount < 13:
 	# Random choice to get approximately 180 pairs (14*13=182)

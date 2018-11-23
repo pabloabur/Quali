@@ -1,4 +1,4 @@
-\chapter{Resultados Preliminares e Considerações}
+\chapter{Resultados e discussões}
 \section{Desempenho Computacional}
 Na Figura \ref{fig:clustera} são apresentados os valores de \textit{speed up} das
 simulações com diferentes números de processadores. Como se pode perceber, foi 
@@ -223,6 +223,9 @@ um resultado razoavelmente próximo ao que é descrito na literatura.
 De forma geral, a forma como os parâmetros foram alterados foi por
 tentativa e erro, mas sempre guiada por um conhecimento sobre a CR 
 ou o circuito de inibição recorrente.
+
+Os valores de parâmetros não mencionados nesta seção são mantidos
+de acordo com o que foi descrito em \citeonline{cisi08}.
 
 O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
 medial do gato. Em simulações envolvendo populações de neurônios,
@@ -506,14 +509,14 @@ que, dentre os dados disponíveis, apenas os significativos e provenientes
 de gatos decapitados foram usados \cite{mccurdy94,hamm87b}.
 
 Após uma série de simulações, o valor de $g_{max_{FF}}$ que mostrou os
-resultados mais apropriados de acordo com a literatura foi 32 nS.
+resultados mais apropriados de acordo com a literatura foi 33 nS.
 O efeito da utilização desse parâmetro na distribuição topográfica dos
 PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}. O
 padrão de decaimento com distância foi semelhantes ao que foi apresentado
 na referência \cite{mccurdy94} e a média das respostas calculadas entre
-pares distantes e próximos foram de -23,60 $\mu$V e -68,83 $\mu$V,
+pares distantes e próximos foram de -23.60 $\mu$V e -68.83 $\mu$V,
 respectivamente. Comparados com os -19,63 $\pm$ 2,42 $\mu$V e 
--41,36 $\pm$ 7,19 $\mu$V para pares distantes e próximos \cite{mccurdy94},
+-41.36 $\pm$ 7.19 $\mu$V para pares distantes e próximos \cite{mccurdy94},
 respectivamente, é possível ver que os valores médios para pares próximos
 na simulação é maior do que na realidade.
 
@@ -565,7 +568,7 @@ Sabe-se que a amplitude de PIPS recorrentes entre pares de MNs próximos
 é relativamente variável, sendo observados valores de -40 $\mu$V e
 -280 $\mu$V para uma mesma distância, por exemplo. Os mecanismos
 responsáveis por essa
-característica, entretanto, são especulativos \citeonline{mccurdy94}.
+característica, entretanto, são especulativos \cite{mccurdy94}.
 Nos resultados aqui obtidos, esta variabilidade não foi observada
 e, por isso, a média de PIPS recorrentes
 para pares de MNs próximos foi maior do que o esperado.
@@ -573,7 +576,7 @@ para pares de MNs próximos foi maior do que o esperado.
 Os histogramas de amplitude da Figura
 \ref{fig:mchammamplitude} estão dentro das faixas descritas na 
 literatura \cite{hamm87b}. Existem registros de PIPS recorrentes 
-maiores \citeonline{mccurdy94}, mas estes se manifestaram esporadicamente
+maiores \cite{mccurdy94}, mas estes se manifestaram esporadicamente
 e apenas para pares de MNs próximos. O fato de alguns MNs não serem capazes 
 de gerar PIPS recorrentes não é inapropriado pois existem estudos
 mostrando que a ativação de CRs pode resultar em respostas como
@@ -583,34 +586,40 @@ ausência, alguns e até \textit{bursts} de potenciais de ação
 Vale notar que outros valores maiores de $g_{max_{FF}}$ geraram resultados
 semelhantes, mas com amplitudes máximas e valores médios elevados e
 baixa variabilidade, além de afetar negativamente os resultados de análise
-estática da CR. Menores $g_{max_{FF}}$, por sua vez, faria com que o efeito 
+estática da CR. Menores $g_{max_{FF}}$,
+por sua vez, faria com que o efeito 
 das CRs fosse muito baixo. Sendo assim, o valor de condutância adotado
 fornece um equilíbrio razoável dos resultados.
 
-\section{Validações}
-Os resultados obtidos para o tempo de subida e tempo de meia vida são
-mostrados na Figura \ref{fig:mchammvalidation} abaixo. Como pode ser visto,
-esses tiveram faixas consideravelmente abaixo dos valores
-esperados \cite{hamm87b}.
+Os parâmetros apresentados nessa seção, assim como seus valores, são
+sumarizados na Tabela \ref{tab:params_final}.
 
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:mchammrise}
-        \includegraphics[scale=0.5]{mchammrise.eps}
-    }
-    \hspace{-1cm}
-    \subfloat[][]{
-        \label{fig:mchammwidth}
-        \includegraphics[scale=0.5]{mchammwidth.eps}
-    }
-    \caption[Validação de resultados com \citeonline{hamm87b}.]{
-        Validação de resultados com \citeonline{hamm87b}.
-        \subref{fig:mchammrise} Tempo de subida dos potenciais inibitórios
-        pós sinápticos gravados.
-        \subref{fig:mchammwidth} Tempo de meia vidas dos potenciais
-        inibitórios pós sinápticos gravados.
-         }
-    \label{fig:mchammvalidation}
-\end{figure}
+\begin{table}[ht!]
+\caption{Principais parâmetros das células de Renshaw e seus valores.}
+\label{tab:params_final}
+\centering
+    \begin{tabular}{c C{3cm} C{3cm}}\hline 
+	Parâmetro & Valor & Unidade \\ \hline 
+    Resistência específica de membrana & 8500  & $\Omega\text{cm}^2$ \\
+    Capacitância específica de membrana & 1  & $\mu\text{Fcm}^{-2}$ \\
+    Corrente de reobase & 0.5 & nA \\
+    Diâmetro & 27 & $\mu$m \\
+    Comprimento & 218.2168 & $\mu$m \\
+    Limiar & 22.9608 & mV  \\ 
+    $\alpha_N$ & 6 & ms$^{-1}$  \\ 
+    $\beta_N$ & 0.5 & ms$^{-1}$ \\ 
+    $\alpha_Q$ & 0.004 & ms$^{-1}$  \\ 
+    $\beta_Q$ & 0.02 & ms$^{-1}$  \\ 
+    Condutância máxima do canal de potássio lento & 2300 & mS/cm$^2$ \\
+    Condutância máxima do canal de potássio rápido & 3.3 & mS/cm$^2$ \\
+    Condutância máxima CR - MN S & 128 & nS \\
+    Condutância máxima CR - MN FR & 119 & nS \\
+    Condutância máxima CR - MN FF & 94 & nS \\
+    Condutância máxima do ruído & 30.15 & nS \\
+    Condutância máxima MN S - CR & 15 & nS \\
+    Condutância máxima MN FR - CR & 18.33 & nS \\
+    Condutância máxima MN FF - CR & 32 & nS \\
+	\hline
+    \end{tabular}
+\end{table}
 
