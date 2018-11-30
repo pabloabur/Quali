@@ -36,7 +36,7 @@ são distorcidos à direita e o histograma do tempo de subida é bimodal.
 \subsection{Relação estática das entradas e saídas das células de renshaw}
 A relação estática de entrada e saída realizada por \citeonline{cleveland81}
 é importante para a caracterização de CRs. Foi observado que os resultados
-obtidos poderiam ser ajustados à uma função hiperbólica, que por
+obtidos poderiam ser ajustados a uma função hiperbólica, que por
 conveniência foi chamada de função de Langmuir pelos autores. Esta abordagem
 também foi empregada nesse trabalho e a função em questão foi calculada como
 
@@ -106,7 +106,7 @@ inibição recorrente para as mesmas, exibem disparos que
 podem durar até algumas dezenas de milissegundos \cite{eccles61b,uchiyama03a}.
 Como mostrado na Figura \ref{fig:firing}, o modelo parametrizado não é
 capaz de reproduzir essa
-característica, apresentando disparos que curtos e que não diminuem suas
+característica, apresentando poucos disparos e que não diminuem suas
 taxas com o tempo. Além disso, intensidades de estímulos menores não
 resultaram em taxas menores. O tipo de estímulo utilizado, entretanto, ativa muitos
 axônios motores sincronizadamente, criando uma resposta artificial que 
@@ -126,3 +126,68 @@ raramente ocorre naturalmente \cite{uchiyama03a}.
 Vale notar que a taxa máxima de disparos não ultrapassou 1000 pps, conforme
 mostram \citeonline{hultborn79}. Isso é causado pela definição de
 1 ms como período refratário absoluto das CRs.
+
+\subsection{As células de renshaw e as características de disparos de motoneurônios}
+Com o intuito de analisar os disparos e o recrutamento dos MNs,
+uma corrente
+em função do tempo foi injetada no soma de todos esses neurônios. Ela é
+descrita pela seguinte equação:
+
+\begin{equation}
+    i(t)=\left\{\begin{array}{lr}40t/1000, & t<1000\\40, & t>1000\end{array}\right.
+\end{equation}
+
+No intervalo de tempo mostrado na Figura \ref{fig:recruitCxO}, pode-se
+perceber que a presença
+das CRs resulta em padrões de disparos
+distintos. Como esperado, as CRs acabam atrasando os disparos dos MNs e 
+assim diminuem suas ocorrências.
+Além disso, é possível notar que, em ambos os casos e de forma geral,
+os MNs disparam de forma ordenada, ou seja, do menor para o maior.
+Esta última observação está de acordo com indícios de que a inibição
+recorrente não altera a ordem de recrutamento dos MNs \cite{clamann74}.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.6]{recruitCxO.eps}
+    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
+             Momentos de disparo dos somas de todos os motoneurônios simulados.
+             O eixo das ordenadas representa os índices dos motoneurônios, 
+             que são diretamente proporcionais ao tamanho dos mesmos, e o
+             eixo das abcissas são os
+             instantes de disparo. Os disparos dos motoneurônios com
+             e sem células de Renshaw estão sobrepostos.
+            }
+	\label{fig:recruitCxO}
+\end{figure}
+
+Nesse aspecto, todavia, existem algumas ressalvas. A Figura
+\ref{fig:recruitzoom} mostra com mais detalhes os instantes de disparos
+de MNs sob o efeito da inibição recorrente. Como visto na Figura
+\ref{fig:recruitzoom}\subref{fig:zoom1},
+%próximo a 25 dispararam em 340 ms. Por volta de 25 ms antes, unidades com
+%índice perto de 60 já tinham disparado. Na Figura
+%\ref{fig:spkTimes}\subref{fig:spkOldZoom2}, pode-se perceber que uma unidade
+%do tipo FR, de índice 801, dispara mais de 60 ms antes do que a do índice
+%anterior, que é do tipo S. Dessa forma, esses gráficos indicam que ocorreu
+%uma certa inversão na ordem de recrutamento.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:recruitzoom1}
+        \includegraphics[scale=0.5]{recruitzoom1.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:recruitzoom2}
+        \includegraphics[scale=0.5]{recruitzoom2.eps}
+    }
+    \caption[Visão de um intervalo reduzido dos disparos dos motoneurônios.]{
+             Visão de um intervalo reduzido dos disparos dos motoneurônios.
+             \subref{fig:recruitzoom1} Instantes de disparos de alguns
+             motoneurônios do tipo FF. \subref{fig:recruitzoom2}
+             Instantes de disparos de alguns motoneurônios do tipo S.
+         }
+    \label{fig:recruitzoom}
+\end{figure}

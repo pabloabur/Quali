@@ -119,102 +119,6 @@ outras opções, esta é postergada para trabalhos futuros.
 %    \end{tabular}
 %\end{table}
 
-\section{Disparos dos Elementos Neuronais}
-Na Figura \ref{fig:spkOldxNew}, cada MN é representado por índices, que 
-são distribuídos em ordem crescente no eixo vertical da figura e atribuídos de
-forma que seus valores sejam diretamente proporcionais ao tamanho dos
-neurônios aos quais estão associados. O eixo horizontal representa os instantes
-de disparo, que podem ser observados para cada índice. 
-
-Pode-se perceber que o uso das
-parametrizações nova e antiga resulta em padrões de disparos claramente
-distintos. Na nova, os MNs disparam de forma ordenada, do menor para o maior 
-(com algumas pequenas variações).
-Por outro lado, na antiga, a alta inibição das CRs nos MNs faz com que
-alguns destes, em certos instantes, atrasem seus disparos. Como resultado, o
-gráfico dos instantes de disparos, nesse caso, possui um aspecto ``fragmentado''.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.4]{spkOldxNew.png}
-    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
-             Momentos de disparo dos somas de todos os motoneurônios simulados.
-             O eixo das ordenadas representa os MNs e o eixo das abcissas, os
-             instantes de disparo. Os disparos dos MNs, com
-             parametrização nova e antiga das CRs, estão sobrepostos.
-            }
-	\label{fig:spkOldxNew}
-\end{figure}
-
-Essa característica dos instantes de disparos usando a parametrização antiga
-pode ser melhor observado na Figura 
-\ref{fig:spkTimes}. É possível perceber na Figura
-\ref{fig:spkTimes}\subref{fig:spkOldZoom1} que algumas unidades com índice 
-próximo a 25 dispararam em 340 ms. Por volta de 25 ms antes, unidades com
-índice perto de 60 já tinham disparado. Na Figura
-\ref{fig:spkTimes}\subref{fig:spkOldZoom2}, pode-se perceber que uma unidade
-do tipo FR, de índice 801, dispara mais de 60 ms antes do que a do índice
-anterior, que é do tipo S. Dessa forma, esses gráficos indicam que ocorreu
-uma certa inversão na ordem de recrutamento.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:spkOldZoom1}
-        \includegraphics[scale=0.275]{spkOldZoom1.png}
-    }
-    ~ 
-    \subfloat[][]{
-        \label{fig:spkOldZoom2}
-        \includegraphics[scale=0.25]{spkOldZoom2.png}
-    }
-    \caption[Visão de um intervalo reduzido dos disparos dos motoneurônios na
-             parametrização antiga.]{
-             Visão de um intervalo reduzido dos disparos dos motoneurônios na 
-             parametrização antiga.
-             \subref{fig:spkOldZoom1} Instantes de disparos dos primeiros
-             motoneurônios nos instantes iniciais. \subref{fig:spkOldZoom2}
-             Instantes de disparos dos últimos motoneurônios nos instantes
-             finais.
-         }
-    \label{fig:spkTimes}
-\end{figure}
-
-Para verificar se a força inibitória das CRs poderiam estar causando esse
-comportamento, apenas os valores das condutâncias entre CRs e MNs da
-parametrização antiga foram substituídos por aqueles descrito em
-\citeonline{maltenfort98}. O resultado dessa simulação é mostrado 
-na Figura \ref{fig:spkMaltenfort}\subref{fig:spkOldMaltenfort}. A aparência
-fragmentada dos disparos de MNs aparentemente desapareceu, mas
-uma visão de um intervalo de tempo reduzido, como o da Figura
-\ref{fig:spkMaltenfort}\subref{fig:spkOldMaltenfortZoom}, mostra que
-o padrão se tornou menos evidente. Esse resultado, no entanto, deixa em aberto
-como que as CRs estão influenciado os MNs, sendo necessário realizar
-novamente algumas validações do circuito de inibição recorrente.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:spkOldMaltenfort}
-        \includegraphics[scale=0.25]{spkOldMaltenfort.png}
-    }
-    ~ 
-    \subfloat[][]{
-        \label{fig:spkOldMaltenfortZoom}
-        \includegraphics[scale=0.275]{spkOldMaltenfortZoom.png}
-    }
-    \caption[Momentos de disparo dos somas de todos os motoneurônios
-             simulados com as condutâncias reportadas por
-             \citeonline{maltenfort98}.]{Momentos de disparo dos somas
-             de todos os motoneurônios simulados com as condutâncias
-             reportadas por
-             \citeonline{maltenfort98}. \subref{fig:spkOldMaltenfort} Visão 
-             geral. \subref{fig:spkOldMaltenfortZoom} 
-             Visão dos disparos em um intervalo reduzido.
-         }
-    \label{fig:spkMaltenfort}
-\end{figure}
-
 \section{Parametrizações}
 As parametrizações foram realizadas na ordem em que são apresentadas.
 Para realizá-las, parâmetros relacionados com as características 
@@ -239,10 +143,9 @@ A constante de tempo de membrana dos modelos aqui utilizados é definida
 como $\tau=R_mC_m$, sendo $R_m$ e $C_m$ a resistência e capacitância 
 específicas, respectivamente. Essa grandeza expressa, de forma geral, 
 quão rápido é o carregamento ou descarregamento da membrana \cite{sterratt11}.
-Dessa forma, optou-se por variar o valor de resistência específica
-da CR, mantendo o padrão de $C_m = \text{1 }\mu\text{Fcm}^{-2}$.
 
-A resistência específica foi ajustada para reproduzir os 
+Mantendo-se o padrão de $C_m = \text{1 }\mu\text{Fcm}^{-2}$,
+a resistência específica foi ajustada para reproduzir os 
 seguintes resultados descritos na literatura:
 
 \begin{itemize}
@@ -250,16 +153,17 @@ seguintes resultados descritos na literatura:
         CRs após uma estimulação de raízes ventrais forneceram alguns
         dados sobre os PEPSs resultantes.
     \item \citeonline{williams09}: Nesse trabalho de simulações, os
-        autores adotam 7.6 ms de tempo de subida e 50 ms de duração 
-        dos PEPSs descritos por \citeonline{walmsley81}.
+        autores adotam 7.6 ms de tempo de subida
+        e 50 ms de duração dos PEPSs descritos por \citeonline{walmsley81}.
 \end{itemize}
 
 Para simular o experimento descrito, uma corrente suficiente para causar
 um único potencial de ação foi injetada no soma de um
 MN do tipo S que fazia sinapse com uma CR. O resultado mostrado na Figura
-\ref{fig:RCepsp} foi obtido com $R_m=\text{8500 }\Omega\text{cm}^2$. O PEPS é
-iniciado em 10.5 ms e atinge o pico em 16.15 ms, configurando, assim, um
-tempo de subida de 6.10 ms. A duração total observada foi de aproximadamente
+\ref{fig:RCepsp} foi obtido com $R_m=\text{8500 }\Omega\text{cm}^2$
+$C_m = \text{20 }\mu\text{Fcm}^{-2}$. O PEPS é
+iniciado em 10.35 ms e atinge o pico em 16.15 ms, configurando, assim, um
+tempo de subida de 5.80 ms. A duração total observada foi de aproximadamente
 50 ms.
 
 \begin{figure}[ht!]
@@ -271,22 +175,29 @@ tempo de subida de 6.10 ms. A duração total observada foi de aproximadamente
 \end{figure}
 
 \subsubsection{Limitações}
-O tipo de estimulação utilizado no experimento pode facilmente recrutar
-mais de um MN. Dessa forma, a parametrização não levou em conta a
-amplitude do PEPS. Esse característica, juntamente com a força sináptica
-dessa conexão, foi analisada junto com estudos
-sobre conectividade e será abordado na seção \ref{sec:conn}.
+Em relação ao PEPS, existem, ainda, aspectos sobre a convergência
+de axônios motores e a força de entrada sináptica dependente do tipo de
+MN. Essas características foram analisadas junto com estudos
+sobre conectividade e serão abordadas na seção \ref{sec:conn}. A utilização
+de outros valores de resistência para diminuir a amplitude de PEPS, como
+feito por \citeonline{williams09}, alteraram
+significativamente as características de disparos mostrados na próxima
+seção e, por isso, não foram adotados.
 
-O tempo de subida foi um pouco maior do que o utilizado por
-\citeonline{williams09}. O aumento da resistência específica aumentaria
-o tempo de subida aqui apresentado, mas isso causaria um aumento
-na duração do PEPS. Sendo assim, a parametrização realizada foi tomada
-para satisfazer razoavelmente as duas características.
+O tempo de subida foi um pouco menor do que o de \citeonline{williams09}, 
+mas ainda está de acordo com o que foi descrito na literatura \cite{walmsley81}.
+Uma alteração na resistência específica mudaria
+o tempo de subida aqui apresentado, mas isso teria um impacto negativo
+na duração do PEPS. Vale notar que a constante de tempo $\tau$ foi de 8 ms,
+que é um valor condizente com trabalhos experimentais e de simulação 
+\cite{hultborn79,maltenfort98}. Portanto, a parametrização realizada foi tomada
+para satisfazer razoavelmente cada característica.
 
 \subsection{Características dos disparos das Células de Renshaw}
 Quando o potencial de membrana do modelo da CR utilizado
 ultrapassa o limiar de disparo, a condutância de sódio é acionada e
-inicia a despolarização da célula. Por outro lado, as condutâncias de 
+inicia a despolarização mais lenta da célula. Por outro lado, as
+condutâncias de 
 potássio rápida e lenta causam a repolarização, sendo que esta
 última tem mais influência sob a pós hiperpolarização (do inglês
 \textit{afterhyperpolarization}, AHP) da célula.
@@ -329,7 +240,7 @@ para obtê-los são baseadas nas seguintes referências:
 
 Usando o $R_m$ obtido na seção anterior,
 $a=\text{1753.8+16756 }\mu\text{m}^2$ e considerando que $I_r=\text{0.5 }$ nA,
-a Equação (\ref{eq:vth}) resulta em $V_l=\text{22.9678 }$ mV.
+a Equação (\ref{eq:vth}) resulta em $V_l=\text{1.14804 }$ mV.
 Tomando a CR por um cilindro, sua área superficial total será 
 $a=\text{1753.8+16756}=\pi ld$. Dessa forma, $l=\text{218.2168 }\mu$m.
 
@@ -394,8 +305,7 @@ causada pela período refratário absoluto da célula, que é de 1 ms.
 \end{figure}
 
 Com os resultados obtidos, a resistência de entrada $R_i=\frac{R_m}{a}$
-resultante foi de 45.92 M$\Omega$. Como esperado, esse valor é maior que 
-a resistência de entrada do menor MN.
+resultante foi de 45.92 M$\Omega$.
 
 \subsubsection{Limitações}
 A curva FxI apresentada se aproximou do que foi descrito na literatura, 
@@ -425,9 +335,30 @@ Isso é ilustrado na Figura \ref{fig:FxIcomp}.
     \label{fig:FxIcomp}
 \end{figure}
 
-\subsection{Potencial inibitório pós sináptico de célula de Renshaw}
-As condutâncias das CRs sobre cada tipo de MN foram ajustadas, levando em
-conta os seguintes dados experimentais:
+O fato de que as CRs possuem outros tipos de canais iônicos além 
+dos implementados aqui pode explicar essa diferença. Sabe-se que 
+que correntes de hiperpolarização e de potássio dependente de cálcio
+são responsáveis por importantes características
+de disparos dessas células, como, por exemplo, taxas de disparos
+\cite{perry15}. A utilização de dados disponíveis para implementação 
+desses canais no modelo, entretanto, não é muito apropriada por dois
+motivos: 
+
+\begin{itemize}
+    \item Estes dados foram obtidos de ratos e não há garantias que as CRs
+          desses animais tenham as mesmas características das de gatos,
+          que é a principal fonte de dados utilizada nesse estudo.
+    \item Como as conexões sinápticas relacionadas com as CRs são diferentes
+          em cada estágio de desenvolvimento do rato \cite{alvarez07}
+          e os dados em questão foram obtidos de ratos em um estágio pós
+          natal precoce, não se pode garantir que estas propriedades sejam
+          as mesmas das CRs utilizadas aqui.
+\end{itemize}
+
+\subsection{Potencial inibitório pós sináptico em motoneurônios causados pela
+            célula de Renshaw}
+As condutâncias sinápticas ativadas pelos disparos das CRs em cada
+tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
 
 \begin{itemize}
     \item \citeonline{vankeulen79}: PIPS em MNs causados por CRs.
@@ -437,7 +368,8 @@ conta os seguintes dados experimentais:
         acordo com o tipo de MN.
 \end{itemize}
 
-Após sucessivas simulações, o resultado final obtido é mostrado na 
+Após sucessivas simulações, em que ajustes foram sendo feitos de forma
+empírica, o resultado final obtido é mostrado na 
 Figura \ref{fig:PIPSres}. Os picos foram de -26.12 $\mu$V, -14.03 $\mu$V e
 -7.00 $\mu$V para MNs do tipo S, FR e FF, respectivamente.
 
@@ -487,7 +419,7 @@ abaixo:
         um indicativo da força sináptica das conexões. Estima-se que os
         axônios colaterais dos MNs que alcançam a região onde as CRs se
         encontram possuam 78.5 $\pm$ 7.5, 43.0 $\pm$ 4.2 e 35.5 $\pm$ 3
-        destas estruturas se forem do tipo FF, FR e S, respectivamente.
+        destes botões sinápticos se forem do tipo FF, FR e S, respectivamente.
 \end{itemize}
 
 Para reproduzir o experimento como em \citeonline{mccurdy94}, as simulações
@@ -506,7 +438,7 @@ de acordo com a proporção.
 
 Vale notar
 que, dentre os dados disponíveis, apenas os significativos e provenientes
-de gatos decapitados foram usados \cite{mccurdy94,hamm87b}.
+de gatos descerebrados foram usados \cite{mccurdy94,hamm87b}.
 
 Após uma série de simulações, o valor de $g_{max_{FF}}$ que mostrou os
 resultados mais apropriados de acordo com a literatura foi 33 nS.
@@ -580,14 +512,14 @@ maiores \cite{mccurdy94}, mas estes se manifestaram esporadicamente
 e apenas para pares de MNs próximos. O fato de alguns MNs não serem capazes 
 de gerar PIPS recorrentes não é inapropriado pois existem estudos
 mostrando que a ativação de CRs pode resultar em respostas como
-ausência, alguns e até \textit{bursts} de potenciais de ação
+ausência, alguns poucos e até \textit{bursts} de potenciais de ação
 \cite{ross72,ross82}.
 
 Vale notar que outros valores maiores de $g_{max_{FF}}$ geraram resultados
 semelhantes, mas com amplitudes máximas e valores médios elevados e
 baixa variabilidade, além de afetar negativamente os resultados de análise
 estática da CR. Menores $g_{max_{FF}}$,
-por sua vez, faria com que o efeito 
+por sua vez, fariam com que o efeito 
 das CRs fosse muito baixo. Sendo assim, o valor de condutância adotado
 fornece um equilíbrio razoável dos resultados.
 
@@ -618,7 +550,7 @@ sumarizados na Tabela \ref{tab:params_final}.
     Condutância máxima do ruído & 30.15 & nS \\
     Condutância máxima MN S - CR & 15 & nS \\
     Condutância máxima MN FR - CR & 18.33 & nS \\
-    Condutância máxima MN FF - CR & 32 & nS \\
+    Condutância máxima MN FF - CR & 33 & nS \\
 	\hline
     \end{tabular}
 \end{table}
