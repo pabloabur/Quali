@@ -5,6 +5,15 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.53 }
 
+\bibitem[Allen e Elbasiouny 2018]{allen18}
+\abntrefinfo{Allen e Elbasiouny}{ALLEN; ELBASIOUNY}{2018}
+{ALLEN, J.~M.; ELBASIOUNY, S.~M. The effects of model composition design
+  choices on high-fidelity simulations of motoneuron recruitment and firing
+  behaviors.
+\emph{Journal of Neural Engineering}, v.~15, n.~3, p. 036024, 2018.
+ISSN 1741-2552.
+Dispon{\'\i}vel em: $<$http://stacks.iop.org/1741-2552/15/i=3/a=036024$>$.}
+
 \bibitem[Alvarez et al. 1999]{alvarez99}
 \abntrefinfo{Alvarez et al.}{ALVAREZ et al.}{1999}
 {ALVAREZ, F.~J. et al. Distribution of cholinergic contacts on {Renshaw} cells
@@ -40,6 +49,15 @@ ISBN 978-0-470-65071-4.
 DOI: 10.1002/cphy.cp010212.
 Dispon{\'\i}vel em:
   $<$http://onlinelibrary.wiley.com/doi/10.1002/cphy.cp010212/abstract$>$.}
+
+\bibitem[Bawa, Jones e Stein 2014]{bawa14}
+\abntrefinfo{Bawa, Jones e Stein}{BAWA; JONES; STEIN}{2014}
+{BAWA, P. N.~S.; JONES, K.~E.; STEIN, R.~B. Assessment of size ordered
+  recruitment.
+\emph{Frontiers in Human Neuroscience}, v.~8, 2014.
+ISSN 1662-5161.
+Dispon{\'\i}vel em:
+  $<$https://www.frontiersin.org/articles/10.3389/fnhum.2014.00532/full$>$.}
 
 \bibitem[Bear, Connors e Paradiso 2016]{bear16}
 \abntrefinfo{Bear, Connors e Paradiso}{BEAR; CONNORS; PARADISO}{2016}
@@ -250,6 +268,14 @@ Dispon{\'\i}vel em:
 ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1192569/$>$.}
+
+\bibitem[Heckman e Enoka 2012]{heckman12}
+\abntrefinfo{Heckman e Enoka}{HECKMAN; ENOKA}{2012}
+{HECKMAN, C.; ENOKA, R.~M. Motor {Unit}.
+\emph{Comprehensive Physiology}, out. 2012.
+ISSN 9780470650714.
+Dispon{\'\i}vel em:
+  $<$https://onlinelibrary.wiley.com/doi/full/10.1002/cphy.c100087$>$.}
 
 \bibitem[Hoang et al. 2013]{hoang13}
 \abntrefinfo{Hoang et al.}{HOANG et al.}{2013}
@@ -588,6 +614,16 @@ Dispon{\'\i}vel em:
 ISSN 0340-1200, 1432-0770.
 Dispon{\'\i}vel em:
   $<$https://link.springer.com/article/10.1007/s00422-003-0417-7$>$.}
+
+\bibitem[Wakeling, Uehli e Rozitis 2006]{wakeling06}
+\abntrefinfo{Wakeling, Uehli e Rozitis}{WAKELING; UEHLI; ROZITIS}{2006}
+{WAKELING, J.~M.; UEHLI, K.; ROZITIS, A.~I. Muscle fibre recruitment can
+  respond to the mechanics of the muscle contraction.
+\emph{Journal of the Royal Society Interface}, v.~3, n.~9, p. 533--544, ago.
+  2006.
+ISSN 1742-5689.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1664648/$>$.}
 
 \bibitem[Walmsley e Tracey 1981]{walmsley81}
 \abntrefinfo{Walmsley e Tracey}{WALMSLEY; TRACEY}{1981}

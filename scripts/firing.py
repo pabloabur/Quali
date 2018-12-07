@@ -57,7 +57,7 @@ for i, ax in enumerate(axes.flatten()):
         ax.yaxis.set_major_formatter(FormatStrFormatter('%d'))
         ax.set_ylim([0, 1000])
         ax.set_xlim([0, 70])
-    ax.plot(RCSpikeInstants[i], instFR[i], '.')
+    ax.plot(RCSpikeInstants[i], instFR[i], 'k.')
     ax.set_title(str(amps[i])+' nA')
 outax.set_ylabel('Taxa de disparo instantânea, CR '+str(recordedRCIndex)+' (pps)')
 outax.set_xlabel('Tempo (ms)')
