@@ -296,6 +296,116 @@ importante para compreender fisiologicamente a relevância dos resultados
 e será analisada na próxima seção.
 
 \subsection{taxa de disparos de motoneurônios}
+Além das características de recrutamento, o controle da força muscular depende
+do disparo de unidades motoras, mas existem diferentes enfoques sobre esse
+assunto que ainda carecem de investigação \cite{piotrkiewicz17}.
+
+Esse
+é o caso de um padrão conhecido como \textit{onion skin}, em que
+unidades motoras recrutadas com limiares mais baixos mantém uma taxa de
+disparo maior do que as com limiares maiores. Isso causa um aninhamento
+de curvas de taxa de disparo, criando o aspecto de uma casca de cebola
+\cite{deluca94}. Existem também situações em que se observa uma inversão
+desse fenômeno (curvas se cruzando), configurando a \textit{onion skin}
+invertida. Estudos computacionais mostram ambos podem ter seus
+benefícios e limitações \cite{hu14,deluca15}.
+
+A Figura \ref{fig:onion} mostra o resultado de uma simulação
+em que se tenta reproduzir algum desses padrões com e sem a CR.
+Pode-se perceber uma característica mista, em que a maioria se
+comporta de acordo com o padrão \textit{onion skin}, mas também
+existem cruzamento de curvas de MNs maiores com os menores. A
+comparação da Figura \ref{fig:onion}\subref{fig:onionwithoutRC}
+com a Figura \ref{fig:onion}\subref{fig:onionwithRC} mostra
+que a presença de inibição recorrente não causa mudanças 
+visíveis nessa característica de disparo dos MNs.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:onionwithoutRC}
+        \includegraphics[scale=0.5]{onionwithoutRC.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:onionwithRC}
+        \includegraphics[scale=0.5]{onionwithRC.eps}
+    }
+    \caption[Taxa de disparo de MNs em função da taxa de disparo de
+             fibras descendentes.]{
+             Taxa de disparo de MNs em função da taxa de disparo de
+             fibras descendentes. O mapa de cores identifica os
+             motoneurônios de acordo com o seus índices.
+             \subref{fig:onionwithoutRC} Sem célula de Renshaw.
+             \subref{fig:onionwithRC} Com célula de Renshaw.
+         }
+    \label{fig:onion}
+\end{figure}
+
+A Figura \ref{fig:oniondvdt} mostra a derivada de uma das curvas mostradas
+na Figura \ref{fig:onion}, escolhida ao acaso. Pode-se observar uma
+maior diferença entre as derivadas para algumas faixas de disparos
+das fibras descendentes.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.6]{oniondvdt.eps}
+    \caption[Derivada da taxa de disparos de motoneurônios.]{
+             Derivada da taxa de disparos de motoneurônios.
+            }
+	\label{fig:oniondvdt}
+\end{figure}
+
+A variabilidade de torque e EMG observada em certos níveis de
+flexão plantar pode estar associada com a variabilidade nos 
+disparos de fibras descendentes \cite{watanabe13}. Com o intuito
+de verificar se isso poderia influir de alguma forma no resultado
+apresentado nessa sessão, a ordem do processo Gama foi decrescida
+de 7 até 1, respeitando as faixas correspondentes para cada
+MVC descritas em \citeonline{watanabe13}. Como visto na Figura
+\ref{fig:onion2}, esse aumento de variabilidade teve efeitos
+evidentes no padrão de disparos dos MNs.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:onionwithoutRC2}
+        \includegraphics[scale=0.5]{onionwithoutRC2.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:onionwithRC2}
+        \includegraphics[scale=0.5]{onionwithRC2.eps}
+    }
+    \caption[Taxa de disparo de MNs em função da taxa de disparo de
+             fibras descendentes com ordem de processo pontual
+             variável.]{
+             Taxa de disparo de MNs em função da taxa de disparo de
+             fibras descendentes com ordem de processo pontual
+             variável. O mapa de cores identifica os
+             motoneurônios de acordo com o seus índices.
+             \subref{fig:onionwithoutRC2} Sem célula de Renshaw.
+             \subref{fig:onionwithRC2} Com célula de Renshaw.
+         }
+    \label{fig:onion2}
+\end{figure}
+
+Em um esteira, à velocidade de 0.5 ms/s,
+taxas de disparos de MNs dos músculos das patas traseiras
+de gatos estão contidas no intervalo de 15 até 35 pps, aproximadamente
+\cite{hoffer87}. Paralelamente, \citeonline{walmsley78} sugeriram que,
+nessa velocidade, a porcentagem da força tetânica realizada está por
+volta de 8\%.
+
+Esses estudos são importantes para caracterizar
+diferentes tipos de movimentos. Nos resultados de simulação apresentados,
+nota-se que muito MNs alcançaram taxa de disparos relativamente alta.
+Entretanto, em movimentos como o pulo vertical, contrações próximas
+à 100\% do MVC são atingidas \cite{walmsley78} e isso envolveria
+maiores taxas de disparos de alguns MNs. Além disso, dentro de períodos
+de tempo longos, foi observado que a média de disparos de MNs é de
+131 $\pm$ 45 pps para sua faixa secundária e 53 $\pm$ 19 para sua
+faixa secundária \cite{kernell65}.
 
 \subsection{força}
 \label{sec:forca}

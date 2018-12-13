@@ -106,15 +106,6 @@ Dispon{\'\i}vel em: $<$https://insights.ovid.com/pubmed?pmid=9721951$>$.}
 ISSN 0929-5313, 1573-6873.
 Dispon{\'\i}vel em: $<$http://link.springer.com/10.1007/s10827-008-0092-8$>$.}
 
-\bibitem[Clamann, Gillies e Henneman 1974]{clamann74}
-\abntrefinfo{Clamann, Gillies e Henneman}{CLAMANN; GILLIES; HENNEMAN}{1974}
-{CLAMANN, H.~P.; GILLIES, J.~D.; HENNEMAN, E. Effects of inhibitory inputs on
-  critical firing level and rank order of motoneurons.
-\emph{Journal of Neurophysiology}, v.~37, n.~6, p. 1350--1360, nov. 1974.
-ISSN 0022-3077.
-Dispon{\'\i}vel em:
-  $<$https://www.physiology.org/doi/abs/10.1152/jn.1974.37.6.1350$>$.}
-
 \bibitem[Cleveland, Kuschmierz e Ross 1981]{cleveland81}
 \abntrefinfo{Cleveland, Kuschmierz e Ross}{CLEVELAND; KUSCHMIERZ; ROSS}{1981}
 {CLEVELAND, S.; KUSCHMIERZ, A.; ROSS, H.-G. Static input-output relations in
@@ -286,6 +277,23 @@ ISSN 1662-5196.
 Dispon{\'\i}vel em:
   $<$http://journal.frontiersin.org/article/10.3389/fninf.2013.00019/abstract$>$.}
 
+\bibitem[Hoffer et al. 1987]{hoffer87}
+\abntrefinfo{Hoffer et al.}{HOFFER et al.}{1987}
+{HOFFER, J.~A. et al. Cat hindlimb motoneurons during locomotion. {II}.
+  {Normal} activity patterns.
+\emph{Journal of Neurophysiology}, v.~57, n.~2, p. 530--553, fev. 1987.
+ISSN 0022-3077.
+Dispon{\'\i}vel em:
+  $<$https://www.physiology.org/doi/abs/10.1152/jn.1987.57.2.530$>$.}
+
+\bibitem[Hu, Rymer e Suresh 2014]{hu14}
+\abntrefinfo{Hu, Rymer e Suresh}{HU; RYMER; SURESH}{2014}
+{HU, X.; RYMER, W.~Z.; SURESH, N.~L. Motor unit firing rate patterns during
+  voluntary muscle force generation: a simulation study.
+\emph{Journal of Neural Engineering}, v.~11, n.~2, p. 026015, 2014.
+ISSN 1741-2552.
+Dispon{\'\i}vel em: $<$http://stacks.iop.org/1741-2552/11/i=2/a=026015$>$.}
+
 \bibitem[Hultborn, Jankowska e Lindstr\"{O}m 1971]{hultborn71a}
 \abntrefinfo{Hultborn, Jankowska e Lindstr\"{O}m}{HULTBORN; JANKOWSKA;
   LINDSTR\"{O}M}{1971a}
@@ -365,6 +373,16 @@ ISSN 0014-4819, 1432-1106.
 Dispon{\'\i}vel em:
   $<$https://link.springer.com/article/10.1007/BF00234008$>$.}
 
+\bibitem[Kernell 1965]{kernell65}
+\abntrefinfo{Kernell}{KERNELL}{1965}
+{KERNELL, D. The {Limits} of {Firing} {Frequency} in {Cat} {Lumbosacral}
+  {Motoneurones} {Possessing} {Different} {Time} {Course} of
+  {Afterhyperpolarization}.
+\emph{Acta Physiologica Scandinavica}, v.~65, n.~1-2, p. 87--100, set. 1965.
+ISSN 1365-201X.
+Dispon{\'\i}vel em:
+  $<$https://onlinelibrary-wiley.ez67.periodicos.capes.gov.br/doi/abs/10.1111/j.1748-1716.1965.tb04252.x$>$.}
+
 \bibitem[Kernell 2006]{kernell06}
 \abntrefinfo{Kernell}{KERNELL}{2006}
 {KERNELL, D. \emph{Motoneurone and its {Muscle} {Fibres} - {Oxford}
@@ -433,6 +451,25 @@ Dispon{\'\i}vel em:
   collaterals of ventral spinocerebellar tract neurones.
 \emph{Acta Physiologica Scandinavica}, v.~88, n.~4, p. 505--515, ago. 1973.
 ISSN 0001-6772.}
+
+\bibitem[Luca e Contessa 2015]{deluca15}
+\abntrefinfo{Luca e Contessa}{LUCA; CONTESSA}{2015}
+{LUCA, C.~J. D.; CONTESSA, P. Biomechanical benefits of the {Onion}-{Skin}
+  motor unit control scheme.
+\emph{Journal of biomechanics}, v.~48, n.~2, p. 195--203, jan. 2015.
+ISSN 0021-9290.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4295621/$>$.}
+
+\bibitem[{\DE{Luca}{De Luca}{de Luca}} e Erim 1994]{deluca94}
+\abntrefinfo{{\DE{Luca}{De Luca}{de Luca}} e Erim}{{\DE{LUCA}{DE LUCA}{DE
+  LUCA}}; ERIM}{1994}
+{{\DE{LUCA}{DE LUCA}{DE LUCA}}, C.~J.; ERIM, Z. Common drive of motor units in
+  regulation of muscle force.
+\emph{Trends in Neurosciences}, v.~17, n.~7, p. 299--305, jan. 1994.
+ISSN 0166-2236.
+Dispon{\'\i}vel em:
+  $<$http://www.sciencedirect.com/science/article/pii/0166223694900647$>$.}
 
 \bibitem[Lytton 1996]{lytton96}
 \abntrefinfo{Lytton}{LYTTON}{1996}
@@ -503,6 +540,14 @@ Dispon{\'\i}vel em: $<$http://doi.wiley.com/10.1111/ejn.12852$>$.}
   cord: spinal and corticospinal mechanisms of movement}. Cambridge, England ;
   New York: Cambridge University Press, 2012.
 ISBN 978-0-521-19258-3.}
+
+\bibitem[Piotrkiewicz e T\"{U}rker 2017]{piotrkiewicz17}
+\abntrefinfo{Piotrkiewicz e T\"{U}rker}{PIOTRKIEWICZ; T\"{U}RKER}{2017}
+{PIOTRKIEWICZ, M.; T\"{U}RKER, K.~S. Onion {Skin} or {Common} {Drive}?
+\emph{Frontiers in Cellular Neuroscience}, v.~11, jan. 2017.
+ISSN 1662-5102.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5243795/$>$.}
 
 \bibitem[Pompeiano, Wand e Srivastava 1985]{pompeiano85}
 \abntrefinfo{Pompeiano, Wand e Srivastava}{POMPEIANO; WAND; SRIVASTAVA}{1985}
@@ -625,6 +670,15 @@ ISSN 1742-5689.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1664648/$>$.}
 
+\bibitem[Walmsley, Hodgson e Burke 1978]{walmsley78}
+\abntrefinfo{Walmsley, Hodgson e Burke}{WALMSLEY; HODGSON; BURKE}{1978}
+{WALMSLEY, B.; HODGSON, J.~A.; BURKE, R.~E. Forces produced by medial
+  gastrocnemius and soleus muscles during locomotion in freely moving cats.
+\emph{Journal of Neurophysiology}, v.~41, n.~5, p. 1203--1216, set. 1978.
+ISSN 0022-3077.
+Dispon{\'\i}vel em:
+  $<$https://www.physiology.org/doi/abs/10.1152/jn.1978.41.5.1203$>$.}
+
 \bibitem[Walmsley e Tracey 1981]{walmsley81}
 \abntrefinfo{Walmsley e Tracey}{WALMSLEY; TRACEY}{1981}
 {WALMSLEY, B.; TRACEY, D.~J. An intracellular study of {Renshaw} cells.
@@ -650,6 +704,15 @@ Dispon{\'\i}vel em:
 \emph{IEEE Transactions on Neural Systems and Rehabilitation Engineering},
   v.~25, n.~11, p. 1930--1939, nov. 2017.
 ISSN 1534-4320.}
+
+\bibitem[Watanabe et al. 2013]{watanabe13}
+\abntrefinfo{Watanabe et al.}{WATANABE et al.}{2013}
+{WATANABE, R.~N. et al. Influences of premotoneuronal command statistics on the
+  scaling of motor output variability during isometric plantar flexion.
+\emph{Journal of Neurophysiology}, v.~110, n.~11, p. 2592--2606, set. 2013.
+ISSN 0022-3077.
+Dispon{\'\i}vel em:
+  $<$https://www.physiology.org/doi/abs/10.1152/jn.00073.2013$>$.}
 
 \bibitem[Westbury 1982]{westbury82}
 \abntrefinfo{Westbury}{WESTBURY}{1982}
