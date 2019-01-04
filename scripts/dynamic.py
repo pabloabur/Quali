@@ -7,8 +7,8 @@ import os
 import scipy.optimize
 
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
-trial = 4
-path = '/home/pablo/osf/Master-Thesis-Data/population/dynamic/false_decay/trial'+ str(trial)
+trial = input("Trial number: ")
+path = '/home/pablo/osf/Master-Thesis-Data/population/dynamic/false_decay/trial'+ trial
 filenamedyn = 'dyn'
 os.chdir(path)
 
@@ -18,7 +18,7 @@ timeStep_ms = 0.05
 availableRCs = range(1, 601)
 frequency1 = 5
 
-recordedRCIndex = 382#np.random.choice(availableRCs)
+recordedRCIndex = np.random.choice(availableRCs)
 
 # Preparing plot
 plt.figure()
