@@ -98,6 +98,60 @@ trabalho, entendido como condutâncias sinápticas. Dessa forma, é de
 se esperar que em regiões com populações localmente homogêneas
 de MNs as CRs ali presentes recebam uma entrada parecida.
 
+\subsection{Característica dinâmica e depressão pós sináptica
+            da célula de renshaw}
+Dentre outras contribuições, \citeonline{hultborn79} apresentaram
+evidências da existência de um mecanismo de decréscimo da eficácia
+sináptica dos terminais de axônios colaterais agindo sobre as CRs.
+Essa conclusão foi baseada na diminuição de taxas de disparo para
+diferentes frequências de estímulo. De forma semelhantes, um estudo
+mais recente em ratos mostrou que correntes pós sinápticas excitatórias
+são deprimidas de acordo com a frequência do estímulo aplicado
+\cite{moore15}.
+
+No ReMoto, essa depressão pós sináptica é descrita por
+
+\begin{equation}
+    g_{dyn}(t)=g_m-(g_m-g_{dyn}a)e^{-\frac{(t_p+t)}{\tau}}
+\end{equation}
+
+sendo $g_{dyn}$ a condutância dinâmica alterada pela depressão
+após um disparo, $g_m$ a condutância máxima original, $a$ o 
+quanto de depressão ocorrerá ($0\le\text{var}\le 1$), $\tau$ a 
+constante de tempo e $t_p$ o instante do último disparo.
+
+Para que os resultados de \citeonline{hultborn79} possam ser
+reproduzidos, valores elevados de $a$ e $tau$, tais como 0.9 e 
+400, respectivamente, são necessários. Isso, entretanto, faz com
+que as características dinâmicas da CR sejam comprometidas, como
+visto na Figura \ref{fig:dynamic}. Pode-se perceber que
+as respostas de algumas frequências estão muito próximas e a taxa
+de disparo foi diminuída a valores muito baixos. Isto está em
+desacordo com dados
+descritos na literatura \cite{ross82,uchiyama03a}.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.6]{dynamic.eps}
+    \caption[Características dinâmicas da célula de Renshaw modelada.]{
+             Características dinâmicas da célula de Renshaw modelada.
+             Em cada realização do experimento, a frequência do estímulo
+             aplicado a célula 580, inicialmente
+             de 5 Hz, foi abruptamente aumentada para um dos valores
+             indicados na legenda.
+            }
+	\label{fig:dynamic}
+\end{figure}
+
+Sendo assim, optou-se por não se utilizar esse efeito de depressão
+sináptica no modelo. Dessa forma, as adaptações descritas na literatura
+não foram reproduzidas, mas as taxas de disparos estiveram
+próximas ao esperado. Isso implica que em simulações que envolvam
+uma parte transiente da resposta da CR, como algumas realizadas na
+seção \ref{sec:hipotese}, é de se esperar que a inibição recorrente 
+seja maior, mesmo que por um breve período.
+
+
 \subsection{Respostas das células de renshaw sujeitas à um estímulo
             antidrômico}
 Outro resultado bem conhecido das CRs é o de que estas, quando estimuladas
@@ -116,7 +170,7 @@ raramente ocorre naturalmente \cite{uchiyama03a}.
 	\center
 	\includegraphics[scale=0.8]{firing.eps}
     \caption[Taxa de disparos intantâneos de CRs após um estímulo
-             antidrômico.]{Taxa de disparos intantâneos da CRs de índice
+             antidrômico.]{Taxa de disparos instantâneos da CRs de índice
              552 após um estímulo antidrômico. Os valores de correntes na
              parte superior de cada gráfico indicam a intensidade do estímulo.
              }

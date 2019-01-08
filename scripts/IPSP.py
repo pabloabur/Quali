@@ -14,9 +14,11 @@ f = open(filenamePath, 'r')
 lines = f.readlines()
 for line in lines:
     t.append(float(line.split()[0]))
-    S.append(100*float(line.split()[1]))
-    FR.append(100*float(line.split()[2]))
-    FF.append(100*float(line.split()[3]))
+    # units from Fortran are in mV, so 1e3 multiplied is required
+    # to convert to \muV
+    S.append(1000*float(line.split()[1]))
+    FR.append(1000*float(line.split()[2]))
+    FF.append(1000*float(line.split()[3]))
 f.close()
 
 #print (str(min(S)))

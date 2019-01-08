@@ -124,9 +124,8 @@ As parametrizações foram realizadas na ordem em que são apresentadas.
 Para realizá-las, parâmetros relacionados com as características 
 estudadas foram ajustados em várias simulações até que se fosse obtido
 um resultado razoavelmente próximo ao que é descrito na literatura.
-De forma geral, a forma como os parâmetros foram alterados foi por
-tentativa e erro, mas sempre guiada por um conhecimento sobre a CR 
-ou o circuito de inibição recorrente.
+De forma geral, os parâmetros foram sendo ajustados iterativamente, 
+com base no conhecimento sobre a CR ou o circuito de inibição recorrente.
 
 Os valores de parâmetros não mencionados nesta seção são mantidos
 de acordo com o que foi descrito em \citeonline{cisi08}.
@@ -159,12 +158,19 @@ seguintes resultados descritos na literatura:
 
 Para simular o experimento descrito, uma corrente suficiente para causar
 um único potencial de ação foi injetada no soma de um
-MN do tipo S que fazia sinapse com uma CR. O resultado mostrado na Figura
-\ref{fig:RCepsp} foi obtido com $R_m=\text{8500 }\Omega\text{cm}^2$
-$C_m = \text{20 }\mu\text{Fcm}^{-2}$. O PEPS é
-iniciado em 10.35 ms e atinge o pico em 16.15 ms, configurando, assim, um
-tempo de subida de 5.80 ms. A duração total observada foi de aproximadamente
-50 ms.
+MN do tipo S que fazia sinapse com uma CR. Para garantir uma atividade
+passiva da membrana, a condutância sináptica ativada pelo disparo do MN
+foi diminuída.
+
+O resultado mostrado na Figura
+\ref{fig:RCepsp} foi obtido com $R_m=\text{2500 }\Omega\text{cm}^2$ . O PEPS é
+iniciado em 10.35 ms e atinge o pico em 16.85 ms, configurando, assim, um
+tempo de subida de 6.50 ms.
+
+O valor de aproximadamente 4.5\% do pico do PEPS foi atingido 55 ms após
+a ativação da sinapse.
+Esta abordagem para analisar a duração foi utilizada por \citeonline{maltenfort98},
+que obtiveram 10\% do pico em 55 ms.
 
 \begin{figure}[ht!]
 	\center
@@ -188,9 +194,7 @@ O tempo de subida foi um pouco menor do que o de \citeonline{williams09},
 mas ainda está de acordo com o que foi descrito na literatura \cite{walmsley81}.
 Uma alteração na resistência específica mudaria
 o tempo de subida aqui apresentado, mas isso teria um impacto negativo
-na duração do PEPS. Vale notar que a constante de tempo $\tau$ foi de 8 ms,
-que é um valor condizente com trabalhos experimentais e de simulação 
-\cite{hultborn79,maltenfort98}. Portanto, a parametrização realizada foi tomada
+na duração do PEPS. Portanto, a parametrização realizada foi tomada
 para satisfazer razoavelmente cada característica.
 
 \subsection{Características dos disparos das Células de Renshaw}
@@ -240,8 +244,8 @@ para obtê-los são baseadas nas seguintes referências:
 
 Usando o $R_m$ obtido na seção anterior,
 $a=\text{1753.8+16756 }\mu\text{m}^2$ e considerando que $I_r=\text{0.5 }$ nA,
-a Equação (\ref{eq:vth}) resulta em $V_l=\text{1.14804 }$ mV.
-Tomando a CR por um cilindro, sua área superficial total será 
+a Equação (\ref{eq:vth}) resulta em $V_l=\text{6.75 }$ mV.
+Tomando a CR por um cilindro, sua área superficial será 
 $a=\text{1753.8+16756}=\pi ld$. Dessa forma, $l=\text{218.2168 }\mu$m.
 
 Com esses valores, torna-se possível parametrizar a AHP e a curva FxI.
@@ -251,35 +255,46 @@ exponenciais com taxas de crescimento ou decaimento dependendo de variáveis
 de transição.
 
 As variáveis de transição $\alpha_N$ e $\beta_N$, relacionadas com a
-dinâmica dos canais de potássio rápido, foram aumentadas para que esses
-canais se fechassem antes da membrana voltar ao nível de repouso (0 mV). 
-Sendo assim, os canais de potássio lento, com $\alpha_Q$ e $\beta_Q$,
-puderam ser ajustados para se obter as taxas de disparos e adaptação
+dinâmica dos canais de potássio rápido, foram aumentadas para que as
+correntes geradas por eles se extinguissem rapidamente. 
+Isso foi feito com o intuito de diminuir a influência destas na
+repolarização e hiperpolarização do neurônio, possivelmente diminuindo
+o número de variáveis de transição a serem ajustadas na parametrização.
+A partir de 
+então, optou-se por utilizar apenas
+os canais de potássio lento, com $\alpha_Q$ e $\beta_Q$,
+para se obter as taxas de disparos e adaptação
 apropriados.
 
-O valor de $\beta_Q$ foi ajustado até se obter uma localização do pico da
-AHP semelhante à da Figura \ref{fig:HP79}\subref{fig:AHPRC},
-que se encontra mais ao centro de sua duração. Isso significa
-alterar a velocidade de fechamento do canal para que este se não se feche
-muito próximo ao início da AHP.
-
 Considerando uma sequência de potenciais
-de ação, uma diminuição no valor de $\alpha_Q$ faz com que o decaimento
-da exponencial da variável de ativação seja mais lento. Isso permite que 
-estes possam se sobrepor, fazendo com que exista uma corrente iônica
+de ação, uma diminuição no valor de $\alpha_Q$ faz com que
+a exponencial que dita a velocidade de ativação do canal seja mais lenta.
+Reciprocamente,
+uma diminuição em $\beta_Q$ com o intuito de retardar o fechamento permite que 
+haja uma superposição nos valores da variável de transição $q(t)$,
+fazendo com que exista uma corrente iônica
 abaixando o potencial de membrana para o equilíbrio do canal de potássio
-lento (-10 mV). Inicialmente, essa corrente é relativamente pequena, mas
-ela cresce de forma cumulativa até o momento em que os efeitos das primeiras
-exponenciais gerando essa corrente desapareça. Esse fenômeno, então, gera 
+lento (-10 mV). Esse comportamento é mostrada na Figura \ref{fig:qt}. 
+Inicialmente, essa corrente é relativamente pequena, mas
+ela cresce de forma cumulativa. Esse fenômeno, então, gera 
 uma adaptação na frequência de disparo das CRs.
 
-Por fim, a amplitude do AHP foi obtida ajustando os valores máximos
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{qt.eps}
+    \caption[Evolução temporal da variável de transição $q(t)$.]{
+        Evolução temporal da variável de transição $q(t)$.}
+	\label{fig:qt}
+\end{figure}
+
+Em uma bateria de simulações,
+os valores de $\alpha_Q$ e $\beta_Q$ foram ajustados até se obter
+uma AHP e uma curva FxI semelhantes à da Figura \ref{fig:HP79}.
+Por fim, a amplitude do AHP foi obtida alterando os valores máximos
 das condutâncias de potássio rápida e lenta.
 
-Detalhes sobre a AHP podem ser visto na Figura \ref{fig:RCahp}. O pico 
-observado foi de -2 mV. Sua duração foi de aproximadamente 35 ms,
-calculada de 15 ms até o instante com 10\% do valor do pico, que foi em
-50 ms.
+Detalhes sobre a AHP obtida podem ser visto na Figura \ref{fig:RCahp}. O pico 
+observado foi de -2.4 mV. Sua duração foi de aproximadamente 33 ms.
 
 \begin{figure}[ht!]
 	\center
@@ -305,13 +320,17 @@ causada pela período refratário absoluto da célula, que é de 1 ms.
 \end{figure}
 
 Com os resultados obtidos, a resistência de entrada $R_i=\frac{R_m}{a}$
-resultante foi de 45.92 M$\Omega$. Esse valor é condizente com o fato
+resultante foi de 13.50 M$\Omega$. Esse valor é condizente com o fato
 de que as CRs são menores do que os menores MNs.
 
 \subsubsection{Limitações}
 A curva FxI apresentada se aproximou do que foi descrito na literatura, 
-mas o tempo de duração da adaptação, que é maior para correntes mais
-altas, não. Em geral, essa duração foi sempre menor no modelo aqui descrito.
+mas os três primeiros intervalos foram mais rápido do que o esperado,
+especialmente o segundo e o terceiro. Outra configuração foi encontrada
+para corrigir isso, mas isso traria impactos negativos para a AHP.
+
+Além disso, o tempo de duração da adaptação, que é maior para correntes mais
+altas, foi sempre menor no modelo aqui descrito.
 Isso é ilustrado na Figura \ref{fig:FxIcomp}.
 
 \begin{figure}[ht]
@@ -337,7 +356,7 @@ Isso é ilustrado na Figura \ref{fig:FxIcomp}.
 \end{figure}
 
 O fato de que as CRs possuem outros tipos de canais iônicos além 
-dos implementados aqui pode explicar essa diferença. Sabe-se que 
+dos implementados aqui pode explicar as diferenças encontradas. Sabe-se
 que correntes de hiperpolarização e de potássio dependente de cálcio
 são responsáveis por importantes características
 de disparos dessas células, como, por exemplo, taxas de disparos
@@ -371,8 +390,8 @@ tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
 
 Após sucessivas simulações, em que ajustes foram sendo feitos de forma
 empírica, o resultado final obtido é mostrado na 
-Figura \ref{fig:PIPSres}. Os picos foram de -26.12 $\mu$V, -14.03 $\mu$V e
--7.00 $\mu$V para MNs do tipo S, FR e FF, respectivamente.
+Figura \ref{fig:PIPSres}. Os picos foram de -26.21 $\mu$V, -14.76 $\mu$V e
+-7.13 $\mu$V para MNs do tipo S, FR e FF, respectivamente.
 
 \begin{figure}[ht!]
 	\center
@@ -533,7 +552,7 @@ sumarizados na Tabela \ref{tab:params_final}.
 \centering
     \begin{tabular}{c C{3cm} C{3cm}}\hline 
 	Parâmetro & Valor & Unidade \\ \hline 
-    Resistência específica de membrana & 8500  & $\Omega\text{cm}^2$ \\
+    Resistência específica de membrana & 2500  & $\Omega\text{cm}^2$ \\
     Capacitância específica de membrana & 1  & $\mu\text{Fcm}^{-2}$ \\
     Corrente de reobase & 0.5 & nA \\
     Diâmetro & 27 & $\mu$m \\

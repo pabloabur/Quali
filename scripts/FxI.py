@@ -5,8 +5,10 @@ import numpy as np
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
 filenamePath = '/home/pablo/osf/Master-Thesis-Data/cell/FxI/FxI.dat'
 filenamePathRC = '/home/pablo/osf/Master-Thesis-Data/cell/FxI/FxI_RC.dat'
+filenamePathqt = '/home/pablo/osf/Master-Thesis-Data/cell/FxI/qt.dat'
 filename = 'FxI'
 filenameRC = 'FxI_RC'
+filenameqt = 'qt'
 
 I = []
 F1 = []
@@ -15,6 +17,8 @@ F3 = []
 F4 = []
 t = []
 RC = []
+qt = []
+tq = []
 f = open(filenamePath, 'r')
 lines = f.readlines()
 for line in lines:
@@ -30,6 +34,13 @@ lines = f.readlines()
 for line in lines:
     t.append(float(line.split()[0]))
     RC.append(float(line.split()[1]))
+f.close()
+
+f = open(filenamePathqt, 'r')
+lines = f.readlines()
+for line in lines:
+    tq.append(float(line.split()[0]))
+    qt.append(float(line.split()[1]))
 f.close()
 
 plt.figure()
@@ -50,3 +61,10 @@ plt.xlabel('tempo (ms)')
 plt.ylabel('Potencial de membrana (mV)')
 #plt.show()
 plt.savefig(figsFolder + filenameRC + '.svg', format='svg')
+
+plt.figure()
+plt.plot(tq, qt, 'k')
+plt.xlabel('tempo (ms)')
+plt.ylabel('q(t)')
+#plt.show()
+plt.savefig(figsFolder + filenameqt + '.svg', format='svg')

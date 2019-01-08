@@ -9,7 +9,7 @@ import scipy.optimize
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
 trial = input("Trial number: ")
 path = '/home/pablo/osf/Master-Thesis-Data/population/dynamic/false_decay/trial'+ trial
-filenamedyn = 'dyn'
+filenamedyn = 'dynamic'
 os.chdir(path)
 
 simDuration_ms = 2000
@@ -18,13 +18,13 @@ timeStep_ms = 0.05
 availableRCs = range(1, 601)
 frequency1 = 5
 
-recordedRCIndex = np.random.choice(availableRCs)
+recordedRCIndex = 580#np.random.choice(availableRCs)
 
 # Preparing plot
 plt.figure()
-plt.title('Step change on RC '+str(recordedRCIndex))
-plt.ylabel('RC firing rate (pps)')
-plt.xlabel('Time (ms)')
+#plt.title('Step change on RC '+str(recordedRCIndex))
+plt.ylabel('Taxa de disparo da RC (pps)')
+plt.xlabel('Tempo (ms)')
 plt.ylim([0, 400])
 
 symbols = ['ko', 'k*', 'kX', 'k^']
@@ -82,4 +82,5 @@ for i, freq in enumerate(freqs):
     print(RCSpikeInstants)
     plt.plot(abscissae, firingRate, symbols[i], label=str(freq+5))
 plt.legend()
-plt.show()
+#plt.show()
+plt.savefig(figsFolder + filenamedyn + '.svg', format='svg')
