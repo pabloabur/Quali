@@ -82,5 +82,5 @@ for i, freq in enumerate(freqs):
     print(RCSpikeInstants)
     plt.plot(abscissae, firingRate, symbols[i], label=str(freq+5))
 plt.legend()
-#plt.show()
-plt.savefig(figsFolder + filenamedyn + '.svg', format='svg')
+plt.show()
+#plt.savefig(figsFolder + filenamedyn + '.svg', format='svg')

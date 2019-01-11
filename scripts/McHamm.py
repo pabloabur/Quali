@@ -6,7 +6,7 @@ from scipy.interpolate import UnivariateSpline
 
 # File settings
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
-path = '/home/pablo/osf/Master-Thesis-Data/population/McHamm/false_decay/trial1/'
+path = '/home/pablo/osf/Master-Thesis-Data/population/McHamm/false_decay/trial4/'
 filenameWidth = 'mchammwidth'
 filenameAmplitude = 'mchammamplitude'
 filenameRise = 'mchammrise'
@@ -18,7 +18,7 @@ timeStep_ms = 0.05
 t = np.arange(0, simDuration_ms, timeStep_ms)
 nMN = 300
 cutoff_value = 1.0
-chosenMN = 160 # This came from .dat generated, but I subtracted by one
+chosenMN = 173 # This came from .dat generated, but I subtracted by one
 
 boundary = 4.7
 RIPSPs = []
@@ -56,6 +56,7 @@ for filenumber, filename in enumerate(files):
     del availableMNsIndex[stimulatedMNIndex]
 
     # Hamm amplitude plots
+    #import pdb; pdb.set_trace()
     absPeaks = [1000*abs(y) for x,y in enumerate(peaks) if x!=stimulatedMNIndex]
     binsamp = np.linspace(min(absPeaks),max(absPeaks),len(absPeaks)/20)
     ax[filenumber].plot(3, 5, filenumber+1)
@@ -95,7 +96,6 @@ for filenumber, filename in enumerate(files):
             # half-width. This should be constantly checked, though, as I 
             # am not sure it is always like this
                 print ('Warning: Irregular RIPSP caused more than two roots at index '+str(i))
-                #import pdb; pdb.set_trace()
                 r1 = roots[0]
                 r2 = roots[-1]
             elif len(roots)<2:
@@ -124,6 +124,7 @@ for filenumber, filename in enumerate(files):
 # Ploting results
 # Closing and showing Hamm plots
 ax[-1].axis('off')
+ax[-2].axis('off')
 plt.savefig(figsFolder + filenameAmplitude + '.svg', format='svg')
 #plt.show()
 

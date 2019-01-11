@@ -1,4 +1,4 @@
-\section{Estudos sobre a parametrização}
+\section{robustez da parametrização}
 \label{sec:val}
 Nesta seção, a robustez da parametrização adotada foi testada por meio
 da comparação de resultados de procedimentos experimentais com resultados
@@ -41,17 +41,15 @@ conveniência foi chamada de função de Langmuir pelos autores. Esta abordagem
 também foi empregada nesse trabalho e a função em questão foi calculada como
 
 \begin{equation}
-    f_{RC}=\frac{cf_{AD}}{k+f_{AD}}
+    f_{CR}=\frac{cf_{AD}}{k+f_{AD}}
 \end{equation}
 
-em que $f_{AD}$ é a frequência do estímulo, $f_{RC}$ é a taxa de disparo
+em que $f_{AD}$ é a frequência do estímulo, $f_{CR}$ é a taxa de disparo
 média da CR após adaptação, $c$ é a constante de saturação e $k$ é a 
-constante de semi saturação.
-
-Esta análise foi reproduzida
-no modelo parametrizado, passado um período de adaptação da célula e 
-considerando estímulos antidrômicos como entrada e taxas de disparos como
-saída.
+constante de semi saturação. Esta análise foi reproduzida
+no modelo parametrizado, passado um período de adaptação do neurônio e 
+considerando as frequências de estímulos antidrômicos como entrada e
+taxas de disparos das CRs como saída.
 
 Os resultados são apresentados na Figura \ref{fig:static}. A Figura 
 \ref{fig:static24} mostra que as curvas obtidas de 24 CRs diferentes
@@ -61,7 +59,7 @@ as taxas de disparos das CRs não aumentaram tão rápido quanto deveriam.
 Apesar disso, suas taxas de disparos máximas estiveram dentro das faixas de
 valores esperados, que vão de aproximadamente 50 até 290 pps. A Figura 
 \ref{fig:staticnorm} corrobora com esses resultados e mostra que a média
-também foi menor do que o esperado.
+das curvas foi um pouco menor do que o esperado.
 
 \begin{figure}[ht]
     \centering
@@ -98,368 +96,32 @@ trabalho, entendido como condutâncias sinápticas. Dessa forma, é de
 se esperar que em regiões com populações localmente homogêneas
 de MNs as CRs ali presentes recebam uma entrada parecida.
 
-\subsection{Característica dinâmica e depressão pós sináptica
-            da célula de renshaw}
-Dentre outras contribuições, \citeonline{hultborn79} apresentaram
-evidências da existência de um mecanismo de decréscimo da eficácia
-sináptica dos terminais de axônios colaterais agindo sobre as CRs.
-Essa conclusão foi baseada na diminuição de taxas de disparo para
-diferentes frequências de estímulo. De forma semelhantes, um estudo
-mais recente em ratos mostrou que correntes pós sinápticas excitatórias
-são deprimidas de acordo com a frequência do estímulo aplicado
-\cite{moore15}.
-
-No ReMoto, essa depressão pós sináptica é descrita por
-
-\begin{equation}
-    g_{dyn}(t)=g_m-(g_m-g_{dyn}a)e^{-\frac{(t_p+t)}{\tau}}
-\end{equation}
-
-sendo $g_{dyn}$ a condutância dinâmica alterada pela depressão
-após um disparo, $g_m$ a condutância máxima original, $a$ o 
-quanto de depressão ocorrerá ($0\le\text{var}\le 1$), $\tau$ a 
-constante de tempo e $t_p$ o instante do último disparo.
-
-Para que os resultados de \citeonline{hultborn79} possam ser
-reproduzidos, valores elevados de $a$ e $tau$, tais como 0.9 e 
-400, respectivamente, são necessários. Isso, entretanto, faz com
-que as características dinâmicas da CR sejam comprometidas, como
-visto na Figura \ref{fig:dynamic}. Pode-se perceber que
-as respostas de algumas frequências estão muito próximas e a taxa
-de disparo foi diminuída a valores muito baixos. Isto está em
-desacordo com dados
-descritos na literatura \cite{ross82,uchiyama03a}.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.6]{dynamic.eps}
-    \caption[Características dinâmicas da célula de Renshaw modelada.]{
-             Características dinâmicas da célula de Renshaw modelada.
-             Em cada realização do experimento, a frequência do estímulo
-             aplicado a célula 580, inicialmente
-             de 5 Hz, foi abruptamente aumentada para um dos valores
-             indicados na legenda.
-            }
-	\label{fig:dynamic}
-\end{figure}
-
-Sendo assim, optou-se por não se utilizar esse efeito de depressão
-sináptica no modelo. Dessa forma, as adaptações descritas na literatura
-não foram reproduzidas, mas as taxas de disparos estiveram
-próximas ao esperado. Isso implica que em simulações que envolvam
-uma parte transiente da resposta da CR, como algumas realizadas na
-seção \ref{sec:hipotese}, é de se esperar que a inibição recorrente 
-seja maior, mesmo que por um breve período.
-
-
 \subsection{Respostas das células de renshaw sujeitas à um estímulo
             antidrômico}
 Outro resultado bem conhecido das CRs é o de que estas, quando estimuladas
 por um único pulso capaz de ativar todos os axônios motores fornecendo
 inibição recorrente para as mesmas, exibem disparos que
-podem durar até algumas dezenas de milissegundos \cite{eccles61b,uchiyama03a}.
-Como mostrado na Figura \ref{fig:firing}, o modelo parametrizado não é
+podem durar até algumas dezenas de milissegundos e taxas de disparos
+instantâneas decrescentes com o tempo \cite{eccles61b,uchiyama03a}.
+Como mostrado na Figura \ref{fig:firing}, o modelo parametrizado foi
 capaz de reproduzir essa
-característica, apresentando poucos disparos e que não diminuem suas
-taxas com o tempo. Além disso, intensidades de estímulos menores não
-resultaram em taxas menores. O tipo de estímulo utilizado, entretanto, ativa muitos
-axônios motores sincronizadamente, criando uma resposta artificial que 
-raramente ocorre naturalmente \cite{uchiyama03a}.
+característica.
 
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.8]{firing.eps}
-    \caption[Taxa de disparos intantâneos de CRs após um estímulo
+    \caption[Taxa de disparos intantâneos de uma CR após um estímulo
              antidrômico.]{Taxa de disparos instantâneos da CRs de índice
-             552 após um estímulo antidrômico. Os valores de correntes na
-             parte superior de cada gráfico indicam a intensidade do estímulo.
+             242 após um estímulo antidrômico.
              }
 	\label{fig:firing}
 \end{figure}
 
+O tipo de estímulo utilizado ativa muitos
+axônios motores sincronizadamente, criando uma resposta artificial que 
+raramente ocorre naturalmente \cite{uchiyama03a}. Apesar disso, esse
+resultado é útil para validar a parametrização das CRs.
+
 Vale notar que a taxa máxima de disparos não ultrapassou 1000 pps, conforme
 mostram \citeonline{hultborn79}. Isso é causado pela definição de
 1 ms como período refratário absoluto das CRs.
-
-\subsection{características de disparos de motoneurônios}
-Com o intuito de analisar os disparos e o recrutamento dos MNs,
-uma corrente
-em função do tempo foi injetada no soma de todos esses neurônios. Essa
-corrente $i$ é descrita pela seguinte equação:
-
-\begin{equation}
-    i(t)=40t/1000.
-\end{equation}
-
-No intervalo de 1 segundo mostrado na Figura \ref{fig:recruitCxO}, pode-se
-perceber que a presença
-das CRs resulta em padrões de disparos
-distintos. Como esperado, as CRs acabam atrasando os disparos dos MNs e 
-assim diminuem suas ocorrências.
-Além disso, é possível notar que, em ambos os casos e de forma geral,
-os MNs disparam de forma ordenada, ou seja, do menor para o maior.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.6]{recruitCxO.eps}
-    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
-             Momentos de disparo dos somas de todos os motoneurônios simulados.
-             O eixo das ordenadas representa os índices dos motoneurônios, 
-             que são diretamente proporcionais ao tamanho dos mesmos, e o
-             eixo das abcissas são os
-             instantes de disparo. Os disparos dos motoneurônios com (pontos vermelhos)
-             e sem (pontos pretos) células de Renshaw estão sobrepostos.
-            }
-	\label{fig:recruitCxO}
-\end{figure}
-
-Nesse aspecto, todavia, existem algumas ressalvas. A Figura
-\ref{fig:recruitzoom} mostra com mais detalhes os instantes de disparos
-de MNs sob o efeito da inibição recorrente. Como visto na Figura
-\ref{fig:recruitzoom}\subref{fig:recruitzoom1}, alguns MNs maiores inicialmente
-disparam com intervalos de tempo muito curtos entre si. Os menores, por
-sua vez, ainda apresentam um comportamento de disparos similar,
-mas com instantes de disparo mais espaçados,
-como visto na Figura \ref{fig:recruitzoom}\subref{fig:recruitzoom2}.
-A maior ativação de CRs ocasionada por MNs do tipo FF e o efeito do
-decaimento da inibição recorrente com a distância, acompanhado pelo 
-respectivo atraso nos disparos dos MNs, podem explicar esse resultado,
-mas levantam questionamentos sobre a forma como o circuito de 
-inibição recorrente distribui suas entradas pelo núcleo motor e a ordem
-de recrutamento no mesmo sob essas condições.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:recruitzoom1}
-        \includegraphics[scale=0.5]{recruitzoom1.eps}
-    }
-    \hspace{-1cm}
-    \subfloat[][]{
-        \label{fig:recruitzoom2}
-        \includegraphics[scale=0.5]{recruitzoom2.eps}
-    }
-    \caption[Visão de um intervalo reduzido dos disparos dos motoneurônios.]{
-             Visão de um intervalo reduzido dos disparos dos motoneurônios.
-             \subref{fig:recruitzoom1} Instantes de disparos de alguns
-             motoneurônios do tipo FF. \subref{fig:recruitzoom2}
-             Instantes de disparos de alguns motoneurônios do tipo S.
-         }
-    \label{fig:recruitzoom}
-\end{figure}
-
-Para estudar esses temas, uma configuração de simulação
-um pouco mais realista é utilizada. De forma semelhante à
-corrente injetada usada anteriormente, o núcleo motor é ativado
-por uma entrada excitatória que aumenta com o tempo de simulação,
-mas, nesse caso, isso se dá por meio de
-fibras descendentes disparando potenciais de ação com intervalos 
-médios de disparos de acordo com um processo pontual Gama de ordem 7.
-Sua frequência de disparos $FD$ é dada por
-
-\begin{equation}
-FD(i)=1500t/1000.
-\end{equation}
-
-Esses resultados são mostrados na Figura \ref{fig:recruitpoisson}.
-Pode-se observar que, na presença de CRs
-(Figura \ref{fig:recruitpoisson}\subref{fig:recruitpoissonC}),
-o comportamento descrito 
-no parágrafo anterior diminui, mas ainda pode ser observado.
-A variabilidade nos disparos causada pela ativação utilizada
-também parece ter ocasionado algo parecido na ausência das 
-CRs, como visto na Figura \ref{fig:recruitpoisson}\subref{fig:recruitpoissonO}.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:recruitpoissonO}
-        \includegraphics[scale=0.5]{recruitpoissonO.eps}
-    }
-    \hspace{-1cm}
-    \subfloat[][]{
-        \label{fig:recruitpoissonC}
-        \includegraphics[scale=0.5]{recruitpoissonC.eps}
-    }
-    \caption[Disparos de motoneurônios ativados por fibras descendentes.]{
-             Disparos de motoneurônios ativados por fibras descendentes.
-             Os retângulos desenhados sobre o gráfico mostram casos em que
-             motoneurônios de diferentes tamanho disparam praticamente
-             ao mesmo tempo.
-             \subref{fig:recruitpoissonO} Simulação sem células de Renshaw.
-             \subref{fig:recruitpoissonC} Simulação com células de Renshaw.
-         }
-    \label{fig:recruitpoisson}
-\end{figure}
-
-É de se esperar que essas características apresentadas tenham um
-impacto na sincronia dos MNs. Esse aspecto, entretanto, será abordado
-na seção \ref{sec:forca}. Por hora, convém analisar a ordem de 
-recrutamento dos MNs simulados.
-
-Na Figura \ref{fig:revrecruit}, a região de transição entre MNs do tipo
-S para o tipo FR é mostrada. Tomando o instante do primeiro disparo 
-do índice 78 como referência,
-é possível identificar casos em que ocorreram uma inversão na ordem de 
-recrutamento, ou seja, MNs maiores começam a disparar antes de menores.
-Também existiram casos de MNs sendo recrutados ao mesmo instante, como
-é o caso do 78 com o 57. Ocorrências
-semelhantes podem ser encontradas em outras partes do gráfico, mas não
-foram mostradas para não prejudicar a visualização deste resultado.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.6]{revrecruit.eps}
-    \caption[Inversão na ordem de recrutamento de motoneurônios.]{
-             Inversão na ordem de recrutamento de motoneurônios.
-             Motoneurônios do tipo S (abaixo de 75) e do tipo FR
-             (acima de 75) são separados por uma linha horizontal
-             pontilhada. Uma linha vertical tracejada foi traçada sob o
-             instante do primeiro disparo do motoneurônio 78 e 
-             linhas horizontais sólidas representam o quanto algumas
-             unidades menores estiveram atrasadas.
-            }
-	\label{fig:revrecruit}
-\end{figure}
- 
-Apesar de uma vasta literatura confirmando o princípio do tamanho, existem
-relatos de que, em algumas situações, esse padrão pode não ser rigorosamente
-reproduzido \cite{heckman12}. Uma contração balística, que se assemelha
-à simulação em questão, é um desses casos. Nesse contexto, acredita-se
-que um recrutamento invertido ou misto esteja associado à mecanismos 
-do sistema nervoso central responsáveis por conformar a força de acordo
-com a contração muscular \cite{bawa14,allen18}.
-
-Estudos de computacionais
-mostraram que variabilidade das propriedades de MNs podem
-reproduzir esse comportamento no músculo gastrocnêmios medial do gato
-\cite{allen18}. Esses características não estão presentes nas simulações
-realizadas aqui, indicando que as CRs podem, também, ser um mecanismo para
-introduzir uma inversão na ordem de recrutamento dos MNs, mesmo que
-não seja de uma forma global. De fato, a forma como o 
-PIPS recorrente é distribuído pelo núcleo motor é um indício disso
-\cite{wakeling06}, especialmente em regiões de transição entre tipos de MNs
-(S para FR e FR para FF).
-
-Isso poderia ser uma vantagem em situações
-de contração muscular rápida, pois \textit{twichtes} maiores contribuiriam
-nos instantes inicias de força muscular mais baixa.
-
-Apesar de não ter sido mencionada, a taxa de disparos dos MNs é
-importante para compreender fisiologicamente a relevância dos resultados
-e será analisada na próxima seção.
-
-\subsection{taxa de disparos de motoneurônios}
-Além das características de recrutamento, o controle da força muscular depende
-do disparo de unidades motoras, mas existem diferentes enfoques sobre esse
-assunto que ainda carecem de investigação \cite{piotrkiewicz17}.
-
-Esse
-é o caso de um padrão conhecido como \textit{onion skin}, em que
-unidades motoras recrutadas com limiares mais baixos mantém uma taxa de
-disparo maior do que as com limiares maiores. Isso causa um aninhamento
-de curvas de taxa de disparo, criando o aspecto de uma casca de cebola
-\cite{deluca94}. Existem também situações em que se observa uma inversão
-desse fenômeno (curvas se cruzando), configurando a \textit{onion skin}
-invertida. Estudos computacionais mostram ambos podem ter seus
-benefícios e limitações \cite{hu14,deluca15}.
-
-A Figura \ref{fig:onion} mostra o resultado de uma simulação
-em que se tenta reproduzir algum desses padrões com e sem a CR.
-Pode-se perceber uma característica mista, em que a maioria se
-comporta de acordo com o padrão \textit{onion skin}, mas também
-existem cruzamento de curvas de MNs maiores com os menores. A
-comparação da Figura \ref{fig:onion}\subref{fig:onionwithoutRC}
-com a Figura \ref{fig:onion}\subref{fig:onionwithRC} mostra
-que a presença de inibição recorrente não causa mudanças 
-visíveis nessa característica de disparo dos MNs.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:onionwithoutRC}
-        \includegraphics[scale=0.5]{onionwithoutRC.eps}
-    }
-    \hspace{-1cm}
-    \subfloat[][]{
-        \label{fig:onionwithRC}
-        \includegraphics[scale=0.5]{onionwithRC.eps}
-    }
-    \caption[Taxa de disparo de MNs em função da taxa de disparo de
-             fibras descendentes.]{
-             Taxa de disparo de MNs em função da taxa de disparo de
-             fibras descendentes. O mapa de cores identifica os
-             motoneurônios de acordo com o seus índices.
-             \subref{fig:onionwithoutRC} Sem célula de Renshaw.
-             \subref{fig:onionwithRC} Com célula de Renshaw.
-         }
-    \label{fig:onion}
-\end{figure}
-
-A Figura \ref{fig:oniondvdt} mostra a derivada de uma das curvas mostradas
-na Figura \ref{fig:onion}, escolhida ao acaso. Pode-se observar uma
-maior diferença entre as derivadas para algumas faixas de disparos
-das fibras descendentes.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.6]{oniondvdt.eps}
-    \caption[Derivada da taxa de disparos de motoneurônios.]{
-             Derivada da taxa de disparos de motoneurônios.
-            }
-	\label{fig:oniondvdt}
-\end{figure}
-
-A variabilidade de torque e EMG observada em certos níveis de
-flexão plantar pode estar associada com a variabilidade nos 
-disparos de fibras descendentes \cite{watanabe13}. Com o intuito
-de verificar se isso poderia influir de alguma forma no resultado
-apresentado nessa sessão, a ordem do processo Gama foi decrescida
-de 7 até 1, respeitando as faixas correspondentes para cada
-MVC descritas em \citeonline{watanabe13}. Como visto na Figura
-\ref{fig:onion2}, esse aumento de variabilidade teve efeitos
-evidentes no padrão de disparos dos MNs.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:onionwithoutRC2}
-        \includegraphics[scale=0.5]{onionwithoutRC2.eps}
-    }
-    \hspace{-1cm}
-    \subfloat[][]{
-        \label{fig:onionwithRC2}
-        \includegraphics[scale=0.5]{onionwithRC2.eps}
-    }
-    \caption[Taxa de disparo de MNs em função da taxa de disparo de
-             fibras descendentes com ordem de processo pontual
-             variável.]{
-             Taxa de disparo de MNs em função da taxa de disparo de
-             fibras descendentes com ordem de processo pontual
-             variável. O mapa de cores identifica os
-             motoneurônios de acordo com o seus índices.
-             \subref{fig:onionwithoutRC2} Sem célula de Renshaw.
-             \subref{fig:onionwithRC2} Com célula de Renshaw.
-         }
-    \label{fig:onion2}
-\end{figure}
-
-Em um esteira, à velocidade de 0.5 ms/s,
-taxas de disparos de MNs dos músculos das patas traseiras
-de gatos estão contidas no intervalo de 15 até 35 pps, aproximadamente
-\cite{hoffer87}. Paralelamente, \citeonline{walmsley78} sugeriram que,
-nessa velocidade, a porcentagem da força tetânica realizada está por
-volta de 8\%.
-
-Esses estudos são importantes para caracterizar
-diferentes tipos de movimentos. Nos resultados de simulação apresentados,
-nota-se que muito MNs alcançaram taxa de disparos relativamente alta.
-Entretanto, em movimentos como o pulo vertical, contrações próximas
-à 100\% do MVC são atingidas \cite{walmsley78} e isso envolveria
-maiores taxas de disparos de alguns MNs. Além disso, dentro de períodos
-de tempo longos, foi observado que a média de disparos de MNs é de
-131 $\pm$ 45 pps para sua faixa secundária e 53 $\pm$ 19 para sua
-faixa secundária \cite{kernell65}.
-
-\subsection{força}
-\label{sec:forca}

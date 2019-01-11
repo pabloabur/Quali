@@ -82,7 +82,7 @@ for trial in trials:
         plt.plot(spikeInstantMNc, unitNumberMNc, 'k.')
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
-        plt.xlim([830, 940])
+        plt.xlim([860, 980])
         plt.ylim([200, 240])
         #plt.show()
         plt.savefig(figsFolder + filenamezoom1 + '.svg', format='svg')
@@ -98,10 +98,10 @@ for trial in trials:
 
     elif trial == '2':
         # Create rectangles area
-        recto1 = ptchs.Rectangle((162,82.5), 3, 5, fill=False, edgecolor='k')
-        rectc1 = ptchs.Rectangle((185,83.5), 3, 4.5, fill=False, edgecolor='k')
-        rectc2 = ptchs.Rectangle((217,78.5), 3, 4.5, fill=False, edgecolor='k')
-        rectc3 = ptchs.Rectangle((249,100.5), 3, 3, fill=False, edgecolor='k')
+        recto1 = ptchs.Rectangle((160.0,83.5), 5.0, 4.0, fill=False, edgecolor='k')
+        rectc1 = ptchs.Rectangle((259.5,77.5), 5.0, 5.2, fill=False, edgecolor='k')
+        rectc2 = ptchs.Rectangle((261.5,93), 4.0, 4.0, fill=False, edgecolor='k')
+        rectc3 = ptchs.Rectangle((217.5,82.5), 3, 3, fill=False, edgecolor='k')
 
         fig, ax = plt.subplots(1)
         plt.plot(spikeInstantMNo, unitNumberMNo, 'k.')
@@ -134,16 +134,16 @@ for trial in trials:
                     unitNumberMNc[x]==78][0]
         plt.vlines(x=referenceInstant, ymin=47, ymax=78, color='k', linestyle='--')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
-                    unitNumberMNc[x]==48][0]
-        plt.hlines(y=48, xmin=referenceInstant, xmax=analysedInstant, color='k')
+                    unitNumberMNc[x]==54][0]
+        plt.hlines(y=54, xmin=referenceInstant, xmax=analysedInstant, color='k')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
                     unitNumberMNc[x]==66][0]
         plt.hlines(y=66, xmin=referenceInstant, xmax=analysedInstant, color='k')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
                     unitNumberMNc[x]==71][0]
         plt.hlines(y=71, xmin=referenceInstant, xmax=analysedInstant, color='k')
-        plt.savefig(figsFolder + filenamerecruit + '.svg', format='svg')
         #plt.show()
+        plt.savefig(figsFolder + filenamerecruit + '.svg', format='svg')
 
     #plt.savefig(figsFolder + filenameCxO + '.svg', format='svg')
     #plt.figure()

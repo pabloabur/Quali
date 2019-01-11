@@ -6,7 +6,7 @@ from scipy.interpolate import UnivariateSpline
 
 ###### File settings
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
-trial = 2
+trial = 1
 path = '/home/pablo/osf/Master-Thesis-Data/population/onion/false_decay/trial'+ str(trial)
 if trial==1:
     filenameonionwithoutRC = 'onionwithoutRC'
@@ -105,5 +105,5 @@ plt.plot(inputFreqs, dyc,
 plt.legend()
 plt.xlabel('Taxa de disparo das fibras descendentes (pps)')
 plt.ylabel('Derivada da taxa de disparo')
-#plt.show()
-plt.savefig(figsFolder + filenameoniondvdt + '.svg', format='svg')
+plt.show()
+#plt.savefig(figsFolder + filenameoniondvdt + '.svg', format='svg')

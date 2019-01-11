@@ -6,7 +6,7 @@ import scipy.optimize
 
 # File settings
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
-path = '/home/pablo/osf/Master-Thesis-Data/population/Static/false_decay/trial1/'
+path = '/home/pablo/osf/Master-Thesis-Data/population/Static/false_decay/trial3/'
 filename24 = 'static24'
 filenamenorm = 'staticnorm'
 os.chdir(path)

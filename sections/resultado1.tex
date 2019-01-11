@@ -164,8 +164,8 @@ foi diminuída.
 
 O resultado mostrado na Figura
 \ref{fig:RCepsp} foi obtido com $R_m=\text{2500 }\Omega\text{cm}^2$ . O PEPS é
-iniciado em 10.35 ms e atinge o pico em 16.85 ms, configurando, assim, um
-tempo de subida de 6.50 ms.
+iniciado em 10.35 ms e atinge o pico em 16.90 ms, configurando, assim, um
+tempo de subida de 6.55 ms.
 
 O valor de aproximadamente 4.5\% do pico do PEPS foi atingido 55 ms após
 a ativação da sinapse.
@@ -414,6 +414,80 @@ o esperado.
 	\label{fig:spont}
 \end{figure}
 
+\subsection{Característica dinâmica e depressão pós sináptica
+            da célula de renshaw}
+Para abordar essas características, as referências utilizadas foram:
+
+\begin{itemize}
+    \item \citeonline{hultborn79}: Os autores apresentaram
+          evidências da existência de um mecanismo de decréscimo da eficácia
+          sináptica dos terminais de axônios colaterais agindo sobre as CRs.
+          Essa conclusão foi baseada na diminuição de taxas de disparo para
+          diferentes frequências de estímulo. 
+    \item \citeonline{ross82}: Um aumento abrupto na frequência de
+          estimulação da CR faz com que sua
+          taxa de disparo apresente um \textit{overshoot}.
+\end{itemize}
+
+No ReMoto, uma depressão pós sináptica é descrita por
+
+\begin{equation}
+    g_{dyn}(t)=g_m-(g_m-g_{dyn}a)e^{-\frac{(t_p+t)}{\tau}}
+\end{equation}
+
+sendo $g_{dyn}$ a condutância dinâmica alterada pela depressão
+após um disparo, $g_m$ a condutância máxima original, $a$ o 
+quanto de depressão ocorrerá ($0\le\text{var}\le 1$), $\tau$ a 
+constante de tempo e $t_p$ o instante do último disparo.
+
+Para que os resultados de \citeonline{hultborn79} possam ser
+reproduzidos, simulações com estímulos antidrômicos aplicados
+com diferentes intervalos entre si foram feitas e o número de
+disparos gerados foram contabilizados.
+Valores elevados de $a$ e $tau$, tais como 0.9 e 
+400, respectivamente, foram necessários para reproduzir os dados
+disponíveis na literatura.
+
+Isso, entretanto, faz com
+que as características dinâmicas da CR sejam comprometidas, como
+visto na Figura \ref{fig:dynamic}. Para estes simulações, um estímulo
+antidrômico com 5 Hz foi aplicado. Após 600 ms, essa frequência
+foi aumentada até determinado valor, podendo ser 10, 20, 33 ou 50 Hz.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.6]{dynamic.eps}
+    \caption[Características dinâmicas da célula de Renshaw modelada.]{
+             Características dinâmicas da célula de Renshaw modelada.
+             Em cada realização do experimento, a frequência do estímulo
+             aplicado ao neurônio 580, inicialmente
+             de 5 Hz, foi abruptamente aumentada para um dos valores
+             indicados na legenda.
+            }
+	\label{fig:dynamic}
+\end{figure}
+
+Pode-se perceber que
+as respostas de algumas frequências estão muito próximas e a taxa
+de disparo foi diminuída a valores muito baixos. Isto está em
+desacordo com dados
+descritos na literatura \cite{ross82,uchiyama03a}.
+
+Sendo assim, optou-se por não se utilizar esse mecanismo de depressão
+sináptica no modelo. Dessa forma, as adaptações descritas na literatura
+não foram reproduzidas, mas as taxas de disparos estiveram
+próximas ao esperado. Isso implica que em simulações que envolvam
+uma parte transiente da resposta da CR, como algumas realizadas na
+seção \ref{sec:danger}, é de se esperar que a inibição recorrente 
+seja maior, mesmo que por um breve período.
+
+Vale citar um estudo recente mostrando que, para baixas frequências
+de estimulação, essa depressão quase não altera as correntes 
+pós sinápticas geradas \cite{moore15}. Esse resultado vai de encontro
+com os de \citeonline{hultborn79}, mas
+deve ser analisado com cautela, pois foi
+realizado em ratos.
+
 \subsection{Conectividade do Circuito de Inibição Recorrente}
 \label{sec:conn}
 O grau de conectividade dos elementos que compõem o circuito de
@@ -461,13 +535,13 @@ que, dentre os dados disponíveis, apenas os significativos e provenientes
 de gatos descerebrados foram usados \cite{mccurdy94,hamm87b}.
 
 Após uma série de simulações, o valor de $g_{max_{FF}}$ que mostrou os
-resultados mais apropriados de acordo com a literatura foi 33 nS.
+resultados mais apropriados de acordo com a literatura foi 15 nS.
 O efeito da utilização desse parâmetro na distribuição topográfica dos
 PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}. O
 padrão de decaimento com distância foi semelhantes ao que foi apresentado
-na referência \cite{mccurdy94} e a média das respostas calculadas entre
-pares distantes e próximos foram de -23.60 $\mu$V e -68.83 $\mu$V,
-respectivamente. Comparados com os -19,63 $\pm$ 2,42 $\mu$V e 
+na referência \cite{mccurdy94} e os PIPS recorrentes entre pares distantes e próximos
+foram, em média, -19.88 $\mu$V e -66.56 $\mu$V, respectivamente.
+Comparados com os -19,63 $\pm$ 2,42 $\mu$V e 
 -41.36 $\pm$ 7.19 $\mu$V para pares distantes e próximos \cite{mccurdy94},
 respectivamente, é possível ver que os valores médios para pares próximos
 na simulação é maior do que na realidade.
@@ -557,21 +631,20 @@ sumarizados na Tabela \ref{tab:params_final}.
     Corrente de reobase & 0.5 & nA \\
     Diâmetro & 27 & $\mu$m \\
     Comprimento & 218.2168 & $\mu$m \\
-    Limiar & 22.9608 & mV  \\ 
+    Limiar & 6.7532 & mV  \\ 
     $\alpha_N$ & 6 & ms$^{-1}$  \\ 
     $\beta_N$ & 0.5 & ms$^{-1}$ \\ 
-    $\alpha_Q$ & 0.004 & ms$^{-1}$  \\ 
+    $\alpha_Q$ & 0.007 & ms$^{-1}$  \\ 
     $\beta_Q$ & 0.02 & ms$^{-1}$  \\ 
-    Condutância máxima do canal de potássio lento & 2300 & mS/cm$^2$ \\
-    Condutância máxima do canal de potássio rápido & 3.3 & mS/cm$^2$ \\
-    Condutância máxima CR - MN S & 128 & nS \\
+    Condutância máxima do canal de potássio lento & 1100 & mS/cm$^2$ \\
+    Condutância máxima do canal de potássio rápido & 3.8 & mS/cm$^2$ \\
+    Condutância máxima CR - MN S & 119 & nS \\
     Condutância máxima CR - MN FR & 119 & nS \\
     Condutância máxima CR - MN FF & 94 & nS \\
-    Condutância máxima do ruído & 30.15 & nS \\
-    Condutância máxima MN S - CR & 15 & nS \\
-    Condutância máxima MN FR - CR & 18.33 & nS \\
-    Condutância máxima MN FF - CR & 33 & nS \\
+    Condutância máxima do ruído & 14 & nS \\
+    Condutância máxima MN S - CR & 6.81 & nS \\
+    Condutância máxima MN FR - CR & 8.33 & nS \\
+    Condutância máxima MN FF - CR & 15 & nS \\
 	\hline
     \end{tabular}
 \end{table}
-
