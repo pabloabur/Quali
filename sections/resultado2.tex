@@ -77,7 +77,7 @@ das curvas foi um pouco menor do que o esperado.
         \subref{fig:static24} Ajustes de funções de Langmuir à respostas
         de 24 células de Renshaw escolhidas ao acaso 
         (representadas cada uma por diferentes
-        cores) sujeitas a diferentes taxas de estímulo.
+        cores) sujeitas a diferentes taxasupramáximade estímulo.
         \subref{fig:staticnorm} Média normalizada das curvas obtidas
         ajustada à uma função de Langmuir. Os pontos são as médias e 
         as barras verticais são os desvios padrões.
@@ -102,17 +102,25 @@ Outro resultado bem conhecido das CRs é o de que estas, quando estimuladas
 por um único pulso capaz de ativar todos os axônios motores fornecendo
 inibição recorrente para as mesmas, exibem disparos que
 podem durar até algumas dezenas de milissegundos e taxas de disparos
-instantâneas decrescentes com o tempo \cite{eccles61b,uchiyama03a}.
+instantâneas decrescentes com o tempo e dependentes da força sináptica 
+total \cite{eccles61b,uchiyama03a}.
+
 Como mostrado na Figura \ref{fig:firing}, o modelo parametrizado foi
-capaz de reproduzir essa
-característica.
+capaz de reproduzir essas características. Houveram salvas de potenciais
+de ação com duração de 40 ms e suas taxas de disparo decaíram de forma 
+semelhante à uma exponencial. Com o estímulo de 67.2 \%, que é
+suficiente para ativar apenas os axônios motores dos MNs do tipo FF,
+o número de disparos e a duração da salva foram menores, pois 
+existe uma força sináptica total menor agindo sobre a CR.
 
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.8]{firing.eps}
     \caption[Taxa de disparos intantâneos de uma CR após um estímulo
              antidrômico.]{Taxa de disparos instantâneos da CRs de índice
-             242 após um estímulo antidrômico.
+             457 após um estímulo antidrômico. As porcentagens indicam
+             a intensidade do estímulo, sendo 100 \% o caso em que
+             todos os axônios motores são ativados.
              }
 	\label{fig:firing}
 \end{figure}
