@@ -54,6 +54,38 @@ for trial in trials:
         force.append(int(float(line.split()[1])))
     f.close()
 
+    ################
+    #### Extraplot
+    found = []
+    times = []
+    for j, i in enumerate(unitNumberMNo):
+        if i not in found:
+            found.append(i)
+            times.append(spikeInstantMNo[j])
+    if trial=='1':
+        current = []
+        current = times
+    else:
+        plt.figure()
+        plt.title('Sem CR')
+        plt.plot(times, found, '.')
+    found = []
+    times = []
+    for j, i in enumerate(unitNumberMNc):
+        if i not in found:
+            found.append(i)
+            times.append(spikeInstantMNc[j])
+    if trial=='1':
+        current = []
+        current = times
+    else:
+        #import pdb; pdb.set_trace()
+        plt.figure()
+        plt.title('Com CR')
+        plt.plot(times, found, '.')
+        plt.show()
+    ################
+
     #plt.figure()
     #plt.plot(t, force)
     #plt.show()

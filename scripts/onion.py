@@ -2,18 +2,22 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-from scipy.interpolate import UnivariateSpline
+from scipy import signal
+from scipy import integrate
 
 ###### File settings
+duration = 9000
+dt = 0.05
+t = np.arange(0, duration, dt)
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
-trial = 1
-path = '/home/pablo/osf/Master-Thesis-Data/population/onion/false_decay/trial'+ str(trial)
-if trial==1:
+trial = input("Trial number: ")
+path = '/home/pablo/osf/Master-Thesis-Data/population/onion/false_decay/trial' + trial
+if trial=='5':
     filenameonionwithoutRC = 'onionwithoutRC'
     filenameonionwithRC = 'onionwithRC'
     filenamesonion = [filenameonionwithoutRC, filenameonionwithRC]
     filenameoniondvdt = 'oniondvdt'
-elif trial==2:
+elif trial=='6':
     filenameonionwithoutRC = 'onionwithoutRC2'
     filenameonionwithRC = 'onionwithRC2'
     filenamesonion = [filenameonionwithoutRC, filenameonionwithRC]
@@ -21,86 +25,101 @@ elif trial==2:
 os.chdir(path)
 
 ###### Simulation settings and variables
-inputFreqs = [150, 300, 450, 600, 750, 900, 1050, 1200, 1350, 1500]
-qntdInEachGroup = 3
-availableS = [x for x in range(1, 76)]
-availableFR = [x for x in range(76, 151)]
-availableFF = [x for x in range(151, 301)]
-
-SIndex = np.random.choice(availableS, qntdInEachGroup, replace=False)
-FRIndex = np.random.choice(availableFR, qntdInEachGroup, replace=False)
-FFIndex = np.random.choice(availableFF, qntdInEachGroup, replace=False)
-indexes = np.concatenate((SIndex, FRIndex, FFIndex), axis=None)
+# Available based on prevoius knowledge
+available = [x for x in range(1, 60)]
+qntd = 6
+indexes = np.random.choice(available, qntd, replace=False)
 indexes.sort(axis=0)
 dvdtMN = np.random.choice(indexes)
-print(indexes)
-print(dvdtMN)
+print('MNs chosen to plot: ' + str(indexes))
+print('MN chosen to plot derivative: ' + str(dvdtMN))
 
-meanFR = np.zeros(len(inputFreqs))
-dyo = np.zeros(len(inputFreqs), np.float)
-dyc = np.zeros(len(inputFreqs), np.float)
-
-# Normalize data to be used by color map
-norm = matplotlib.colors.Normalize(vmin=np.min(indexes), vmax=np.max(indexes))
-
-# Choose color map
-colorMap = matplotlib.cm.tab20
-
-# create a ScalarMappable and initialize a data structure
-mappable = matplotlib.cm.ScalarMappable(cmap=colorMap, norm=norm)
-mappable.set_array([])
+dyo = np.zeros(len(t), np.float)
+dyc = np.zeros(len(t), np.float)
 
 simTypes = ['o', 'c'] # Without and with RC
 
+# Window 400 ms wide as De Luca et al. (1982). 950 ms was used
+# in De Luca and Erim (1994)
+window = signal.windows.hann(int(400/dt))
+windowArea = integrate.trapz(window, dx = dt)
+normWindow = window/windowArea*1e3 # 1e3 multiplied because area was in mili
+print('Area of normalized window: {:.1f}'.format(integrate.trapz(normWindow, dx = dt*1e-3)))
+
 for filenameonion, simType in zip(filenamesonion, simTypes):
+    # For spike times
+    unitNumber = []
+    spikeInstant = []
+    filename = 'output' + simType + '.dat'
+    f = open(filename, 'r')
+    lines = f.readlines()
+    for line in lines:
+        spikeInstant.append(float(line.split()[0]))
+        unitNumber.append(int(float(line.split()[1])))
+
+    # Normalize data to be used by color map
+    norm = matplotlib.colors.Normalize(vmin=np.min(indexes), vmax=np.max(indexes))
+
+    # Choose color map
+    colorMap = matplotlib.cm.tab20
+
+    # create a ScalarMappable and initialize a data structure
+    mappable = matplotlib.cm.ScalarMappable(cmap=colorMap, norm=norm)
+    mappable.set_array([])
+
     # Preparing plot
     plt.figure()
-    plt.xlabel('Taxa de disparo do comando descendente (pps)')
-    plt.ylabel('Taxa de disparo média do motoneurônio (pps)')
+    plt.xlabel('Tempo (ms)')
+    plt.ylabel('Taxa de disparo (pps)')
+
+    # For muscle force
+    filename = 'force' + simType + '.dat'
+    f = open(filename, 'r')
+    lines = f.readlines()
+    tForce = []
+    force = []
+    for line in lines:
+        tForce.append(int(float(line.split()[0])))
+        force.append(int(float(line.split()[1])))
 
     ###### Simulation
     for index in indexes:
-        for i, inputFreq in enumerate(inputFreqs):
-            FR = np.array([])
-            unitNumber = []
-            spikeInstant = []
-            filename = 'output' + str(i) + simType + '.dat'
-            f = open(filename, 'r')
-            lines = f.readlines()
-            for line in lines:
-                spikeInstant.append(float(line.split()[0]))
-                unitNumber.append(int(float(line.split()[1])))
+        FR = np.array([])
+        spkTrain = np.zeros(len(t))
 
-            MN = [y for x, y in enumerate(spikeInstant) if unitNumber[x]==index]
-            steadyMN = [x for x in MN if x>1000]
+        # Calculate instantaneous firing rate
+        MNspikes = [y for x, y in enumerate(spikeInstant) if unitNumber[x]==index]
+        for instant in MNspikes:
+            spkTrain[int(instant/dt)] = 1
+        FR = signal.convolve(spkTrain, normWindow, mode = 'same')
 
-            # Calculate instantaneous firing rate
-            for k in range(len(steadyMN)-1):
-                FR = np.append(FR, [1000 / (steadyMN[k+1] - steadyMN[k])])
-            # Calculate the mean
-            if not FR.size:
-                meanFR[i] = 0
-            else:
-                meanFR[i] = np.mean(FR)
-
-            # Getting values for next plot
-            if index==dvdtMN:
-                if simType=='o':
-                    dyo[0:-1] = np.diff(meanFR)/np.diff(inputFreqs)
-                    dyo[-1] = (meanFR[-1] - meanFR[-2])/(inputFreqs[-1] - inputFreqs[-2])
-                if simType=='c':
-                    dyc[0:-1] = np.diff(meanFR)/np.diff(inputFreqs)
-                    dyc[-1] = (meanFR[-1] - meanFR[-2])/(inputFreqs[-1] - inputFreqs[-2])
+        # Getting values for the other plot (happens only once)
+        if index==dvdtMN:
+            if simType=='o':
+                dyo[0:-1] = np.diff(FR)/np.diff(t)
+                dyo[-1] = (FR[-1] - FR[-2])/(t[-1] - t[-2])
+            if simType=='c':
+                dyc[0:-1] = np.diff(FR)/np.diff(t)
+                dyc[-1] = (FR[-1] - FR[-2])/(t[-1] - t[-2])
     
+        # Identifying where FR starts and ends
+        if MNspikes:
+            firstSpike = min(MNspikes)
+            lastSpike = max(MNspikes)
+            selectedFR = [float('nan') if y<firstSpike or y>lastSpike else FR[x] for x, y in enumerate(t)]
+        else:
+            selectedFR = [float('nan') for x in FR]
         #import pdb; pdb.set_trace()
-        plt.plot(inputFreqs, meanFR, linewidth=2, color=mappable.to_rgba(index))
+        plt.plot(t, selectedFR, linewidth=2, color=mappable.to_rgba(index))
+        plt.plot(tForce, force, 'k--')
+        plt.title(simType)
     plt.colorbar(mappable)
-    plt.savefig(figsFolder + filenameonion + '.svg', format='svg')
+    #plt.savefig(figsFolder + filenameonion + '.svg', format='svg')
 
 plt.figure()
-plt.plot(inputFreqs, dyo,
+plt.plot(t, dyo*1e3,
          label='Motoneurônio {} sem célula de Renshaw'.format(dvdtMN))
-plt.plot(inputFreqs, dyc,
+plt.plot(t, dyc*1e3,
          label='Motoneurônio {} com célula de Renshaw'.format(dvdtMN))
 plt.legend()
 plt.xlabel('Taxa de disparo das fibras descendentes (pps)')

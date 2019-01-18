@@ -12,10 +12,10 @@ corrente $i$ é descrita pela seguinte equação:
 No intervalo de 1 segundo mostrado na Figura \ref{fig:recruitCxO}, pode-se
 perceber que a presença
 das CRs resulta em padrões de disparos
-distintos. Como esperado, as CRs acabam atrasando os disparos dos MNs e 
-assim diminuem suas ocorrências.
+distintos. Como esperado, as CRs atrasam os disparos dos MNs e 
+também diminuem suas ocorrências.
 Além disso, é possível notar que, em ambos os casos e de forma geral,
-os MNs disparam de forma ordenada, ou seja, do menor para o maior.
+os MNs são recrutados de forma ordenada, ou seja, do menor para o maior.
 
 \begin{figure}[ht]
 	\center
@@ -88,7 +88,11 @@ A variabilidade nos disparos causada pela ativação utilizada
 também parece ter ocasionado algo parecido na ausência das 
 CRs, como visto na Figura
 \ref{fig:recruitpoisson}\subref{fig:recruitpoissonO}, mas de forma
-mais sutil.
+mais sutil. Isso pode ser observado por que as fibras descendentes,
+além de gerarem potenciais de ação de maneira estocástica, foram 
+parametrizadas com uma conectividade com MNs de 30\%, possibilitando
+MNs próximos entre si a receber correntes sinápticas que ocasionalmente
+não favoreçam o princípio do tamanho.
 
 \begin{figure}[ht]
     \centering
@@ -146,13 +150,13 @@ Apesar de uma vasta literatura confirmando o princípio do tamanho, existem
 relatos de que, em algumas situações, esse padrão pode não ser rigorosamente
 reproduzido \cite{heckman12}. Uma contração balística, que se assemelha
 à simulação em questão, é um desses casos. Nesse contexto, acredita-se
-que um recrutamento invertido ou misto esteja associado à mecanismos 
+que um recrutamento invertido ou misto esteja associado a mecanismos 
 do sistema nervoso central responsáveis por conformar a força de acordo
 com a contração muscular \cite{bawa14,allen18}.
 
-Estudos de computacionais
+Estudos computacionais
 mostraram que variabilidade das propriedades de MNs podem
-reproduzir esse comportamento no músculo gastrocnêmios medial do gato
+reproduzir esse comportamento no músculo gastrocnêmio medial do gato
 \cite{allen18}. Esses características não estão presentes nas simulações
 realizadas aqui, indicando que as CRs podem, também, ser um mecanismo para
 introduzir uma inversão na ordem de recrutamento dos MNs, mesmo que
@@ -170,9 +174,22 @@ importante para compreender fisiologicamente a relevância dos resultados
 e será analisada na próxima seção.
 
 \subsection{taxa de disparos de motoneurônios}
-Além das características de recrutamento, o controle da força muscular depende
-do disparo de unidades motoras, mas existem diferentes enfoques sobre esse
-assunto que ainda carecem de investigação \cite{piotrkiewicz17}.
+Existem trabalhos na literatura que tentaram relacionar diferentes tipos
+de movimentos com a taxa de disparos de MNs ou força.
+\citeonline{hoffer87} mostraram que em um esteira, à velocidade de 0.5 ms/s,
+taxas de disparos de MNs dos músculos das patas traseiras
+de gatos estão contidas no intervalo de 15 até 35 pps, aproximadamente.
+Paralelamente, \citeonline{walmsley78} sugeriram que,
+nessa velocidade, a porcentagem da força tetânica realizada está por
+volta de 8\%.  
+Em movimentos como o pulo vertical, contrações próximas
+à 100\% do MVC são atingidas \cite{walmsley78} e isso envolveria
+maiores taxas de disparos.
+
+Além de envolver o recrutamento de unidades motoras, o controle da força
+muscular também depende
+dos suas taxas de disparos. Existem, entretanto, diferentes enfoques sobre
+esse assunto que ainda carecem de investigação \cite{piotrkiewicz17}.
 
 Esse
 é o caso de um padrão conhecido como \textit{onion skin}, em que
@@ -181,11 +198,10 @@ disparo maior do que as com limiares maiores. Isso causa um aninhamento
 de curvas de taxa de disparo, criando o aspecto de uma casca de cebola
 \cite{deluca94}. Existem também situações em que se observa uma inversão
 desse fenômeno (curvas se cruzando), configurando a \textit{onion skin}
-invertida. Estudos computacionais mostram ambos podem ter seus
-benefícios e limitações \cite{hu14,deluca15}.
+invertida \cite{hu14,oya09}.
 
 A Figura \ref{fig:onion} mostra o resultado de uma simulação
-em que se tenta reproduzir algum desses padrões com e sem a CR.
+em que se tenta reproduzir alguns desses padrões com e sem a CR.
 Pode-se perceber uma característica mista, em que a maioria se
 comporta de acordo com o padrão \textit{onion skin}, mas também
 existem cruzamento de curvas de MNs maiores com os menores. A
@@ -235,10 +251,10 @@ flexão plantar pode estar associada com a variabilidade nos
 disparos de fibras descendentes \cite{watanabe13}. Com o intuito
 de verificar se isso poderia influir de alguma forma no resultado
 apresentado nessa sessão, a ordem do processo Gama foi decrescida
-de 7 até 1, respeitando as faixas correspondentes para cada
+de 7 até 2, respeitando as faixas correspondentes para cada
 MVC descritas em \citeonline{watanabe13}. Como visto na Figura
 \ref{fig:onion2}, esse aumento de variabilidade teve efeitos
-evidentes no padrão de disparos dos MNs.
+evidentes (o que??) no (oq??) dos MNs.
 
 \begin{figure}[ht]
     \centering
@@ -263,25 +279,6 @@ evidentes no padrão de disparos dos MNs.
          }
     \label{fig:onion2}
 \end{figure}
-
-Em um esteira, à velocidade de 0.5 ms/s,
-taxas de disparos de MNs dos músculos das patas traseiras
-de gatos estão contidas no intervalo de 15 até 35 pps, aproximadamente
-\cite{hoffer87}. Paralelamente, \citeonline{walmsley78} sugeriram que,
-nessa velocidade, a porcentagem da força tetânica realizada está por
-volta de 8\%.
-
-Esses estudos são importantes para caracterizar
-diferentes tipos de movimentos. Nos resultados de simulação apresentados,
-nota-se que muitos MNs alcançaram taxa de disparos relativamente alta.
-Entretanto, em movimentos como o pulo vertical, contrações próximas
-à 100\% do MVC são atingidas \cite{walmsley78} e isso envolveria
-maiores taxas de disparos de alguns MNs. Além disso, dentro de períodos
-de tempo longos, foi observado que a média de disparos de MNs é de
-131 $\pm$ 45 pps para sua faixa secundária e 53 $\pm$ 19 para sua
-faixa secundária \cite{kernell65}.
-
-
 
 \subsection{situações de força fásica?}
 \label{sec:danger}
