@@ -1,9 +1,10 @@
-\section{efeitos da presença de inibição recorrente em simulações}
+\section{Efeitos da Inibição Recorrente em Simulações}
 \subsection{características de disparos de motoneurônios}
 Com o intuito de analisar os disparos e o recrutamento dos MNs,
 uma corrente
-em função do tempo foi injetada no soma de todos esses neurônios. Essa
-corrente $i$ é descrita pela seguinte equação:
+em função do tempo foi injetada no soma de todos esses neurônios. Nessa
+simulação, a presença ou ausência da inibição recorrente é analisada no
+mesmo circuito e a corrente $i$ é descrita pela seguinte equação:
 
 \begin{equation}
     i(t)=40t/1000.
@@ -39,9 +40,9 @@ disparam praticamente ao mesmo tempo. Os menores, por
 sua vez, ainda apresentam um comportamento de disparos similar,
 mas não parecem estar tão sincronizados,
 como visto na Figura \ref{fig:recruitzoom}\subref{fig:recruitzoom2}.
-A maior ativação de CRs ocasionada por MNs do tipo FF e o efeito do
-decaimento da inibição recorrente com a distância, acompanhado pelo 
-respectivo atraso nos disparos dos MNs, podem explicar esse resultado,
+A maior ativação de CRs ocasionada por MNs do tipo FF, o efeito do
+decaimento da inibição recorrente com a distância e o 
+respectivo atraso nos disparos dos MNs podem explicar esse resultado,
 mas levantam questionamentos sobre a forma como o circuito de 
 inibição recorrente distribui suas entradas pelo núcleo motor e a ordem
 de recrutamento deste sob essas condições.
@@ -72,7 +73,7 @@ corrente injetada usada anteriormente, o núcleo motor é ativado
 por uma entrada excitatória que aumenta com o tempo de simulação,
 mas, nesse caso, isso se dá por meio de
 fibras descendentes disparando potenciais de ação com intervalos 
-médios de disparos de acordo com um processo pontual Gama de ordem 7.
+médios de disparos de acordo com um processo pontual Poisson.
 Sua frequência de disparos $FD$ é dada por
 
 \begin{equation}
@@ -83,16 +84,12 @@ Esses resultados são mostrados na Figura \ref{fig:recruitpoisson}.
 Pode-se observar que, na presença de CRs
 (Figura \ref{fig:recruitpoisson}\subref{fig:recruitpoissonC}),
 o comportamento descrito 
-no parágrafo anterior diminui, mas ainda pode ser observado.
+anteriormente diminui, mas ainda pode ser observado.
 A variabilidade nos disparos causada pela ativação utilizada
 também parece ter ocasionado algo parecido na ausência das 
 CRs, como visto na Figura
 \ref{fig:recruitpoisson}\subref{fig:recruitpoissonO}, mas de forma
-mais sutil. Isso pode ser observado por que as fibras descendentes,
-além de gerarem potenciais de ação de maneira estocástica, foram 
-parametrizadas com uma conectividade com MNs de 30\%, possibilitando
-MNs próximos entre si a receber correntes sinápticas que ocasionalmente
-não favoreçam o princípio do tamanho.
+mais sutil.
 
 \begin{figure}[ht]
     \centering
@@ -122,14 +119,12 @@ na seção \ref{sec:forca}. Por hora, convém analisar a ordem de
 recrutamento dos MNs simulados.
 
 Na Figura \ref{fig:revrecruit}, a região de transição entre MNs do tipo
-S para o tipo FR é mostrada. Tomando o instante do primeiro disparo 
-do índice 78 como referência,
+S para o tipo FR na presença de inibição recorrente é mostrada. Tomando
+o instante do primeiro disparo do índice 78 como referência,
 é possível identificar casos em que ocorreram uma inversão na ordem de 
 recrutamento, ou seja, MNs maiores começam a disparar antes de menores.
-Também existiram casos de MNs sendo recrutados ao mesmo instante, como
-é o caso do 78 com o 64. Ocorrências
-semelhantes podem ser encontradas em outras partes do gráfico, mas não
-foram mostradas para não prejudicar a visualização deste resultado.
+Também existiram casos de MNs sendo recrutados praticamente ao mesmo
+instante, como é o caso do 78 com o 64. 
 
 \begin{figure}[ht]
 	\center
@@ -146,6 +141,56 @@ foram mostradas para não prejudicar a visualização deste resultado.
 	\label{fig:revrecruit}
 \end{figure}
  
+Ocorrências
+semelhantes podem ser encontradas em outras partes do gráfico, mas não
+foram mostradas para não prejudicar a visualização deste resultado. Deve-se
+notar, porém, que essa característica também foi observada na ausência
+das CRs, como visto na Figura \ref{fig:recruitpoissonO}. Isso pode ser
+explicado pelo fato de que as fibras descendentes,
+além de gerarem potenciais de ação de maneira estocástica, foram 
+parametrizadas com uma conectividade com MNs de 30\%, possibilitando
+MNs próximos entre si a receber correntes sinápticas que ocasionalmente
+não favoreçam o princípio do tamanho.
+
+Sendo assim, uma comparação mais direta entre esses casos é necessária. Para
+esse fim, a Figura \ref{fig:recruitFirsts} é apresentada. Com apenas os 
+instantes do primeiro disparo de cada MNs mostrado, é possível ver que
+a presença da CR faz com que haja uma maior dispersão destes, ou seja,
+o intervalo de tempo entre os disparos foi maior.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:recruitFirstsC}
+        \includegraphics[scale=0.5]{recruitFirstsC.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:recruitFirstsO}
+        \includegraphics[scale=0.5]{recruitFirstsO.eps}
+    }
+    \caption[Primeiros instantes de disparos dos motoneurônios.]{
+             Primeiros instantes de disparos dos motoneurônios.
+             \subref{fig:recruitFirstsC} Com células de Renshaw.
+             \subref{fig:recruitFirstsO} Sem células de Renshaw.
+         }
+    \label{fig:recruitFirsts}
+\end{figure}
+
+Pode-se notar que, em ambos os casos, essa dispersão é mais acentuada
+para níveis mais altos de excitação, ou seja, quando as maiores unidades
+motoras do núcleo motor são ativadas.
+Entretanto, experimentos em seres humanos sugeriram que, em contrações
+voluntárias em rampa, uma crescente inibição de CRs ocorre com o aumento
+da força \cite{hultborn79b}. Isso poderia fazer com que os últimos 
+instantes de disparos da Figura \ref{fig:recruitFirstsC} se tornassem
+menos espaçados, semelhantes aos últimos da Figura
+\ref{fig:recruitFirstsO},
+mas não mudaria os efeitos observados no início da contração. Vale
+ressaltar que esses resultados experimentais, todavia, se basearam em
+métodos indiretos e não esclarecem a forma como essa mudança na inibição
+recorrente ocorre.
+
 Apesar de uma vasta literatura confirmando o princípio do tamanho, existem
 relatos de que, em algumas situações, esse padrão pode não ser rigorosamente
 reproduzido \cite{heckman12}. Uma contração balística, que se assemelha
@@ -159,21 +204,35 @@ mostraram que variabilidade das propriedades de MNs podem
 reproduzir esse comportamento no músculo gastrocnêmio medial do gato
 \cite{allen18}. Esses características não estão presentes nas simulações
 realizadas aqui, indicando que as CRs podem, também, ser um mecanismo para
-introduzir uma inversão na ordem de recrutamento dos MNs, mesmo que
-não seja de uma forma global. De fato, a forma como o 
+introduzir uma certa inversão na ordem de recrutamento dos MNs.
+De fato, a forma como o 
 PIPS recorrente é distribuído pelo núcleo motor é um indício disso
 \cite{wakeling06}, especialmente em regiões de transição entre tipos de MNs
 (S para FR e FR para FF).
 
-Isso poderia ser uma vantagem em situações
+\citeonline{friedman81} sugeriram que a presença das CRs poderia ser um
+mecanismo para gerar uma inversão na ordem de recrutamento de MNs. Os
+resultados aqui apresentados são parcialmente favoráveis a esta
+ideia, pois, apesar de uma inversão ter ocorrido entre MNs
+próximos uns aos outros, um recrutamento seletivo de MNs maiores não
+foi observado.
+
+Portanto, pelos resultados apresentados, a presença da CR parece ser
+um elemento capaz de causar um inversão na ordem de recrutamento em
+situações aonde existem MNs de diferentes tipos próximos uns aos outros.
+Além disso, ela também parece ser capaz de atrasar os disparos destes,
+possibilitando que mais inversões possam acontecer em outras regiões
+do núcleo motor e aumentando suas respectivas diferenças entre instantes
+de disparo. Isso poderia ser uma vantagem em situações
 de contração muscular rápida, pois \textit{twichtes} maiores contribuiriam
 nos instantes inicias de força muscular mais baixa.
-
-Apesar de não ter sido mencionada, a taxa de disparos dos MNs é
-importante para compreender fisiologicamente a relevância dos resultados
-e será analisada na próxima seção.
+Os possíveis desdobramentos fisiológicos desses resultados 
+serão explorados na sessão \ref{sec:danger}.
 
 \subsection{taxa de disparos de motoneurônios}
+Apesar de não ter sido mencionada, a taxa de disparos dos MNs é
+importante para compreender fisiologicamente a relevância dos resultados.
+
 Existem trabalhos na literatura que tentaram relacionar diferentes tipos
 de movimentos com a taxa de disparos de MNs ou força.
 \citeonline{hoffer87} mostraram que em um esteira, à velocidade de 0.5 ms/s,
@@ -246,41 +305,10 @@ das fibras descendentes.
 	\label{fig:oniondvdt}
 \end{figure}
 
-A variabilidade de torque e EMG observada em certos níveis de
-flexão plantar pode estar associada com a variabilidade nos 
-disparos de fibras descendentes \cite{watanabe13}. Com o intuito
-de verificar se isso poderia influir de alguma forma no resultado
-apresentado nessa sessão, a ordem do processo Gama foi decrescida
-de 7 até 2, respeitando as faixas correspondentes para cada
-MVC descritas em \citeonline{watanabe13}. Como visto na Figura
-\ref{fig:onion2}, esse aumento de variabilidade teve efeitos
-evidentes (o que??) no (oq??) dos MNs.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:onionwithoutRC2}
-        \includegraphics[scale=0.5]{onionwithoutRC2.eps}
-    }
-    \hspace{-1cm}
-    \subfloat[][]{
-        \label{fig:onionwithRC2}
-        \includegraphics[scale=0.5]{onionwithRC2.eps}
-    }
-    \caption[Taxa de disparo de MNs em função da taxa de disparo de
-             fibras descendentes com ordem de processo pontual
-             variável.]{
-             Taxa de disparo de MNs em função da taxa de disparo de
-             fibras descendentes com ordem de processo pontual
-             variável. O mapa de cores identifica os
-             motoneurônios de acordo com o seus índices.
-             \subref{fig:onionwithoutRC2} Sem célula de Renshaw.
-             \subref{fig:onionwithRC2} Com célula de Renshaw.
-         }
-    \label{fig:onion2}
-\end{figure}
-
-\subsection{situações de força fásica?}
-\label{sec:danger}
-\subsection{força}
+\subsection{Diminuição da Força}
+\subsection{Oscilações de 10 Hz}
 \label{sec:forca}
+\subsection{Distorções}
+\subsection{Contrações Rápidas}
+\label{sec:danger}
+\subsection{Conectividade}

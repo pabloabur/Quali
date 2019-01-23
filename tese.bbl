@@ -97,6 +97,13 @@ ISBN 978-0-521-84321-8.}
 ISSN 0959-4965.
 Dispon{\'\i}vel em: $<$https://insights.ovid.com/pubmed?pmid=9721951$>$.}
 
+\bibitem[Cisi 2007]{cisi07}
+\abntrefinfo{Cisi}{CISI}{2007}
+{CISI, R. R.~L.
+\emph{Sistema de {Simulação} de {Circuitos} {Neuronais} da {Medula}
+  {Espinhal} {Desenvolvido} em {Arquitetura} {Web}}.
+Tese (Doutorado) --- Universidade de São Paulo, São Paulo, 2007.}
+
 \bibitem[Cisi e Kohn 2008]{cisi08}
 \abntrefinfo{Cisi e Kohn}{CISI; KOHN}{2008}
 {CISI, R. R.~L.; KOHN, A.~F. Simulation system of spinal cord motor nuclei and
@@ -331,9 +338,19 @@ ISSN 0001-6772.}
 \emph{Acta Physiologica Scandinavica}, v.~134, n.~3, p. 347--361, nov. 1988.
 ISSN 0001-6772.}
 
+\bibitem[Hultborn e Pierrot-Deseilligny 1979]{hultborn79b}
+\abntrefinfo{Hultborn e Pierrot-Deseilligny}{HULTBORN;
+  PIERROT-DESEILLIGNY}{1979a}
+{HULTBORN, H.; PIERROT-DESEILLIGNY, E. Changes in recurrent inhibition during
+  voluntary soleus contractions in man studied by an {H}-reflex technique.
+\emph{The Journal of Physiology}, v.~297, n.~1, p. 229--251, 1979.
+ISSN 1469-7793.
+Dispon{\'\i}vel em:
+  $<$https://physoc.onlinelibrary.wiley.com/doi/abs/10.1113/jphysiol.1979.sp013037$>$.}
+
 \bibitem[Hultborn e Pierrot-Deseilligny 1979]{hultborn79}
 \abntrefinfo{Hultborn e Pierrot-Deseilligny}{HULTBORN;
-  PIERROT-DESEILLIGNY}{1979}
+  PIERROT-DESEILLIGNY}{1979b}
 {HULTBORN, H.; PIERROT-DESEILLIGNY, E. Input-output relations in the pathway of
   recurrent inhibition to motoneurones in the cat.
 \emph{The Journal of Physiology}, v.~297, p. 267--287, dez. 1979.
@@ -372,16 +389,6 @@ ISBN 978-0-07-139011-8 978-0-07-181001-2 978-1-283-65624-5. Dispon{\'\i}vel em:
 ISSN 0014-4819, 1432-1106.
 Dispon{\'\i}vel em:
   $<$https://link.springer.com/article/10.1007/BF00234008$>$.}
-
-\bibitem[Kernell 1965]{kernell65}
-\abntrefinfo{Kernell}{KERNELL}{1965}
-{KERNELL, D. The {Limits} of {Firing} {Frequency} in {Cat} {Lumbosacral}
-  {Motoneurones} {Possessing} {Different} {Time} {Course} of
-  {Afterhyperpolarization}.
-\emph{Acta Physiologica Scandinavica}, v.~65, n.~1-2, p. 87--100, set. 1965.
-ISSN 1365-201X.
-Dispon{\'\i}vel em:
-  $<$https://onlinelibrary-wiley.ez67.periodicos.capes.gov.br/doi/abs/10.1111/j.1748-1716.1965.tb04252.x$>$.}
 
 \bibitem[Kernell 2006]{kernell06}
 \abntrefinfo{Kernell}{KERNELL}{2006}
@@ -451,16 +458,6 @@ Dispon{\'\i}vel em:
   collaterals of ventral spinocerebellar tract neurones.
 \emph{Acta Physiologica Scandinavica}, v.~88, n.~4, p. 505--515, ago. 1973.
 ISSN 0001-6772.}
-
-\bibitem[{\DE{Luca}{De Luca}{de Luca}} e Contessa 2015]{deluca15}
-\abntrefinfo{{\DE{Luca}{De Luca}{de Luca}} e Contessa}{{\DE{LUCA}{DE LUCA}{DE
-  LUCA}}; CONTESSA}{2015}
-{{\DE{LUCA}{DE LUCA}{DE LUCA}}, C.~J.; CONTESSA, P. Biomechanical benefits of
-  the {Onion}-{Skin} motor unit control scheme.
-\emph{Journal of biomechanics}, v.~48, n.~2, p. 195--203, jan. 2015.
-ISSN 0021-9290.
-Dispon{\'\i}vel em:
-  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4295621/$>$.}
 
 \bibitem[{\DE{Luca}{De Luca}{de Luca}} e Erim 1994]{deluca94}
 \abntrefinfo{{\DE{Luca}{De Luca}{de Luca}} e Erim}{{\DE{LUCA}{DE LUCA}{DE
@@ -535,6 +532,16 @@ Dispon{\'\i}vel em:
 ISSN 1662-5196.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4396193/$>$.}
+
+\bibitem[Oya, Riek e Cresswell 2009]{oya09}
+\abntrefinfo{Oya, Riek e Cresswell}{OYA; RIEK; CRESSWELL}{2009}
+{OYA, T.; RIEK, S.; CRESSWELL, A.~G. Recruitment and rate coding organisation
+  for soleus motor units across entire range of voluntary isometric plantar
+  flexions.
+\emph{The Journal of Physiology}, v.~587, n. Pt 19, p. 4737--4748, out. 2009.
+ISSN 0022-3751.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2768026/$>$.}
 
 \bibitem[Perry et al. 2015]{perry15}
 \abntrefinfo{Perry et al.}{PERRY et al.}{2015}
@@ -715,15 +722,6 @@ Dispon{\'\i}vel em:
 \emph{IEEE Transactions on Neural Systems and Rehabilitation Engineering},
   v.~25, n.~11, p. 1930--1939, nov. 2017.
 ISSN 1534-4320.}
-
-\bibitem[Watanabe et al. 2013]{watanabe13}
-\abntrefinfo{Watanabe et al.}{WATANABE et al.}{2013}
-{WATANABE, R.~N. et al. Influences of premotoneuronal command statistics on the
-  scaling of motor output variability during isometric plantar flexion.
-\emph{Journal of Neurophysiology}, v.~110, n.~11, p. 2592--2606, set. 2013.
-ISSN 0022-3077.
-Dispon{\'\i}vel em:
-  $<$https://www.physiology.org/doi/abs/10.1152/jn.00073.2013$>$.}
 
 \bibitem[Westbury 1982]{westbury82}
 \abntrefinfo{Westbury}{WESTBURY}{1982}

@@ -507,6 +507,25 @@ Com esse modelo, os autores propuseram que a presença da inibição recorrente
 ajuda a reduzir oscilações de 10 Hz que são transmitidas por tratos
 corticoespinhais para a medula espinhal e dela para os músculos.
 
+\section{Modelo da Célula de Renshaw}
+A constante de tempo de membrana dos modelos aqui utilizados é definida 
+como $\tau=R_mC_m$, sendo $R_m$ e $C_m$ a resistência e capacitância 
+específicas, respectivamente. Essa grandeza expressa, de forma geral, 
+quão rápido é o carregamento ou descarregamento da membrana \cite{sterratt11}.
+
+Quando o potencial de membrana do modelo da CR utilizado
+ultrapassa o limiar de disparo, a condutância de sódio é acionada e
+inicia a despolarização mais lenta da célula. Por outro lado, as
+condutâncias de 
+potássio rápida e lenta causam a repolarização, sendo que esta
+última tem mais influência sob a pós hiperpolarização (do inglês
+\textit{afterhyperpolarization}, AHP) da célula.
+
+Como o modelo de condutância utilizado é baseado em pulsos \cite{destexhe94a},
+as variáveis de ativação de cada condutância podem ser expressas como 
+exponenciais com taxas de crescimento ou decaimento dependendo de variáveis
+de transição.
+
 \section{Comparação das Duas Versões do ReMoto}
 \subsection{Parametrizações}
 A parametrização original das CRs no simulador ReMoto foi baseada em dados

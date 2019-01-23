@@ -86,52 +86,68 @@ Equação (\ref{eq:speedup}), mas usando os tempos de execução das soluções em
 Python e Cython.
 
 \section{Estudo das Parametrizações}
-O modelo estudado aqui passará por etapas de comparação com resultados descritos
-na literatura. Inicialmente, as parametrizações antiga e nova serão usadas 
-nessas avaliações, mas a ideia é que se tenha uma nova parametrização ao final 
-desse processo que será usada nos estudos de variabilidade de força
-explicitados na seção \ref{sec:for}.
+Os modelos de neurônios estudados passarão por etapas de
+parametrização e validação, de acordo com experimentos descritos
+na literatura. A ideia é que se tenha, ao final desse processo, um modelo
+apropriado para os estudos explicitados nas próximas seções da metodologia.
 
-\subsection{Validação do Modelo}
-Essa etapa será realizada de forma qualitativa e semiquantitativa.
-Em primeiro lugar, serão 
-analisadas características de frequência e padrão de disparos de MNs e CRs,
-assim como a ordem de recrutamento de MNs sob o efeito das CRs.
+\subsection{Parametrização do Modelo de Célula de Renshaw}
+As parametrizações foram efetuadas na ordem em que são apresentadas
+e iterativamente, com base nos conhecimentos sobre a CR ou o circuito
+de inibição recorrente descritos na literatura.
+Parâmetros não mencionados foram, por padrão, mantidos 
+de acordo com o que foi descrito em \citeonline{cisi07}.
 
-As simulações para esse estudo foram
-realizadas em um núcleo motor do músculo soleus, com 800 MNs do tipo S, 50 do
-tipo FR, 50 do tipo FF e 350 CRs. Essas quantidades foram estimadas a partir de
-dados experimentais de humanos \cite{cisi08}. Foi injetada no soma dos MNs uma
-corrente em rampa. Esta corrente injetada começa em zero e
-aumenta linearmente até o valor final de 20 nA ao final da simulação, que teve
-duração de 1000 ms. Os
-instantes de disparos dos neurônios envolvidos na simulação serão analisados.
+\subsubsection{Potenciais Excitatórios Pós Sinápticos}
+Mantendo-se o padrão de $C_m = \text{1 }\mu\text{Fcm}^{-2}$,
+a resistência específica foi ajustada para reproduzir os 
+seguintes resultados descritos na literatura:
 
-Em segundo lugar, serão analisados características de pós hiperpolarização 
-das CRs, PIPS nos MNs e PEPS nas CRs. Como esses são aspectos importantes
-do circuito de inibição recorrente, é importante que o modelo, independente 
-da parametrização, possa reproduzir esses dados descritos na literatura.
-Caso esse não seja o caso, novos parâmetros serão estimados.
+\begin{itemize}
+    \item \citeonline{walmsley81}: Medições da atividade intracelular em
+        CRs após uma estimulação de raízes ventrais forneceram alguns
+        dados sobre os PEPSs resultantes, como mostrado na Figura
+        \ref{fig:PEPS}.
+    \item \citeonline{williams09}: Nesse trabalho de simulações, os
+        autores adotam 7.6 ms de tempo de subida
+        e 50 ms de duração dos PEPSs descritos por \citeonline{walmsley81}.
+\end{itemize}
 
-Muitas vezes, o alto grau de liberdade de um modelo pode dificultar
-a obtenção de parâmetros que o adequem à dados experimentais. Para 
-essas situações, será utilizada a abordagem de estratégias evolutivas
-da classe de algoritmos evolutivos disponibilizados no \textit{inspyred},
-que é uma biblioteca do Python para encontrar parâmetros de redes
-neuronais capazes de reproduzir determinadas propriedades. De forma
-geral, os parâmetros escolhidos são iterativamente alterados até 
-que se obtenha uma rede neuronal com a característica próxima à
-desejada.
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.7]{PEPS}
+	\caption{Potencial excitatório pós sináptico recorrente em uma
+             célula de Rewshaw \cite{walmsley81}.}
+	\label{fig:PEPS}
+\end{figure}
 
-Sendo assim, as constantes de tempo e condutâncias máximas dos canais
-de potássio da CR serão ajustado para reproduzir as características
-de 2 mV de amplitude e 30 ms de duração de sua pós hiperpolarização
-\cite{hultborn79}, como mostrado na Figura \ref{fig:HP79}\subref{fig:AHPRC}. Essa
-duração, como proposto por \cite{maltenfort98},
-foi também alcançada fixando o valor de constante de tempo da membrana
-em aproximadamente 8 ms. Para testar a robustez da parametrização 
-obtida, o modelo será comparado com características de corrente injetada
-e taxa de disparo, mostrada na Figura \ref{fig:HP79}\subref{fig:fxiRC}.
+Para simular o experimento descrito, uma corrente suficiente para causar
+um único potencial de ação foi injetada no soma de um
+MN do tipo S que fazia sinapse com uma CR. Para garantir uma atividade
+passiva da membrana, a condutância sináptica ativada pelo disparo do MN
+foi diminuída.
+
+\subsubsection{Características de Disparos}
+Os parâmetros de limiar, comprimento, diâmetro e densidade e variáveis de
+transição das condutâncias iônicas do modelo da CR podem ser alterados
+para reproduzir diferentes características de disparos. As alterações feitas 
+são baseadas nas seguintes referências:
+
+\begin{itemize}
+    \item \citeonline{hultborn79}: Relações de frequência de disparo
+        \textit{versus} corrente injetada (FxI) foram obtidas para 
+        diferentes correntes, como visto na Figura
+        \ref{fig:HP79}\subref{fig:fxiRC}. Nessas curvas, informações sobre
+        a forma como a CR se adapta a uma dada corrente e a intensidade 
+        de corrente necessária para que os disparos comecem a acontecer
+        também podem ser extraídas. Além dessas contribuições, os autores
+        mostraram que, após um breve pulso de corrente injetada,
+        a AHP apresentou uma amplitude de -2 mV e duração por volta de 30 ms,
+        como visto na Figura \ref{fig:HP79}\subref{fig:AHPRC}.
+    \item \citeonline{fyffe90}: Diâmetro médio de CRs foi 27 $\mu$m.
+    \item \citeonline{bui03}: Área superficial média do soma e do dendrito
+        foram 1753.8 $\mu\text{m}^2$ e 16756 $\mu\text{m}^2$, respectivamente.
+\end{itemize}
 
 \begin{figure}[ht]
     \centering
@@ -155,23 +171,34 @@ e taxa de disparo, mostrada na Figura \ref{fig:HP79}\subref{fig:fxiRC}.
     \label{fig:HP79}
 \end{figure}
 
-As condutâncias máximas, bem como sua constante de tempo, foram
-parametrizadas para reproduzir um PEPS causado nas CRs por MNs
-de 7.6 ms de tempo de subida, 50 ms de duração e 0.6 mV de pico
-para um estímulo antidrômico \cite{walmsley81}, como mostrado na Figura
-\ref{fig:PEPS}. Nesse caso, os diferentes
-níveis de excitação fornecidos por cada tipo de MN serão 
-considerados como condutâncias seguindo as proporções descritas
-por \citeonline{hultborn88a}.
+Primeiramente, é necessário definir quando a CR irá disparar
+um potencial de ação. Sabe-se que essas células possuem
+baixo limiar \cite{uchiyama03a}, mas não existem estudos quantitativos
+especificamente sobre esse parâmetro. O valor do limiar foi calculado como
 
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.7]{PEPS}
-	\caption{Potencial excitatório pós sináptico recorrente em uma
-             célula de Rewshaw \cite{walmsley81}.}
-	\label{fig:PEPS}
-\end{figure}
+\begin{equation}
+V_{l}=\frac{I_rR_m}{a}
+\label{eq:vth}
+\end{equation}
 
+com $V_l$ sendo a tensão de limiar, $I_r$ a corrente de reobase e $a$ a 
+área superficial total \cite{cisi07}. Para calcular o comprimento $l$ de um
+único compartimento, por sua vez, foi usada a expressão
+
+\begin{equation}
+    a=\pi ld
+    \label{eq:area}
+\end{equation}
+
+sendo $d$ o diâmetro da CR \cite{sterratt11}.
+
+A partir de então, simulações foram realizadas com diferentes valores de
+variáveis de transição e densidade das condutâncias iônicas de uma única CR
+para se encontrar resultados de AHP e curva FxI apropriados. As correntes
+injetadas em cada caso estiveram de acordo com os dados mostrados na Figura
+\ref{fig:HP79}.
+
+\subsubsection{Potenciais Inibitórios Pós Sinápticos}
 Por fim, valores de condutância e constante de tempo de decaimento 
 serão parametrizados para que a média dos PIPS causados pelas CRs 
 em todos os MNs seja o mesmo valor médio de 12.7 $\mu$V observado por
@@ -205,7 +232,36 @@ posicionada no compartimento dendrítico do MN.
 	\label{fig:PIPS}
 \end{figure}
 
-\subsection{Comparações entre Modelos}
+\subsubsection{Distribuição de Potenciais Inibitórios Pós Sinápticos Recorrentes}
+O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
+medial do gato. Em simulações envolvendo populações de neurônios,
+foi considerado um comprimento de 600 mm do núcleo motor \cite{burke77}
+com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
+\citeonline{uchiyama03a}. A quantidade média de CRs adotada foi
+100 CRs para cada 1 mm de extensão da medula \cite{carr98}.
+
+
+\subsection{Validação do Modelo}
+%de forma qualitativa e semiquantitativa.
+
+\section{Efeitos da Parametrização em Simulações do núcleo motor}
+% The following two paragraphs must be reformulated
+Para essa análise, dois cenários foram considerados: um que simule o controle
+de força exercida pelo calcanhar em um pedal fixo e outro em um pedal livre.
+Em ambos os casos, os primeiros 500 ms segundos do sinal da força gerada serão
+ignorados. A quantidade de elementos neuronais é a mesma da mostrada
+na seção anterior, mas o tempo de simulação foi estendido para 3500 ms.
+
+Uma força a 20\% da contração máxima voluntária será tomada como referência e
+o seu coeficiente de variação e sua densidade espectral de potência serão
+calculados. Esses resultados serão analisados em simulações com e sem CRs.
+Na ausência de inibição recorrente, os comandos descendentes agindo sobre
+os MNs serão ajustados de forma a produzir a mesma taxa de disparo da
+situação com CR.
+
+\subsection{Disparos de Motoneurônios}
+\subsection{Diminuição da Força}
+\subsection{Oscilações de 10 Hz em Níveis baixos de Força}
 O objetivo desta etapa é entender como o simulador aqui estudado se comporta 
 em algumas situações propostas por outros trabalhos de simulação. Dessa forma,
 serão configuradas simulações que sejam o mais semelhante possível a esses 
@@ -285,17 +341,6 @@ analisados com e sem CRs. Os trabalhos alvo são:
 	\label{fig:williams09}
 \end{figure}
 
-\section{Variabilidade da Força}
-\label{sec:for}
-Para essa análise, dois cenários foram considerados: um que simule o controle
-de força exercida pelo calcanhar em um pedal fixo e outro em um pedal livre.
-Em ambos os casos, os primeiros 500 ms segundos do sinal da força gerada serão
-ignorados. A quantidade de elementos neuronais é a mesma da mostrada
-na seção anterior, mas o tempo de simulação foi estendido para 3500 ms.
-
-Uma força a 20\% da contração máxima voluntária será tomada como referência e
-o seu coeficiente de variação e sua densidade espectral de potência serão
-calculados. Esses resultados serão analisados em simulações com e sem CRs.
-Na ausência de inibição recorrente, os comandos descendentes agindo sobre
-os MNs serão ajustados de forma a produzir a mesma taxa de disparo da
-situação com CR.
+\subsection{Distorções na Entrada do Núcleo Motor}
+\subsection{Contrações Rápidas}
+\section{Estudos sobre a Conectividade do Circuito de Inibição Recorrente}

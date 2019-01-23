@@ -12,6 +12,8 @@ filenamezoom2 = 'recruitzoom2'
 filenamepoissonO = 'recruitpoissonO'
 filenamepoissonC = 'recruitpoissonC'
 filenamerecruit = 'revrecruit'
+filenameCfirst = 'recruitFirstsC'
+filenameOfirst = 'recruitFirstsO'
 
 trials = ['1', '2']#, '3'] # current, poisson and varying gamma trials, respectively
 
@@ -53,38 +55,6 @@ for trial in trials:
         t.append(float(line.split()[0]))
         force.append(int(float(line.split()[1])))
     f.close()
-
-    ################
-    #### Extraplot
-    found = []
-    times = []
-    for j, i in enumerate(unitNumberMNo):
-        if i not in found:
-            found.append(i)
-            times.append(spikeInstantMNo[j])
-    if trial=='1':
-        current = []
-        current = times
-    else:
-        plt.figure()
-        plt.title('Sem CR')
-        plt.plot(times, found, '.')
-    found = []
-    times = []
-    for j, i in enumerate(unitNumberMNc):
-        if i not in found:
-            found.append(i)
-            times.append(spikeInstantMNc[j])
-    if trial=='1':
-        current = []
-        current = times
-    else:
-        #import pdb; pdb.set_trace()
-        plt.figure()
-        plt.title('Com CR')
-        plt.plot(times, found, '.')
-        plt.show()
-    ################
 
     #plt.figure()
     #plt.plot(t, force)
@@ -184,3 +154,75 @@ for trial in trials:
     #plt.ylabel('')
     #plt.show()
     #plt.savefig(figsFolder + filenamenorm + '.svg', format='svg')
+
+# Second part of the plots (done here for convenience)
+for trial in trials:
+    # Initializing variables
+    spikeInstantMNo = []
+    unitNumberMNo = []
+    spikeInstantMNc = []
+    unitNumberMNc = []
+    t = []
+    force = []
+    #spikeInstantRC = []
+    #unitNumberRC = []
+
+    # Make simulations using trial with injected current
+    path = '/home/pablo/osf/Master-Thesis-Data/population/recruitment/false_decay/trial'+trial
+    os.chdir(path)
+
+    filename = 'MNo.dat'
+    f = open(filename, 'r')
+    lines = f.readlines()
+    for line in lines:
+        spikeInstantMNo.append(float(line.split()[0]))
+        unitNumberMNo.append(int(float(line.split()[1])))
+    f.close()
+
+    filename = 'MNc.dat'
+    f = open(filename, 'r')
+    lines = f.readlines()
+    for line in lines:
+        spikeInstantMNc.append(float(line.split()[0]))
+        unitNumberMNc.append(int(float(line.split()[1])))
+    f.close()
+    
+    filename = 'forcec.dat'
+    f = open(filename, 'r')
+    lines = f.readlines()
+    for line in lines:
+        t.append(float(line.split()[0]))
+        force.append(int(float(line.split()[1])))
+    f.close()
+
+    found = []
+    times = []
+    for j, i in enumerate(unitNumberMNo):
+        if i not in found:
+            found.append(i)
+            times.append(spikeInstantMNo[j])
+    if trial=='1':
+        current = []
+        current = times
+    else:
+        plt.figure()
+        plt.plot(times, found, '.')
+        plt.xlabel('Tempo (ms)')
+        plt.ylabel('Índice do motoneurônio')
+        plt.savefig(figsFolder + filenameOfirst + '.svg', format='svg')
+    found = []
+    times = []
+    for j, i in enumerate(unitNumberMNc):
+        if i not in found:
+            found.append(i)
+            times.append(spikeInstantMNc[j])
+    if trial=='1':
+        current = []
+        current = times
+    else:
+        #import pdb; pdb.set_trace()
+        plt.figure()
+        plt.plot(times, found, '.')
+        plt.xlabel('Tempo (ms)')
+        plt.ylabel('Índice do motoneurônio')
+        plt.savefig(figsFolder + filenameCfirst + '.svg', format='svg')

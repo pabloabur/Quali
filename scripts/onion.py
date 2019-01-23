@@ -17,7 +17,7 @@ if trial=='5':
     filenameonionwithRC = 'onionwithRC'
     filenamesonion = [filenameonionwithoutRC, filenameonionwithRC]
     filenameoniondvdt = 'oniondvdt'
-elif trial=='6':
+elif trial=='6': # Increasing gamma, but I do not use it anymore on results
     filenameonionwithoutRC = 'onionwithoutRC2'
     filenameonionwithRC = 'onionwithRC2'
     filenamesonion = [filenameonionwithoutRC, filenameonionwithRC]
@@ -26,10 +26,10 @@ os.chdir(path)
 
 ###### Simulation settings and variables
 # Available based on prevoius knowledge
-available = [x for x in range(1, 60)]
-qntd = 6
-indexes = np.random.choice(available, qntd, replace=False)
-indexes.sort(axis=0)
+available = [x for x in range(1, 100)]
+#qntd = 6
+indexes = range(1,100)#np.random.choice(available, qntd, replace=False)
+#indexes.sort(axis=0)
 dvdtMN = np.random.choice(indexes)
 print('MNs chosen to plot: ' + str(indexes))
 print('MN chosen to plot derivative: ' + str(dvdtMN))
@@ -57,11 +57,14 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
         spikeInstant.append(float(line.split()[0]))
         unitNumber.append(int(float(line.split()[1])))
 
+    #plt.figure()
+    #plt.plot(spikeInstant,unitNumber)
+
     # Normalize data to be used by color map
     norm = matplotlib.colors.Normalize(vmin=np.min(indexes), vmax=np.max(indexes))
 
     # Choose color map
-    colorMap = matplotlib.cm.tab20
+    colorMap = matplotlib.cm.copper#tab20
 
     # create a ScalarMappable and initialize a data structure
     mappable = matplotlib.cm.ScalarMappable(cmap=colorMap, norm=norm)
@@ -114,7 +117,7 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
         plt.plot(tForce, force, 'k--')
         plt.title(simType)
     plt.colorbar(mappable)
-    #plt.savefig(figsFolder + filenameonion + '.svg', format='svg')
+    plt.savefig(figsFolder + filenameonion + '.svg', format='svg')
 
 plt.figure()
 plt.plot(t, dyo*1e3,
@@ -124,5 +127,5 @@ plt.plot(t, dyc*1e3,
 plt.legend()
 plt.xlabel('Taxa de disparo das fibras descendentes (pps)')
 plt.ylabel('Derivada da taxa de disparo')
-plt.show()
-#plt.savefig(figsFolder + filenameoniondvdt + '.svg', format='svg')
+#plt.show()
+plt.savefig(figsFolder + filenameoniondvdt + '.svg', format='svg')

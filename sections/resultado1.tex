@@ -120,48 +120,7 @@ outras opções, esta é postergada para trabalhos futuros.
 %\end{table}
 
 \section{Parametrizações}
-As parametrizações foram realizadas na ordem em que são apresentadas.
-Para realizá-las, parâmetros relacionados com as características 
-estudadas foram ajustados em várias simulações até que se fosse obtido
-um resultado razoavelmente próximo ao que é descrito na literatura.
-De forma geral, os parâmetros foram sendo ajustados iterativamente, 
-com base no conhecimento sobre a CR ou o circuito de inibição recorrente.
-
-Os valores de parâmetros não mencionados nesta seção são mantidos
-de acordo com o que foi descrito em \citeonline{cisi08}.
-
-O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
-medial do gato. Em simulações envolvendo populações de neurônios,
-foi considerado um comprimento de 600 mm do núcleo motor \cite{burke77}
-com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
-\citeonline{uchiyama03a}. A quantidade média de CRs adotada foi
-100 CRs para cada 1 mm de extensão da medula \cite{carr98}.
-
 \subsection{Potencial Excitatório Pós Sinápico nas Células de Renshaw}
-A constante de tempo de membrana dos modelos aqui utilizados é definida 
-como $\tau=R_mC_m$, sendo $R_m$ e $C_m$ a resistência e capacitância 
-específicas, respectivamente. Essa grandeza expressa, de forma geral, 
-quão rápido é o carregamento ou descarregamento da membrana \cite{sterratt11}.
-
-Mantendo-se o padrão de $C_m = \text{1 }\mu\text{Fcm}^{-2}$,
-a resistência específica foi ajustada para reproduzir os 
-seguintes resultados descritos na literatura:
-
-\begin{itemize}
-    \item \citeonline{walmsley81}: Medições da atividade intracelular em
-        CRs após uma estimulação de raízes ventrais forneceram alguns
-        dados sobre os PEPSs resultantes.
-    \item \citeonline{williams09}: Nesse trabalho de simulações, os
-        autores adotam 7.6 ms de tempo de subida
-        e 50 ms de duração dos PEPSs descritos por \citeonline{walmsley81}.
-\end{itemize}
-
-Para simular o experimento descrito, uma corrente suficiente para causar
-um único potencial de ação foi injetada no soma de um
-MN do tipo S que fazia sinapse com uma CR. Para garantir uma atividade
-passiva da membrana, a condutância sináptica ativada pelo disparo do MN
-foi diminuída.
-
 O resultado mostrado na Figura
 \ref{fig:RCepsp} foi obtido com $R_m=\text{2500 }\Omega\text{cm}^2$ . O PEPS é
 iniciado em 10.35 ms e atinge o pico em 16.90 ms, configurando, assim, um
@@ -180,7 +139,6 @@ que obtiveram 10\% do pico em 55 ms.
 	\label{fig:RCepsp}
 \end{figure}
 
-\subsubsection{Limitações}
 Em relação ao PEPS, existem, ainda, aspectos sobre a convergência
 de axônios motores e a força de entrada sináptica dependente do tipo de
 MN. Essas características foram analisadas junto com estudos
@@ -198,62 +156,14 @@ na duração do PEPS. Portanto, a parametrização realizada foi tomada
 para satisfazer razoavelmente cada característica.
 
 \subsection{Características dos disparos das Células de Renshaw}
-Quando o potencial de membrana do modelo da CR utilizado
-ultrapassa o limiar de disparo, a condutância de sódio é acionada e
-inicia a despolarização mais lenta da célula. Por outro lado, as
-condutâncias de 
-potássio rápida e lenta causam a repolarização, sendo que esta
-última tem mais influência sob a pós hiperpolarização (do inglês
-\textit{afterhyperpolarization}, AHP) da célula.
-
-A AHP é uma importante característica da CR. Antes de fazer essa
-parametrização, entretanto, é preciso definir quando ela irá disparar
-um potencial de ação. Sabe-se que essas células possuem
-baixo limiar \cite{uchiyama03a}, mas não existem estudos quantitativos
-especificamente sobre esse parâmetro. O valor do limiar é calculado como
-
-\begin{equation}
-V_{l}=\frac{I_rR_m}{a}
-\label{eq:vth}
-\end{equation}
-
-com $V_l$ sendo a tensão de limiar, $I_r$ a corrente de reobase e $a$ a 
-área superficial total. 
-
-Outra característica afetada pela dinâmica das condutâncias dependentes
-da voltagem é a curva de frequência de disparo \textit{versus} corrente
-injetada (FxI), que também reflete a forma como a CR se adapta a uma
-dada corrente.
-
-Os parâmetros de limiar, comprimento, diâmetro e intensidade e dinâmica
-das condutâncias do modelo da CR podem ser alterados para reproduzir as
-características citadas. As parametrizações feitas 
-para obtê-los são baseadas nas seguintes referências:
-
-\begin{itemize}
-    \item \citeonline{hultborn79}: Curvas de FxI para diferentes correntes
-        (Figura \ref{fig:HP79}\subref{fig:fxiRC}),
-        sendo que os disparos só começam a ocorrer por volta de 0.5 nA.
-        AHP após um breve pulso de corrente injetada apresentou uma 
-        amplitude de -2 mV e duração por volta de 30 ms
-        (Figura \ref{fig:HP79}\subref{fig:AHPRC}).
-    \item \citeonline{fyffe90}: Diâmetro médio de 27 $\mu$m.
-    \item \citeonline{bui03}: Área superficial média do soma e do dendrito
-        de 1753.8 $\mu\text{m}^2$ e 16756 $\mu\text{m}^2$, respectivamente.
-\end{itemize}
-
 Usando o $R_m$ obtido na seção anterior,
 $a=\text{1753.8+16756 }\mu\text{m}^2$ e considerando que $I_r=\text{0.5 }$ nA,
 a Equação (\ref{eq:vth}) resulta em $V_l=\text{6.75 }$ mV.
-Tomando a CR por um cilindro, sua área superficial será 
-$a=\text{1753.8+16756}=\pi ld$. Dessa forma, $l=\text{218.2168 }\mu$m.
+Além disso,
+considerando $d=27 \mu$m, a Equação (\ref{eq:area}) fornece o valor de
+$l=\text{218.2168 }\mu$m.
 
-Com esses valores, torna-se possível parametrizar a AHP e a curva FxI.
-Como o modelo de condutância utilizado é baseado em pulsos \cite{destexhe94a},
-as variáveis de ativação de cada condutância podem ser expressas como 
-exponenciais com taxas de crescimento ou decaimento dependendo de variáveis
-de transição.
-
+Com esses parâmetros, torna-se possível parametrizar a AHP e a curva FxI.
 As variáveis de transição $\alpha_N$ e $\beta_N$, relacionadas com a
 dinâmica dos canais de potássio rápido, foram aumentadas para que as
 correntes geradas por eles se extinguissem rapidamente. 
@@ -382,6 +292,9 @@ tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
 
 \begin{itemize}
     \item \citeonline{vankeulen79}: PIPS em MNs causados por CRs.
+    \item \citeonline{friedman81}: Amplitude dos PIPS está correlacionada 
+        com o tipo do MN, mas não com as resistências de entrada dos MNs 
+        em cada tipo.
     \item \citeonline{fyffe91}: Conexões sinápticas de CRs para MNs do 
         tipo $\alpha$ são localizadas nos dendritos.
     \item \citeonline{uchiyama03a}: Procedimento para estimar PIPS de
