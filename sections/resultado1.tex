@@ -162,19 +162,17 @@ a Equação (\ref{eq:vth}) resulta em $V_l=\text{6.75 }$ mV.
 Além disso,
 considerando $d=27 \mu$m, a Equação (\ref{eq:area}) fornece o valor de
 $l=\text{218.2168 }\mu$m.
+Com os resultados obtidos, a resistência de entrada $R_i=\frac{R_m}{a}$
+resultante foi de 13.50 M$\Omega$. Esse valor é condizente com o fato
+de que as CRs são menores do que os menores MNs.
 
 Com esses parâmetros, torna-se possível parametrizar a AHP e a curva FxI.
 As variáveis de transição $\alpha_N$ e $\beta_N$, relacionadas com a
-dinâmica dos canais de potássio rápido, foram aumentadas para que as
-correntes geradas por eles se extinguissem rapidamente. 
-Isso foi feito com o intuito de diminuir a influência destas na
-repolarização e hiperpolarização do neurônio, possivelmente diminuindo
-o número de variáveis de transição a serem ajustadas na parametrização.
-A partir de 
-então, optou-se por utilizar apenas
+dinâmica dos canais de potássio rápido, foram aumentadas para evitar
+algum tipo de somação de suas correntes. 
+A partir de então, optou-se por utilizar apenas
 os canais de potássio lento, com $\alpha_Q$ e $\beta_Q$,
-para se obter as taxas de disparos e adaptação
-apropriados.
+para se obter as taxas de disparos e adaptação apropriados.
 
 Considerando uma sequência de potenciais
 de ação, uma diminuição no valor de $\alpha_Q$ faz com que
@@ -198,47 +196,58 @@ uma adaptação na frequência de disparo das CRs.
 \end{figure}
 
 Em uma bateria de simulações,
-os valores de $\alpha_Q$ e $\beta_Q$ foram ajustados até se obter
+os valores de $\alpha_Q$ e $\beta_Q$ foram ajustados com base nas
+considerações do parágrafo anterior até se obter
 uma AHP e uma curva FxI semelhantes à da Figura \ref{fig:HP79}.
-Por fim, a amplitude do AHP foi obtida alterando os valores máximos
-das condutâncias de potássio rápida e lenta.
+Feito isso, a amplitude do AHP foi obtida alterando as densidades
+das condutâncias de potássio rápida e lenta. A diferença
+nos disparos introduzida por isso era verificada e corrigida iterativamente.
 
-Detalhes sobre a AHP obtida podem ser visto na Figura \ref{fig:RCahp}. O pico 
-observado foi de -2.4 mV. Sua duração foi de aproximadamente 33 ms.
-
-\begin{figure}[ht!]
-	\center
-	\includegraphics[scale=0.8]{AHP.eps}
-    \caption[AHP em uma CR.]{Pós hiperpolarização de
-        uma célula de Renshaw.}
-	\label{fig:RCahp}
-\end{figure}
-
-A curva FxI obtida é mostrada na Figura \ref{fig:RCfxi}.
-O primeiro e segundo potencial de ação é entendido como o 
-primeiro potencial, enquanto que o segundo e terceiro é o
-segundo intervalo, e assim por diante. O regime estacionário foi
-considerado como sendo após 80 ms. A saturação observada foi 
+Os disparos espontâneos da CR modelada são mostrados na Figura \ref{fig:spont}.
+A curva FxI obtida, por sua vez, é apresentada na Figura
+\ref{fig:RCfxi}, juntamente com 
+detalhes sobre a AHP, na Figura \ref{fig:RCahp}.
+A saturação observada foi 
 causada pela período refratário absoluto da célula, que é de 1 ms.
+O pico da AHP
+observado foi de -2.4 mV e sua duração foi de aproximadamente 33 ms.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+	\label{fig:RCfxi}
+	\includegraphics[scale=0.5]{FxI.eps}
+    }
+    \subfloat[][]{
+	\label{fig:RCahp}
+	\includegraphics[scale=0.5]{AHP.eps}
+    }
+    \hspace{-1cm}
+    \caption[Característica de disparos da CR]{
+        Característica de disparos da CR
+        \subref{fig:RCfxi} Curva de frequência de disparo
+        \textit{versus} corrente injetada.
+        \subref{fig:RCahp} Pós hiperpolarização.
+         }
+    \label{fig:fxiahp}
+\end{figure}
 
 \begin{figure}[ht!]
 	\center
-	\includegraphics[scale=0.8]{FxI.eps}
-    \caption[FxI em uma CR.]{Curva de frequência de disparo
-    \textit{versus} corrente injetada de uma célula de Renshaw.}
-	\label{fig:RCfxi}
+	\includegraphics[scale=0.8]{spont.eps}
+    \caption[Disparos espontâneos de uma CR.]{Disparos espontâneos de uma CR.}
+	\label{fig:spont}
 \end{figure}
 
-Com os resultados obtidos, a resistência de entrada $R_i=\frac{R_m}{a}$
-resultante foi de 13.50 M$\Omega$. Esse valor é condizente com o fato
-de que as CRs são menores do que os menores MNs.
-
-\subsubsection{Limitações}
+A AHP e o disparo espontâneo foram semelhantes aos dos estudos
+eletrofisiológicos.
 A curva FxI apresentada se aproximou do que foi descrito na literatura, 
 mas os três primeiros intervalos foram mais rápido do que o esperado,
-especialmente o segundo e o terceiro. Outra configuração foi encontrada
-para corrigir isso, mas isso traria impactos negativos para a AHP.
-
+especialmente o segundo e o terceiro. A curva do regime estacionário,
+por sua vez, foi similar à experimental. De forma geral, outras
+configurações foram encontradas para corrigir os problemas encontrados,
+mas isso traria impactos negativos para a AHP ou para os potenciais
+de ação da CR.  
 Além disso, o tempo de duração da adaptação, que é maior para correntes mais
 altas, foi sempre menor no modelo aqui descrito.
 Isso é ilustrado na Figura \ref{fig:FxIcomp}.
@@ -265,10 +274,17 @@ Isso é ilustrado na Figura \ref{fig:FxIcomp}.
     \label{fig:FxIcomp}
 \end{figure}
 
-O fato de que as CRs possuem outros tipos de canais iônicos além 
-dos implementados aqui pode explicar as diferenças encontradas. Sabe-se
-que correntes de hiperpolarização e de potássio dependente de cálcio
-são responsáveis por importantes características
+Alguns fatores podem explicar as divergências encontradas. Os principais
+mecanismos de adaptação, além do utilizado aqui, envolvem 
+canais iônicos relacionados com inativação de correntes de despolarização,
+concentração intracelular de cálcio e dinâmicas variadas de correntes 
+de potássio \cite{benda03}. Esses canais, contudo, não estão implementados
+no ReMoto, fazendo com que haja menos opções para se reproduzir essa 
+característica.
+
+De fato, estudos sugerem que as CRs possuem outros tipos de canais iônicos.
+Sabe-se que correntes de hiperpolarização e de potássio dependente
+de cálcio são responsáveis por importantes características
 de disparos dessas células, como, por exemplo, taxas de disparos
 \cite{perry15}. A utilização de dados disponíveis para implementação 
 desses canais no modelo, entretanto, não é muito apropriada por dois
@@ -280,31 +296,18 @@ motivos:
           que é a principal fonte de dados utilizada nesse estudo.
     \item Como as conexões sinápticas relacionadas com as CRs são diferentes
           em cada estágio de desenvolvimento do rato \cite{alvarez07}
-          e os dados em questão foram obtidos de ratos em um estágio pós
+          e os dados em questão foram obtidos em um estágio pós
           natal precoce, não se pode garantir que estas propriedades sejam
           as mesmas das CRs utilizadas aqui.
 \end{itemize}
 
 \subsection{Potencial inibitório pós sináptico em motoneurônios causados pela
             célula de Renshaw}
-As condutâncias sinápticas ativadas pelos disparos das CRs em cada
-tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
-
-\begin{itemize}
-    \item \citeonline{vankeulen79}: PIPS em MNs causados por CRs.
-    \item \citeonline{friedman81}: Amplitude dos PIPS está correlacionada 
-        com o tipo do MN, mas não com as resistências de entrada dos MNs 
-        em cada tipo.
-    \item \citeonline{fyffe91}: Conexões sinápticas de CRs para MNs do 
-        tipo $\alpha$ são localizadas nos dendritos.
-    \item \citeonline{uchiyama03a}: Procedimento para estimar PIPS de
-        acordo com o tipo de MN.
-\end{itemize}
-
 Após sucessivas simulações, em que ajustes foram sendo feitos de forma
 empírica, o resultado final obtido é mostrado na 
 Figura \ref{fig:PIPSres}. Os picos foram de -26.21 $\mu$V, -14.76 $\mu$V e
--7.13 $\mu$V para MNs do tipo S, FR e FF, respectivamente.
+-7.13 $\mu$V para MNs do tipo S, FR e FF, respectivamente. Os resultados
+estiveram, portanto, de acordo com as referências utilizadas.
 
 \begin{figure}[ht!]
 	\center
@@ -314,150 +317,12 @@ Figura \ref{fig:PIPSres}. Os picos foram de -26.21 $\mu$V, -14.76 $\mu$V e
 	\label{fig:PIPSres}
 \end{figure}
 
-\subsection{Atividade espontânea da célula de Renshaw}
-Para obter uma taxa de disparos espontâneos de 7 pps \cite{walmsley81},
-foi necessário alterar o valor da condutância máxima do ruído agindo sobre
-a CR. Como visto na Figura \ref{fig:spont}, a taxa está condizente com 
-o esperado.
-
-\begin{figure}[ht!]
-	\center
-	\includegraphics[scale=0.8]{spont.eps}
-    \caption[Disparos espontâneos de uma CR.]{Disparos espontâneos de uma CR.}
-	\label{fig:spont}
-\end{figure}
-
-\subsection{Característica dinâmica e depressão pós sináptica
-            da célula de renshaw}
-Para abordar essas características, as referências utilizadas foram:
-
-\begin{itemize}
-    \item \citeonline{hultborn79}: Os autores apresentaram
-          evidências da existência de um mecanismo de decréscimo da eficácia
-          sináptica dos terminais de axônios colaterais agindo sobre as CRs.
-          Essa conclusão foi baseada na diminuição de taxas de disparo para
-          diferentes frequências de estímulo. 
-    \item \citeonline{ross82}: Um aumento abrupto na frequência de
-          estimulação da CR faz com que sua
-          taxa de disparo apresente um \textit{overshoot}.
-\end{itemize}
-
-No ReMoto, uma depressão pós sináptica é descrita por
-
-\begin{equation}
-    g_{dyn}(t)=g_m-(g_m-g_{dyn}a)e^{-\frac{(t_p+t)}{\tau}}
-\end{equation}
-
-sendo $g_{dyn}$ a condutância dinâmica alterada pela depressão
-após um disparo, $g_m$ a condutância máxima original, $a$ o 
-quanto de depressão ocorrerá ($0\le\text{var}\le 1$), $\tau$ a 
-constante de tempo e $t_p$ o instante do último disparo.
-
-Para que os resultados de \citeonline{hultborn79} possam ser
-reproduzidos, simulações com estímulos antidrômicos aplicados
-com diferentes intervalos entre si foram feitas e o número de
-disparos gerados foram contabilizados.
-Valores elevados de $a$ e $tau$, tais como 0.9 e 
-400, respectivamente, foram necessários para reproduzir os dados
-disponíveis na literatura.
-
-Isso, entretanto, faz com
-que as características dinâmicas da CR sejam comprometidas, como
-visto na Figura \ref{fig:dynamic}. Para estes simulações, um estímulo
-antidrômico com 5 Hz foi aplicado. Após 600 ms, essa frequência
-foi aumentada até determinado valor, podendo ser 10, 20, 33 ou 50 Hz.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.6]{dynamic.eps}
-    \caption[Características dinâmicas da célula de Renshaw modelada.]{
-             Características dinâmicas da célula de Renshaw modelada.
-             Em cada realização do experimento, a frequência do estímulo
-             aplicado ao neurônio 580, inicialmente
-             de 5 Hz, foi abruptamente aumentada para um dos valores
-             indicados na legenda.
-            }
-	\label{fig:dynamic}
-\end{figure}
-
-Pode-se perceber que
-as respostas de algumas frequências estão muito próximas e a taxa
-de disparo foi diminuída a valores muito baixos. Isto está em
-desacordo com dados
-descritos na literatura \cite{ross82,uchiyama03a}.
-
-Sendo assim, optou-se por não se utilizar esse mecanismo de depressão
-sináptica no modelo. Dessa forma, as adaptações descritas na literatura
-não foram reproduzidas, mas as taxas de disparos estiveram
-próximas ao esperado. Isso implica que em simulações que envolvam
-uma parte transiente da resposta da CR, como algumas realizadas na
-seção \ref{sec:danger}, é de se esperar que a inibição recorrente 
-seja maior, mesmo que por um breve período.
-
-Vale citar um estudo recente mostrando que, para baixas frequências
-de estimulação, essa depressão quase não altera as correntes 
-pós sinápticas geradas \cite{moore15}. Esse resultado vai de encontro
-com os de \citeonline{hultborn79}, mas
-deve ser analisado com cautela, pois foi
-realizado em ratos.
-
-\subsection{Conectividade do Circuito de Inibição Recorrente}
+\subsection{Distribuição e Amplitudes da Inibição Recorrente}
 \label{sec:conn}
-O grau de conectividade dos elementos que compõem o circuito de
-inibição recorrente envolve não só a quantidade de elementos se
-conectando, mas também a força de conexão entre eles. Esses dois
-parâmetros serão ajustados baseados nas referências apresentadas
-abaixo:
-
-\begin{itemize}
-    \item \citeonline{mccurdy94}: Distribuição topográfica das amplitudes
-        de PIPS recorrentes obtida de pares de MNs é inversamente
-        correlacionada com a distância. Os autores fornecem uma visão
-        geral, independente do núcleo motor. MNs de músculo gastrocnemius
-        medial separados por no máximo 1 mm são classificados como 
-        próximos. Fora dessa zona, são considerados distantes.
-    \item \citeonline{hamm87b}: Distribuição de amplitudes, tempo
-        de meia vida e tempo de subida de PIPS recorrentes.
-    \item \citeonline{uchiyama03a}: Padrão de distribuição topográfica 
-        da força sináptica é o de uma gaussiana que decresce na medida
-        em que se afasta do neurônio pré sináptico. O desvio padrão da
-        curva é de 0.167 mm e 1.164 mm para os MNs e para as CRs, 
-        respectivamente. A quantidade de botões sinápticos também é
-        um indicativo da força sináptica das conexões. Estima-se que os
-        axônios colaterais dos MNs que alcançam a região onde as CRs se
-        encontram possuam 78.5 $\pm$ 7.5, 43.0 $\pm$ 4.2 e 35.5 $\pm$ 3
-        destes botões sinápticos se forem do tipo FF, FR e S, respectivamente.
-\end{itemize}
-
-Para reproduzir o experimento como em \citeonline{mccurdy94}, as simulações
-consistiram em correntes injetadas no soma dos MNs por um curto período de 
-tempo. Foram levados em conta 180 pares, separados por distâncias entre
-86 $\mu$m e 4.7 mm. Os MNs do núcleo motor simulado inervam o músculo
-gastrocnêmios medial e, por isso, a distância que define se estes estão
-próximos ou distantes um do outro é de 1 mm \cite{mccurdy94}. 
-
-O padrão de decaimento adotado foi o da gaussiana da referência. O número
-de botões sinápticos de cada tipo de MN nas CRs foi implementado como valores
-de condutância seguindo uma proporção de 1:0.55:0.45 (FF:FR:S). Isso
-permitiu que apenas a condutância máxima dos MNs do tipo FF
-($g_{max_{FF}}$) fosse parametrizado, sendo as outras ajustadas
-de acordo com a proporção.
-
-Vale notar
-que, dentre os dados disponíveis, apenas os significativos e provenientes
-de gatos descerebrados foram usados \cite{mccurdy94,hamm87b}.
-
 Após uma série de simulações, o valor de $g_{max_{FF}}$ que mostrou os
 resultados mais apropriados de acordo com a literatura foi 15 nS.
 O efeito da utilização desse parâmetro na distribuição topográfica dos
-PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}. O
-padrão de decaimento com distância foi semelhantes ao que foi apresentado
-na referência \cite{mccurdy94} e os PIPS recorrentes entre pares distantes e próximos
-foram, em média, -19.88 $\mu$V e -66.56 $\mu$V, respectivamente.
-Comparados com os -19,63 $\pm$ 2,42 $\mu$V e 
--41.36 $\pm$ 7.19 $\mu$V para pares distantes e próximos \cite{mccurdy94},
-respectivamente, é possível ver que os valores médios para pares próximos
-na simulação é maior do que na realidade.
+PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}.
 
 \begin{figure}[ht!]
 	\center
@@ -473,36 +338,12 @@ na simulação é maior do que na realidade.
 	\label{fig:mchammdecay}
 \end{figure}
 
-Um aumento ou diminuição no valor de $g_{max_{FF}}$ mudaria o resultado
-da média dos PIPS recorrentes, mas isso também alteraria as distribuições
-de amplitudes dos PIPS, que, como mostrado na Figura
-\ref{fig:mchammamplitude}, se mostrou dentro das faixas de valores
-descritos na literatura. Pode-se perceber, entretanto,
-que a forma como as alturas dos histogramas se distribuem foi diferente
-do esperado \cite{hamm87b}. Vale notar que, com a condutância
-adotada, apenas MNs do tipo FF, ou seja, aqueles com índice maior do
-que 149, são capazes de causar potenciais de ação nas CRs e, assim, gerar
-PIPS recorrentes.
+O
+padrão de decaimento com distância foi semelhantes ao que foi apresentado
+na Figura \ref{fig:met_RIPSP}. A amplitude dos PIPS recorrentes entre pares
+distantes e próximos
+foi, em média, -19.88 $\mu$V e -66.56 $\mu$V, respectivamente.
 
-\begin{figure}[ht!]
-	\center
-	\includegraphics[scale=0.8]{mchammamplitude.eps}
-    \caption[Distribuição de amplitudes de potenciais inibitórios
-            pós sinápticos recorrentes.]{Distribuição de amplitudes
-            de potenciais inibitórios pós sinápticos recorrentes. Em
-            cada gráfico, o número na parte superior significa o
-            índice do motoneurônio estimulado. Eixo das abcissas 
-            indica valores de amplitudes, em $\mu$V, e eixo das ordenadas
-            indica quantidade. Gráficos vazios indicam a ausência de 
-            potenciais inibitórios pós sinápticos recorrentes gerados
-            pelo estímulo de determinado motoneurônio.}
-	\label{fig:mchammamplitude}
-\end{figure}
-
-\subsubsection{Limitações}
-A comparação por inspeção visual dos resultados da Figura
-\ref{fig:mchammdecay} com os de \citeonline{mccurdy94} mostra
-consistência no decaimento da força sináptica com a distância. 
 Sabe-se que a amplitude de PIPS recorrentes entre pares de MNs próximos
 é relativamente variável, sendo observados valores de -40 $\mu$V e
 -280 $\mu$V para uma mesma distância, por exemplo. Os mecanismos
@@ -512,23 +353,51 @@ Nos resultados aqui obtidos, esta variabilidade não foi observada
 e, por isso, a média de PIPS recorrentes
 para pares de MNs próximos foi maior do que o esperado.
 
-Os histogramas de amplitude da Figura
-\ref{fig:mchammamplitude} estão dentro das faixas descritas na 
-literatura \cite{hamm87b}. Existem registros de PIPS recorrentes 
-maiores \cite{mccurdy94}, mas estes se manifestaram esporadicamente
-e apenas para pares de MNs próximos. O fato de alguns MNs não serem capazes 
-de gerar PIPS recorrentes não é inapropriado pois existem estudos
-mostrando que a ativação de CRs pode resultar em respostas como
-ausência, alguns poucos e até \textit{bursts} de potenciais de ação
-\cite{ross72,ross82}.
-
 Vale notar que outros valores maiores de $g_{max_{FF}}$ geraram resultados
-semelhantes, mas com amplitudes máximas e valores médios elevados e
-baixa variabilidade, além de afetar negativamente os resultados de análise
-estática da CR. Menores $g_{max_{FF}}$,
-por sua vez, fariam com que o efeito 
+semelhantes, mas com amplitudes máximas e valores médios elevados.
+Menores $g_{max_{FF}}$, por sua vez, fariam com que o efeito 
 das CRs fosse muito baixo. Sendo assim, o valor de condutância adotado
 fornece um equilíbrio razoável dos resultados.
+
+\subsection{Característica dinâmica e depressão pós sináptica
+            da célula de renshaw}
+Para que os resultados de \citeonline{hultborn79} possam ser
+reproduzidos, 
+valores elevados de $a$ e $tau$, tais como 0.9 e 
+400, respectivamente, foram necessários.
+Isso, entretanto, faz com
+que as características dinâmicas da CR sejam comprometidas, como
+visto na Figura \ref{fig:dynamic}. 
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.6]{dynamic.eps}
+    \caption[Características dinâmicas de uma célula de Renshaw modelada.]{
+             Características dinâmicas de uma célula de Renshaw modelada.
+             A frequência do estímulo, inicialmente
+             de 5 Hz, foi abruptamente aumentada para um dos valores
+             indicados na legenda, em Hz.
+            }
+	\label{fig:dynamic}
+\end{figure}
+
+Pode-se perceber que
+as respostas de algumas frequências estão muito próximas e a taxa
+de disparo foi diminuída a valores muito baixos. Isto está em
+desacordo com dados
+fornecidos na literatura \cite{ross82,uchiyama03a}.
+
+Sendo assim, optou-se por não se utilizar esse mecanismo de depressão
+sináptica no modelo. Isso implica que em simulações que envolvam
+uma parte transiente da resposta da CR, como algumas realizadas na
+seção \ref{sec:danger}, é de se esperar que a inibição recorrente 
+seja maior, mesmo que por um breve período.
+
+Vale citar um estudo recente mostrando que, para baixas frequências
+de estimulação, essa depressão quase não altera as correntes 
+pós sinápticas geradas \cite{moore15}. Esse resultado vai de encontro
+com os de \citeonline{hultborn79} e
+deve ser analisado com cautela pois foi realizado em ratos.
 
 Os parâmetros apresentados nessa seção, assim como seus valores, são
 sumarizados na Tabela \ref{tab:params_final}.

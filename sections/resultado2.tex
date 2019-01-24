@@ -4,7 +4,7 @@ Nesta seção, a robustez da parametrização adotada foi testada por meio
 da comparação de resultados de procedimentos experimentais com resultados
 obtidos de simulações desses experimentos.
 
-\subsection{Características temporais de potenciais inibitórios
+\subsection{Características de potenciais inibitórios
             pós sinápticos recorrentes}
 Os resultados de simulação para o tempo de subida e tempo de meia vida são
 mostrados na Figura \ref{fig:mchammvalidation} abaixo. Como pode ser visto,
@@ -32,6 +32,38 @@ são distorcidos à direita e o histograma do tempo de subida é bimodal.
          }
     \label{fig:mchammvalidation}
 \end{figure}
+
+Pode-se perceber, entretanto,
+que a forma como as alturas dos histogramas se distribuem foi diferente
+do esperado \cite{hamm87b}. Vale notar que, com a condutância
+adotada, apenas MNs do tipo FF, ou seja, aqueles com índice maior do
+que 149, são capazes de causar potenciais de ação nas CRs e, assim, gerar
+PIPS recorrentes.
+
+\begin{figure}[ht!]
+	\center
+	\includegraphics[scale=0.8]{mchammamplitude.eps}
+    \caption[Distribuição de amplitudes de potenciais inibitórios
+            pós sinápticos recorrentes.]{Distribuição de amplitudes
+            de potenciais inibitórios pós sinápticos recorrentes. Em
+            cada gráfico, o número na parte superior significa o
+            índice do motoneurônio estimulado. Eixo das abcissas 
+            indica valores de amplitudes, em $\mu$V, e eixo das ordenadas
+            indica quantidade. Gráficos vazios indicam a ausência de 
+            potenciais inibitórios pós sinápticos recorrentes gerados
+            pelo estímulo de determinado motoneurônio.}
+	\label{fig:mchammamplitude}
+\end{figure}
+
+Os histogramas de amplitude da Figura
+\ref{fig:mchammamplitude} estão dentro das faixas descritas na 
+literatura \cite{hamm87b}. Existem registros de PIPS recorrentes 
+maiores \cite{mccurdy94}, mas estes se manifestaram esporadicamente
+e apenas para pares de MNs próximos. O fato de alguns MNs não serem capazes 
+de gerar PIPS recorrentes não é inapropriado pois existem estudos
+mostrando que a ativação de CRs pode resultar em respostas como
+ausência, alguns poucos e até \textit{bursts} de potenciais de ação
+\cite{ross72,ross82}.
 
 \subsection{Relação estática das entradas e saídas das células de renshaw}
 A relação estática de entrada e saída realizada por \citeonline{cleveland81}

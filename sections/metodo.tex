@@ -91,6 +91,13 @@ parametrização e validação, de acordo com experimentos descritos
 na literatura. A ideia é que se tenha, ao final desse processo, um modelo
 apropriado para os estudos explicitados nas próximas seções da metodologia.
 
+\subsection{Parametrização do Modelo de Motoneurônios}
+O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
+medial do gato. Em simulações envolvendo populações de neurônios,
+foi considerado um comprimento de 600 mm do núcleo motor \cite{burke77}
+com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
+\citeonline{uchiyama03a}. 
+
 \subsection{Parametrização do Modelo de Célula de Renshaw}
 As parametrizações foram efetuadas na ordem em que são apresentadas
 e iterativamente, com base nos conhecimentos sobre a CR ou o circuito
@@ -131,9 +138,11 @@ foi diminuída.
 Os parâmetros de limiar, comprimento, diâmetro e densidade e variáveis de
 transição das condutâncias iônicas do modelo da CR podem ser alterados
 para reproduzir diferentes características de disparos. As alterações feitas 
-são baseadas nas seguintes referências:
+foram baseadas nas seguintes referências:
 
 \begin{itemize}
+    \item \citeonline{walmsley81}: Foi mostrado que CRs disparam
+        espontaneamente a uma taxa de 7 pps.
     \item \citeonline{hultborn79}: Relações de frequência de disparo
         \textit{versus} corrente injetada (FxI) foram obtidas para 
         diferentes correntes, como visto na Figura
@@ -144,30 +153,36 @@ são baseadas nas seguintes referências:
         mostraram que, após um breve pulso de corrente injetada,
         a AHP apresentou uma amplitude de -2 mV e duração por volta de 30 ms,
         como visto na Figura \ref{fig:HP79}\subref{fig:AHPRC}.
-    \item \citeonline{fyffe90}: Diâmetro médio de CRs foi 27 $\mu$m.
-    \item \citeonline{bui03}: Área superficial média do soma e do dendrito
-        foram 1753.8 $\mu\text{m}^2$ e 16756 $\mu\text{m}^2$, respectivamente.
+    \item \citeonline{fyffe90}: Estudos morfológicos mostraram CRs com 
+        diâmetro médio de de 27 $\mu$m.
+    \item \citeonline{bui03}: Estimativas da área superficial média do soma
+        e do dendrito foram 1753.8 $\mu\text{m}^2$ e 16756 $\mu\text{m}^2$,
+        respectivamente.
 \end{itemize}
 
 \begin{figure}[ht]
     \centering
     \subfloat[][]{
-        \label{fig:AHPRC}
-        \includegraphics[scale=0.5]{AHPRC}
+        \label{fig:fxiRC}
+        \includegraphics[scale=0.4]{fxiRC}
     }
     \hspace{-1cm}
     \subfloat[][]{
-        \label{fig:fxiRC}
-        \includegraphics[scale=0.4]{fxiRC}
+        \label{fig:AHPRC}
+        \includegraphics[scale=0.5]{AHPRC}
     }
     \caption[Características de disparos disparos da célula de Renshaw
             \cite{hultborn79}]{
         Características de disparos disparos da célula de Renshaw
-        \cite{hultborn79}. \subref{fig:AHPRC} Detalhes de
+        \cite{hultborn79}. \subref{fig:fxiRC} Relação entre corrente
+        injetada e taxa de disparo de uma célula de Renshaw.
+        A taxa de disparo instantânea entre o primeiro e segundo potencial
+        de ação é entendido como o 
+        primeiro intervalo, e assim por diante. O regime estacionário foi
+        considerado como sendo após 80 ms. 
+        \subref{fig:AHPRC} Detalhes de
         amplitude e duração da pós hiperpolarização.
-        \subref{fig:fxiRC} Relação entre corrente injetada e
-        taxa de disparo de uma célula de Renshaw.
-         }
+}
     \label{fig:HP79}
 \end{figure}
 
@@ -196,50 +211,147 @@ A partir de então, simulações foram realizadas com diferentes valores de
 variáveis de transição e densidade das condutâncias iônicas de uma única CR
 para se encontrar resultados de AHP e curva FxI apropriados. As correntes
 injetadas em cada caso estiveram de acordo com os dados mostrados na Figura
-\ref{fig:HP79}.
+\ref{fig:HP79}. Por fim, para obter uma taxa de disparos espontâneos de 7 pps,
+foi necessário alterar o valor da condutância máxima do ruído agindo sobre
+a CR.
 
 \subsubsection{Potenciais Inibitórios Pós Sinápticos}
-Por fim, valores de condutância e constante de tempo de decaimento 
-serão parametrizados para que a média dos PIPS causados pelas CRs 
-em todos os MNs seja o mesmo valor médio de 12.7 $\mu$V observado por
-\citeonline{vankeulen79}. A Figura \ref{fig:PIPS} mostra o resultado
-obtido pelos autores, sendo que, a partir disso,
-\citeonline{hamm87b} mediram tempo de subida e tempo de meia vida
-no intervalos de 2-12 ms e 7-14 ms, respectivamente.
-Nessa caso, as condutâncias serão comparadas
-com os valores medidos por \citeonline{maltenfort04}, que tem média de 
-23-27 nS e varia dentro do intervalo de 6.7 nS até 57.9 nS. Para
-testar a robustez da parametrização, também serão testados os 
-comportamentos de amplitude, latência, tempo de subida, decaimento
-com a distância e tempo de 
-meia vida, que também podem estar relacionados com a conectividade
-\cite{hamm87a,hamm87b,mccurdy94}. A sinapse em questão será
-posicionada no compartimento dendrítico do MN.
+As condutâncias sinápticas ativadas pelos disparos das CRs em cada
+tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
+
+\begin{itemize}
+    \item \citeonline{friedman81}: Correlações foram encontradas entre
+        amplitude dos PIPS e o tipo do MN, mas não entre amplitudes e 
+        as resistências de entrada dos MNs em cada tipo.
+    \item \citeonline{fyffe91}: Conexões sinápticas identificadas como
+        provenientes de CRs foram todas localizadas nos dendritos de MNs
+        do tipo $\alpha$.
+    \item \citeonline{uchiyama03a}: Baseado em dados fisiológicos
+        \cite{friedman81,hultborn88b,vankeulen79}, um procedimento para
+        estimar PIPS nos MNs de um núcleo motor foi adotado, tendo os 
+        resultados mostrados na Figura \ref{fig:met_IPSP}.
+\end{itemize}
 
 \begin{figure}[ht]
 	\center
-	\includegraphics[scale=0.6]{PIPS}
-    \caption[Potencial excitatório pós sináptico recorrente em um
-             motoneurônio]{
-                Potencial excitatório pós sináptico recorrente em um
-                motoneurônio. Os gráficos representam a média de potenciais
-                de membrana quando há um disparo, sendo que a linha
-                pontilhada está posicionada 1 ms após o inicio desse disparo.
-                O painel do lado esquerdo mostra o resultado para uma única 
-                célula, enquanto que o direito, para várias. Nas duas, a parte
-                superior representa a resposta para um único disparo da célula
-                de Renshaw, enquanto que a inferior, para dois \cite{vankeulen79}.}
-	\label{fig:PIPS}
+	\includegraphics[scale=0.4]{met_IPSP}
+    \caption[PIPS resultante agindo nos MNs]{
+             PIPS resultante agindo nos MNs \cite{uchiyama03a}.
+            }
+	\label{fig:met_IPSP}
 \end{figure}
 
-\subsubsection{Distribuição de Potenciais Inibitórios Pós Sinápticos Recorrentes}
-O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
-medial do gato. Em simulações envolvendo populações de neurônios,
-foi considerado um comprimento de 600 mm do núcleo motor \cite{burke77}
-com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
-\citeonline{uchiyama03a}. A quantidade média de CRs adotada foi
-100 CRs para cada 1 mm de extensão da medula \cite{carr98}.
+Sendo assim, a localização das sinapses das CRs foi definida no
+compartimento dendrítico do MN e simulações foram realizadas para encontrar
+três valores de condutâncias (um para cada tipo) que reproduzam a Figura 
+\ref{fig:met_IPSP}.
 
+\subsubsection{Distribuição de Potenciais Inibitórios Pós
+                Sinápticos Recorrentes}
+A distribuição dos PIPS recorrentes pelo núcleo motor depende 
+de fatores topográficos e funcionais. No ReMoto, isso está relacionado
+com condutâncias sinápticas e suas conexões. Nas simulações realizadas,
+a conectividade entre MNs e CRs foi considerada como sendo de 
+100\% e as condutâncias e suas distribuições topográficas são parametrizadas
+de acordo com:
+
+\begin{itemize}
+    \item \citeonline{mccurdy94}: A Distribuição topográfica das amplitudes
+        significativas de PIPS recorrentes obtida de pares de MNs é
+        inversamente correlacionada com a distância. Os autores fornecem uma
+        visão geral, independente do núcleo motor. MNs do músculo gastrocnêmio
+        medial separados por no máximo 1 mm são classificados como 
+        próximos. Fora dessa zona, são considerados distantes. A Figura
+        \ref{fig:met_RIPSP} mostra o resultado dos autores. Para o músculo
+        em questão, os valores médios de amplitudes foram de 
+        -19,63 $\pm$ 2,42 $\mu$V e -41.36 $\pm$ 7.19 $\mu$V para pares
+        distantes e próximos, respectivamente.
+    \item \citeonline{carr98}: A estimativa é de que existam em média
+        100 CRs para cada 1 mm de extensão da medula.
+    \item \citeonline{uchiyama03a}: O padrão de distribuição topográfica 
+        da força sináptica é o de uma gaussiana que decresce na medida
+        em que se afasta do neurônio pré sináptico. O desvio padrão da
+        curva é de 0.167 mm e 1.164 mm para os MNs e para as CRs, 
+        respectivamente. A quantidade de botões sinápticos também é
+        um indicativo da força sináptica das conexões. Estima-se que os
+        axônios colaterais dos MNs que alcançam a região onde as CRs se
+        encontram possuam 78.5 $\pm$ 7.5, 43.0 $\pm$ 4.2 e 35.5 $\pm$ 3
+        destes botões sinápticos se forem do tipo FF, FR e S, respectivamente.
+\end{itemize}
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.4]{met_RIPSP}
+    \caption[Distribuição topográfica de PIPS recorrentes]{
+             Distribuição topográfica de PIPS recorrentes. Valores
+             na abcissa indicam a distância entre os pares de MNs
+             enquanto que a ordenada mostra o valor da amplitude do 
+             PIPS recorrente gerado. Pontos pretos e brancos representam as respostas
+             significantes e as possivelmente equívocas, respectivamente
+             \cite{mccurdy94}.}
+	\label{fig:met_RIPSP}
+\end{figure}
+
+Para reproduzir o experimento como em \citeonline{mccurdy94}, as simulações
+consistiram em correntes injetadas no soma de MNs por um curto período de 
+tempo para que o PIPS recorrente pudesse ser observado em outros MNs.
+Foram levados em conta 180 pares, separados por distâncias entre
+86 $\mu$m e 4.7 mm. O número de CRs, de acordo com as estimativas,
+foi de 600.
+
+O número
+de botões sinápticos de cada tipo de MN nas CRs foi implementado como valores
+de condutância seguindo uma proporção de 1:0.55:0.45 (FF:FR:S). Isso
+permitiu que apenas a condutância máxima dos MNs do tipo FF
+($g_{max_{FF}}$) fosse parametrizado, sendo as outras ajustadas
+de acordo com a proporção.
+
+\subsubsection{Dinâmica e Depressão Sináptica}
+Para abordar as características dinâmicas e de depressão pós sináptica,
+as referências utilizadas foram:
+
+\begin{itemize}
+    \item \citeonline{hultborn79}: Os autores apresentaram
+          evidências da existência de um mecanismo de decréscimo da eficácia
+          sináptica dos terminais de axônios colaterais agindo sobre as CRs.
+          Essa conclusão foi baseada na diminuição de taxas de disparo para
+          diferentes frequências de estímulo. 
+    \item \citeonline{uchiyama03a}: Um aumento abrupto na frequência de
+          estimulação da CR fez com que sua
+          taxa de disparo apresentasse um \textit{overshoot}, como
+          mostrado na Figura \ref{fig:met_dyn}
+\end{itemize}
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.4]{met_dyn.png}
+    \caption[Características dinâmicas da célula de Renshaw.]{
+             Características dinâmicas da célula de Renshaw.
+             A frequência do estímulo
+             aplicado, inicialmente
+             de 5 Hz (com resposta indicada pelo traço horizontal com o
+             número 5 no eixo
+             vertical), foi abruptamente aumentada para um dos valores
+             indicados na legenda, em Hz \cite{uchiyama03a}.
+            }
+	\label{fig:met_dyn}
+\end{figure}
+
+No ReMoto, uma depressão pós sináptica é descrita por
+
+\begin{equation}
+    g_{dyn}(t)=g_m-(g_m-g_{dyn}a)e^{-\frac{(t_p+t)}{\tau}}
+\end{equation}
+
+sendo $g_{dyn}$ a condutância dinâmica alterada pela depressão
+após um disparo, $g_m$ a condutância máxima original, $a$ o 
+quanto de depressão ocorrerá ($0\le\text{var}\le 1$), $\tau$ a 
+constante de tempo e $t_p$ o instante do último disparo.
+
+As simulações para ambas características foram feitas com uma 
+população de CRs recebendo um estímulo antidrômico
+com frequências variadas para que a taxa de disparos gerada
+fosse contabilizada.
 
 \subsection{Validação do Modelo}
 %de forma qualitativa e semiquantitativa.
