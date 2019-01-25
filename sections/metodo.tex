@@ -248,6 +248,7 @@ três valores de condutâncias (um para cada tipo) que reproduzam a Figura
 
 \subsubsection{Distribuição de Potenciais Inibitórios Pós
                 Sinápticos Recorrentes}
+                \label{sec:met_ipsp}
 A distribuição dos PIPS recorrentes pelo núcleo motor depende 
 de fatores topográficos e funcionais. No ReMoto, isso está relacionado
 com condutâncias sinápticas e suas conexões. Nas simulações realizadas,
@@ -354,7 +355,86 @@ com frequências variadas para que a taxa de disparos gerada
 fosse contabilizada.
 
 \subsection{Validação do Modelo}
-%de forma qualitativa e semiquantitativa.
+Nesta seção, de forma qualitativa e
+semiquantitativa, a robustez da parametrização adotada foi testada por meio
+da comparação de resultados de procedimentos experimentais com resultados
+obtidos da simulação desses experimentos.
+
+\subsection{Características de potenciais inibitórios
+            pós sinápticos recorrentes}
+As características de PIPS recorrentes que foram verificadas 
+são mostradas na Figura \ref{fig:met_hamm}. As simulações realizadas 
+foram as mesmas da parametrização na Seção \ref{sec:met_ipsp}.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=1.3]{met_hamm}
+    \caption[Resultados experimentais sobre características de PIPS
+            recorrentes.]{
+            Resultados experimentais sobre características de PIPS
+            recorrentes. Eixos verticais são as contagens de ocorrências
+            \cite{hamm87b}.}
+	\label{fig:met_hamm}
+\end{figure}
+
+\subsection{Relação estática das entradas e saídas das células de renshaw}
+A relação estática de entrada e saída realizada por \citeonline{cleveland81}
+é importante para a caracterização de CRs. Foi observado que os resultados
+obtidos poderiam ser ajustados a uma função hiperbólica, que por
+conveniência foi chamada de função de Langmuir pelos autores. Esta abordagem
+também foi empregada nesse trabalho e a função em questão foi calculada como
+
+\begin{equation}
+    f_{CR}=\frac{cf_{AD}}{k+f_{AD}}
+\end{equation}
+
+em que $f_{AD}$ é a frequência do estímulo, $f_{CR}$ é a taxa de disparo
+média da CR após adaptação, $c$ é a constante de saturação e $k$ é a 
+constante de semi saturação. Esta análise foi reproduzida
+no modelo parametrizado, passado um período de adaptação do neurônio e 
+considerando as frequências de estímulos antidrômicos como entrada e
+taxas de disparos das CRs como saída. Os resultados experimentais são
+os mostrados na Figura \ref{fig:met_cleveland}
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=1.3]{met_cleveland}
+    \caption[Resultados experimentais sobre relações estáticas de 
+            entrada e saída.]{
+            Resultados experimentais sobre relações estáticas de 
+            entrada e saída. Uma frequência de estímulo antidrômica
+            $f_{AD}$ em Hz gera uma taxa de disparos $f_{RC}$ na CR.
+            No gráfico superior, 24 funções de Langmuir são ajustadas
+            às respostas de 24 CRs. No gráfico inferior, a média
+            normalizada desse grupo é apresentada, também com uma
+            função de Langmuir ajustada a ela. Barras verticais
+            representam o desvio padrão.
+            \cite{cleveland81}.}
+	\label{fig:met_cleveland}
+\end{figure}
+
+\subsection{Respostas das células de renshaw sujeitas à um estímulo
+            antidrômico}
+As CRs, quando ativadas por todos os axônios motores convergindo
+nelas, exibem disparos que podem durar até algumas dezenas de
+milissegundos e taxas de disparos
+instantâneas decrescentes com o tempo e dependentes da força sináptica 
+total \cite{eccles61b,uchiyama03a}. Essa característica é mostrada na 
+Figura \ref{fig:met_eccles}
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=1.3]{met_eccles}
+    \caption[CRs e sua resposta à um estímulo antidrômico.
+            ]{CRs e sua resposta à um estímulo antidrômico.
+            O tempo é mostrado na abcissa, em ms, enquanto
+            que a taxa de disparos, na ordenada, em pps.
+            São mostradas respostas de diferentes núcleos 
+            motores, de acordo com a legenda: A, plantar;
+            B, sóleo; C, gastrocnêmio medial; D, gastrocnêmio
+            lateral \cite{eccles61b}.}
+	\label{fig:met_eccles}
+\end{figure}
 
 \section{Efeitos da Parametrização em Simulações do núcleo motor}
 % The following two paragraphs must be reformulated

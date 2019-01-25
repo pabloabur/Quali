@@ -1,16 +1,11 @@
 \section{Validações}
 \label{sec:val}
-Nesta seção, a robustez da parametrização adotada foi testada por meio
-da comparação de resultados de procedimentos experimentais com resultados
-obtidos de simulações desses experimentos.
-
 \subsection{Características de potenciais inibitórios
             pós sinápticos recorrentes}
 Os resultados de simulação para o tempo de subida e tempo de meia vida são
 mostrados na Figura \ref{fig:mchammvalidation} abaixo. Como pode ser visto,
 esses tiveram faixas consideravelmente abaixo dos valores
-esperados \cite{hamm87b}. Apesar disso, algumas semelhanças existem: ambos
-são distorcidos à direita e o histograma do tempo de subida é bimodal.
+esperados. % TODO hoq could this be fixed. this whole section actually
 
 \begin{figure}[ht]
     \centering
@@ -66,27 +61,11 @@ ausência, alguns poucos e até \textit{bursts} de potenciais de ação
 \cite{ross72,ross82}.
 
 \subsection{Relação estática das entradas e saídas das células de renshaw}
-A relação estática de entrada e saída realizada por \citeonline{cleveland81}
-é importante para a caracterização de CRs. Foi observado que os resultados
-obtidos poderiam ser ajustados a uma função hiperbólica, que por
-conveniência foi chamada de função de Langmuir pelos autores. Esta abordagem
-também foi empregada nesse trabalho e a função em questão foi calculada como
-
-\begin{equation}
-    f_{CR}=\frac{cf_{AD}}{k+f_{AD}}
-\end{equation}
-
-em que $f_{AD}$ é a frequência do estímulo, $f_{CR}$ é a taxa de disparo
-média da CR após adaptação, $c$ é a constante de saturação e $k$ é a 
-constante de semi saturação. Esta análise foi reproduzida
-no modelo parametrizado, passado um período de adaptação do neurônio e 
-considerando as frequências de estímulos antidrômicos como entrada e
-taxas de disparos das CRs como saída.
-
 Os resultados são apresentados na Figura \ref{fig:static}. A Figura 
 \ref{fig:static24} mostra que as curvas obtidas de 24 CRs diferentes
-não apresentaram uma saturação tão clara quanto as das descritas na
-literatura, de forma que, para taxas menores de estímulos antidrômicos,
+não apresentaram uma saturação tão clara quanto as das descritas por
+\citeonline{cleveland81}, de forma que, para taxas menores de estímulos
+antidrômicos,
 as taxas de disparos das CRs não aumentaram tão rápido quanto deveriam.
 Apesar disso, suas taxas de disparos máximas estiveram dentro das faixas de
 valores esperados, que vão de aproximadamente 50 até 290 pps. A Figura 
@@ -104,8 +83,8 @@ das curvas foi um pouco menor do que o esperado.
         \label{fig:staticnorm}
         \includegraphics[scale=0.5]{staticnorm.eps}
     }
-    \caption[Relações de entrada e saída de CRs.]{
-        Relações de entrada e saída de células de Renshaw.
+    \caption[Relações de entrada e saída da CR modelada.]{
+        Relações de entrada e saída da CR modelada.
         \subref{fig:static24} Ajustes de funções de Langmuir à respostas
         de 24 células de Renshaw escolhidas ao acaso 
         (representadas cada uma por diferentes
@@ -123,20 +102,14 @@ que o efeito de um estímulo antidrômico em CRs próximas uma das outras
 estas aparecem sobrepostas. Isso é consistente com o fato de que a taxa de 
 disparo de uma CR está relacionada com dois tipos de entrada: a sua taxa de
 ativação e o número de sinapses excitatórias agindo sobre ela
-\cite{cleveland81}, sendo este último, no modelo estudado neste
-trabalho, entendido como condutâncias sinápticas. Dessa forma, é de 
+\cite{cleveland81}, sendo este último, no modelo estudado
+aqui, entendido como condutâncias sinápticas. Dessa forma, é de 
 se esperar que em regiões com populações localmente homogêneas
 de MNs as CRs ali presentes recebam uma entrada parecida.
 
 \subsection{Respostas das células de renshaw sujeitas à um estímulo
             antidrômico}
-Outro resultado bem conhecido das CRs é o de que estas, quando estimuladas
-por um único pulso capaz de ativar todos os axônios motores fornecendo
-inibição recorrente para as mesmas, exibem disparos que
-podem durar até algumas dezenas de milissegundos e taxas de disparos
-instantâneas decrescentes com o tempo e dependentes da força sináptica 
-total \cite{eccles61b,uchiyama03a}.
-
+            % Analysis hoever should focus on uchi
 Como mostrado na Figura \ref{fig:firing}, o modelo parametrizado foi
 capaz de reproduzir essas características. Houveram salvas de potenciais
 de ação com duração de 40 ms e suas taxas de disparo decaíram de forma 
@@ -160,8 +133,4 @@ existe uma força sináptica total menor agindo sobre a CR.
 O tipo de estímulo utilizado ativa muitos
 axônios motores sincronizadamente, criando uma resposta artificial que 
 raramente ocorre naturalmente \cite{uchiyama03a}. Apesar disso, esse
-resultado é útil para validar a parametrização das CRs.
-
-Vale notar que a taxa máxima de disparos não ultrapassou 1000 pps, conforme
-mostram \citeonline{hultborn79}. Isso é causado pela definição de
-1 ms como período refratário absoluto das CRs.
+resultado é útil para testar a parametrização das CRs.
