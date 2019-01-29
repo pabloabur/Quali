@@ -5,6 +5,15 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.53 }
 
+\bibitem[Adam, Windhorst e Inbar 1978]{adam78}
+\abntrefinfo{Adam, Windhorst e Inbar}{ADAM; WINDHORST; INBAR}{1978}
+{ADAM, D.; WINDHORST, U.; INBAR, G.~F. The effects of recurrent inhibition on
+  the cross-correlated firing patterns of motoneurones (and their relation to
+  signal transmission in the spinal cord-muscle channel).
+\emph{Biological Cybernetics}, v.~29, n.~4, p. 229--235, dez. 1978.
+ISSN 1432-0770.
+Dispon{\'\i}vel em: $<$https://doi.org/10.1007/BF00337280$>$.}
+
 \bibitem[Allen e Elbasiouny 2018]{allen18}
 \abntrefinfo{Allen e Elbasiouny}{ALLEN; ELBASIOUNY}{2018}
 {ALLEN, J.~M.; ELBASIOUNY, S.~M. The effects of model composition design
@@ -80,6 +89,23 @@ ISSN 0899-7667.}
 ISSN 0022-3077, 1522-1598.
 Dispon{\'\i}vel em:
   $<$http://jn.physiology.org/cgi/doi/10.1152/jn.00533.2003$>$.}
+
+\bibitem[Burke 1968]{burke68}
+\abntrefinfo{Burke}{BURKE}{1968}
+{BURKE, R.~E. Firing patterns of gastrocnemius motor units in the decerebrate
+  cat.
+\emph{The Journal of Physiology}, v.~196, n.~3, p. 631--654, 1968.
+ISSN 1469-7793.
+Dispon{\'\i}vel em:
+  $<$https://physoc.onlinelibrary.wiley.com/doi/abs/10.1113/jphysiol.1968.sp008527$>$.}
+
+\bibitem[Burke et al. 1971]{burke71}
+\abntrefinfo{Burke et al.}{BURKE et al.}{1971}
+{BURKE, R.~E. et al. Mammalian {Motor} {Units}: {Physiological}-{Histochemical}
+  {Correlation} in {Three} {Types} in {Cat} {Gastrocnemius}.
+\emph{Science}, v.~174, n.~4010, p. 709--712, nov. 1971.
+ISSN 0036-8075, 1095-9203.
+Dispon{\'\i}vel em: $<$http://science.sciencemag.org/content/174/4010/709$>$.}
 
 \bibitem[Burke et al. 1977]{burke77}
 \abntrefinfo{Burke et al.}{BURKE et al.}{1977}
@@ -205,6 +231,14 @@ Dispon{\'\i}vel em:
 {ENOKA, R. \emph{Neuromechanics of {Human} {Movement} - 4th {Edition}}. 4
   edition. ed. Champaign, Ill.: Human Kinetics, 2008.
 ISBN 978-0-7360-6679-2.}
+
+\bibitem[Fleshman, Munson e Sypert 1981]{fleshman81}
+\abntrefinfo{Fleshman, Munson e Sypert}{FLESHMAN; MUNSON; SYPERT}{1981}
+{FLESHMAN, J.~W.; MUNSON, J.~B.; SYPERT, G.~W. Homonymous projection of
+  individual group {Ia}-fibers to physiologically characterized medial
+  gastrocnemius motoneurons in the cat.
+\emph{Journal of Neurophysiology}, v.~46, n.~6, p. 1339--1348, dez. 1981.
+ISSN 0022-3077.}
 
 \bibitem[Friedman et al. 1981]{friedman81}
 \abntrefinfo{Friedman et al.}{FRIEDMAN et al.}{1981}
@@ -364,6 +398,16 @@ ISSN 0022-3751.
 Dispon{\'\i}vel em:
   $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1458719/$>$.}
 
+\bibitem[Hultborn, Pierrot-Deseilligny e Wigström 1979]{hultborn79c}
+\abntrefinfo{Hultborn, Pierrot-Deseilligny e Wigström}{HULTBORN;
+  PIERROT-DESEILLIGNY; WIGSTRöM}{1979}
+{HULTBORN, H.; PIERROT-DESEILLIGNY, E.; WIGSTRöM, H. Recurrent inhibition and
+  afterhyperpolarization following motoneuronal discharge in the cat.
+\emph{The Journal of Physiology}, v.~297, n.~1, p. 253--266, dez. 1979.
+ISSN 1469-7793.
+Dispon{\'\i}vel em:
+  $<$http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.1979.sp013038/abstract$>$.}
+
 \bibitem[Jankowska e Lindstr\"{O}m 1971]{jankowska71}
 \abntrefinfo{Jankowska e Lindstr\"{O}m}{JANKOWSKA; LINDSTR\"{O}M}{1971}
 {JANKOWSKA, E.; LINDSTR\"{O}M, S. Morphological identification of {Renshaw}
@@ -464,6 +508,16 @@ Dispon{\'\i}vel em:
   collaterals of ventral spinocerebellar tract neurones.
 \emph{Acta Physiologica Scandinavica}, v.~88, n.~4, p. 505--515, ago. 1973.
 ISSN 0001-6772.}
+
+\bibitem[{\DE{Luca}{De Luca}{de Luca}} e Contessa 2015]{deluca15}
+\abntrefinfo{{\DE{Luca}{De Luca}{de Luca}} e Contessa}{{\DE{LUCA}{DE LUCA}{DE
+  LUCA}}; CONTESSA}{2015}
+{{\DE{LUCA}{DE LUCA}{DE LUCA}}, C.~J.; CONTESSA, P. Biomechanical benefits of
+  the {Onion}-{Skin} motor unit control scheme.
+\emph{Journal of biomechanics}, v.~48, n.~2, p. 195--203, jan. 2015.
+ISSN 0021-9290.
+Dispon{\'\i}vel em:
+  $<$https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4295621/$>$.}
 
 \bibitem[{\DE{Luca}{De Luca}{de Luca}} e Erim 1994]{deluca94}
 \abntrefinfo{{\DE{Luca}{De Luca}{de Luca}} e Erim}{{\DE{LUCA}{DE LUCA}{DE
@@ -759,5 +813,12 @@ ISSN 0301-0082.}
 {WINDHORST, U. On {The} {Role} {Of} {Recurrent} {Inhibitory} {Feedback} {In}
   {Motor} {Control}.
 1996.}
+
+\bibitem[Zengel et al. 1985]{zengel85}
+\abntrefinfo{Zengel et al.}{ZENGEL et al.}{1985}
+{ZENGEL, J.~E. et al. Membrane electrical properties and prediction of
+  motor-unit type of medial gastrocnemius motoneurons in the cat.
+\emph{Journal of Neurophysiology}, v.~53, n.~5, p. 1323--1344, maio 1985.
+ISSN 0022-3077.}
 
 \end{thebibliography}

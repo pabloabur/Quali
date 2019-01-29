@@ -98,6 +98,25 @@ foi considerado um comprimento de 600 mm do núcleo motor \cite{burke77}
 com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
 \citeonline{uchiyama03a}. 
 
+Para calcular os valores de pico dos \textit{twitches}, 
+intervalos e mediana de força tetânica de unidades motoras foram
+utilizados \cite{burke71}. Considerando que a mediana tenha sido
+causada pelo valor médio de pico de um \textit{twitch} descrito por
+\citeonline{fleshman81} e que os limites do intervalo estejam 
+relacionados linearmente com o tamanho dos MNs, um cálculo de 
+proporção foi realizado para determinar os valores de pico de cada
+MN.
+
+Também considerando uma distribuição de parâmetros que acompanham
+linearmente o tamanho do MN, o tempo que o \textit{twitch} leva para
+alcançar o pico e a velocidade de condução axonal foram interpolados
+a partir dos valores máximos e mínimos fornecidos em
+\citeonline{burke71} e \citeonline{zengel85}, respectivamente.
+
+Existem outros parâmetros do modelo de MN no ReMoto, mas esses
+não foram alterados ou por que a parametrização adequada já foi feita
+em \cite{cisi07} ou por que não influem nas simulações realizadas.
+
 \subsection{Parametrização do Modelo de Célula de Renshaw}
 As parametrizações foram efetuadas na ordem em que são apresentadas
 e iterativamente, com base nos conhecimentos sobre a CR ou o circuito
@@ -360,7 +379,7 @@ semiquantitativa, a robustez da parametrização adotada foi testada por meio
 da comparação de resultados de procedimentos experimentais com resultados
 obtidos da simulação desses experimentos.
 
-\subsection{Características de potenciais inibitórios
+\subsubsection{Características de potenciais inibitórios
             pós sinápticos recorrentes}
 As características de PIPS recorrentes que foram verificadas 
 são mostradas na Figura \ref{fig:met_hamm}. As simulações realizadas 
@@ -377,7 +396,7 @@ foram as mesmas da parametrização na Seção \ref{sec:met_ipsp}.
 	\label{fig:met_hamm}
 \end{figure}
 
-\subsection{Relação estática das entradas e saídas das células de renshaw}
+\subsubsection{Relação estática das entradas e saídas das células de renshaw}
 A relação estática de entrada e saída realizada por \citeonline{cleveland81}
 é importante para a caracterização de CRs. Foi observado que os resultados
 obtidos poderiam ser ajustados a uma função hiperbólica, que por
@@ -413,7 +432,7 @@ os mostrados na Figura \ref{fig:met_cleveland}
 	\label{fig:met_cleveland}
 \end{figure}
 
-\subsection{Respostas das células de renshaw sujeitas à um estímulo
+\subsubsection{Respostas das células de renshaw sujeitas à um estímulo
             antidrômico}
 As CRs, quando ativadas por todos os axônios motores convergindo
 nelas, exibem disparos que podem durar até algumas dezenas de
@@ -437,101 +456,101 @@ Figura \ref{fig:met_eccles}
 \end{figure}
 
 \section{Efeitos da Parametrização em Simulações do núcleo motor}
-% The following two paragraphs must be reformulated
-Para essa análise, dois cenários foram considerados: um que simule o controle
-de força exercida pelo calcanhar em um pedal fixo e outro em um pedal livre.
-Em ambos os casos, os primeiros 500 ms segundos do sinal da força gerada serão
-ignorados. A quantidade de elementos neuronais é a mesma da mostrada
-na seção anterior, mas o tempo de simulação foi estendido para 3500 ms.
-
-Uma força a 20\% da contração máxima voluntária será tomada como referência e
-o seu coeficiente de variação e sua densidade espectral de potência serão
-calculados. Esses resultados serão analisados em simulações com e sem CRs.
-Na ausência de inibição recorrente, os comandos descendentes agindo sobre
-os MNs serão ajustados de forma a produzir a mesma taxa de disparo da
-situação com CR.
-
-\subsection{Disparos de Motoneurônios}
-\subsection{Diminuição da Força}
-\subsection{Oscilações de 10 Hz em Níveis baixos de Força}
-O objetivo desta etapa é entender como o simulador aqui estudado se comporta 
-em algumas situações propostas por outros trabalhos de simulação. Dessa forma,
-serão configuradas simulações que sejam o mais semelhante possível a esses 
+O objetivo desta etapa é entender como o modelo parametrizado se comporta 
+em algumas situações propostas por trabalhos experimentais ou
+por outros de simulação. Dessa forma,
+foram configuradas simulações que eram o mais semelhantes possível a esses 
 trabalhos para que os resultados possam ser apropriadamente comparados.
 
-Os trabalhos em questão, juntamente com os resultados que serão aqui abordados,
-são apresentados abaixo. Vale ressaltar que os métodos utilizados para a 
-obtenção dos resultados serão os mesmos empregados pelos autores, que foram
-analisados com e sem CRs. Os trabalhos alvo são:
+\subsection{Disparos de Motoneurônios}
+Com o intuito de analisar o recrutamento dos MNs,
+uma corrente
+em função do tempo foi injetada no soma de todos esses neurônios. Nessa
+simulação, a presença ou ausência da inibição recorrente é analisada no
+mesmo circuito e a corrente $i$ é descrita pela seguinte equação:
 
-\begin{itemize}
-	\item \citeonline{maltenfort98}, com foco no espectro de potência da atividade da
-        população de MNs, de acordo com o que é mostrado na Figura
-        \ref{fig:maltenfort98};
-	\item \citeonline{uchiyama03b}, com relações de comandos descendentes com
-		  taxa de disparos de MNs e CRs e força muscular resultante, de
-          acordo com o que é mostrado na Figura \ref{fig:uchiyama03};
-	\item \citeonline{williams09}, com espectro de potência dos disparos de uma
-		  população de MNs e da força muscular, de acordo com o que é
-          mostrado na Figura \ref{fig:williams09}.
-\end{itemize}
+\begin{equation}
+    i(t)=40t/1000.
+    \label{eq:i}
+\end{equation}
 
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.7]{maltenfort98}
-    \caption[Espectro de potência da dos disparos de uma população de motoneurônios
-             \cite{maltenfort98}]{Espectro de potência da atividade da
-             população de motoneurônios para diferentes níveis de ativações e
-             banda de frequências da entrada (A: 15 pps, com 65\% de
-             recrutamento; B:21 pps, com 90\% de recrutamento; C: 30 pps, com
-             100\% de recrutamento). Linhas grossas e finas são usadas para
-             representar a presença e ausência de inibição recorrente, 
-             respectivamente \cite{maltenfort98}.
-             }
-	\label{fig:maltenfort98}
-\end{figure}
+Outra opção utilizada para estimular os MNs foi com
+uma entrada excitatória que aumenta com o tempo de simulação,
+mas, nesse caso, isso se dá por meio de
+fibras descendentes disparando potenciais de ação com intervalos 
+médios de disparos de acordo com um processo pontual Poisson.
+Sua frequência de disparos $FD$ é dada por
 
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:uchiyama03a}
-        \includegraphics[scale=0.4]{uchiyama03a}
-    }
-    ~
-    \subfloat[][]{
-        \label{fig:uchiyama03b}
-        \includegraphics[scale=0.4]{uchiyama03b}
-    }
-    \caption[Relações de entrada (comando descendente) e saída (taxa
-             de disparos) de motoneurônios e células de Renshaw
-             \cite{uchiyama03b}]{Relações de entrada (comando descendente)
-             e saída (taxa de disparos) de motoneurônios e células de
-             Renshaw, com e sem inibição recorrente. \subref{fig:uchiyama03a}
-             Motoneurônios. \subref{fig:uchiyama03b} Células de Renshaw.
-             \cite{uchiyama03b}}
-	\label{fig:uchiyama03}
-\end{figure}
+\begin{equation}
+FD(t)=1500t/1000.
+    \label{eq:fd}
+\end{equation}
 
-\begin{figure}[ht]
-	\centering
-    \subfloat[][]{
-        \label{fig:williams09a}
-        \includegraphics[scale=0.3]{williams09a}
-    }
-    ~
-    \subfloat[][]{
-        \label{fig:williams09b}
-        \includegraphics[scale=0.3]{williams09b}
-    }
-    \caption[Efeitos da ausência e presença da célula de Renshaw em espectros de potência
-             \cite{williams09}
-            ]{Efeitos da ausência e presença da célula de Renshaw em espectros de potência:
-             \cite{williams09} \subref{fig:williams09a} dos disparos de uma 
-             população de motoneurônios. \subref{fig:williams09b} da força
-             muscular.
-             }
-	\label{fig:williams09}
-\end{figure}
+Para estudar a taxa de disparos dos MNs, a expressão utilizada
+foi dada por
+
+\begin{equation}
+    FR(t)=
+    \left\{
+        \begin{aligned}
+            &\frac{mvcPerc}{4000}t,\quad t\le 4000 ms \\
+            &mvcPerc,\quad 4000<t<5000 ms \\
+            &-\frac{mvcPerc}{4000}(t-9000),\quad t\ge 5000 ms
+        \end{aligned}
+    \right.
+    \label{eq:ramphold}
+\end{equation}
+
+Esta equação representa os disparos de fibras descendentes agindo sobre
+o núcleo motor com o intuito de realizar uma contração em rampa até 80 \%
+do MVC. Após 1 segundo nesse valor, eles decaíram com a mesma derivada.
+
+Esses disparos das fibras descendentes também foram gerados de um
+processo pontual Poisson e, assim, não foram determinísticos. Adotando
+uma força máxima de 98 N \cite{walmsley78}, o valor
+da variável $mvcPerc$ foi tomado como o necessário para fazer com que
+o modelo gerasse uma força de 80\% desse valor no pico da
+Equação (\ref{eq:ramphold}). Sendo assim, $mvcPerc$ foi 310 e 220
+em simulações com e sem CRs, respectivamente.
+
+\subsection{Diminuição da Força}
+\subsection{Oscilações de 10 Hz em Níveis baixos de Força}
+%os primeiros 500 ms segundos do sinal da força gerada serão
+%ignorados. O tempo de simulação foi estendido para 3500 ms.
+%
+%Uma força a 20\% da contração máxima voluntária será tomada como referência e
+%o seu coeficiente de variação e sua densidade espectral de potência serão
+%calculados. Esses resultados serão analisados em simulações com e sem CRs.
+%Na ausência de inibição recorrente, os comandos descendentes agindo sobre
+%os MNs serão ajustados de forma a produzir a mesma taxa de disparo da
+%situação com CR.
+
+%\begin{itemize}
+%	\item \citeonline{williams09}, com espectro de potência dos disparos de uma
+%		  população de MNs e da força muscular, de acordo com o que é
+%          mostrado na Figura \ref{fig:williams09}.
+%\end{itemize}
+
+%\begin{figure}[ht]
+%	\centering
+%    \subfloat[][]{
+%        \label{fig:williams09a}
+%        \includegraphics[scale=0.3]{williams09a}
+%    }
+%    ~
+%    \subfloat[][]{
+%        \label{fig:williams09b}
+%        \includegraphics[scale=0.3]{williams09b}
+%    }
+%    \caption[Efeitos da ausência e presença da célula de Renshaw em espectros de potência
+%             \cite{williams09}
+%            ]{Efeitos da ausência e presença da célula de Renshaw em espectros de potência:
+%             \cite{williams09} \subref{fig:williams09a} dos disparos de uma 
+%             população de motoneurônios. \subref{fig:williams09b} da força
+%             muscular.
+%             }
+%	\label{fig:williams09}
+%\end{figure}
 
 \subsection{Distorções na Entrada do Núcleo Motor}
 \subsection{Contrações Rápidas}

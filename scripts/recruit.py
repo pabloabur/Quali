@@ -100,10 +100,9 @@ for trial in trials:
 
     elif trial == '2':
         # Create rectangles area
-        recto1 = ptchs.Rectangle((160.0,83.5), 5.0, 4.0, fill=False, edgecolor='k')
-        rectc1 = ptchs.Rectangle((259.5,77.5), 5.0, 5.2, fill=False, edgecolor='k')
-        rectc2 = ptchs.Rectangle((261.5,93), 4.0, 4.0, fill=False, edgecolor='k')
-        rectc3 = ptchs.Rectangle((217.5,82.5), 3, 3, fill=False, edgecolor='k')
+        recto1 = ptchs.Rectangle((181.5,94.5), 4.0, 3.0, fill=False, edgecolor='k')
+        rectc1 = ptchs.Rectangle((293.5,92.5), 4.0, 5.0, fill=False, edgecolor='k')
+        rectc2 = ptchs.Rectangle((210.0,80.5), 3.5, 3, fill=False, edgecolor='k')
 
         fig, ax = plt.subplots(1)
         plt.plot(spikeInstantMNo, unitNumberMNo, 'k.')
@@ -118,11 +117,10 @@ for trial in trials:
         plt.plot(spikeInstantMNc, unitNumberMNc, 'k.')
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
-        plt.xlim([140, 280])
+        plt.xlim([160, 310])
         plt.ylim([77, 104])
         ax.add_patch(rectc1)
         ax.add_patch(rectc2)
-        ax.add_patch(rectc3)
         plt.savefig(figsFolder + filenamepoissonC + '.svg', format='svg')
 
         plt.figure()
@@ -130,20 +128,20 @@ for trial in trials:
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
         plt.xlim([140, 230])
-        plt.ylim([47, 79])
+        plt.ylim([50, 82])
         plt.axhline(75.5, color='k', linestyle=':')
         referenceInstant = [y for x, y in enumerate(spikeInstantMNc) if
-                    unitNumberMNc[x]==78][0]
-        plt.vlines(x=referenceInstant, ymin=47, ymax=78, color='k', linestyle='--')
+                    unitNumberMNc[x]==80][0]
+        plt.vlines(x=referenceInstant, ymin=47, ymax=80, color='k', linestyle='--')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
-                    unitNumberMNc[x]==54][0]
-        plt.hlines(y=54, xmin=referenceInstant, xmax=analysedInstant, color='k')
+                    unitNumberMNc[x]==52][0]
+        plt.hlines(y=52, xmin=referenceInstant, xmax=analysedInstant, color='k')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
                     unitNumberMNc[x]==66][0]
         plt.hlines(y=66, xmin=referenceInstant, xmax=analysedInstant, color='k')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
-                    unitNumberMNc[x]==71][0]
-        plt.hlines(y=71, xmin=referenceInstant, xmax=analysedInstant, color='k')
+                    unitNumberMNc[x]==72][0]
+        plt.hlines(y=72, xmin=referenceInstant, xmax=analysedInstant, color='k')
         #plt.show()
         plt.savefig(figsFolder + filenamerecruit + '.svg', format='svg')
 

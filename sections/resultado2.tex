@@ -5,7 +5,13 @@
 Os resultados de simulação para o tempo de subida e tempo de meia vida são
 mostrados na Figura \ref{fig:mchammvalidation} abaixo. Como pode ser visto,
 esses tiveram faixas consideravelmente abaixo dos valores
-esperados. % TODO hoq could this be fixed. this whole section actually
+esperados. Por outro lado, quando a duração dos PIPS recorrentes foi medida
+(como na Seção \ref{sec:res_epsp}), obteve-se um valor de 20.8 $\pm$ 4.5 ms,
+que está próximo aos 25.9 $\pm$ 1.2 ms reportados por \citeonline{mccurdy94}.
+Nesse caso, a baixa variabilidade nas propriedades de membrana dos
+MNs modelados ou das sinapses das CRs podem ter sido a causa dessas
+diferenças, pois durações pequenas de 2.8 ms e grandes de 85 ms
+já foram observadas em experimentos \cite{mccurdy94}.
 
 \begin{figure}[ht]
     \centering
@@ -28,12 +34,19 @@ esperados. % TODO hoq could this be fixed. this whole section actually
     \label{fig:mchammvalidation}
 \end{figure}
 
-Pode-se perceber, entretanto,
-que a forma como as alturas dos histogramas se distribuem foi diferente
-do esperado \cite{hamm87b}. Vale notar que, com a condutância
+Os histogramas de amplitude da Figura
+\ref{fig:mchammamplitude} estão dentro das faixas descritas na 
+literatura \cite{hamm87b}. Existem registros de PIPS recorrentes 
+maiores \cite{mccurdy94}, mas estes se manifestaram esporadicamente
+e apenas para pares de MNs próximos. Nota-se também que, com a condutância
 adotada, apenas MNs do tipo FF, ou seja, aqueles com índice maior do
 que 149, são capazes de causar potenciais de ação nas CRs e, assim, gerar
-PIPS recorrentes.
+PIPS recorrentes. Esse resultado não é inapropriado pois existem estudos
+mostrando que a ativação de CRs pode resultar em respostas como
+ausência, alguns poucos e até \textit{bursts} de potenciais de ação
+\cite{ross72,ross82}. Ainda assim, o modelo permite que MNs menores
+disparando conjuntamente possam produzir inibição recorrente,
+corroborando com \citeonline{hultborn79c}.
 
 \begin{figure}[ht!]
 	\center
@@ -49,16 +62,6 @@ PIPS recorrentes.
             pelo estímulo de determinado motoneurônio.}
 	\label{fig:mchammamplitude}
 \end{figure}
-
-Os histogramas de amplitude da Figura
-\ref{fig:mchammamplitude} estão dentro das faixas descritas na 
-literatura \cite{hamm87b}. Existem registros de PIPS recorrentes 
-maiores \cite{mccurdy94}, mas estes se manifestaram esporadicamente
-e apenas para pares de MNs próximos. O fato de alguns MNs não serem capazes 
-de gerar PIPS recorrentes não é inapropriado pois existem estudos
-mostrando que a ativação de CRs pode resultar em respostas como
-ausência, alguns poucos e até \textit{bursts} de potenciais de ação
-\cite{ross72,ross82}.
 
 \subsection{Relação estática das entradas e saídas das células de renshaw}
 Os resultados são apresentados na Figura \ref{fig:static}. A Figura 
@@ -109,14 +112,14 @@ de MNs as CRs ali presentes recebam uma entrada parecida.
 
 \subsection{Respostas das células de renshaw sujeitas à um estímulo
             antidrômico}
-            % Analysis hoever should focus on uchi
 Como mostrado na Figura \ref{fig:firing}, o modelo parametrizado foi
 capaz de reproduzir essas características. Houveram salvas de potenciais
 de ação com duração de 40 ms e suas taxas de disparo decaíram de forma 
 semelhante à uma exponencial. Com o estímulo de 67.2 \%, que é
 suficiente para ativar apenas os axônios motores dos MNs do tipo FF,
 o número de disparos e a duração da salva foram menores, pois 
-existe uma força sináptica total menor agindo sobre a CR.
+existe uma força sináptica total menor agindo sobre a CR. Esses
+resultados também foram reproduzidos por \cite{uchiyama03a}.
 
 \begin{figure}[ht!]
 	\center

@@ -1,19 +1,11 @@
 \section{Efeitos da Inibição Recorrente em Simulações}
-\subsection{características de disparos de motoneurônios}
-Com o intuito de analisar os disparos e o recrutamento dos MNs,
-uma corrente
-em função do tempo foi injetada no soma de todos esses neurônios. Nessa
-simulação, a presença ou ausência da inibição recorrente é analisada no
-mesmo circuito e a corrente $i$ é descrita pela seguinte equação:
-
-\begin{equation}
-    i(t)=40t/1000.
-\end{equation}
-
+\subsection{características de recrutamento de motoneurônios}
 No intervalo de 1 segundo mostrado na Figura \ref{fig:recruitCxO}, pode-se
 perceber que a presença
 das CRs resulta em padrões de disparos
-distintos. Como esperado, as CRs atrasam os disparos dos MNs e 
+distintos quando o núcleo motor é estimulado pela corrente descrita pela
+Equação (\ref{eq:i}).
+Como esperado, as CRs atrasam os disparos dos MNs e 
 também diminuem suas ocorrências.
 Além disso, é possível notar que, em ambos os casos e de forma geral,
 os MNs são recrutados de forma ordenada, ou seja, do menor para o maior.
@@ -21,8 +13,10 @@ os MNs são recrutados de forma ordenada, ou seja, do menor para o maior.
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.6]{recruitCxO.eps}
-    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados.]{
-             Momentos de disparo dos somas de todos os motoneurônios simulados.
+    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados
+             com uma corrente injetada.]{
+             Momentos de disparo dos somas de todos os motoneurônios simulados
+             com uma corrente injetada.
              O eixo das ordenadas representa os índices dos motoneurônios, 
              que são diretamente proporcionais ao tamanho dos mesmos, e o
              eixo das abcissas são os
@@ -69,16 +63,8 @@ de recrutamento deste sob essas condições.
 
 Para estudar isso, uma configuração de simulação
 um pouco mais realista foi utilizada. De forma semelhante à
-corrente injetada usada anteriormente, o núcleo motor é ativado
-por uma entrada excitatória que aumenta com o tempo de simulação,
-mas, nesse caso, isso se dá por meio de
-fibras descendentes disparando potenciais de ação com intervalos 
-médios de disparos de acordo com um processo pontual Poisson.
-Sua frequência de disparos $FD$ é dada por
-
-\begin{equation}
-FD(i)=1500t/1000.
-\end{equation}
+corrente injetada usada anteriormente, o núcleo motor foi ativado
+pela entrada descrita na Equação (\ref{eq:fd}).
 
 Esses resultados são mostrados na Figura \ref{fig:recruitpoisson}.
 Pode-se observar que, na presença de CRs
@@ -120,11 +106,11 @@ recrutamento dos MNs simulados.
 
 Na Figura \ref{fig:revrecruit}, a região de transição entre MNs do tipo
 S para o tipo FR na presença de inibição recorrente é mostrada. Tomando
-o instante do primeiro disparo do índice 78 como referência,
+o instante do primeiro disparo do índice 80 como referência,
 é possível identificar casos em que ocorreram uma inversão na ordem de 
 recrutamento, ou seja, MNs maiores começam a disparar antes de menores.
 Também existiram casos de MNs sendo recrutados praticamente ao mesmo
-instante, como é o caso do 78 com o 64. 
+instante, como é o caso do 80 com o 63. 
 
 \begin{figure}[ht]
 	\center
@@ -230,44 +216,17 @@ Os possíveis desdobramentos fisiológicos desses resultados
 serão explorados na sessão \ref{sec:danger}.
 
 \subsection{taxa de disparos de motoneurônios}
-Apesar de não ter sido mencionada, a taxa de disparos dos MNs é
-importante para compreender fisiologicamente a relevância dos resultados.
-
-Existem trabalhos na literatura que tentaram relacionar diferentes tipos
-de movimentos com a taxa de disparos de MNs ou força.
-\citeonline{hoffer87} mostraram que em um esteira, à velocidade de 0.5 ms/s,
-taxas de disparos de MNs dos músculos das patas traseiras
-de gatos estão contidas no intervalo de 15 até 35 pps, aproximadamente.
-Paralelamente, \citeonline{walmsley78} sugeriram que,
-nessa velocidade, a porcentagem da força tetânica realizada está por
-volta de 8\%.  
-Em movimentos como o pulo vertical, contrações próximas
-à 100\% do MVC são atingidas \cite{walmsley78} e isso envolveria
-maiores taxas de disparos.
-
-Além de envolver o recrutamento de unidades motoras, o controle da força
-muscular também depende
-dos suas taxas de disparos. Existem, entretanto, diferentes enfoques sobre
-esse assunto que ainda carecem de investigação \cite{piotrkiewicz17}.
-
-Esse
-é o caso de um padrão conhecido como \textit{onion skin}, em que
-unidades motoras recrutadas com limiares mais baixos mantém uma taxa de
-disparo maior do que as com limiares maiores. Isso causa um aninhamento
-de curvas de taxa de disparo, criando o aspecto de uma casca de cebola
-\cite{deluca94}. Existem também situações em que se observa uma inversão
-desse fenômeno (curvas se cruzando), configurando a \textit{onion skin}
-invertida \cite{hu14,oya09}.
-
 A Figura \ref{fig:onion} mostra o resultado de uma simulação
-em que se tenta reproduzir alguns desses padrões com e sem a CR.
-Pode-se perceber uma característica mista, em que a maioria se
-comporta de acordo com o padrão \textit{onion skin}, mas também
-existem cruzamento de curvas de MNs maiores com os menores. A
-comparação da Figura \ref{fig:onion}\subref{fig:onionwithoutRC}
-com a Figura \ref{fig:onion}\subref{fig:onionwithRC} mostra
-que a presença de inibição recorrente não causa mudanças 
-visíveis nessa característica de disparo dos MNs.
+com a entrada apresentada na Equação (\ref{eq:ramphold}).
+Tipicamente mostrada em trabalhos que tratam
+sobre o fenômeno de \textit{onion skin} \cite{deluca94},
+as curvas mostram a evolução temporal das taxas de disparos
+dos MNs ativados, indicados pelo mapa de cores de acordo com
+seus tamanhos. Nota-se que, excetuando-se do aumento de variabilidade
+e diminuição das taxas de disparos,
+não foram observadas diferenças quando a CR esteve ausente
+(Figura \ref{fig:onion}\subref{fig:onionwithoutRC})
+ou presente (Figura \ref{fig:onion}\subref{fig:onionwithRC}).
 
 \begin{figure}[ht]
     \centering
@@ -291,19 +250,41 @@ visíveis nessa característica de disparo dos MNs.
     \label{fig:onion}
 \end{figure}
 
-A Figura \ref{fig:oniondvdt} mostra a derivada de uma das curvas mostradas
-na Figura \ref{fig:onion}, escolhida ao acaso. Pode-se observar uma
-maior diferença entre as derivadas para algumas faixas de disparos
-das fibras descendentes.
+\citeonline{deluca94} ocasionalmente observaram
+taxas de disparos de uma unidade motora atingindo valores maiores
+do que outras atividades previamente, mas atribuíram isso a características
+estocásticas dos MNs. Considerando que as CRs introduzem um ruído
+descorrelacionado no núcleo motor \cite{adam78}, pode-se esperar que
+as CRs tenham alguma influência nessa organização de disparos, afetando,
+assim, diferentes aspectos da geração de força e eficiência energética
+\cite{deluca15,hu14}. Isso, entretanto, não foi observado pelos resultados
+apresentados, indicando que a inibição recorrente não é capaz de
+determinar se MNs disparam de acordo com o padrão \textit{onion skin} 
+ou não.
 
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.6]{oniondvdt.eps}
-    \caption[Derivada da taxa de disparos de motoneurônios.]{
-             Derivada da taxa de disparos de motoneurônios.
-            }
-	\label{fig:oniondvdt}
-\end{figure}
+Apesar de não ter sido mencionada, a taxa de disparos dos MNs é
+importante para compreender fisiologicamente a relevância dos resultados.
+Existem trabalhos na literatura que tentaram relacioná-las com
+diferentes tipos de movimentos.
+\citeonline{hoffer87} mostraram que em um esteira, à velocidade de 0.5 ms/s,
+taxas de disparos de MNs dos músculos das patas traseiras
+de gatos estão contidas no intervalo de 15 até 35 pps, aproximadamente.
+Paralelamente, \citeonline{walmsley78} sugeriram que,
+nessa velocidade, a porcentagem da força tetânica realizada está por
+volta de 8\%.  
+Em movimentos como o pulo vertical, contrações próximas
+à 100\% do MVC são atingidas \cite{walmsley78} e isso poderia envolver
+maiores taxas de disparos.
+
+Levando em consideração esses estudos, pode-se perceber que as
+taxas de disparos encontradas nas simulações
+estiveram dentro de limites fisiologicamente relevantes.
+Quando se trata do fenômeno da \textit{onion skin}, todavia,
+foi observada uma característica mista. Em ambos os casos (sem ou
+com CRs), curvas de MNs com tamanhos parecidos se sobrepõe frequentemente,
+mas, na medida em que a diferença entre os tamanhos aumenta, esse
+comportamento cessa. Apesar disso, também houve um caso de um MN do tipo
+FF disparando a taxas mais altas do que um do tipo FR.
 
 \subsection{Diminuição da Força}
 \subsection{Oscilações de 10 Hz}

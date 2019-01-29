@@ -22,6 +22,7 @@ chosenMN = 173 # This came from .dat generated, but I subtracted by one
 
 boundary = 4.7
 RIPSPs = []
+meanDuration = []
 distances = []
 positions = []
 recordedMN = []
@@ -55,16 +56,28 @@ for filenumber, filename in enumerate(files):
     availableMNsIndex = [x for x in range(nMN)]
     del availableMNsIndex[stimulatedMNIndex]
 
+    # Piece of code responsible for calculating mean RIPSP duration
+    if stimulatedMNIndex > 149:
+        for i in range(MNsignal.shape[1]):
+            tenPercentSpline = UnivariateSpline(t, MNsignal[:,i] - peaks[i]*.1, s=0)
+            tenPercentRoots = tenPercentSpline.roots()
+            if len(tenPercentRoots) != 2:
+                print('Warning: roots different than 2 in loop {:}'.format(i))
+                # Same as below. I checked and this is caused by signals the
+                # evolve in a step like fashion. They do not add any new values for
+                # my mean, anyways
+                continue
+            meanDuration.append(tenPercentRoots[1]-tenPercentRoots[0])
+            #import pdb; pdb.set_trace()
+
     # Hamm amplitude plots
-    #import pdb; pdb.set_trace()
     absPeaks = [1000*abs(y) for x,y in enumerate(peaks) if x!=stimulatedMNIndex]
     binsamp = np.linspace(min(absPeaks),max(absPeaks),len(absPeaks)/20)
     ax[filenumber].plot(3, 5, filenumber+1)
     ax[filenumber].hist(absPeaks, bins=binsamp, color='k')
     ax[filenumber].set_title(str(stimulatedMNIndex))
 
-    # Chosen by hand
-    if chosenMN==stimulatedMNIndex:
+    if chosenMN==stimulatedMNIndex: # Chosen by hand
         # Calculate rise time
         riseTime = []
         for i in range(MNsignal.shape[1]):
@@ -161,3 +174,4 @@ print ('Number of close pairs: '+str(len(close_pairs)))
 print ('Number of distant pairs: '+str(len(distant_pairs)))
 print ('Mean RIPSP in close pairs (micro Volts): '+str(RIPSP_close))
 print ('Mean RIPSP in distant pairs (micro Volts): '+str(RIPSP_distant))
+print ('Mean RIPSP duration: {:} ms ({:} sd)'.format(np.mean(meanDuration), np.std(meanDuration)))

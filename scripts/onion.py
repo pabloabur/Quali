@@ -27,8 +27,9 @@ os.chdir(path)
 ###### Simulation settings and variables
 # Available based on prevoius knowledge
 available = [x for x in range(1, 100)]
-#qntd = 6
-indexes = range(1,100)#np.random.choice(available, qntd, replace=False)
+qntd = 20
+# 1 to 100 is a good range in the current simulation (check spikes plot below)
+indexes = np.random.choice(available, qntd, replace=False)
 #indexes.sort(axis=0)
 dvdtMN = np.random.choice(indexes)
 print('MNs chosen to plot: ' + str(indexes))
@@ -59,12 +60,13 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
 
     #plt.figure()
     #plt.plot(spikeInstant,unitNumber)
+    #plt.show()
 
     # Normalize data to be used by color map
     norm = matplotlib.colors.Normalize(vmin=np.min(indexes), vmax=np.max(indexes))
 
     # Choose color map
-    colorMap = matplotlib.cm.copper#tab20
+    colorMap = matplotlib.cm.tab20
 
     # create a ScalarMappable and initialize a data structure
     mappable = matplotlib.cm.ScalarMappable(cmap=colorMap, norm=norm)
@@ -114,18 +116,17 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
             selectedFR = [float('nan') for x in FR]
         #import pdb; pdb.set_trace()
         plt.plot(t, selectedFR, linewidth=2, color=mappable.to_rgba(index))
-        plt.plot(tForce, force, 'k--')
-        plt.title(simType)
+        #plt.plot(tForce, force, 'k--') # To plot force on graph
     plt.colorbar(mappable)
     plt.savefig(figsFolder + filenameonion + '.svg', format='svg')
 
-plt.figure()
-plt.plot(t, dyo*1e3,
-         label='Motoneurônio {} sem célula de Renshaw'.format(dvdtMN))
-plt.plot(t, dyc*1e3,
-         label='Motoneurônio {} com célula de Renshaw'.format(dvdtMN))
-plt.legend()
-plt.xlabel('Taxa de disparo das fibras descendentes (pps)')
-plt.ylabel('Derivada da taxa de disparo')
+#plt.figure()
+#plt.plot(t, dyo*1e3,
+#         label='Motoneurônio {} sem célula de Renshaw'.format(dvdtMN))
+#plt.plot(t, dyc*1e3,
+#         label='Motoneurônio {} com célula de Renshaw'.format(dvdtMN))
+#plt.legend()
+#plt.xlabel('Taxa de disparo das fibras descendentes (pps)')
+#plt.ylabel('Derivada da taxa de disparo')
 #plt.show()
 plt.savefig(figsFolder + filenameoniondvdt + '.svg', format='svg')
