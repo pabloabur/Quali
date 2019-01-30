@@ -58,9 +58,8 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
         spikeInstant.append(float(line.split()[0]))
         unitNumber.append(int(float(line.split()[1])))
 
-    #plt.figure()
-    #plt.plot(spikeInstant,unitNumber)
-    #plt.show()
+    plt.figure()
+    plt.plot(spikeInstant,unitNumber, '.')
 
     # Normalize data to be used by color map
     norm = matplotlib.colors.Normalize(vmin=np.min(indexes), vmax=np.max(indexes))

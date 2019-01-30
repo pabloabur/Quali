@@ -222,11 +222,15 @@ Tipicamente mostrada em trabalhos que tratam
 sobre o fenômeno de \textit{onion skin} \cite{deluca94},
 as curvas mostram a evolução temporal das taxas de disparos
 dos MNs ativados, indicados pelo mapa de cores de acordo com
-seus tamanhos. Nota-se que, excetuando-se do aumento de variabilidade
-e diminuição das taxas de disparos,
-não foram observadas diferenças quando a CR esteve ausente
-(Figura \ref{fig:onion}\subref{fig:onionwithoutRC})
-ou presente (Figura \ref{fig:onion}\subref{fig:onionwithRC}).
+seus tamanhos. Nota-se que, na presença da CR 
+(Figura \ref{fig:onion}\subref{fig:onionwithRC}), houve 
+um aumento de variabilidade e diminuição de taxas de disparos
+em comparação com a simulação sem essa inibição recorrente
+(Figura \ref{fig:onion}\subref{fig:onionwithoutRC}). Além disso,
+foi observado na Figura \ref{fig:onion}\subref{fig:onionwithRC}
+um caso de cruzamento de curvas que não foi observado na 
+Figura \ref{fig:onion}\subref{fig:onionwithoutRC} (curvas bege
+e roxo escuras).
 
 \begin{figure}[ht]
     \centering
@@ -251,16 +255,23 @@ ou presente (Figura \ref{fig:onion}\subref{fig:onionwithRC}).
 \end{figure}
 
 \citeonline{deluca94} ocasionalmente observaram
-taxas de disparos de uma unidade motora atingindo valores maiores
-do que outras atividades previamente, mas atribuíram isso a características
-estocásticas dos MNs. Considerando que as CRs introduzem um ruído
+disparos de uma unidade motora atingindo taxas maiores
+do que outras ativadas previamente, mas atribuíram isso a características
+estocásticas dos MNs. Isso pode ser observado na Figura \ref{fig:onion},
+em que a natureza do estímulo utilizado ocasionalmente causa respostas 
+que divergem da ideia de \textit{onion skin}, tanto na ausência quanto
+na presença de inibição recorrente.
+
+Considerando que as CRs introduzem um ruído
 descorrelacionado no núcleo motor \cite{adam78}, pode-se esperar que
 as CRs tenham alguma influência nessa organização de disparos, afetando,
 assim, diferentes aspectos da geração de força e eficiência energética
-\cite{deluca15,hu14}. Isso, entretanto, não foi observado pelos resultados
-apresentados, indicando que a inibição recorrente não é capaz de
-determinar se MNs disparam de acordo com o padrão \textit{onion skin} 
-ou não.
+\cite{deluca15,hu14}. Isso, entretanto, foi observado de maneira modesta
+nos resultados
+apresentados. Além disso, a crescente inibição de CRs em contrações 
+voluntárias pode ter um efeito direto nesse resultado, sendo necessário
+determinar a forma como esse efeito modulatório afeta essa população
+de neurônios.
 
 Apesar de não ter sido mencionada, a taxa de disparos dos MNs é
 importante para compreender fisiologicamente a relevância dos resultados.
@@ -283,8 +294,10 @@ Quando se trata do fenômeno da \textit{onion skin}, todavia,
 foi observada uma característica mista. Em ambos os casos (sem ou
 com CRs), curvas de MNs com tamanhos parecidos se sobrepõe frequentemente,
 mas, na medida em que a diferença entre os tamanhos aumenta, esse
-comportamento cessa. Apesar disso, também houve um caso de um MN do tipo
-FF disparando a taxas mais altas do que um do tipo FR.
+comportamento cessa. Apesar da ocorrência um caso em que um MN do tipo
+FF tenha disparado a taxas mais altas do que um do tipo FR, outros
+estudos devem ser realizados para analisar a relevância desses
+resultados.
 
 \subsection{Diminuição da Força}
 \subsection{Oscilações de 10 Hz}
