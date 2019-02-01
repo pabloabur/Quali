@@ -86,9 +86,11 @@ Equação (\ref{eq:speedup}), mas usando os tempos de execução das soluções em
 Python e Cython.
 
 \section{Estudo das Parametrizações}
-Os modelos de neurônios estudados passarão por etapas de
-parametrização e validação, de acordo com experimentos descritos
-na literatura. A ideia é que se tenha, ao final desse processo, um modelo
+Baseado na literatura fornecendo dados de procedimentos experimentais
+realizados em gatos,
+os modelos de neurônios estudados passaram por etapas de
+parametrização e validação.
+A ideia é que se tenha, ao final desse processo, um modelo
 apropriado para os estudos explicitados nas próximas seções da metodologia.
 
 \subsection{Parametrização do Modelo de Motoneurônios}
@@ -408,11 +410,14 @@ também foi empregada nesse trabalho e a função em questão foi calculada como
 \end{equation}
 
 em que $f_{AD}$ é a frequência do estímulo, $f_{CR}$ é a taxa de disparo
-média da CR após adaptação, $c$ é a constante de saturação e $k$ é a 
+média da CR após sua resposta transiente,
+$c$ é a constante de saturação e $k$ é a 
 constante de semi saturação. Esta análise foi reproduzida
-no modelo parametrizado, passado um período de adaptação do neurônio e 
+no modelo parametrizado, passado um período de adaptação do neurônio 
+de 500 ms e 
 considerando as frequências de estímulos antidrômicos como entrada e
-taxas de disparos das CRs como saída. Os resultados experimentais são
+taxas de disparos das CRs como saída. Os resultados experimentais
+da literatura são
 os mostrados na Figura \ref{fig:met_cleveland}
 
 \begin{figure}[ht]
@@ -432,7 +437,7 @@ os mostrados na Figura \ref{fig:met_cleveland}
 	\label{fig:met_cleveland}
 \end{figure}
 
-\subsubsection{Respostas das células de renshaw sujeitas à um estímulo
+\subsubsection{Respostas das células de Renshaw sujeitas a um estímulo
             antidrômico}
 As CRs, quando ativadas por todos os axônios motores convergindo
 nelas, exibem disparos que podem durar até algumas dezenas de
@@ -455,7 +460,13 @@ Figura \ref{fig:met_eccles}
 	\label{fig:met_eccles}
 \end{figure}
 
-\section{Efeitos da Parametrização em Simulações do núcleo motor}
+Nas simulações realizadas, a atividade espontânea das CRs foi ativada
+e os estímulos antidrômicos foram aplicados com diferentes intensidades
+para ativar diferentes tipos de MNs. As taxas de disparos instantâneas
+foram calculadas como o recíproco do intervalo entre cada potencial de
+ação, em pps.
+
+\section{Efeitos da Parametrização em Simulações}
 O objetivo desta etapa é entender como o modelo parametrizado se comporta 
 em algumas situações propostas por trabalhos experimentais ou
 por outros de simulação. Dessa forma,
@@ -464,10 +475,10 @@ trabalhos para que os resultados possam ser apropriadamente comparados.
 
 \subsection{Disparos de Motoneurônios}
 Com o intuito de analisar o recrutamento dos MNs,
-uma corrente
+uma corrente $i(t)$
 em função do tempo foi injetada no soma de todos esses neurônios. Nessa
 simulação, a presença ou ausência da inibição recorrente é analisada no
-mesmo circuito e a corrente $i$ é descrita pela seguinte equação:
+mesmo circuito e a corrente $i(t)$ é descrita pela seguinte equação:
 
 \begin{equation}
     i(t)=40t/1000.
@@ -477,9 +488,9 @@ mesmo circuito e a corrente $i$ é descrita pela seguinte equação:
 Outra opção utilizada para estimular os MNs foi com
 uma entrada excitatória que aumenta com o tempo de simulação,
 mas, nesse caso, isso se dá por meio de
-fibras descendentes disparando potenciais de ação com intervalos 
-médios de disparos de acordo com um processo pontual Poisson.
-Sua frequência de disparos $FD$ é dada por
+fibras descendentes disparando potenciais de ação
+de acordo com um processo pontual Poisson, com
+frequência de disparos $FD(t)$ dada por
 
 \begin{equation}
 FD(t)=1500t/1000.
@@ -501,7 +512,7 @@ foi dada por
     \label{eq:ramphold}
 \end{equation}
 
-Esta equação representa os disparos de fibras descendentes agindo sobre
+Esta equação representa os disparos de 400 fibras descendentes agindo sobre
 o núcleo motor com o intuito de realizar uma contração em rampa até 80 \%
 do MVC. Após 1 segundo nesse valor, eles decaíram com a mesma derivada.
 
@@ -513,7 +524,61 @@ o modelo gerasse uma força de 80\% desse valor no pico da
 Equação (\ref{eq:ramphold}). Sendo assim, $mvcPerc$ foi 310 e 220
 em simulações com e sem CRs, respectivamente.
 
-\subsection{Diminuição da Força}
+As taxas de disparos foram calculadas por meio da convolução de
+uma janela de Hann de 400 ms de largura e área unitária com
+um trem de impulsos unitários representando os instantes de 
+disparos dos MNs.
+
+
+\subsection{Alterações na Força Gerada pelo Modelo}
+O efeito do modelo de CR na força muscular foi estudado baseando-se
+no trabalho de \citeonline{granit61}, que fizeram uma estimativa 
+do quanto a inibição recorrente diminuiria a tensão gerado pelo 
+músculo sóleo do gato. Isso é mostrado na Figura \ref{fig:met_granit}
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.5]{met_granit}
+    \caption[Tensão isométrica do músculo sóleo (ordenada) em função
+             da frequência de estímulo do nervo (abcissa).]{
+             Tensão isométrica do músculo sóleo (ordenada) em função
+             da frequência de estímulo do nervo (abcissa). Os círculos
+             preenchidos representam os valores de referência de tensão
+             muscular, enquanto que a curva 1 é uma estimativa dessa
+             na ausência de inibição recorrente. A curva 2 é a diferença
+             das outras duas \cite{granit61}.}
+	\label{fig:met_granit}
+\end{figure}
+
+Como o músculo utilizado nesse experimento é diferente do empregado
+nas parametrizações, algumas considerações foram necessárias.
+Foi pressuposto que as relações dos MNs desse núcleo motor
+com as CRs (condutâncias sinápticas e conectividade) sejam as mesmas.
+Ademais, as características de unidade motora relacionado aos 
+\textit{twitches}, propriedades eletrotônicas e geométricas foram as
+mesmas adotadas para o núcleo motor gastrocnêmio medial.
+Dessa forma, apenas as quantidades e distribuição de tamanhos
+desses neurônios foram alteradas, semelhante ao trabalho de
+\citeonline{maltenfort98}.
+
+A simulação, portanto, foi realizada com um número arbitrário de
+500 MNs do tipo S. Respeitando a proporção de 50 MN/mm de medula
+espinhal \cite{cisi07}, esses neurônios foram distribuídos
+em 10 mm. Sendo assim, 1000 CRs foram dispostos nesse comprimento
+\cite{carr98}. O núcleo motor foi ativado por estímulos antidrômicos
+supra máximos
+para os axônios motores por 4 s, com taxas suficientes
+para gerar os níveis
+de força reportados na Figura \ref{fig:met_granit}. Além disso,
+a atividade espontânea das CRs foi ativada.
+
+A média da força em cada nível de estimulação foi calculada,
+descartando 1 s inicial que poderia conter respostas transitórias.
+Por estar diretamente
+relacionada com a força gerada, a taxa de disparos média dos MNs 
+(computada como a média das taxas individuais) e sua diminuição 
+causada pela inibição recorrente também foi analisada.
+
 \subsection{Oscilações de 10 Hz em Níveis baixos de Força}
 %os primeiros 500 ms segundos do sinal da força gerada serão
 %ignorados. O tempo de simulação foi estendido para 3500 ms.
@@ -552,6 +617,6 @@ em simulações com e sem CRs, respectivamente.
 %	\label{fig:williams09}
 %\end{figure}
 
-\subsection{Distorções na Entrada do Núcleo Motor}
+\subsection{Distorções na Saída do Núcleo Motor}
 \subsection{Contrações Rápidas}
 \section{Estudos sobre a Conectividade do Circuito de Inibição Recorrente}
