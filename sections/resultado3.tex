@@ -301,6 +301,115 @@ estudos devem ser realizados para analisar a relevância desses
 resultados.
 
 \subsection{Alterações na Força Gerada pelo Modelo}
+A forma como as CRs alteram a 
+geração de força nas simulações é mostrada na Figura \ref{fig:granit}
+\subref{fig:granitforce}.
+A inibição recorrente causou um deslocamento da curva de força para
+a direita e, para baixas taxas de disparos das fibras descendentes,
+ocasionou uma redução em sua inclinação, ou
+seja, na sua sensibilidade à mudanças das entradas sinápticas.
+A diferença entre as respostas com e sem CRs indicam a faixa
+de valores de entrada em que o efeito da inibição foi considerável.
+
+O decréscimo de força apresentado reflete uma diminuição nas médias
+de disparos da população de MNs, ilustrada
+na Figura \ref{fig:granit}\subref{fig:granitrate}.
+Isso aconteceu pois, à medida que
+a entrada excitatória das fibras descendentes se intensificou, o 
+número de MNs recrutados e suas taxas de disparos aumentou, causando
+mais atividade nas CRs.
+Foi notado que, após uma entrada de 225 pps,
+a diferença entre as duas curvas não aumentou mais de forma linear,
+se mantendo praticamente constante e indicando uma redução máxima
+de 33\% nessa simulação de núcleo motor. A razão de tal comportamento se 
+deve, provavelmente, a dois fatores: O recrutamento de todas as
+unidades motoras, fazendo com que o acréscimo de força dependa do
+aumento da frequência de disparos dos MNs; A progressiva saturação
+da resposta da CR, como mostrado na Figura \ref{fig:static}. Esse
+resultado, apesar de refletir características populacionais, foi
+semelhante à função de Langmuir descrita na literatura \cite{cleveland81}.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:granitforce}
+        \includegraphics[scale=0.5]{granitforce.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:granitrate}
+        \includegraphics[scale=0.5]{granitrate.eps}
+    }
+    \caption[Efeitos da presença da CR no força gerada pelo modelo
+             e nos disparos de MNs.]{
+             Efeitos da presença da CR no força gerada pelo modelo
+             e nos disparos de MNs. 
+             Curvas pontilhadas e contínuas para respostas com e sem
+             CR, respectivamente. Linha tracejada obtida da subtração
+             dessas duas.
+             \subref{fig:granitforce} Força gerada.
+             \subref{fig:granitrate} Média de disparos da população de MNs.
+         }
+    \label{fig:granit}
+\end{figure}
+
+% This is something that could be changed
+Os níveis de força gerados pelo modelo não foram os mesmos dos obtidos
+na literatura, mas foram proporcionais. Caso se queira reproduzir a força 
+máxima de 17.15 N \cite{granit61}, os parâmetros de pico dos
+\textit{twitches} e força tetânica poderiam ser aumentados. Para
+esses casos, a proporcionalidade observada foi mantida.
+
+Existem muitos dados conflitantes na literatura sobre o ganho da
+inibição recorrente e a consequente diminuição da taxa de disparos.
+\citeonline{lindsay91} sugeriram que essa mudança, quando produzida
+em MNs do músculo gastrocnêmio medial por meio de estimulações em nervos
+do gastrocnêmio lateral, seria menor
+do que 2 pps. Esse procedimento, entretanto, não considera que esses
+núcleos motores se sobrepõem apenas parcialmente na medula espinhal,
+de forma que a inibição observada poderia ter sido causada por CRs
+distantes e, por isso, estaria atenuada \cite{mccurdy94}.
+
+De fato, outros experimentos em gatos mostraram ganhos maiores.
+Ativando MNs por meio das entradas sinápticas de aferentes Ia e
+estimulando uma única fibra de uma raiz ventral, \citeonline{granit61}
+observaram uma redução de 5 pps. \citeonline{cleveland81}, por sua
+vez, combinaram estimulações de raízes ventrais com correntes injetadas
+no soma dos MNs estudados e encontraram reduções de até 22 pps para altas
+taxas 
+de estímulos antidrômicos. Os autores atribuíram a discrepância
+com o trabalho de \citeonline{granit61} ao nível de atividade do 
+núcleo motor, mas outros valores maiores foram reportados em outros
+estudos, como por exemplo uma redução de 44\% \cite{granit60}.
+
+Apesar de ser oriundo de experimentos em ratos,
+vale citar um trabalho recente sugerindo que a inibição proveniente
+das CRs seja mais forte do que se imagina, 
+de forma que um único potencial de ação seja suficiente para
+para silenciar um MN \cite{bhumbra14}. Esse resultado poderia
+indicar ganhos maiores nesse circuito de inibição recorrente.
+
+Mediante o exposto, os resultados das simulações aqui realizadas,
+de forma geral, foram condizentes com o que foi 
+apresentado por \citeonline{uchiyama03b}. As reduções na força 
+gerada ocorreram como previsto na literatura, enquanto que a
+diminuição nas taxas de disparos dos MNs foi um pouco maior do 
+que o esperado. Isso, entretanto, não desvalida a parametrização
+adotada, tendo em visto que o ganho do circuito de inibição
+recorrente carece de mais análises experimentais para ser 
+determinado com precisão.
+
+De qualquer forma, o ponto de vista de
+que a CR pode atuar como um regulador de ganho variável
+pode ser reforçado \cite{hultborn04}. Nesse contexto, é
+importante dizer que as CRs
+podem ser inibidas com o
+aumento da força \cite{hultborn79b}. Sendo assim, é de se esperar
+que as respostas se tornem
+mais parecidas, com a curva de força pontilhada
+se aproximando progressivamente da contínua na Figura \ref{fig:granit}
+\cite{uchiyama03b}.
+
 \subsection{Oscilações de 10 Hz}
 \label{sec:forca}
 \subsection{Distorções}

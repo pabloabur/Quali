@@ -1,33 +1,10 @@
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from collections import OrderedDict
 import glob
 import os
 
-def ensambleFR(spikeInstant, unitNumber, transientPeriod, simDuration):
-    units = list(OrderedDict.fromkeys(unitNumber))
-    
-    if len(units) == 0:
-        return 0
-    else:
-        meanFR = []
-        for unit in units:
-            MNSpikeInstants = [y for x, y in enumerate(spikeInstant) if unitNumber[x]==unit]
-            numberOfSpikes = len([x for x in MNSpikeInstants if x>transientPeriod])
-            meanFR.append(numberOfSpikes/(simDuration*1e-3 - transientPeriod*1e-3))
-
-    #     popSlice = [y for x, y in enumerate(meanFR) if x>100 and x<200]
-    #     sliceFR = sum(popSlice)/(len(popSlice))
-    #     FR = sum(meanFR)/len(meanFR)
-
-    #     plt.figure()
-    #     plt.plot(units, meanFR, 'o')
-    #     plt.axhline(y=FR, color='r', linestyle='-')
-    #     plt.axhline(y=sliceFR, color='k', linestyle='-')
-    #     plt.show()
-
-        return sum(meanFR)/len(units)
+from ensembleRate import ensembleFR
 
 ###### Simulation settings and variables
 duration = 4000
@@ -35,14 +12,19 @@ tmin = 1000
 dt = 0.05
 t = np.arange(0, duration, dt)
 numberMN = 500
-#pps = range(5, 575, 38)
-pps = range(10, 80, 10)
+pps = [1] + list(range(75, 675, 75))
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
 trial = input("Trial number: ")
 path = '/home/pablo/osf/Master-Thesis-Data/population/granit/trial' + trial
+filenamepps = 'granitrate'
+filenameforce = 'granitforce'
 
-simTypes = ['c', 'c'] # Without and with RC
+simTypes = ['o', 'c'] # Without and with RC
 
+rateOnTrialO = []
+forceOnTrialO = []
+rateOnTrialC = []
+forceOnTrialC = []
 for simType in simTypes:
     files = glob.glob(path + '/*'+ simType + '.dat')
     spikesFiles = [x for x in files if 'spks' in x]
@@ -50,8 +32,6 @@ for simType in simTypes:
     forcesFiles = [x for x in files if 'force' in x]
     forcesFiles.sort()
 
-    rateOnTrial = []
-    forceOnTrial = []
     for filename in spikesFiles:
         spikeInstant = []
         unitNumber = []
@@ -63,13 +43,15 @@ for simType in simTypes:
             unitNumber.append(int(float(line.split()[1])))
         f.close()
         
-        rateOnTrial.append(ensambleFR(spikeInstant, unitNumber,
-            tmin, duration))
-        print (rateOnTrial)
-
-    plt.figure()
-    plt.plot(pps, rateOnTrial)
-    plt.show()
+        if simType == 'o':
+            rateOnTrialO.append(ensembleFR(spikeInstant, unitNumber,
+                tmin, duration))
+        elif simType == 'c':
+            rateOnTrialC.append(ensembleFR(spikeInstant, unitNumber,
+                tmin, duration))
+        #plt.figure()
+        #plt.plot(spikeInstant, unitNumber, '.')
+        #plt.show()
 
     for filename in forcesFiles:
         force = []
@@ -83,12 +65,29 @@ for simType in simTypes:
         f.close()
         
         staticForce = [y for x,y in enumerate(force) if instant[x]>tmin]
-        forceOnTrial.append(np.mean(staticForce))
-        #import pdb; pdb.set_trace()
+
+        if simType == 'o':
+            forceOnTrialO.append(np.mean(staticForce))
+        elif simType == 'c':
+            forceOnTrialC.append(np.mean(staticForce))
         #plt.figure()
         #plt.plot(instant, force)
         #plt.show()
 
-    plt.figure()
-    plt.plot(pps, forceOnTrial)
-    plt.show()
+plt.figure()
+plt.plot(pps, rateOnTrialO, 'k', label='Sem CR')
+plt.plot(pps, rateOnTrialC, 'k:', label='Com CR')
+plt.plot(pps, np.array(rateOnTrialO) - np.array(rateOnTrialC), 'k--')
+plt.legend()
+plt.xlabel('Frequência de disparos das fibras descendentes (pps)')
+plt.ylabel('Taxa de disparos da população de MNs (pps)')
+plt.savefig(figsFolder + filenamepps + '.svg', format='svg')
+
+plt.figure()
+plt.plot(pps, forceOnTrialO, 'k', label='Sem CR')
+plt.plot(pps, forceOnTrialC, 'k:', label='Com CR')
+plt.plot(pps, np.array(forceOnTrialO) - np.array(forceOnTrialC), 'k--')
+plt.legend()
+plt.xlabel('Frequência de disparos das fibras descendentes (pps)')
+plt.ylabel('Força (N)')
+plt.savefig(figsFolder + filenameforce + '.svg', format='svg')

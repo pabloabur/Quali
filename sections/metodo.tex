@@ -117,7 +117,31 @@ a partir dos valores máximos e mínimos fornecidos em
 
 Existem outros parâmetros do modelo de MN no ReMoto, mas esses
 não foram alterados ou por que a parametrização adequada já foi feita
-em \cite{cisi07} ou por que não influem nas simulações realizadas.
+\cite{cisi07} ou por que não influem nas simulações realizadas. Os
+dados experimentais utilizados e suas referências são apresentados
+na Tabela \ref{tab:met_MNparams}.
+
+\begin{table}[ht!]
+\caption{Dados experimentais utilizados na parametrização dos MNs.}
+\label{tab:met_MNparams}
+\centering
+    \begin{tabular}{p{3.5cm} c c c p{3.5cm}}\hline 
+        \multirow{2}{*}{Propriedades} & \multicolumn{3}{c}{Unidades motoras} &
+            \multirow{2}{*}{Referência} \\
+        & FF & FR & S & \\ \hline 
+        Intervalo da tensão tetânica máxima (g) & 30 até 130 &
+            4.5 até 55 & 1.2 até 12.6 & \citeonline{burke71} \\
+        Mediana da tensão tetânica máxima (g) & 60 & 20 & 5 & 
+        \citeonline{burke71} \\
+        Intervalos de tempo de contração do \textit{twitch} (ms) & 20 até 47 &
+            30 até 55 & 58 até 110 & \citeonline{burke71} \\
+        Tensão do \textit{twitch} (g) & 67$\pm$ 0.8 & 0.3$\pm$ 0.1 & 0.4$\pm$ 0.1 &
+            \citeonline{fleshman81} \\
+        Velocidade de condução axonal (m/s) & 99$\pm$ 1 & 100$\pm$ 1 & 86$\pm$ 1 &
+            \citeonline{zengel85} \\
+	\hline
+    \end{tabular}
+\end{table}
 
 \subsection{Parametrização do Modelo de Célula de Renshaw}
 As parametrizações foram efetuadas na ordem em que são apresentadas
@@ -497,7 +521,7 @@ FD(t)=1500t/1000.
     \label{eq:fd}
 \end{equation}
 
-Para estudar a taxa de disparos dos MNs, a expressão utilizada
+Para estudar a taxa de disparos dos MNs, a entrada utilizada
 foi dada por
 
 \begin{equation}
@@ -561,14 +585,15 @@ Dessa forma, apenas as quantidades e distribuição de tamanhos
 desses neurônios foram alteradas, semelhante ao trabalho de
 \citeonline{maltenfort98}.
 
-A simulação, portanto, foi realizada com um número arbitrário de
-500 MNs do tipo S. Respeitando a proporção de 50 MN/mm de medula
+A simulação, portanto, foi realizada com
+150 MNs do tipo S, de acordo com estimativas realizadas em trabalhos 
+experimentais \cite{burke11}. Respeitando a proporção de 50 MN/mm de medula
 espinhal \cite{cisi07}, esses neurônios foram distribuídos
-em 10 mm. Sendo assim, 1000 CRs foram dispostos nesse comprimento
-\cite{carr98}. O núcleo motor foi ativado por estímulos antidrômicos
-supra máximos
-para os axônios motores por 4 s, com taxas suficientes
-para gerar os níveis
+em 3 mm. Sendo assim, 300 CRs foram dispostos nesse comprimento
+\cite{carr98}.
+O núcleo motor foi ativado por 400 fibras descendentes com disparos 
+de acordo com um processo pontual Poisson, com duração de 4 s e
+com taxas suficientes para gerar os níveis
 de força reportados na Figura \ref{fig:met_granit}. Além disso,
 a atividade espontânea das CRs foi ativada.
 

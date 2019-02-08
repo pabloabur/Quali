@@ -122,7 +122,8 @@ outras opções, esta é postergada para trabalhos futuros.
 \section{Parametrizações}
 \subsection{Parâmetros dos Motoneurônios}
 Os parâmetros do modelo de MN e seus valores são apresentados na
-Tabela \ref{tab:MN_params}. Vale notar que os valores de pico foram
+Tabela \ref{tab:MN_params}. Nota-se que os valores de pico e 
+tempo de contração dos \textit{twitches} foram
 condizentes com os apresentados por \citeonline{burke68}.
 
 \begin{table}[ht!]
@@ -130,12 +131,14 @@ condizentes com os apresentados por \citeonline{burke68}.
         de acordo com seus tamanhos.}
 \label{tab:MN_params}
 \centering
-    \begin{tabular}{c c c c c c c}\hline 
+    \begin{tabular}{p{3.5cm} c c c c c c}\hline 
         \multirow{2}{*}{Parâmetro} & \multicolumn{2}{c}{Tipo S} & \multicolumn{2}{c}{Tipo FR} &
             \multicolumn{2}{c}{Tipo FF} \\
         & de & até & de & até & de & até \\ \hline 
         Tempo de contração do \textit{twitch} (ms) & 110 & 58 & 55 & 30 & 47 & 20 \\
-        Pico do \textit{twitch} (N) & 0.076 & 0.8 & 0.06 & 0.74 & 3.35 & 14.52 \\
+        Pico do \textit{twitch} (N) & 9.4$\cdot 10^{-4}$ & 9.8$\cdot 10^{-3}$
+            & 6.6$\cdot 10^{-4}$ & 8.0$\cdot 10^{-3}$ & 3.2$\cdot 10^{-2}$ &
+            1.4$\cdot 10^{-1}$ \\
         Velocidade de condução axonal (m/s) & 64 & 102 & 82 & 114 & 74 & 122 \\
 	\hline
     \end{tabular}
