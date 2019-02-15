@@ -7,7 +7,9 @@ import scipy.stats as stat
 
 from ensembleRate import ensembleFR
 
-###### Simulation settings and variables
+#****************************************
+#******* Simulation settings and variables
+#****************************************
 # Simulation
 duration = 9000
 tmin = 1000
@@ -20,12 +22,12 @@ fs=1/(dt*1e-3)
 Esyn = 70
 numberMN = 300
 availableMNs = range(numberMN)
-recordedMN = np.random.choice(availableMNs)
+recordedMN = 1#np.random.choice(availableMNs)
 print('Recorded MN #{:}'.format(str(recordedMN)))
 
 # Files and paths
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
-trial = input("Trial number: ")
+trial = input('Trial number: ')
 dataPath = '/home/pablo/osf/Master-Thesis-Data/population/psd/natural/trial' + trial
 filenamepsd = 'psd'
 
@@ -33,6 +35,10 @@ plotF = [[] for x in range(2)]
 plotPSD = [[] for x in range(2)]
 plotFc = [[] for x in range(2)]
 plotCoherence = [[] for x in range(2)]
+
+#****************************************
+#******* Running simulation for each case
+#****************************************
 for j, simType in enumerate(simTypes):
     # Variables calculated
     force = []
@@ -43,7 +49,9 @@ for j, simType in enumerate(simTypes):
     inputConductance = []
     instantaneousFiring = []
 
-    # Getting and processing spike data
+    #****************************************
+    #******* Getting and processing spike data
+    #****************************************
     fileName = dataPath + '/spks' + simType + '.dat'
     f = open(fileName, 'r')
     lines = f.readlines()
@@ -53,9 +61,9 @@ for j, simType in enumerate(simTypes):
     f.close()
     MNSpikeInstants = [y for x, y in enumerate(spikeTimes) if spikeUnits[x]==recordedMN]
     if not any(MNSpikeInstants):
-        print("No spikes for this MN")
+        print('No spikes for this MN')
     elif len(MNSpikeInstants)==1:
-        print("Only one spike for this MN")
+        print('Only one spike for this MN')
     else:
         for i in range(len(MNSpikeInstants)-1):
             instantaneousFiring.append(1000/(MNSpikeInstants[i+1]-
@@ -70,7 +78,9 @@ for j, simType in enumerate(simTypes):
     plt.ylabel('Índices dos MNs')
     plt.show()
 
-    # Getting and processing force data
+    #****************************************
+    #******* Getting and processing force data
+    #****************************************
     fileName = dataPath + '/force' + simType + '.dat'
     f = open(fileName, 'r')
     lines = f.readlines()
@@ -81,9 +91,10 @@ for j, simType in enumerate(simTypes):
 
     staticForce = [y for x,y in enumerate(force) if t[x]>tmin]
     var = np.var(staticForce)
+    ave = np.mean(staticForce)
     plt.figure()
     plt.plot(t, force)
-    plt.title('Force, variance = '+str(var))
+    plt.title('mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
     plt.xlabel('t (ms)')
     plt.ylabel('Force (N)')
     plt.grid()
@@ -97,17 +108,19 @@ for j, simType in enumerate(simTypes):
     #         `chebwin` (needs attenuation), `exponential` (needs decay scale),
     #         `tukey` (needs taper fraction)
 
-    fr = 2
+    fr = 10
     nperseg = 4*fs/2/fr
     noverlap = None
     nfft = 8*nperseg
-    #detrend = 'constant'
+    detrend = 'constant'
     #detrend = False
-    detrend = 'linear'
+    #detrend = 'linear'
     ff, forcePSD = signal.welch(staticForce, fs, ('tukey', 0.1), nperseg, noverlap,
             nfft, detrend)
 
-    # Getting and processing for coherence
+    #****************************************
+    #******* Getting and processing for coherence
+    #****************************************
     fileName = dataPath + '/g_emg' + simType + '.dat'
     f = open(fileName, 'r')
     lines = f.readlines()
@@ -144,7 +157,9 @@ for j, simType in enumerate(simTypes):
     plt.plot(fi, inputPSD)
     plt.show()
 
-    # Gathering data for plot
+    #****************************************
+    #******* Gathering data for plot
+    #****************************************
     plotF[j] = ff
     plotPSD[j] = forcePSD
     plotFc[j] = fc
@@ -155,6 +170,9 @@ for j, simType in enumerate(simTypes):
 #print(plotF[0], plotF[1])
 #print(plotFc[0], plotFc[1])
 
+#****************************************
+#******* Plotting
+#****************************************
 #import pdb; pdb.set_trace()
 plt.figure()
 plt.plot(plotF[0], plotPSD[0], label='Sem CRs')
