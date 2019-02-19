@@ -605,48 +605,62 @@ relacionada com a força gerada, a taxa de disparos média dos MNs
 causada pela inibição recorrente também foi analisada.
 
 \subsection{Oscilações de 10 Hz em Níveis baixos de Força}
-\citeonline{williams09} utilizaram as análises de densidade
-espectral de potência de forças pequenas geradas por MNs
-sincronizados em 10 Hz e de coerência córtico-muscular.
-Para reproduzir os resultados encontrados por esses autores, um
-cenário de simulação semelhante a este foi emulado no ReMoto.
+Para reproduzir os resultados encontrados por \citeonline{williams09}, um
+cenário de simulação semelhante ao desses autores foi emulado. Com o
+intuito de fazer com que os MNs disparem a uma taxa aproximada de 10 Hz,
+a frequência de disparos das 400 fibras descendentes que os ativavam
+foi modelada como uma onda quadrada com período de 100 ms. Essa possui
+picos com duração de 10 ms e amplitude de 15 Hz, enquanto que seus vales
+são nulos.
 
-%os primeiros 500 ms segundos do sinal da força gerada serão
-%ignorados. O tempo de simulação foi estendido para 3500 ms.
-%
-%Uma força a 20\% da contração máxima voluntária será tomada como referência e
-%o seu coeficiente de variação e sua densidade espectral de potência serão
-%calculados. Esses resultados serão analisados em simulações com e sem CRs.
-%Na ausência de inibição recorrente, os comandos descendentes agindo sobre
-%os MNs serão ajustados de forma a produzir a mesma taxa de disparo da
-%situação com CR.
+Ademais, os MNs também são ativados por um ruído excitatório
+com o mesmo formato, mas com condutância sináptica máxima de 12 $\mu$S.
+Essa ativação, além de introduzir mais variabilidade nos disparos,
+foi utilizada para compensar a redução de MNs recrutados 
+na presença de inibição recorrente.
+Nesse caso, as amplitudes dos picos foram de 3300 e
+1200 Hz em simulações com e sem CR, respectivamente. Nota-se,
+ainda, que
+os disparos de ambas as entradas excitatórias ocorrem de acordo com
+um processo pontual Poisson e que, sem as CRs, a média de condutâncias
+sinápticas causadas pelo ruído no compartimento dendrítico dos MNs
+foi de aproximadamente 3.8 vezes a das fibras descendentes. Essa proporção
+é próxima à utilizada no trabalho de \citeonline{williams09} e foi
+escolhida com o propósito de fazer com que a força gerada em ambos
+os casos seja aproximadamente a mesma.
 
-%\begin{itemize}
-%	\item \citeonline{williams09}, com espectro de potência dos disparos de uma
-%		  população de MNs e da força muscular, de acordo com o que é
-%          mostrado na Figura \ref{fig:williams09}.
-%\end{itemize}
+Os trabalhos realizados por \citeonline{williams09} levaram em 
+consideração um núcleo motor disparando a 10 Hz, gerando forças de
+5\% do MVC. Estudos na literatura
+associam essa situação com a atividade de apenas 25\%
+da população de MNs \cite{hoffer87,walmsley78}. Sendo assim, 
+a configuração realizada aqui foi ajustada para que aproximadamente 75 MNs
+disparassem.
 
-%\begin{figure}[ht]
-%	\centering
-%    \subfloat[][]{
-%        \label{fig:williams09a}
-%        \includegraphics[scale=0.3]{williams09a}
-%    }
-%    ~
-%    \subfloat[][]{
-%        \label{fig:williams09b}
-%        \includegraphics[scale=0.3]{williams09b}
-%    }
-%    \caption[Efeitos da ausência e presença da célula de Renshaw em espectros de potência
-%             \cite{williams09}
-%            ]{Efeitos da ausência e presença da célula de Renshaw em espectros de potência:
-%             \cite{williams09} \subref{fig:williams09a} dos disparos de uma 
-%             população de motoneurônios. \subref{fig:williams09b} da força
-%             muscular.
-%             }
-%	\label{fig:williams09}
-%\end{figure}
+As simulações realizadas aqui tiveram duração de 9 segundos e passo de
+integração de 0.05 milissegundos. Para evitar a
+interferências de respostas transitórias, apenas os últimos 
+8 segundos da força gerada pelo ReMoto foram utilizados nas análises
+de densidade espectral de potência, que
+foi estimada por meio do método de 
+Welch \cite{bendat10} com janelas de Hann e segmentos com 8000 amostras
+sem superposição. Antes de realizar esses cálculos, todavia, o nível médio
+desse sinal foi removido. Os resultados obtidos
+foram comparados com os mostrados na Figura \ref{fig:met_williams09}.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.5]{williams09b}
+    \caption[Efeitos da ausência e presença da célula de Renshaw em
+            espectros de potência.]{Efeitos da ausência e presença da
+            célula de Renshaw em espectros de potência.
+            da força muscular. Linhas pretas e vermelhas
+            são os resultados de simulações sem e com CRs, respectivamente.
+            A linha azul representa uma situação intermediária e não será
+            reproduzida aqui \cite{williams09}.
+            }
+	\label{fig:met_williams09}
+\end{figure}
 
 \subsection{Distorções na Saída do Núcleo Motor}
 \subsection{Contrações Rápidas}

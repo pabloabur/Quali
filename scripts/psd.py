@@ -68,15 +68,15 @@ for j, simType in enumerate(simTypes):
         for i in range(len(MNSpikeInstants)-1):
             instantaneousFiring.append(1000/(MNSpikeInstants[i+1]-
                 MNSpikeInstants[i]))
-        plt.figure()
-        plt.plot(instantaneousFiring, '.')
-        plt.ylabel('MN Instantaneous firing rate')
-        plt.show()
-    plt.figure()
-    plt.plot(spikeTimes, spikeUnits, '.')
-    plt.xlabel('Tempo (ms)')
-    plt.ylabel('Índices dos MNs')
-    plt.show()
+        #plt.figure()
+        #plt.plot(instantaneousFiring, '.')
+        #plt.ylabel('MN Instantaneous firing rate')
+        #plt.show()
+    #plt.figure()
+    #plt.plot(spikeTimes, spikeUnits, '.')
+    #plt.xlabel('Tempo (ms)')
+    #plt.ylabel('Índices dos MNs')
+    #plt.show()
 
     #****************************************
     #******* Getting and processing force data
@@ -92,13 +92,13 @@ for j, simType in enumerate(simTypes):
     staticForce = [y for x,y in enumerate(force) if t[x]>tmin]
     var = np.var(staticForce)
     ave = np.mean(staticForce)
-    plt.figure()
-    plt.plot(t, force)
-    plt.title('mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
-    plt.xlabel('t (ms)')
-    plt.ylabel('Force (N)')
-    plt.grid()
-    plt.show()
+    #plt.figure()
+    #plt.plot(t, force)
+    #plt.title('mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
+    #plt.xlabel('t (ms)')
+    #plt.ylabel('Force (N)')
+    #plt.grid()
+    #plt.show()
 
     #     `boxcar`, `triang`, `blackman`, `hamming`, `hann`, `bartlett`,
     #         `flattop`, `parzen`, `bohman`, `blackmanharris`, `nuttall`,
@@ -108,15 +108,16 @@ for j, simType in enumerate(simTypes):
     #         `chebwin` (needs attenuation), `exponential` (needs decay scale),
     #         `tukey` (needs taper fraction)
 
-    fr = 10
+    fr = 5
     nperseg = 4*fs/2/fr
-    noverlap = None
-    nfft = 8*nperseg
+    noverlap = 0#None
+    nfft = None#8*nperseg
     detrend = 'constant'
     #detrend = False
     #detrend = 'linear'
-    ff, forcePSD = signal.welch(staticForce, fs, ('tukey', 0.1), nperseg, noverlap,
-            nfft, detrend)
+    scale = 'spectrum'
+    ff, forcePSD = signal.welch(staticForce, fs, 'hann', nperseg, noverlap,
+            nfft, detrend, scaling = scale)
 
     #****************************************
     #******* Getting and processing for coherence
@@ -130,13 +131,13 @@ for j, simType in enumerate(simTypes):
     f.close()
 
     # Checking input
-    plt.figure()
-    plt.plot(t, inputConductance)
-    plt.title('conductance as I/V')
-    plt.show()
+    #plt.figure()
+    #plt.plot(t, inputConductance)
+    #plt.title('conductance as I/V')
+    #plt.show()
     
     print('Mean conductance, in module, is {:}'.format(str(abs(np.mean(
-        inputConductance[int(200/0.05):])))))
+        inputConductance[int(tmin/0.05):])))))
 
     # Calculating confidence limit
     K = len(EMG)/(nperseg*2)
@@ -148,14 +149,14 @@ for j, simType in enumerate(simTypes):
 
     # Checking input PSD
     fi, inputPSD = signal.welch(inputConductance, fs, ('tukey', 0.1), nperseg, noverlap, nfft,
-            detrend)
-    plt.figure()
-    plt.title('Commom drive synaptic conductance PSD')
-    plt.xlabel('f (Hz)')
-    plt.ylabel('Power Spectrum Density(V^2/Hz)')
-    plt.xlim([0, 60])
-    plt.plot(fi, inputPSD)
-    plt.show()
+            detrend, scaling = scale)
+    #plt.figure()
+    #plt.title('Commom drive synaptic conductance PSD')
+    #plt.xlabel('f (Hz)')
+    #plt.ylabel('Power Spectrum Density(mN^2)')
+    #plt.xlim([0, 60])
+    #plt.plot(fi, 1e6*inputPSD)
+    #plt.show()
 
     #****************************************
     #******* Gathering data for plot
@@ -175,24 +176,24 @@ for j, simType in enumerate(simTypes):
 #****************************************
 #import pdb; pdb.set_trace()
 plt.figure()
-plt.plot(plotF[0], plotPSD[0], label='Sem CRs')
-plt.plot(plotF[0], plotPSD[1], label='Com CRs')
-plt.title('Force PSD')
-plt.xlabel('f (Hz)')
-plt.ylabel('Power Spectrum Density(V^2/Hz)')
+plt.plot(plotF[0], 1e6*plotPSD[0], label='Sem CRs')
+plt.plot(plotF[0], 1e6*plotPSD[1], label='Com CRs')
+plt.xlabel('frequência (Hz)')
+plt.ylabel('Densidade Espectral de Potência (mN$^2$)')
 plt.grid()
 #     plt.yscale('log')
 plt.xlim([0, 50])
 #     plt.xlim((0, 500))
 plt.legend()
-plt.show()
+#plt.show()
+plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
 
-plt.figure()
-plt.plot(plotFc[0], plotCoherence[0], label='Sem CRs')
-plt.plot(plotFc[0], plotCoherence[1], label='Com CRs')
-plt.title('Cortico-EMG Coherence')
-plt.xlabel('f (Hz)')
-plt.ylabel('Coherence')
-plt.xlim([0, 50])
-plt.legend()
-plt.show()
+#plt.figure()
+#plt.plot(plotFc[0], plotCoherence[0], label='Sem CRs')
+#plt.plot(plotFc[0], plotCoherence[1], label='Com CRs')
+#plt.title('Cortico-EMG Coherence')
+#plt.xlabel('f (Hz)')
+#plt.ylabel('Coherence')
+#plt.xlim([0, 50])
+#plt.legend()
+#plt.show()
