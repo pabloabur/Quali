@@ -72,11 +72,11 @@ for j, simType in enumerate(simTypes):
         #plt.plot(instantaneousFiring, '.')
         #plt.ylabel('MN Instantaneous firing rate')
         #plt.show()
-    #plt.figure()
-    #plt.plot(spikeTimes, spikeUnits, '.')
-    #plt.xlabel('Tempo (ms)')
-    #plt.ylabel('Índices dos MNs')
-    #plt.show()
+    plt.figure()
+    plt.plot(spikeTimes, spikeUnits, '.')
+    plt.xlabel('Tempo (ms)')
+    plt.ylabel('Índices dos MNs')
+    plt.show()
 
     #****************************************
     #******* Getting and processing force data
@@ -92,13 +92,13 @@ for j, simType in enumerate(simTypes):
     staticForce = [y for x,y in enumerate(force) if t[x]>tmin]
     var = np.var(staticForce)
     ave = np.mean(staticForce)
-    #plt.figure()
-    #plt.plot(t, force)
-    #plt.title('mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
-    #plt.xlabel('t (ms)')
-    #plt.ylabel('Force (N)')
-    #plt.grid()
-    #plt.show()
+    plt.figure()
+    plt.plot(t, force)
+    plt.title('mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
+    plt.xlabel('t (ms)')
+    plt.ylabel('Force (N)')
+    plt.grid()
+    plt.show()
 
     #     `boxcar`, `triang`, `blackman`, `hamming`, `hann`, `bartlett`,
     #         `flattop`, `parzen`, `bohman`, `blackmanharris`, `nuttall`,
@@ -108,7 +108,7 @@ for j, simType in enumerate(simTypes):
     #         `chebwin` (needs attenuation), `exponential` (needs decay scale),
     #         `tukey` (needs taper fraction)
 
-    fr = 5
+    fr = 2
     nperseg = 4*fs/2/fr
     noverlap = 0#None
     nfft = None#8*nperseg
@@ -185,8 +185,8 @@ plt.grid()
 plt.xlim([0, 50])
 #     plt.xlim((0, 500))
 plt.legend()
-#plt.show()
-plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
+plt.show()
+#plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
 
 #plt.figure()
 #plt.plot(plotFc[0], plotCoherence[0], label='Sem CRs')
