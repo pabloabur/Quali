@@ -1,5 +1,6 @@
 \section{Efeitos da Inibição Recorrente em Simulações}
 \subsection{características de recrutamento de motoneurônios}
+\label{sec:res_recruit}
 No intervalo de 1 segundo mostrado na Figura \ref{fig:recruitCxO}, pode-se
 perceber que a presença
 das CRs resulta em padrões de disparos
@@ -412,16 +413,86 @@ se aproximando progressivamente da contínua na Figura \ref{fig:granit}
 
 \subsection{Oscilações de 10 Hz}
 \label{sec:forca}
+As curvas da Figura \ref{fig:res_psd} mostram que as CRs reduziram os 
+picos em 10 Hz encontrados na densidade espectral de potência dos
+disparos dos MNs em 30 \%. As harmônicas dessa frequência
+também foram atenuadas, com diminuições em 20, 30 e 40 Hz, por
+exemplo, de 33, 39, e 46 \%, respectivamente.
+Pôde-se notar, também, uma componente centrada em torno de 2Hz.
+Essa apresentou uma alta variabilidade e provavelmente está ligada
+a características aleatórias das entradas excitatórias, de forma que não foi
+possível atribuir significados relevantes a esse resultado.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.6]{res_psd.eps}
+    \caption[Efeitos da CR na densidade espectral de potência dos
+             disparos de MNs.]{Efeitos da CR na densidade espectral
+             de potência dos disparos de MNs.}
+	\label{fig:res_psd}
+\end{figure}
+
+Antes de se fazer comparações com a Figura \ref{fig:met_williams09},
+é preciso entender algumas diferenças entre os modelos neuronais.
+Em seus trabalhos, \citeonline{williams09} incluiram artifícios
+para fazer com que o núcleo motor como um todo estivesse sincronizado em
+10 Hz. Apesar de não reproduzir de forma precisa o recrutamento desses MNs,
+isso possibilitou que os autores pudessem estudar essa situação 
+hipotética. Os MNs do ReMoto, em contrapartida, não são compatíveis
+com essa abordagem pois se comportam de acordo
+com o princípio de \textit{common drive} \cite{deluca94}. Consequentemente,
+nas simulações realizadas aqui, foi necessária uma entrada excitatória 
+artificial que fosse capaz de impor uma sincronização mais acentuada na
+frequência desejada.
+
+Ainda assim, essa entrada não foi capaz de impedir que os MNs maiores
+disparassem a taxas menores e pode ter sido responsável pelo aparecimento
+do pico em frequências próximas a 2 Hz.
+Como os \textit{twitches} dessas unidades motoras são mais elevados,
+é de se esperar que sejam observados componentes de baixas frequências mais
+elevadas do que as mostradas por \citeonline{williams09}.
+
+Outra diferença encontrada foi a porcentagem de diminuição dos picos,
+que foi maior em outros trabalhos de simulação. Um exemplo
+disso foi mostrado na Figura \ref{fig:met_williams09}. Essa divergência 
+pode ter sido ocasionada pelas diferenças entre modelos de MNs e de 
+ativações, como discutido nos parágrafos anteriores. O forte 
+decréscimo encontrado por \citeonline{maltenfort98} pode ser atribuído
+ao fato de que nenhuma compensação foi utilizada quando o circuito de
+inibição recorrente foi adicionado.
+
+Em geral, a estratégia de se utilizar mais ativação para compensar 
+os efeitos da presença da CR no circuito neuronal simulado não foi
+suficiente para garantir características de taxa e recrutamento similares,
+apesar de manter níveis de força próximos. Esse fenômeno pode ser
+explicado pela própria natureza da inibição recorrente
+\cite{adam78,uchiyama07} e pelas
+conclusões apresentadas na seção \ref{sec:res_recruit} e não 
+parece ter afetado negativamente os resultados apresentados.
+
 É importante dizer que os resultados expostos dependeram principalmente
 dos ruídos independentes, pois esses causaram
 alterações de condutâncias bem maiores do que as fibras descendentes.
-Consequentemente, baixas frequências de disparos dessa entrada excitatória
-poderiam ocasionalmente não ser suficientes para fazer com que os MNs 
+Consequentemente, baixas frequências de disparos dessa entrada excitatória,
+como no caso do circuito neuronal sem inibição recorrente,
+poderiam ocasionalmente não ser suficientes para fazer com que alguns MNs 
 disparassem a 10 Hz. Essa alteração de recrutamento poderia ser observada
 nas análises de densidade espectral de potência como uma diminuição no 
-pico relativo a essa frequência e um aumento nos de bandas inferiores.
+pico relativo a essa frequência e um aumento no de bandas inferiores.
 Isso poderia decorrer em conclusões equivocadas sobre os efeitos das
 CRs nas simulações.
+
+A redução da potência de oscilações em 10 Hz pode ter implicações
+importantes na diminuição de tremores. Estudos mostram que a CR
+pode ser capaz de eliminar essas frequências por meio de um 
+cancelamento de fases causado por sinais em anti fase realimentados
+ao circuito \cite{koehler85,williams09}, agindo, assim, como um
+"filtro neural".
+
+Sendo assim, os resultados discutidos mostraram que o modelo foi
+capaz de reproduzir características do circuito de inibição recorrente
+que são largamente aceitas e replicadas, tanto em trabalhos experimentais
+como de simulação.
 
 \subsection{Distorções}
 \subsection{Contrações Rápidas}

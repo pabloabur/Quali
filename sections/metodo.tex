@@ -135,7 +135,7 @@ na Tabela \ref{tab:met_MNparams}.
         \citeonline{burke71} \\
         Intervalos de tempo de contração do \textit{twitch} (ms) & 20 até 47 &
             30 até 55 & 58 até 110 & \citeonline{burke71} \\
-        Tensão do \textit{twitch} (g) & 67$\pm$ 0.8 & 0.3$\pm$ 0.1 & 0.4$\pm$ 0.1 &
+        Tensão do \textit{twitch} (g) & 6.7$\pm$ 0.8 & 0.3$\pm$ 0.1 & 0.4$\pm$ 0.1 &
             \citeonline{fleshman81} \\
         Velocidade de condução axonal (m/s) & 99$\pm$ 1 & 100$\pm$ 1 & 86$\pm$ 1 &
             \citeonline{zengel85} \\
@@ -613,40 +613,44 @@ foi modelada como uma onda quadrada com período de 100 ms. Essa possui
 picos com duração de 10 ms e amplitude de 15 Hz, enquanto que seus vales
 são nulos.
 
-Ademais, os MNs também são ativados por um ruído excitatório
+Ademais, os MNs também foram ativados por um ruído excitatório
 com o mesmo formato, mas com condutância sináptica máxima de 12 $\mu$S.
 Essa ativação, além de introduzir mais variabilidade nos disparos,
-foi utilizada para compensar a redução de MNs recrutados 
-na presença de inibição recorrente.
-Nesse caso, as amplitudes dos picos foram de 3300 e
+foi utilizada para compensar a redução da força causada pela
+inibição recorrente. Nesse caso, as amplitudes dos picos foram de 3300 e
 1200 Hz em simulações com e sem CR, respectivamente. Nota-se,
 ainda, que
 os disparos de ambas as entradas excitatórias ocorrem de acordo com
 um processo pontual Poisson e que, sem as CRs, a média de condutâncias
 sinápticas causadas pelo ruído no compartimento dendrítico dos MNs
-foi de aproximadamente 3.8 vezes a das fibras descendentes. Essa proporção
-é próxima à utilizada no trabalho de \citeonline{williams09} e foi
-escolhida com o propósito de fazer com que a força gerada em ambos
-os casos seja aproximadamente a mesma.
+foi cerca de 3.8 vezes a das fibras descendentes. Essa proporção é
+parecida com a utilizada por \citeonline{williams09}.
 
 Os trabalhos realizados por \citeonline{williams09} levaram em 
 consideração um núcleo motor disparando a 10 Hz, gerando forças de
 5\% do MVC. Estudos na literatura
 associam essa situação com a atividade de apenas 25\%
 da população de MNs \cite{hoffer87,walmsley78}. Sendo assim, 
-a configuração realizada aqui foi ajustada para que aproximadamente 75 MNs
-disparassem.
+a simulação foi efetuada com apenas 75 MNs do tipo S distribuídos em 1.5 mm de 
+medula espinhal. Vale notar que, como \citeonline{williams09} consideraram
+a distribuição da inibição recorrente como uniforme, a força da entrada
+excitatória utilizada
+foi escolhida para ativar o menor número possível de unidades motoras 
+do tipo FR, se estivessem presentes. Por fim, a população de CRs foi a mesma
+utilizada anteriormente.
 
-As simulações realizadas aqui tiveram duração de 9 segundos e passo de
-integração de 0.05 milissegundos. Para evitar a
+As simulações realizadas aqui tiveram duração de 9 s e passo de
+integração de 0.05 ms. Para evitar a
 interferências de respostas transitórias, apenas os últimos 
 8 segundos da força gerada pelo ReMoto foram utilizados nas análises
 de densidade espectral de potência, que
 foi estimada por meio do método de 
-Welch \cite{bendat10} com janelas de Hann e segmentos com 8000 amostras
-sem superposição. Antes de realizar esses cálculos, todavia, o nível médio
-desse sinal foi removido. Os resultados obtidos
-foram comparados com os mostrados na Figura \ref{fig:met_williams09}.
+Welch \cite{bendat11} com janelas de Hann e segmentos com 8000 amostras
+sem superposição. Antes de realizar esses cálculos o nível médio
+desse sinal foi removido. Esse procedimento foi repetido dez vezes
+para que se fosse obtido uma resposta média dos resultados, que 
+foram, então, comparados qualitativamente com a Figura
+\ref{fig:met_williams09}.
 
 \begin{figure}[ht]
 	\center

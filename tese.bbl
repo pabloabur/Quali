@@ -80,6 +80,14 @@ ISBN 978-0-7817-7817-6.}
 \emph{Neural Computation}, v.~15, n.~11, p. 2523--2564, nov. 2003.
 ISSN 0899-7667.}
 
+\bibitem[Bendat e Piersol 2011]{bendat11}
+\abntrefinfo{Bendat e Piersol}{BENDAT; PIERSOL}{2011}
+{BENDAT, J.; PIERSOL, A. \emph{Random {Data}: {Analysis} and {Measurement}
+  {Procedures}}. Wiley, 2011.  (Wiley {Series} in {Probability} and
+  {Statistics}).
+ISBN 978-1-118-21082-6. Dispon{\'\i}vel em:
+  $<$https://books.google.com.br/books?id=qYSViFRNMlwC$>$.}
+
 \bibitem[Bhumbra et al. 2014]{bhumbra14}
 \abntrefinfo{Bhumbra et al.}{BHUMBRA et al.}{2014}
 {BHUMBRA, G.~S. et al. The {Recurrent} {Case} for the {Renshaw} {Cell}.
@@ -513,6 +521,15 @@ Dispon{\'\i}vel em:
 \emph{Frontiers in Neuroinformatics}, v.~12, 2018.
 ISSN 1662-5196.}
 
+\bibitem[Koehler e Windhorst 1985]{koehler85}
+\abntrefinfo{Koehler e Windhorst}{KOEHLER; WINDHORST}{1985}
+{KOEHLER, W.; WINDHORST, U. Responses of the spinal alpha-motoneurone-{Renshaw}
+  cell system to various differentially distributed segmental afferent and
+  descending inputs.
+\emph{Biological Cybernetics}, v.~51, n.~6, p. 417--426, abr. 1985.
+ISSN 1432-0770.
+Dispon{\'\i}vel em: $<$https://doi.org/10.1007/BF00350782$>$.}
+
 \bibitem[Lagerb\"{A}ck e Kellerth 1985]{lagerback85}
 \abntrefinfo{Lagerb\"{A}ck e Kellerth}{LAGERB\"{A}CK; KELLERTH}{1985}
 {LAGERB\"{A}CK, P.-{\aa}.; KELLERTH, J.-O. Light microscopic observations on
@@ -776,6 +793,15 @@ Dispon{\'\i}vel em:
 ISSN 0340-1200, 1432-0770.
 Dispon{\'\i}vel em:
   $<$https://link.springer.com/article/10.1007/s00422-003-0417-7$>$.}
+
+\bibitem[Uchiyama e Windhorst 2007]{uchiyama07}
+\abntrefinfo{Uchiyama e Windhorst}{UCHIYAMA; WINDHORST}{2007}
+{UCHIYAMA, T.; WINDHORST, U. Effects of spinal recurrent inhibition on
+  motoneuron short-term synchronization.
+\emph{Biological Cybernetics}, v.~96, n.~6, p.~561, jun. 2007.
+ISSN 0340-1200, 1432-0770.
+Dispon{\'\i}vel em:
+  $<$https://link.springer.com/article/10.1007/s00422-007-0151-7$>$.}
 
 \bibitem[Wakeling, Uehli e Rozitis 2006]{wakeling06}
 \abntrefinfo{Wakeling, Uehli e Rozitis}{WAKELING; UEHLI; ROZITIS}{2006}
