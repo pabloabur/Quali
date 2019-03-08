@@ -95,10 +95,13 @@ apropriado para os estudos explicitados nas próximas seções da metodologia.
 
 \subsection{Parametrização do Modelo de Motoneurônios}
 O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
-medial do gato. Em simulações envolvendo populações de neurônios,
+medial do gato. Em simulações envolvendo populações desses neurônios,
 foi considerado um comprimento de 600 mm do núcleo motor \cite{burke77}
 com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
-\citeonline{uchiyama03a}. 
+\citeonline{uchiyama03a}. A eventual ativação desses MNs por
+meio de fibras descendentes foi causada por 400 elementos pré
+sinápticos disparando potenciais de ação de acordo com um processo pontual
+Poisson e com conectividade de 30\%.
 
 Para calcular os valores de pico dos \textit{twitches}, 
 intervalos e mediana de força tetânica de unidades motoras foram
@@ -147,7 +150,10 @@ na Tabela \ref{tab:met_MNparams}.
 As parametrizações foram efetuadas na ordem em que são apresentadas
 e iterativamente, com base nos conhecimentos sobre a CR ou o circuito
 de inibição recorrente descritos na literatura.
-Parâmetros não mencionados foram, por padrão, mantidos 
+Como a estimativa é de que existam em média
+100 CRs para cada 1 mm de extensão da medula espinhal do gato \cite{carr98},
+simulações do núcleo motor inteiro foram realizadas com 600 CRs.
+Os demais parâmetros, quando não mencionados na metodologia, foram mantidos 
 de acordo com o que foi descrito em \citeonline{cisi07}.
 
 \subsubsection{Potenciais Excitatórios Pós Sinápticos}
@@ -312,8 +318,6 @@ de acordo com:
         em questão, os valores médios de amplitudes foram de 
         -19,63 $\pm$ 2,42 $\mu$V e -41.36 $\pm$ 7.19 $\mu$V para pares
         distantes e próximos, respectivamente.
-    \item \citeonline{carr98}: A estimativa é de que existam em média
-        100 CRs para cada 1 mm de extensão da medula.
     \item \citeonline{uchiyama03a}: O padrão de distribuição topográfica 
         da força sináptica é o de uma gaussiana que decresce na medida
         em que se afasta do neurônio pré sináptico. O desvio padrão da
@@ -512,8 +516,7 @@ mesmo circuito e a corrente $i(t)$ é descrita pela seguinte equação:
 Outra opção utilizada para estimular os MNs foi com
 uma entrada excitatória que aumenta com o tempo de simulação,
 mas, nesse caso, isso se dá por meio de
-fibras descendentes disparando potenciais de ação
-de acordo com um processo pontual Poisson, com
+fibras descendentes com
 frequência de disparos $FD(t)$ dada por
 
 \begin{equation}
@@ -536,12 +539,11 @@ foi dada por
     \label{eq:ramphold}
 \end{equation}
 
-Esta equação representa os disparos de 400 fibras descendentes agindo sobre
+Esta equação representa os disparos de fibras descendentes agindo sobre
 o núcleo motor com o intuito de realizar uma contração em rampa até 80 \%
 do MVC. Após 1 segundo nesse valor, eles decaíram com a mesma derivada.
 
-Esses disparos das fibras descendentes também foram gerados de um
-processo pontual Poisson e, assim, não foram determinísticos. Adotando
+Adotando
 uma força máxima de 98 N \cite{walmsley78}, o valor
 da variável $mvcPerc$ foi tomado como o necessário para fazer com que
 o modelo gerasse uma força de 80\% desse valor no pico da
@@ -591,8 +593,7 @@ experimentais \cite{burke11}. Respeitando a proporção de 50 MN/mm de medula
 espinhal \cite{cisi07}, esses neurônios foram distribuídos
 em 3 mm. Sendo assim, 300 CRs foram dispostos nesse comprimento
 \cite{carr98}.
-O núcleo motor foi ativado por 400 fibras descendentes com disparos 
-de acordo com um processo pontual Poisson, com duração de 4 s e
+O núcleo motor foi ativado por fibras descendentes durante 4 s,
 com taxas suficientes para gerar os níveis
 de força reportados na Figura \ref{fig:met_granit}. Além disso,
 a atividade espontânea das CRs foi ativada.
@@ -608,19 +609,19 @@ causada pela inibição recorrente também foi analisada.
 Para reproduzir os resultados encontrados por \citeonline{williams09}, um
 cenário de simulação semelhante ao desses autores foi emulado. Com o
 intuito de fazer com que os MNs disparem a uma taxa aproximada de 10 Hz,
-a frequência de disparos das 400 fibras descendentes que os ativavam
+a frequência de disparos das fibras descendentes que os ativavam
 foi modelada como uma onda quadrada com período de 100 ms. Essa possui
 picos com duração de 10 ms e amplitude de 15 Hz, enquanto que seus vales
 são nulos.
 
-Ademais, os MNs também foram ativados por um ruído excitatório
+Ademais, cada MN também foi ativado por um ruído excitatório
 com o mesmo formato, mas com condutância sináptica máxima de 12 $\mu$S.
 Essa ativação, além de introduzir mais variabilidade nos disparos,
 foi utilizada para compensar a redução da força causada pela
 inibição recorrente. Nesse caso, as amplitudes dos picos foram de 3300 e
 1200 Hz em simulações com e sem CR, respectivamente. Nota-se,
 ainda, que
-os disparos de ambas as entradas excitatórias ocorrem de acordo com
+os disparos dessa a entrada excitatória ocorre de acordo com
 um processo pontual Poisson e que, sem as CRs, a média de condutâncias
 sinápticas causadas pelo ruído no compartimento dendrítico dos MNs
 foi cerca de 3.8 vezes a das fibras descendentes. Essa proporção é
@@ -666,6 +667,25 @@ foram, então, comparados qualitativamente com a Figura
 	\label{fig:met_williams09}
 \end{figure}
 
+\subsection{Estudos de Contrações isométricas}
+A ativação do núcleo motor nessas simulações foi
+realizada por meio de fibras descendentes com taxa de disparos 
+suficiente para gerar valores de força próximos ao MVC. Essa taxa
+foi mantida por 500 ms.
+
+Essa configuração permitiu que a derivada da força, ou seja, sua 
+sensibilidade ao comando descendente, pudesse ser avaliada para uma
+situação de fuga de uma ameaça repentina. Outro cenário analisado
+foi o da manutenção da posição vertical com 5\% do MVC. Essa situação
+foi simulada por meio de fibras descendentes com taxas constantes e foi
+analisada por meio do coeficiente de variação e desvio padrão da força.
+Por fim, o coeficiente de sincronia entre os MNs também foi calculado.
+
+Com o intuito de entender o efeito de diferentes forças de inibição
+recorrente nos cenários propostos, a condutância sináptica das CRs agindo
+sob os MNs, além de ser mantida em seus valores normais,
+foi alterada para contemplar situações de inibição fraca
+(metada da condutância) e forte (dobro da condutância).
+
 \subsection{Distorções na Saída do Núcleo Motor}
-\subsection{Contrações Rápidas}
 \section{Estudos sobre a Conectividade do Circuito de Inibição Recorrente}

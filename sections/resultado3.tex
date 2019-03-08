@@ -487,14 +487,69 @@ importantes na diminuição de tremores. Estudos mostram que a CR
 pode ser capaz de eliminar essas frequências por meio de um 
 cancelamento de fases causado por sinais em anti fase realimentados
 ao circuito \cite{koehler85,williams09}, agindo, assim, como um
-"filtro neural".
+''filtro neural´´.
 
 Sendo assim, os resultados discutidos mostraram que o modelo foi
 capaz de reproduzir características do circuito de inibição recorrente
 que são largamente aceitas e replicadas, tanto em trabalhos experimentais
 como de simulação.
 
-\subsection{Distorções}
-\subsection{Contrações Rápidas}
+\subsection{análises de Contrações isométricas}
 \label{sec:danger}
+A Figura \ref{fig:res_mod} mostra o efeito de diferentes forças de
+inibição recorrente em contrações isométricas rápidas. Observa-se que
+sensibilidade da curva, ou seja, sua derivada, foi maior para menores
+inibições da CR.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:res_moda}
+        \includegraphics[scale=0.5]{res_moda.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:res_modb}
+        \includegraphics[scale=0.5]{res_modb.eps}
+    }
+    \caption[Efeitos das CRs em contrações isométricas rápidas.]{
+             Efeitos das CRs em contrações isométricas rápidas. Força
+             da inibição recorrente foi simulada como o dobro (forte) e 
+             a metade (fraca) da condutância originalmente parametrizada
+             (normal).
+             \subref{fig:res_moda} Força gerada.
+             \subref{fig:res_modb} Derivada da força.
+             }
+	\label{fig:res_mod}
+\end{figure}
+
+Vale notar que as limitações mostradas na seção \ref{sec:res_dyn}
+seriam capazes de influenciar os resultados apresentados. A presença
+da depressão pós sináptica ou características dinâmicas no modelo,
+pelo menos inicialmente, 
+poderiam gerar níveis de força menores para um mesmo instante de tempo.
+Isso poderia ser observado na Figura \ref{fig:res_mod} como uma curva,
+inicialmente abaixo da pontilhada, que gradualmente se aproxima 
+da contínua.
+Uma conclusão semelhante poderia ser esboçada quando se considera
+uma diminuição da inibição recorrente com o aumento da contração muscular
+\cite{hultborn79b}.
+
+Tais considerações, também abordadas no trabalho de \citeonline{uchiyama03b},
+sugerem um efeito de aumento da inclinação da curva
+apresentada, o que também significa uma maior sensibilidade dessa 
+população de MNs a mudanças da entrada excitatória.
+Essas suposições carecem de mais dados experimentais, pois
+não se sabe como as CRs se comportam quando os MNs disparam taxas 
+tão altas e de forma repentina.
+
+Por causa da falta de dados experimentais,
+elementos responsáveis por modular as CRs não foram explicitamente
+modelados. Apesar das diferentes condutâncias em cada simulação servirem
+ao propósito de elucidar possíveis efeitos modulatórios da inibição 
+recorrente, é importante destacar que experimentos fisiológicos são
+necessários para determinar se a distribuição homogênea desses efeitos
+é de fato apropriada.
+
+\subsection{Distorções}
 \subsection{Conectividade}
