@@ -100,10 +100,10 @@ mais sutil.
     \label{fig:recruitpoisson}
 \end{figure}
 
-É de se esperar que essas características apresentadas tenham um
-impacto na sincronia dos MNs. Esse aspecto, entretanto, será abordado
-na seção \ref{sec:forca}. Por hora, convém analisar a ordem de 
-recrutamento dos MNs simulados.
+%É de se esperar que essas características apresentadas tenham um
+%impacto na sincronia dos MNs. Esse aspecto, entretanto, será abordado
+%na seção \ref{sec:forca}. Por hora, convém analisar a ordem de 
+%recrutamento dos MNs simulados.
 
 Na Figura \ref{fig:revrecruit}, a região de transição entre MNs do tipo
 S para o tipo FR na presença de inibição recorrente é mostrada. Tomando
@@ -487,7 +487,7 @@ importantes na diminuição de tremores. Estudos mostram que a CR
 pode ser capaz de eliminar essas frequências por meio de um 
 cancelamento de fases causado por sinais em anti fase realimentados
 ao circuito \cite{koehler85,williams09}, agindo, assim, como um
-''filtro neural´´.
+``filtro neural''.
 
 Sendo assim, os resultados discutidos mostraram que o modelo foi
 capaz de reproduzir características do circuito de inibição recorrente
@@ -496,10 +496,27 @@ como de simulação.
 
 \subsection{análises de Contrações isométricas}
 \label{sec:danger}
-A Figura \ref{fig:res_mod} mostra o efeito de diferentes forças de
-inibição recorrente em contrações isométricas rápidas. Observa-se que
-sensibilidade da curva, ou seja, sua derivada, foi maior para menores
-inibições da CR.
+A Figura \ref{fig:res_moda} mostra o efeito de diferentes forças de
+inibição recorrente em contrações isométricas rápidas. Isso pode ser
+visualizado de forma mais intuitiva por meio da Figura \ref{fig:res_modb},
+que mostra a derivada da força muscular gerada. Como foi observado que
+apenas o resultado dos primeiros 20 ms
+se manteve igual entre simulações e não dependeu do nível do platô obtido,
+somente esse intervalo de tempo inicial foi considerado nas discussões.
+
+Os resultados apresentados na Figura \ref{fig:res_mod} mostram que,
+dentre os cenários analisados, a contração muscular sob forte inibição
+recorrente foi a que se iniciou primeiro. Isso possibilitou
+que, pelo menos nos instantes iniciais, mais força fosse gerada. As
+pequenas inversões na ordem de recrutamento discutidas na seção
+\ref{sec:res_recruit} e, consequentemente, a antecipação de
+\textit{twitches} de unidades motoras maiores poderia explicar esse
+fenômeno.
+
+Nota-se que as linhas pontilhadas e tracejadas da Figura \ref{fig:res_modb}
+não foram iguais, mas as respectivas curvas da Figura \ref{fig:res_moda}
+estiveram muito próximas, indicando pouca diferença entre forças geradas
+com condutâncias menores.
 
 \begin{figure}[ht]
     \centering
@@ -523,27 +540,33 @@ inibições da CR.
 	\label{fig:res_mod}
 \end{figure}
 
+Apesar das diferenças entre as forças geradas terem sido relativamente
+pequenas, os resultados apresentados sugerem que a ação da inibição
+recorrente poderia ser relevante em situações de perigo que demandam
+contrações rápidas.
+
 Vale notar que as limitações mostradas na seção \ref{sec:res_dyn}
-seriam capazes de influenciar os resultados apresentados. A presença
-da depressão pós sináptica ou características dinâmicas no modelo,
+podem influenciar os resultados apresentados. A presença
+da depressão pós sináptica ou de características dinâmicas no modelo,
 pelo menos inicialmente, 
-poderiam gerar níveis de força menores para um mesmo instante de tempo.
-Isso poderia ser observado na Figura \ref{fig:res_mod} como uma curva,
-inicialmente abaixo da pontilhada, que gradualmente se aproxima 
-da contínua.
+gerariam níveis de força maiores para um mesmo instante de tempo.
+Em uma situação normal, por exemplo,
+isso poderia ser observado na Figura \ref{fig:res_moda}
+como uma curva mais próxima à contínua que gradualmente se aproxima
+à pontilhada.
 Uma conclusão semelhante poderia ser esboçada quando se considera
 uma diminuição da inibição recorrente com o aumento da contração muscular
 \cite{hultborn79b}.
 
 Tais considerações, também abordadas no trabalho de \citeonline{uchiyama03b},
-sugerem um efeito de aumento da inclinação da curva
-apresentada, o que também significa uma maior sensibilidade dessa 
+sugerem um efeito de mudança da inclinação da curva
+apresentada, o que também significa uma alteração da sensibilidade dessa 
 população de MNs a mudanças da entrada excitatória.
 Essas suposições carecem de mais dados experimentais, pois
 não se sabe como as CRs se comportam quando os MNs disparam taxas 
 tão altas e de forma repentina.
 
-Por causa da falta de dados experimentais,
+Além disso, por causa da falta de dados experimentais,
 elementos responsáveis por modular as CRs não foram explicitamente
 modelados. Apesar das diferentes condutâncias em cada simulação servirem
 ao propósito de elucidar possíveis efeitos modulatórios da inibição 

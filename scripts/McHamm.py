@@ -18,7 +18,11 @@ timeStep_ms = 0.05
 t = np.arange(0, simDuration_ms, timeStep_ms)
 nMN = 300
 cutoff_value = 1.0
-chosenMN = 173 # This came from .dat generated, but I subtracted by one
+# Usually choose values around 174
+# Also remember that a new simulation require old data to be deleted, if 
+# it is to ran in the same folder
+chosenMN = input('MN chose (one of the data files generate. Should be FF type): ')
+chosenMN = int(chosenMN) - 1
 
 boundary = 4.7
 RIPSPs = []
@@ -58,6 +62,12 @@ for filenumber, filename in enumerate(files):
 
     # Piece of code responsible for calculating mean RIPSP duration
     if stimulatedMNIndex > 149:
+        ## This can be used to have an estimate of the whole RIPSP duration
+        #for i in [151, 160, 200, 230]:
+        #    plt.figure()
+        #    plt.plot(t, MNsignal[:,i])
+        #    plt.show()
+        #print('-')
         for i in range(MNsignal.shape[1]):
             tenPercentSpline = UnivariateSpline(t, MNsignal[:,i] - peaks[i]*.1, s=0)
             tenPercentRoots = tenPercentSpline.roots()

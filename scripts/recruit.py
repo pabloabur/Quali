@@ -204,7 +204,7 @@ for trial in trials:
         current = times
     else:
         plt.figure()
-        plt.plot(times, found, '.')
+        plt.plot(times, found, 'k.')
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
         plt.savefig(figsFolder + filenameOfirst + '.svg', format='svg')
@@ -220,7 +220,7 @@ for trial in trials:
     else:
         #import pdb; pdb.set_trace()
         plt.figure()
-        plt.plot(times, found, '.')
+        plt.plot(times, found, 'k.')
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
         plt.savefig(figsFolder + filenameCfirst + '.svg', format='svg')

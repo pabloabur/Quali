@@ -101,7 +101,8 @@ com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
 \citeonline{uchiyama03a}. A eventual ativação desses MNs por
 meio de fibras descendentes foi causada por 400 elementos pré
 sinápticos disparando potenciais de ação de acordo com um processo pontual
-Poisson e com conectividade de 30\%.
+Poisson e com conectividade de 30\%. A ordem desses processos estocástico
+foi adotada como no trabalho de \citeonline{watanabe13}.
 
 Para calcular os valores de pico dos \textit{twitches}, 
 intervalos e mediana de força tetânica de unidades motoras foram
@@ -496,12 +497,15 @@ ação, em pps.
 
 \section{Efeitos da Parametrização em Simulações}
 O objetivo desta etapa é entender como o modelo parametrizado se comporta 
-em algumas situações propostas por trabalhos experimentais ou
-por outros de simulação. Dessa forma,
+em diferentes situações, algumas das quais se basearam em trabalhos
+experimentais ou em outros computacionais. Dessa forma,
 foram configuradas simulações que eram o mais semelhantes possível a esses 
-trabalhos para que os resultados possam ser apropriadamente comparados.
+trabalhos para que os resultados pudessem ser apropriadamente comparados.
+De formal geral, todas as simulações tiveram
+CRs disparando espontaneamente, com exceção da seção \ref{sec:met_onion}.
 
 \subsection{Disparos de Motoneurônios}
+\label{sec:met_onion}
 Com o intuito de analisar o recrutamento dos MNs,
 uma corrente $i(t)$
 em função do tempo foi injetada no soma de todos esses neurônios. Nessa
@@ -540,21 +544,20 @@ foi dada por
 \end{equation}
 
 Esta equação representa os disparos de fibras descendentes agindo sobre
-o núcleo motor com o intuito de realizar uma contração em rampa até 80 \%
+o núcleo motor com o intuito de realizar uma contração em rampa até 70 \%
 do MVC. Após 1 segundo nesse valor, eles decaíram com a mesma derivada.
 
-Adotando
-uma força máxima de 98 N \cite{walmsley78}, o valor
-da variável $mvcPerc$ foi tomado como o necessário para fazer com que
-o modelo gerasse uma força de 80\% desse valor no pico da
-Equação (\ref{eq:ramphold}). Sendo assim, $mvcPerc$ foi 310 e 220
-em simulações com e sem CRs, respectivamente.
+Nas simulações com inibição recorrente, $mvcPerc=310$ foi suficiente
+para recrutar por volta de 240 MNs \cite{walmsley78} no pico da
+Equação (\ref{eq:ramphold}). Para fazer com que
+o nível de força muscular gerado nessa situação
+se mantivesse na ausência das CRs, o valor dessa variável foi
+diminuído para 220.
 
 As taxas de disparos foram calculadas por meio da convolução de
 uma janela de Hann de 400 ms de largura e área unitária com
 um trem de impulsos unitários representando os instantes de 
 disparos dos MNs.
-
 
 \subsection{Alterações na Força Gerada pelo Modelo}
 O efeito do modelo de CR na força muscular foi estudado baseando-se
@@ -595,8 +598,7 @@ em 3 mm. Sendo assim, 300 CRs foram dispostos nesse comprimento
 \cite{carr98}.
 O núcleo motor foi ativado por fibras descendentes durante 4 s,
 com taxas suficientes para gerar os níveis
-de força reportados na Figura \ref{fig:met_granit}. Além disso,
-a atividade espontânea das CRs foi ativada.
+de força reportados na Figura \ref{fig:met_granit}.
 
 A média da força em cada nível de estimulação foi calculada,
 descartando 1 s inicial que poderia conter respostas transitórias.
@@ -675,17 +677,26 @@ foi mantida por 500 ms.
 
 Essa configuração permitiu que a derivada da força, ou seja, sua 
 sensibilidade ao comando descendente, pudesse ser avaliada para uma
-situação de fuga de uma ameaça repentina. Outro cenário analisado
-foi o da manutenção da posição vertical com 5\% do MVC. Essa situação
-foi simulada por meio de fibras descendentes com taxas constantes e foi
-analisada por meio do coeficiente de variação e desvio padrão da força.
-Por fim, o coeficiente de sincronia entre os MNs também foi calculado.
+situação de fuga de uma ameaça repentina. Outros cenários analisados
+foram os da manutenção de 5\% e 70\% do MVC por meio de fibras
+descendentes com taxas de disparo de potenciais de ação constantes e 
+suficientes para recrutar uma porcentagem de MNs próxima à apropriada
+\citeonline{walmsley78}. Essas situações
+foram analisadas por meio do coeficiente de variação da força,
+calculado pela equação (\ref{eq:cv}) mostrada abaixo:
+
+\begin{equation}
+    \text{Coeficiente de variação } (\%) = \frac{\text{desvio padrão da força}}{\text{média da força}}\cdot 100
+    \label{eq:cv}
+\end{equation}
 
 Com o intuito de entender o efeito de diferentes forças de inibição
 recorrente nos cenários propostos, a condutância sináptica das CRs agindo
 sob os MNs, além de ser mantida em seus valores normais,
 foi alterada para contemplar situações de inibição fraca
-(metada da condutância) e forte (dobro da condutância).
+(metade da condutância) e forte (dobro da condutância).
+Nesses dois últimos casos, o valor dessas frequências de disparos foi
+ajustado para cada caso, como na seção \ref{sec:met_onion}.
 
 \subsection{Distorções na Saída do Núcleo Motor}
 \section{Estudos sobre a Conectividade do Circuito de Inibição Recorrente}
