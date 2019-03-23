@@ -11,7 +11,6 @@ duration = 4000
 tmin = 1000
 dt = 0.05
 t = np.arange(0, duration, dt)
-numberMN = 500
 pps = [1] + list(range(75, 675, 75))
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
 trial = input("Trial number: ")
@@ -49,6 +48,7 @@ for simType in simTypes:
         elif simType == 'c':
             rateOnTrialC.append(ensembleFR(spikeInstant, unitNumber,
                 tmin, duration))
+        # Plots to understand results
         #plt.figure()
         #plt.plot(spikeInstant, unitNumber, '.')
         #plt.show()
@@ -70,6 +70,7 @@ for simType in simTypes:
             forceOnTrialO.append(np.mean(staticForce))
         elif simType == 'c':
             forceOnTrialC.append(np.mean(staticForce))
+        # Plots to understand results
         #plt.figure()
         #plt.plot(instant, force)
         #plt.show()
@@ -91,3 +92,4 @@ plt.legend()
 plt.xlabel('Frequência de disparos das fibras descendentes (pps)')
 plt.ylabel('Força (N)')
 plt.savefig(figsFolder + filenameforce + '.svg', format='svg')
+#plt.show()

@@ -11,7 +11,9 @@ dt = 0.05
 t = np.arange(0, duration, dt)
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
 trial = input("Trial number: ")
-path = '/home/pablo/osf/Master-Thesis-Data/population/onion/false_decay/trial' + trial
+subtrial = input("Trial number: ")
+path = ('/home/pablo/osf/Master-Thesis-Data/population/onion/false_decay/trial'
+        + trial + '/trial' + subtrial)
 if trial=='5':
     filenameonionwithoutRC = 'onionwithoutRC'
     filenameonionwithRC = 'onionwithRC'
@@ -25,8 +27,8 @@ elif trial=='6': # Increasing gamma, but I do not use it anymore on results
 os.chdir(path)
 
 ###### Simulation settings and variables
-# Available based on prevoius knowledge
-available = [x for x in range(1, 100)]
+# Available based on previous knowledge (see l. 61)
+available = [x for x in range(1, 210)]
 qntd = 20
 # 1 to 100 is a good range in the current simulation (check spikes plot below)
 indexes = np.random.choice(available, qntd, replace=False)
@@ -58,8 +60,8 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
         spikeInstant.append(float(line.split()[0]))
         unitNumber.append(int(float(line.split()[1])))
 
-    plt.figure()
-    plt.plot(spikeInstant,unitNumber, '.')
+    #plt.figure()
+    #plt.plot(spikeInstant,unitNumber, '.')
 
     # Normalize data to be used by color map
     norm = matplotlib.colors.Normalize(vmin=np.min(indexes), vmax=np.max(indexes))
@@ -75,6 +77,7 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
     plt.figure()
     plt.xlabel('Tempo (ms)')
     plt.ylabel('Taxa de disparo (pps)')
+    plt.ylim((0, 150))
 
     # For muscle force
     filename = 'force' + simType + '.dat'
@@ -117,7 +120,9 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
         plt.plot(t, selectedFR, linewidth=2, color=mappable.to_rgba(index))
         #plt.plot(tForce, force, 'k--') # To plot force on graph
     plt.colorbar(mappable)
+    # Save is supposed to be here because it uses filenameonion, which is one of the loop variables
     plt.savefig(figsFolder + filenameonion + '.svg', format='svg')
+#plt.show()
 
 #plt.figure()
 #plt.plot(t, dyo*1e3,
@@ -128,4 +133,4 @@ for filenameonion, simType in zip(filenamesonion, simTypes):
 #plt.xlabel('Taxa de disparo das fibras descendentes (pps)')
 #plt.ylabel('Derivada da taxa de disparo')
 #plt.show()
-plt.savefig(figsFolder + filenameoniondvdt + '.svg', format='svg')
+#plt.savefig(figsFolder + filenameoniondvdt + '.svg', format='svg')

@@ -15,7 +15,7 @@ filenamerecruit = 'revrecruit'
 filenameCfirst = 'recruitFirstsC'
 filenameOfirst = 'recruitFirstsO'
 
-trials = ['1', '2']#, '3'] # current, poisson and varying gamma trials, respectively
+trials = ['3', '4']
 
 for trial in trials:
     # Initializing variables
@@ -69,14 +69,13 @@ for trial in trials:
     #f.close()
 
     # Plots depending on trial
-    if trial=='1': 
+    if trial=='3': 
         plt.figure()
         plt.plot(spikeInstantMNo, unitNumberMNo, 'k.', label='Sem célula de Renshaw')
         plt.plot(spikeInstantMNc, unitNumberMNc, 'r.', label='Com célula de Renshaw')
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
         plt.legend()
-        #plt.show()
         plt.savefig(figsFolder + filenameCxO + '.svg', format='svg')
 
         ## spike times zoom
@@ -86,7 +85,6 @@ for trial in trials:
         plt.ylabel('Índice do motoneurônio')
         plt.xlim([860, 980])
         plt.ylim([200, 240])
-        #plt.show()
         plt.savefig(figsFolder + filenamezoom1 + '.svg', format='svg')
 
         plt.figure()
@@ -95,32 +93,25 @@ for trial in trials:
         plt.ylabel('Índice do motoneurônio')
         plt.xlim([140, 250])
         plt.ylim([0, 40])
-        #plt.show()
         plt.savefig(figsFolder + filenamezoom2 + '.svg', format='svg')
 
-    elif trial == '2':
-        # Create rectangles area
-        recto1 = ptchs.Rectangle((181.5,94.5), 4.0, 3.0, fill=False, edgecolor='k')
-        rectc1 = ptchs.Rectangle((293.5,92.5), 4.0, 5.0, fill=False, edgecolor='k')
-        rectc2 = ptchs.Rectangle((210.0,80.5), 3.5, 3, fill=False, edgecolor='k')
-
+    elif trial == '4':
         fig, ax = plt.subplots(1)
         plt.plot(spikeInstantMNo, unitNumberMNo, 'k.')
+        ax.plot((spikeInstantMNo, spikeInstantMNo), (77, 104), 'k-', linewidth=0.1)
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
         plt.xlim([120, 260])
         plt.ylim([77, 104])
-        ax.add_patch(recto1)
         plt.savefig(figsFolder + filenamepoissonO + '.svg', format='svg')
 
         fig, ax = plt.subplots(1)
         plt.plot(spikeInstantMNc, unitNumberMNc, 'k.')
+        ax.plot((spikeInstantMNc, spikeInstantMNc), (77, 104), 'k-', linewidth=0.1)
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
         plt.xlim([160, 310])
         plt.ylim([77, 104])
-        ax.add_patch(rectc1)
-        ax.add_patch(rectc2)
         plt.savefig(figsFolder + filenamepoissonC + '.svg', format='svg')
 
         plt.figure()
@@ -128,21 +119,20 @@ for trial in trials:
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
         plt.xlim([140, 230])
-        plt.ylim([50, 82])
+        plt.ylim([50, 85])
         plt.axhline(75.5, color='k', linestyle=':')
         referenceInstant = [y for x, y in enumerate(spikeInstantMNc) if
-                    unitNumberMNc[x]==80][0]
-        plt.vlines(x=referenceInstant, ymin=47, ymax=80, color='k', linestyle='--')
+                    unitNumberMNc[x]==83][0]
+        plt.vlines(x=referenceInstant, ymin=47, ymax=83, color='k', linestyle='--')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
-                    unitNumberMNc[x]==52][0]
-        plt.hlines(y=52, xmin=referenceInstant, xmax=analysedInstant, color='k')
+                    unitNumberMNc[x]==53][0]
+        plt.hlines(y=53, xmin=referenceInstant, xmax=analysedInstant, color='k')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
                     unitNumberMNc[x]==66][0]
         plt.hlines(y=66, xmin=referenceInstant, xmax=analysedInstant, color='k')
         analysedInstant = [y for x, y in enumerate(spikeInstantMNc) if
                     unitNumberMNc[x]==72][0]
         plt.hlines(y=72, xmin=referenceInstant, xmax=analysedInstant, color='k')
-        #plt.show()
         plt.savefig(figsFolder + filenamerecruit + '.svg', format='svg')
 
     #plt.savefig(figsFolder + filenameCxO + '.svg', format='svg')
@@ -199,7 +189,7 @@ for trial in trials:
         if i not in found:
             found.append(i)
             times.append(spikeInstantMNo[j])
-    if trial=='1':
+    if trial=='3':
         current = []
         current = times
     else:
@@ -214,7 +204,7 @@ for trial in trials:
         if i not in found:
             found.append(i)
             times.append(spikeInstantMNc[j])
-    if trial=='1':
+    if trial=='3':
         current = []
         current = times
     else:
@@ -224,3 +214,4 @@ for trial in trials:
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índice do motoneurônio')
         plt.savefig(figsFolder + filenameCfirst + '.svg', format='svg')
+#plt.show()

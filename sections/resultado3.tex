@@ -91,8 +91,10 @@ mais sutil.
     }
     \caption[Disparos de motoneurônios ativados por fibras descendentes.]{
              Disparos de motoneurônios ativados por fibras descendentes.
-             Os retângulos desenhados sobre o gráfico mostram casos em que
-             motoneurônios de diferentes tamanho disparam praticamente
+             Linhas verticais para cada instante de disparo são sobrepostas
+             no gráfico. Dessa forma, regiões mais escuras indicam
+             uma tendência de 
+             motoneurônios de diferentes tamanho a disparar praticamente
              ao mesmo tempo.
              \subref{fig:recruitpoissonO} Simulação sem células de Renshaw.
              \subref{fig:recruitpoissonC} Simulação com células de Renshaw.
@@ -100,18 +102,18 @@ mais sutil.
     \label{fig:recruitpoisson}
 \end{figure}
 
-%É de se esperar que essas características apresentadas tenham um
-%impacto na sincronia dos MNs. Esse aspecto, entretanto, será abordado
-%na seção \ref{sec:forca}. Por hora, convém analisar a ordem de 
-%recrutamento dos MNs simulados.
+É de se esperar que essas características apresentadas tenham um
+impacto na sincronia dos MNs. Esse aspecto, entretanto, será abordado
+na seção \ref{sec:forca}. Por hora, convém analisar a ordem de 
+recrutamento dos MNs simulados.
 
 Na Figura \ref{fig:revrecruit}, a região de transição entre MNs do tipo
 S para o tipo FR na presença de inibição recorrente é mostrada. Tomando
-o instante do primeiro disparo do índice 80 como referência,
+o instante do primeiro disparo do índice 83 como referência,
 é possível identificar casos em que ocorreram uma inversão na ordem de 
 recrutamento, ou seja, MNs maiores começam a disparar antes de menores.
 Também existiram casos de MNs sendo recrutados praticamente ao mesmo
-instante, como é o caso do 80 com o 63. 
+instante, como é o caso do 83 com o 67. 
 
 \begin{figure}[ht]
 	\center
@@ -121,7 +123,7 @@ instante, como é o caso do 80 com o 63.
              Motoneurônios do tipo S (abaixo de 75) e do tipo FR
              (acima de 75) são separados por uma linha horizontal
              pontilhada. Uma linha vertical tracejada foi traçada sob o
-             instante do primeiro disparo do motoneurônio 78 e 
+             instante do primeiro disparo do motoneurônio 83 e 
              linhas horizontais sólidas representam o quanto algumas
              unidades menores estiveram atrasadas.
             }
@@ -229,10 +231,9 @@ seus tamanhos. Nota-se que, na presença da CR
 um aumento de variabilidade e diminuição de taxas de disparos
 em comparação com a simulação sem essa inibição recorrente
 (Figura \ref{fig:onion}\subref{fig:onionwithoutRC}). Além disso,
-foi observado na Figura \ref{fig:onion}\subref{fig:onionwithRC}
-um caso de cruzamento de curvas que não foi observado na 
-Figura \ref{fig:onion}\subref{fig:onionwithoutRC} (curvas bege
-e roxo escuras).
+foi observado que alguns MNs maiores não tiveram suas taxas
+diminuídas tanto quanto as dos menores (por exemplo, cinza e bege
+claro).
 
 \begin{figure}[ht]
     \centering
@@ -256,25 +257,6 @@ e roxo escuras).
     \label{fig:onion}
 \end{figure}
 
-\citeonline{deluca94} ocasionalmente observaram
-disparos de uma unidade motora atingindo taxas maiores
-do que outras ativadas previamente, mas atribuíram isso a características
-estocásticas dos MNs. Isso pode ser observado na Figura \ref{fig:onion},
-em que a natureza do estímulo utilizado ocasionalmente causa respostas 
-que divergem da ideia de \textit{onion skin}, tanto na ausência quanto
-na presença de inibição recorrente.
-
-Considerando que as CRs introduzem um ruído
-descorrelacionado no núcleo motor \cite{adam78}, pode-se esperar que
-as CRs tenham alguma influência nessa organização de disparos, afetando,
-assim, diferentes aspectos da geração de força e eficiência energética
-\cite{deluca15,hu14}. Isso, entretanto, foi observado de maneira modesta
-nos resultados
-apresentados. Além disso, a crescente inibição de CRs em contrações 
-voluntárias pode ter um efeito direto nesse resultado, sendo necessário
-determinar a forma como esse efeito modulatório afeta essa população
-de neurônios.
-
 Apesar de não ter sido mencionada, a taxa de disparos dos MNs é
 importante para compreender fisiologicamente a relevância dos resultados.
 Existem trabalhos na literatura que tentaram relacioná-las com
@@ -289,6 +271,25 @@ Em movimentos como o pulo vertical, contrações próximas
 à 100\% do MVC são atingidas \cite{walmsley78} e isso poderia envolver
 maiores taxas de disparos.
 
+\citeonline{deluca94} ocasionalmente observaram
+disparos de uma unidade motora atingindo taxas maiores
+do que outras ativadas previamente, mas atribuíram isso a características
+estocásticas dos MNs. Isso pode ser observado na Figura \ref{fig:onion},
+em que a natureza do estímulo utilizado ocasionalmente causa respostas 
+que divergem do conceito de \textit{onion skin}, tanto na ausência quanto
+na presença de inibição recorrente.
+
+Considerando que as CRs introduzem um ruído
+descorrelacionado no núcleo motor \cite{adam78}, pode-se esperar que
+as CRs tenham alguma influência nessa organização de disparos, afetando,
+assim, diferentes aspectos da geração de força e eficiência energética
+\cite{deluca15,hu14}. Isso, entretanto, foi observado de maneira modesta
+nos resultados
+apresentados. Além disso, a crescente inibição de CRs em contrações 
+voluntárias pode ter um efeito direto nesse resultado, sendo necessário
+determinar a forma como esse efeito modulatório afeta essa população
+de neurônios.
+
 Levando em consideração esses estudos, pode-se perceber que as
 taxas de disparos encontradas nas simulações
 estiveram dentro de limites fisiologicamente relevantes.
@@ -297,7 +298,7 @@ foi observada uma característica mista. Em ambos os casos (sem ou
 com CRs), curvas de MNs com tamanhos parecidos se sobrepõe frequentemente,
 mas, na medida em que a diferença entre os tamanhos aumenta, esse
 comportamento cessa. Apesar da ocorrência um caso em que um MN do tipo
-FF tenha disparado a taxas mais altas do que um do tipo FR, outros
+FF tenha disparado a taxas mais altas do que um do tipo S, outros
 estudos devem ser realizados para analisar a relevância desses
 resultados.
 
@@ -354,12 +355,13 @@ semelhante à função de Langmuir descrita na literatura \cite{cleveland81}.
     \label{fig:granit}
 \end{figure}
 
-% This is something that could be changed
-Os níveis de força gerados pelo modelo não foram os mesmos dos obtidos
-na literatura, mas foram proporcionais. Caso se queira reproduzir a força 
-máxima de 17.15 N \cite{granit61}, os parâmetros de pico dos
-\textit{twitches} e força tetânica poderiam ser aumentados. Para
-esses casos, a proporcionalidade observada foi mantida.
+% This is something that could be changed, but I think it is not worth 
+% mentioning
+%Os níveis de força gerados pelo modelo não foram os mesmos dos obtidos
+%na literatura, mas foram próximos. Caso se queira reproduzir a força 
+%máxima de 17.15 N \cite{granit61}, os parâmetros de pico dos
+%\textit{twitches} e força tetânica poderiam ser aumentados. Para
+%esses casos, a proporcionalidade observada foi mantida.
 
 Existem muitos dados conflitantes na literatura sobre o ganho da
 inibição recorrente e a consequente diminuição da taxa de disparos.

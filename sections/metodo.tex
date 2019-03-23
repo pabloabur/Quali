@@ -502,7 +502,7 @@ experimentais ou em outros computacionais. Dessa forma,
 foram configuradas simulações que eram o mais semelhantes possível a esses 
 trabalhos para que os resultados pudessem ser apropriadamente comparados.
 De formal geral, todas as simulações tiveram
-CRs disparando espontaneamente, com exceção da seção \ref{sec:met_onion}.
+CRs disparando espontaneamente.
 
 \subsection{Disparos de Motoneurônios}
 \label{sec:met_onion}
@@ -547,12 +547,12 @@ Esta equação representa os disparos de fibras descendentes agindo sobre
 o núcleo motor com o intuito de realizar uma contração em rampa até 70 \%
 do MVC. Após 1 segundo nesse valor, eles decaíram com a mesma derivada.
 
-Nas simulações com inibição recorrente, $mvcPerc=310$ foi suficiente
+Nas simulações com inibição recorrente, $mvcPerc=950$ foi suficiente
 para recrutar por volta de 240 MNs \cite{walmsley78} no pico da
 Equação (\ref{eq:ramphold}). Para fazer com que
 o nível de força muscular gerado nessa situação
 se mantivesse na ausência das CRs, o valor dessa variável foi
-diminuído para 220.
+diminuído para 710.
 
 As taxas de disparos foram calculadas por meio da convolução de
 uma janela de Hann de 400 ms de largura e área unitária com
@@ -582,7 +582,8 @@ músculo sóleo do gato. Isso é mostrado na Figura \ref{fig:met_granit}
 Como o músculo utilizado nesse experimento é diferente do empregado
 nas parametrizações, algumas considerações foram necessárias.
 Foi pressuposto que as relações dos MNs desse núcleo motor
-com as CRs (condutâncias sinápticas e conectividade) sejam as mesmas.
+com as CRs e as fibras descendentes (condutâncias sinápticas e conectividade)
+sejam as mesmas.
 Ademais, as características de unidade motora relacionado aos 
 \textit{twitches}, propriedades eletrotônicas e geométricas foram as
 mesmas adotadas para o núcleo motor gastrocnêmio medial.
@@ -619,9 +620,11 @@ são nulos.
 Ademais, cada MN também foi ativado por um ruído excitatório
 com o mesmo formato, mas com condutância sináptica máxima de 12 $\mu$S.
 Essa ativação, além de introduzir mais variabilidade nos disparos,
-foi utilizada para compensar a redução da força causada pela
-inibição recorrente. Nesse caso, as amplitudes dos picos foram de 3300 e
-1200 Hz em simulações com e sem CR, respectivamente. Nota-se,
+foi utilizada para fazer com que as forças musculares geradas na ausência
+e presença de inibição recorrente estivessem próximas, assim
+como na seção \ref{sec:met_onion}.
+Nesse caso, as amplitudes dos picos foram de 3300 e
+1400 Hz em simulações com e sem CR, respectivamente. Nota-se,
 ainda, que
 os disparos dessa a entrada excitatória ocorre de acordo com
 um processo pontual Poisson e que, sem as CRs, a média de condutâncias
@@ -672,31 +675,69 @@ foram, então, comparados qualitativamente com a Figura
 \subsection{Estudos de Contrações isométricas}
 A ativação do núcleo motor nessas simulações foi
 realizada por meio de fibras descendentes com taxa de disparos 
-suficiente para gerar valores de força próximos ao MVC. Essa taxa
-foi mantida por 500 ms.
-
+constantes e suficiente para gerar valores de força próximos ao MVC.
+Essa taxa foi mantida por 500 ms.
 Essa configuração permitiu que a derivada da força, ou seja, sua 
 sensibilidade ao comando descendente, pudesse ser avaliada para uma
-situação de fuga de uma ameaça repentina. Outros cenários analisados
+situação de fuga de uma ameaça repentina.
+
+Outros cenários analisados
 foram os da manutenção de 5\% e 70\% do MVC por meio de fibras
 descendentes com taxas de disparo de potenciais de ação constantes e 
 suficientes para recrutar uma porcentagem de MNs próxima à apropriada
-\citeonline{walmsley78}. Essas situações
-foram analisadas por meio do coeficiente de variação da força,
-calculado pela equação (\ref{eq:cv}) mostrada abaixo:
+\citeonline{walmsley78}. O coeficiente de variação da força muscular 
+gerada foi calculado pela equação (\ref{eq:cv}) mostrada abaixo:
 
 \begin{equation}
     \text{Coeficiente de variação } (\%) = \frac{\text{desvio padrão da força}}{\text{média da força}}\cdot 100
     \label{eq:cv}
 \end{equation}
 
+Nesse caso, as simulações tiveram duração de 2 s e os primeiros 500 ms 
+foram removidos para evitar a presença de componentes transitórios
+no sinal.
+
 Com o intuito de entender o efeito de diferentes forças de inibição
 recorrente nos cenários propostos, a condutância sináptica das CRs agindo
 sob os MNs, além de ser mantida em seus valores normais,
 foi alterada para contemplar situações de inibição fraca
-(metade da condutância) e forte (dobro da condutância).
-Nesses dois últimos casos, o valor dessas frequências de disparos foi
-ajustado para cada caso, como na seção \ref{sec:met_onion}.
+(metade da condutância), forte (dobro da condutância) e ausente.
+Nesses três últimos casos, o valor dessas frequências de disparos foi
+ajustado para que a força muscular gerada estivesse próxima à do primeiro
+caso, como na seção \ref{sec:met_onion}. Em todos eles, os graus de 
+sincronia foram calculados de acordo com o trabalho de
+\citeonline{golomb01} e comparados.
+
+O coeficiente de sincronia foi calculado da seguinte forma: Primeiramente,
+a média do potencial membrana dos $N$ MNs que dispararam em uma simulação 
+foi dada como 
+
+\begin{equation}
+    V(t) = \frac{1}{N}\sum_{i=1}^{N}V_i(t)
+\end{equation}
+
+sendo sua variância calculada como 
+
+\begin{equation}
+    \sigma^2 = \langle V(t)^2\rangle_t - \langle V(t)\rangle_t^2
+\end{equation}
+
+O operador $\langle\cdot\rangle_t$ denota uma média no tempo. Em seguida, 
+um fator de normalização que leva em consideração cada MN pode ser
+calculado como 
+
+\begin{equation}
+    \sigma_i^2 = \langle V_i(t)^2\rangle_t - \langle V_i(t)\rangle_t^2
+\end{equation}
+
+Por fim, obtém-se o coeficiente 
+
+\begin{equation}
+    \chi^2 = \frac{\sigma^2}{\frac{1}{N}\sum_{i=1}^N\sigma^2_i}
+\end{equation}
+
+em que $0\le\chi^2\le 1$. Sendo assim, valore mais próximos de 1 indicam
+uma atividade mais sincronizada do núcleo motor.
 
 \subsection{Distorções na Saída do Núcleo Motor}
 \section{Estudos sobre a Conectividade do Circuito de Inibição Recorrente}

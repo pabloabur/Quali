@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import glob
 
-def highInput(dataPath):
+def maxInput(dataPath, nMod):
     # Files and paths
     filenamemod = 'res_moda'
     filenameder = 'res_modb'
@@ -11,8 +11,10 @@ def highInput(dataPath):
     #****************************************
     #******* Getting and processing high input data
     #****************************************
-    files = glob.glob(dataPath + '/forcehi*.dat')
-    forceOnTrials = [[] for _ in range(3)]
+    trial = input('High input trial number: ')
+    #sub_trial = input('High input subtrial number: ')
+    files = glob.glob(dataPath + '/max/trial' + str(trial) + '/forcema*.dat')
+    forceOnTrials = [[] for _ in range(nMod)]
     labels = []
     for i, filename in enumerate(files):
         force = []
@@ -32,42 +34,51 @@ def highInput(dataPath):
             labels.append('Normal')
         elif filename[-5] == 'h':
             labels.append('Fraco')
+        elif filename[-5] == 'a':
+            labels.append('Ausente')
 
     plt.figure()
-    symbols = ['k', 'k--', 'k:']
-    for i in range(3):
+    symbols = ['k', 'k--', 'k:', 'k-.']
+    for i in range(nMod):
         plt.plot(t, forceOnTrials[i], symbols[i], label = labels[i])
     plt.legend()
     plt.ylabel('Força (N)')
     plt.xlabel('Tempo (ms)')
     plt.xlim((0, 110))
-    plt.savefig(figsFolder + filenamemod + '.svg', format='svg')
+    # TODO save only
+    #plt.savefig(figsFolder + filenamemod + '.svg', format='svg')
 
     dx = 0.05
     plt.figure()
-    for i in range(3):
+    for i in range(nMod):
         plt.plot(t[0:-1], np.diff(forceOnTrials[i]/dx), symbols[i], label = labels[i])
     plt.legend()
     plt.ylabel('Derivada da força (N/s)')
     plt.xlabel('Tempo (ms)')
     plt.xlim((0, 35))
-    plt.savefig(figsFolder + filenameder + '.svg', format='svg')
-    #plt.show()
+    # TODO save only
+    #plt.savefig(figsFolder + filenameder + '.svg', format='svg')
+    plt.show()
 
-def lowInput(dataPath):
+def constInput(dataPath, option, nTrials, nMod):
     tmin = 500
-    nTrials = 5
     # Files and paths
     filenamestats = 'res_stat'
     figsFolder = '/home/pablo/git/master-thesis/figuras/'
+    if option == 'low':
+        datFile = '/force*.dat'
+        dataPath = dataPath + '/low/'
+    else:
+        datFile = '/force*.dat'
+        dataPath = dataPath + '/high/'
 
     #****************************************
-    #******* Getting and processing high input data
+    #******* Getting and processing input data
     #****************************************
-    meanCoeffVar = {'Forte': [], 'Normal': [], 'Fraco': []}
+    meanCoeffVar = {'Forte': [], 'Normal': [], 'Fraco': [], 'Ausente': []}
     for nTrial in range(1, nTrials+1):
-        files = glob.glob(dataPath + '/trial' + str(nTrial) + '/forcelo*.dat')
-        forceOnTrials = [[] for _ in range(3)]
+        files = glob.glob(dataPath + 'trial' + str(nTrial) + datFile)
+        forceOnTrials = [[] for _ in range(nMod)]
         labels = []
         for i, filename in enumerate(files):
             force = []
@@ -81,55 +92,93 @@ def lowInput(dataPath):
             f.close()
 
             staticForce = [y for x,y in enumerate(force) if t[x]>tmin]
+            var = np.var(staticForce)
+            ave = np.mean(staticForce)
             
             forceOnTrials[i] = np.array(force)
 
             if filename[-5] == 'd':
-                labels.append('Forte')
+                labels.append('Forte'+str(ave))
                 coeffVar = np.std(staticForce)/np.mean(staticForce)*100
                 meanCoeffVar['Forte'].append(coeffVar)
             elif filename[-5] == 's':
-                labels.append('Normal')
+                labels.append('Normal'+str(ave))
                 coeffVar = np.std(staticForce)/np.mean(staticForce)*100
                 meanCoeffVar['Normal'].append(coeffVar)
             elif filename[-5] == 'h':
-                labels.append('Fraco')
+                labels.append('Fraco'+str(ave))
                 coeffVar = np.std(staticForce)/np.mean(staticForce)*100
                 meanCoeffVar['Fraco'].append(coeffVar)
+            elif filename[-5] == 'o':
+                labels.append('Ausente'+str(ave))
+                coeffVar = np.std(staticForce)/np.mean(staticForce)*100
+                meanCoeffVar['Ausente'].append(coeffVar)
 
-        #plt.figure()
-        #symbols = ['k', 'k--', 'k:']
-        #for i in range(3):
-        #    plt.plot(t, forceOnTrials[i], symbols[i], label = labels[i])
-        #plt.legend()
-        #plt.ylabel('Força (N)')
-        #plt.xlabel('Tempo (ms)')
-        #plt.show()
+        ## Plot forces
+        # TODO comment this
+        plt.figure()
+        symbols = ['k', 'k--', 'k:', 'k-.']
+        for i in range(nMod):
+            plt.plot(t, forceOnTrials[i], symbols[i], label = labels[i])
+        plt.legend()
+        plt.ylabel('Força (N)')
+        plt.xlabel('Tempo (ms)')
+        plt.show()
 
     for key, value in meanCoeffVar.items():
         print('mean CV of force:{:.2f}, {}'.format(np.mean(value), key))
         print('sd CV of force:{:.2f}, {}'.format(np.std(value), key))
 
-    print(meanCoeffVar)
-    plt.figure()
+    meanSync = {'Forte': [], 'Normal': [], 'Fraco': [], 'Ausente': []}
+    for nTrial in range(1, nTrials+1):
+        files = glob.glob(dataPath + 'trial' + str(nTrial) + '/sync*.dat')
+        syncs = [[] for _ in range(nMod)]
+        syncLabels = []
+        # Iterate over modulations within a trial
+        for i, filename in enumerate(files):
+            sync = []
+            
+            f = open(filename, 'r')
+            lines = f.readlines()
+            for line in lines:
+                sync.append(float(line.split()[0]))
+            f.close()
+
+            if filename[-5] == 'd':
+                syncLabels.append('Forte')
+                meanSync['Forte'].extend(sync)
+            elif filename[-5] == 's':
+                syncLabels.append('Normal')
+                meanSync['Normal'].extend(sync)
+            elif filename[-5] == 'h':
+                syncLabels.append('Fraco')
+                meanSync['Fraco'].extend(sync)
+            elif filename[-5] == 'o':
+                syncLabels.append('Ausente')
+                meanSync['Ausente'].extend(sync)
+
+    # Plot coefficients
+    fig, ax = plt.subplots(2, 1, sharex=True)
+    ticks = []
+    for i, j in enumerate(meanSync):
+        ticks.append(j)
+        #import pdb; pdb.set_trace()
+        ax[0].plot([i+1]*nTrials, meanSync[j], 'ko', fillstyle='none')
     for i, j in enumerate(meanCoeffVar):
-        plt.plot([i+1]*nTrials, meanCoeffVar[j], 'ko')
-    #import pdb; pdb.set_trace()
-    plt.xticks(range(1, len(meanCoeffVar)+1), list(meanCoeffVar.keys()))
-    plt.ylabel('Coeficiente de variação')
-    plt.xlabel('Força da inibição recorrente (ms)')
+        if ticks[i] != j:
+            print('Potential danger')
+        ax[1].plot([i+1]*nTrials, meanCoeffVar[j], 'ko', fillstyle='none')
+    plt.xticks(range(1, len(meanSync)+1), list(meanSync.keys()))
+    ax[0].set(ylabel='Coeficiente de sincronia')
+    ax[1].set(xlabel='Força da inibição recorrente', ylabel='Coeficiente de variação')
+    # TODO save only
     plt.show()
     #plt.savefig(figsFolder + filenamestats + '.svg', format='svg')
 
-#trial = input('High input trial number: ')
-#sub_trial = input('High input subtrial number: ')
-#dataPath = ('/home/pablo/osf/Master-Thesis-Data/population/modulation'
-#            '/high/trial' + str(trial) + '/trial' + str(sub_trial))
-#
-#highInput(dataPath)
+dataPath = ('/home/pablo/osf/Master-Thesis-Data/population/modulation')
+numTrials = 1# TODO back to 5
+numModulations = 4
 
-trial = input('Low input trial number: ')
-dataPath = ('/home/pablo/osf/Master-Thesis-Data/population/modulation'
-            '/low/trial' + str(trial))
-
-lowInput(dataPath)
+#maxInput(dataPath, numModulations)
+constInput(dataPath, 'low', numTrials, numModulations)
+#constInput(dataPath, 'high', numTrials, numModulations)
