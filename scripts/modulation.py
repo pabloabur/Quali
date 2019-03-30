@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import glob
 
-def maxInput(dataPath, nMod):
+def maxInput(dataPath, trial):
     # Files and paths
     filenamemod = 'res_moda'
     filenameder = 'res_modb'
@@ -11,36 +11,37 @@ def maxInput(dataPath, nMod):
     #****************************************
     #******* Getting and processing high input data
     #****************************************
-    trial = input('High input trial number: ')
-    #sub_trial = input('High input subtrial number: ')
     files = glob.glob(dataPath + '/max/trial' + str(trial) + '/forcema*.dat')
-    forceOnTrials = [[] for _ in range(nMod)]
-    labels = []
-    for i, filename in enumerate(files):
+    simTypes = ['o', 'h', 's', 'd']
+    nMod = len(simTypes)
+    forceOnTrials = {'d': [], 's': [], 'h': [], 'o': []}
+    labels = {'d': 'Forte', 's': 'Normal', 'h': 'Fraco', 'o': 'Ausente'}
+    symbols = {'d': 'k', 's': 'k--', 'h': 'k-.', 'o': 'k:'}
+    for simType in simTypes:
         force = []
         t = []
         
-        f = open(filename, 'r')
+        fileName = dataPath + '/max/trial' + str(trial) + '/force' + simType + '.dat'
+        try:
+            f = open(fileName, 'r')
+        except:
+            print('Warning: File ' + fileName + ' could not be opened.')
+            continue
         lines = f.readlines()
         for line in lines:
             t.append(float(line.split()[0]))
             force.append(float(line.split()[1]))
         f.close()
         
-        forceOnTrials[i] = np.array(force)
-        if filename[-5] == 'd':
-            labels.append('Forte')
-        elif filename[-5] == 's':
-            labels.append('Normal')
-        elif filename[-5] == 'h':
-            labels.append('Fraco')
-        elif filename[-5] == 'a':
-            labels.append('Ausente')
+        forceOnTrials[simType] = np.array(force)
+        staticForce = [y for x,y in enumerate(forceOnTrials[simType]) if t[x]>200]
+        var = np.var(staticForce)
+        ave = np.mean(staticForce)
+        labels[simType] = labels[simType] + str(ave)
 
     plt.figure()
-    symbols = ['k', 'k--', 'k:', 'k-.']
-    for i in range(nMod):
-        plt.plot(t, forceOnTrials[i], symbols[i], label = labels[i])
+    for simType in simTypes:
+        plt.plot(t, forceOnTrials[simType], symbols[simType], label = labels[simType])
     plt.legend()
     plt.ylabel('Força (N)')
     plt.xlabel('Tempo (ms)')
@@ -50,8 +51,8 @@ def maxInput(dataPath, nMod):
 
     dx = 0.05
     plt.figure()
-    for i in range(nMod):
-        plt.plot(t[0:-1], np.diff(forceOnTrials[i]/dx), symbols[i], label = labels[i])
+    for simType in simTypes:
+        plt.plot(t[0:-1], np.diff(forceOnTrials[simType]/dx), symbols[simType], label = labels[simType])
     plt.legend()
     plt.ylabel('Derivada da força (N/s)')
     plt.xlabel('Tempo (ms)')
@@ -60,7 +61,7 @@ def maxInput(dataPath, nMod):
     #plt.savefig(figsFolder + filenameder + '.svg', format='svg')
     plt.show()
 
-def constInput(dataPath, option, nTrials, nMod):
+def constInput(dataPath, option, nTrials):
     tmin = 500
     # Files and paths
     filenamestats = 'res_stat'
@@ -76,7 +77,49 @@ def constInput(dataPath, option, nTrials, nMod):
     #******* Getting and processing input data
     #****************************************
     meanCoeffVar = {'Forte': [], 'Normal': [], 'Fraco': [], 'Ausente': []}
+    nMod = len(meanCoeffVar)
     for nTrial in range(1, nTrials+1):
+        #*****************************
+        #*********** Spikes plot
+        #*****************************
+        # TODO save this image for discussion
+        #spikeTimes = []
+        #spikeUnits = []
+        #fileName = dataPath + 'trial' + str(nTrial) + '/spikeo.dat'
+        #f = open(fileName, 'r')
+        #lines = f.readlines()
+        #for line in lines:
+        #    spikeTimes.append(float(line.split()[0]))
+        #    spikeUnits.append(float(line.split()[1]))
+        #f.close()
+
+        #fig, ax = plt.subplots(1)
+        #plt.plot(spikeTimes, spikeUnits, '.')
+        ##ax.plot((spikeTimes, spikeTimes), (0, 100), 'k-', linewidth=0.1)
+        #plt.xlabel('Tempo (ms)')
+        #plt.ylabel('Índices dos MNs')
+        #plt.title('open')
+        #plt.xlim([1750, 2000])
+
+        #spikeTimes = []
+        #spikeUnits = []
+        #fileName = dataPath + 'trial' + str(nTrial) + '/spiked.dat'
+        #f = open(fileName, 'r')
+        #lines = f.readlines()
+        #for line in lines:
+        #    spikeTimes.append(float(line.split()[0]))
+        #    spikeUnits.append(float(line.split()[1]))
+        #f.close()
+
+        #fig, ax = plt.subplots(1)
+        #plt.plot(spikeTimes, spikeUnits, '.')
+        ##ax.plot((spikeTimes, spikeTimes), (0, 100), 'k-', linewidth=0.1)
+        #plt.xlabel('Tempo (ms)')
+        #plt.ylabel('Índices dos MNs')
+        #plt.title('double')
+        #plt.xlim([1750, 2000])
+        #plt.show()
+
         files = glob.glob(dataPath + 'trial' + str(nTrial) + datFile)
         forceOnTrials = [[] for _ in range(nMod)]
         labels = []
@@ -95,6 +138,7 @@ def constInput(dataPath, option, nTrials, nMod):
             var = np.var(staticForce)
             ave = np.mean(staticForce)
             
+            #import pdb; pdb.set_trace()
             forceOnTrials[i] = np.array(force)
 
             if filename[-5] == 'd':
@@ -162,7 +206,6 @@ def constInput(dataPath, option, nTrials, nMod):
     ticks = []
     for i, j in enumerate(meanSync):
         ticks.append(j)
-        #import pdb; pdb.set_trace()
         ax[0].plot([i+1]*nTrials, meanSync[j], 'ko', fillstyle='none')
     for i, j in enumerate(meanCoeffVar):
         if ticks[i] != j:
@@ -176,9 +219,8 @@ def constInput(dataPath, option, nTrials, nMod):
     #plt.savefig(figsFolder + filenamestats + '.svg', format='svg')
 
 dataPath = ('/home/pablo/osf/Master-Thesis-Data/population/modulation')
-numTrials = 1# TODO back to 5
-numModulations = 4
+numTrials = 5
 
-#maxInput(dataPath, numModulations)
-constInput(dataPath, 'low', numTrials, numModulations)
-#constInput(dataPath, 'high', numTrials, numModulations)
+#maxInput(dataPath, 3)
+constInput(dataPath, 'low', numTrials)
+#constInput(dataPath, 'high', numTrials)

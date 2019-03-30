@@ -7,16 +7,17 @@ import scipy.stats as stat
 
 from ensembleRate import ensembleFR
 
-def singleTrial(trial, subTrial):
+def singleTrial(trial, subTrial, simMVC):
     #****************************************
     #******* Simulation settings and variables
     #****************************************
     # Simulation
-    duration = 9000
-    tmin = 1000
+    # TODO uncomment those values
+    duration = 1500#9000
+    tmin = 200#1000
     dt = 0.05
-    t = np.arange(0, duration, dt)
-    simTypes = ['o', 'h', 's', 'd'] # Without and with RC
+    # TODO this is only for noise strategy
+    simTypes = ['o', 's']#['o', 'h', 's', 'd'] # Without and with RC
     fs=1/(dt*1e-3)
 
     # Biophysical parameters
@@ -34,6 +35,7 @@ def singleTrial(trial, subTrial):
     plotPSD = {'d': [], 's': [], 'h': [], 'o': []}
     plotFc = {'d': [], 's': [], 'h': [], 'o': []}
     plotCoherence = {'d': [], 's': [], 'h': [], 'o': []}
+    sync = {'Forte': [], 'Normal': [], 'Fraco': [], 'Ausente': []}
 
     #****************************************
     #******* Running simulation for each case
@@ -51,17 +53,18 @@ def singleTrial(trial, subTrial):
         #****************************************
         #******* Getting and processing spike data
         #****************************************
-        fileName = dataPath + '/spike' + simType + '.dat'
+        fileName = dataPath + '/spike' + simMVC + simType + '.dat'
         try:
             f = open(fileName, 'r')
         except:
+            print('Warning: File ' + fileName + ' could not be opened.')
             continue
         lines = f.readlines()
         for line in lines:
             spikeTimes.append(float(line.split()[0]))
             spikeUnits.append(float(line.split()[1]))
         f.close()
-        MNSpikeInstants = [y for x, y in enumerate(spikeTimes) if spikeUnits[x]==recordedMN]
+        #MNSpikeInstants = [y for x, y in enumerate(spikeTimes) if spikeUnits[x]==recordedMN]
 
         #if not any(MNSpikeInstants):
         #    print('No spikes for this MN')
@@ -77,41 +80,40 @@ def singleTrial(trial, subTrial):
         #    plt.show()
 
         # Plot used for more detailed investigation
-        # TODO comment this
         plt.figure()
         plt.plot(spikeTimes, spikeUnits, '.')
         plt.title(simType)
         plt.xlabel('Tempo (ms)')
         plt.ylabel('Índices dos MNs')
-        #plt.show()
+        plt.show()
 
         #****************************************
         #******* Getting and processing force data
         #****************************************
-        fileName = dataPath + '/force' + simType + '.dat'
+        fileName = dataPath + '/force' + simMVC + simType + '.dat'
         try:
             f = open(fileName, 'r')
+            lines = f.readlines()
+            for line in lines:
+                taux.append(float(line.split()[0]))
+                force.append(float(line.split()[1]))
+            f.close()
         except:
-            continue
-        lines = f.readlines()
-        for line in lines:
-            taux.append(float(line.split()[0]))
-            force.append(float(line.split()[1]))
-        f.close()
+            print('Warning: File ' + fileName + ' could not be opened.')
 
-        staticForce = [y for x,y in enumerate(force) if t[x]>tmin]
+        staticForce = [y for x,y in enumerate(force) if taux[x]>tmin]
         var = np.var(staticForce)
         ave = np.mean(staticForce)
 
         # TODO comment this
         # Plot used for more detailed investigation
         plt.figure()
-        plt.plot(t, force)
-        plt.title(simType+'mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
+        plt.plot(taux, force)
+        plt.title(simType+', mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
         plt.xlabel('t (ms)')
         plt.ylabel('Force (N)')
         plt.grid()
-        #plt.show()
+        plt.show()
 
         #     `boxcar`, `triang`, `blackman`, `hamming`, `hann`, `bartlett`,
         #         `flattop`, `parzen`, `bohman`, `blackmanharris`, `nuttall`,
@@ -135,13 +137,13 @@ def singleTrial(trial, subTrial):
         #****************************************
         #******* Getting and processing for coherence# Most of this is not used anymore
         #****************************************
-        #fileName = dataPath + '/g_emg' + simType + '.dat'
-        #f = open(fileName, 'r')
-        #lines = f.readlines()
-        #for line in lines:
-        #    inputConductance.append(float(line.split()[0]))
-        #    EMG.append(float(line.split()[1]))
-        #f.close()
+        fileName = dataPath + '/g_emg' + simMVC + simType + '.dat'
+        f = open(fileName, 'r')
+        lines = f.readlines()
+        for line in lines:
+            inputConductance.append(float(line.split()[0]))
+            EMG.append(float(line.split()[1]))
+        f.close()
 
         # Checking input
         #plt.figure()
@@ -153,12 +155,12 @@ def singleTrial(trial, subTrial):
         #   inputConductance[int(tmin/0.05):])))))
 
         # Calculating confidence limit
-        #K = len(EMG)/(nperseg*2)
-        #alpha = .05
-        #F = stat.f.ppf(q=1-alpha, dfn=2, dfd=2*(K-1))
-        ##print('Confidence Level: {:}'.format(str(F/(K-1+F))))
+        K = len(EMG)/(nperseg*2)
+        alpha = .05
+        F = stat.f.ppf(q=1-alpha, dfn=2, dfd=2*(K-1))
+        print('Confidence Level: {:}'.format(str(F/(K-1+F))))
 
-        #fc, coherence = signal.coherence(inputConductance, np.abs(EMG), fs, ('tukey', 0.1), 10000, noverlap=5000)
+        fc, coherence = signal.coherence(inputConductance, np.abs(EMG), fs, ('tukey', 0.1), 10000, noverlap=5000)
 
         # Checking input PSD
         #fi, inputPSD = signal.welch(inputConductance, fs, ('tukey', 0.1), nperseg, noverlap, nfft,
@@ -170,6 +172,28 @@ def singleTrial(trial, subTrial):
         #plt.xlim([0, 60])
         #plt.plot(fi, 1e6*inputPSD)
         #plt.show()
+        # TODO comment this
+        # Plot used for more detailed investigation
+        plt.figure()
+        plt.plot(fc, coherence)
+        plt.xlabel('f (Hz)')
+        plt.ylabel('Coherence')
+        plt.xlim([0, 50])
+        plt.grid()
+        plt.show()
+
+        #****************************************
+        #******* Getting synchronization coefficients
+        #****************************************
+        fileName = dataPath + '/sync' + simMVC + simType + '.dat'
+        try:
+            f = open(fileName, 'r')
+            lines = f.readlines()
+            for line in lines:
+                sync[simType] = float(line.split()[0])
+            f.close()
+        except:
+            print('Warning: File ' + fileName + ' could not be opened.')
 
         #****************************************
         #******* Gathering data for latter use
@@ -179,7 +203,6 @@ def singleTrial(trial, subTrial):
         #plotFc[j] = fc
         #plotCoherence[j] = coherence
 
-    plt.show()
     # This is just to check if they are the same. Seem to be. No reason 
     # to believe otherwise
     #print(plotF[0], plotF[1])
@@ -188,19 +211,25 @@ def singleTrial(trial, subTrial):
     #****************************************
     #******* Calculating reduction in peaks
     #****************************************
-    peaksO, _ = signal.find_peaks(plotPSD['o'])
-    peaksC, _ = signal.find_peaks(plotPSD['s'])
-    #import pdb; pdb.set_trace()
-    peaksO = [x for x in peaksO if abs(10-x)<1 or abs(20-x)<1 or abs(30-x)<1 or abs(40-x)<1]
-    peaksC = [x for x in peaksC if abs(10-x)<1 or abs(20-x)<1 or abs(30-x)<1 or abs(40-x)<1]
-    reducPerc = plotPSD['o'][peaksO]/plotPSD['s'][peaksC]
+    # TODO I think I will not make this calculation anymore, only in noise strategy
+    #peaksO, _ = signal.find_peaks(plotPSD['o'])
+    #peaksC, _ = signal.find_peaks(plotPSD['s'])
+    #peaksO = [x for x in peaksO if abs(10-x)<1 or abs(20-x)<1 or abs(30-x)<1 or abs(40-x)<1]
+    #peaksC = [x for x in peaksC if abs(10-x)<1 or abs(20-x)<1 or abs(30-x)<1 or abs(40-x)<1]
+    ## TODO uncomment this but be ware that previosly the peaks vector had length of only 1, 
+    ## which caused an error
+    #reducPerc = 0#plotPSD['o'][peaksO]/plotPSD['s'][peaksC]
 
     # Plot PSD
     plt.figure()
-    plt.plot(plotF['s'], 1e6*plotPSD['s'], label='Com CRs')
-    plt.plot(plotF['o'], 1e6*plotPSD['o'], label='Sem CRs')
-    plt.plot(peaksC, 1e6*plotPSD['s'][peaksC], 'rx')
-    plt.plot(peaksO, 1e6*plotPSD['o'][peaksO], 'gx')
+    labels = {'d': 'Forte', 's': 'Normal', 'h': 'Fraco', 'o': 'Ausente'}
+    symbols = {'d': 'k', 's': 'k--', 'h': 'k-.', 'o': 'k:'}
+    for simType in simTypes:
+        #import pdb; pdb.set_trace()
+        plt.plot(plotF[simType], 1e6*plotPSD[simType], symbols[simType], label=labels[simType])
+    # TODO uncomment
+    #plt.plot(peaksC, 1e6*plotPSD['s'][peaksC], 'rx')
+    #plt.plot(peaksO, 1e6*plotPSD['o'][peaksO], 'gx')
     plt.xlabel('frequência (Hz)')
     plt.ylabel('Densidade Espectral de Potência (mN$^2$)')
     plt.grid()
@@ -221,12 +250,20 @@ def singleTrial(trial, subTrial):
     #plt.legend()
     #plt.show()
 
-    return plotF['s'], plotPSD['s'], plotPSD['s'], reducPerc
+    return plotF, plotPSD, sync
 
-def allTrials(psdo, psdc, f, red):
+def allTrials(PSDs, f, red):
     # Files and paths
     filenamepsd = 'res_psd'
     figsFolder = '/home/pablo/git/master-thesis/figuras/'
+
+    #****************************************
+    #******* Calculating mean
+    #****************************************
+    simTypes = ['o', 'h', 's', 'd'] # Without and with RC
+    meanPSD = {'d': [], 's': [], 'h': [], 'o': []}
+    for simType in simTypes:
+        meanPSD[simType] = np.mean([PSD[simType] for PSD in PSDs], axis=0)
 
     #****************************************
     #******* Plotting
@@ -249,20 +286,17 @@ def allTrials(psdo, psdc, f, red):
     print(1-red)
 
 # These are conveniently converted to a numpy 2d array latter because singleTrial function return numpy arrays
-# TODO subtrials back to 10 or number of folders in the data directory
 numSubTrials = 10
-psdO = [[] for _ in range(1, numSubTrials+1)]
-psdC = [[] for _ in range(1, numSubTrials+1)]
+psd = [[] for _ in range(1, numSubTrials+1)]
 f = [[] for _ in range(1, numSubTrials+1)]
 reduc = [[] for _ in range(1, numSubTrials+1)]
+syncs = [[] for _ in range(1, numSubTrials+1)]
 
 trial = input('Trial number: ')
+mvc = input('MVC percentage: ')
 subtrials = [x for x in range(1, numSubTrials+1)]
 #subtrial = input('Subtrial number: ')
 for subtrial in subtrials:
-    f[subtrial-1], psdO[subtrial-1], psdC[subtrial-1], reduc[subtrial-1] = singleTrial(trial, subtrial)
+    f[subtrial-1], psd[subtrial-1], syncs[subtrial-1] = singleTrial(trial, subtrial, str(mvc))
 
-meanPSDO = np.mean(np.array(psdO), axis=0)
-meanPSDC = np.mean(np.array(psdC), axis=0)
-meanReduc = np.mean(np.array(reduc), axis=0)
-allTrials(meanPSDO, meanPSDC, f[subtrial-1], meanReduc)
+allTrials(psd, f, syncs)
