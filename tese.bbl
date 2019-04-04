@@ -106,15 +106,6 @@ ISSN 0022-3077, 1522-1598.
 Dispon{\'\i}vel em:
   $<$http://jn.physiology.org/cgi/doi/10.1152/jn.00533.2003$>$.}
 
-\bibitem[Burke 1968]{burke68}
-\abntrefinfo{Burke}{BURKE}{1968}
-{BURKE, R.~E. Firing patterns of gastrocnemius motor units in the decerebrate
-  cat.
-\emph{The Journal of Physiology}, v.~196, n.~3, p. 631--654, 1968.
-ISSN 1469-7793.
-Dispon{\'\i}vel em:
-  $<$https://physoc.onlinelibrary.wiley.com/doi/abs/10.1113/jphysiol.1968.sp008527$>$.}
-
 \bibitem[Burke 2011]{burke11}
 \abntrefinfo{Burke}{BURKE}{2011}
 {BURKE, R.~E. Motor {Units}: {Anatomy}, {Physiology}, and {Functional}
@@ -256,14 +247,6 @@ Dispon{\'\i}vel em:
 {ENOKA, R. \emph{Neuromechanics of {Human} {Movement} - 4th {Edition}}. 4
   edition. ed. Champaign, Ill.: Human Kinetics, 2008.
 ISBN 978-0-7360-6679-2.}
-
-\bibitem[Fleshman, Munson e Sypert 1981]{fleshman81}
-\abntrefinfo{Fleshman, Munson e Sypert}{FLESHMAN; MUNSON; SYPERT}{1981}
-{FLESHMAN, J.~W.; MUNSON, J.~B.; SYPERT, G.~W. Homonymous projection of
-  individual group {Ia}-fibers to physiologically characterized medial
-  gastrocnemius motoneurons in the cat.
-\emph{Journal of Neurophysiology}, v.~46, n.~6, p. 1339--1348, dez. 1981.
-ISSN 0022-3077.}
 
 \bibitem[Friedman et al. 1981]{friedman81}
 \abntrefinfo{Friedman et al.}{FRIEDMAN et al.}{1981}
@@ -649,6 +632,15 @@ Dispon{\'\i}vel em:
 {MORRISON, A. et al. Advancing the boundaries of high-connectivity network
   simulation with distributed computing.
 \emph{Neural computation}, v.~17, n.~8, p. 1776--1801, 2005.}
+
+\bibitem[Mr\'{o}wczy\'{n}ski, Celichowski e Krutki 2006]{mrowczynski06}
+\abntrefinfo{Mr\'{o}wczy\'{n}ski, Celichowski e Krutki}{MR\'{o}WCZY\'{n}SKI;
+  CELICHOWSKI; KRUTKI}{2006}
+{MR\'{o}WCZY\'{n}SKI, W.; CELICHOWSKI, J.; KRUTKI, P. Interspecies differences
+  in the force-frequency relationship of the medial gastrocnemius motor units.
+\emph{Journal of Physiology and Pharmacology: An Official Journal of the Polish
+  Physiological Society}, v.~57, n.~3, p. 491--501, set. 2006.
+ISSN 0867-5910.}
 
 \bibitem[Muller et al. 2015]{muller15}
 \abntrefinfo{Muller et al.}{MULLER et al.}{2015}

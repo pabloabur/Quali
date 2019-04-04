@@ -104,20 +104,25 @@ sinápticos disparando potenciais de ação de acordo com um processo pontual
 Poisson e com conectividade de 30\%. A ordem desses processos estocástico
 foi adotada como no trabalho de \citeonline{watanabe13}.
 
-Para calcular os valores de pico dos \textit{twitches}, 
-intervalos e mediana de força tetânica de unidades motoras foram
-utilizados \cite{burke71}. Considerando que a mediana tenha sido
-causada pelo valor médio de pico de um \textit{twitch} descrito por
-\citeonline{fleshman81} e que os limites do intervalo estejam 
-relacionados linearmente com o tamanho dos MNs, um cálculo de 
-proporção foi realizado para determinar os valores de pico de cada
-MN.
+Os valores de pico dos \textit{twitches} e força tetânica das unidades
+motoras utilizados foram os publicados por \citeonline{mrowczynski06},
+considerando que os limites dos intervalos fornecidos estivessem 
+relacionados linearmente com o tamanho dos MNs. A partir disso, as
+relações \textit{twitch}-tétano foram calculadas para cada MN como
+o valor do tétano divido pelo \textit{twitch}.
 
 Também considerando uma distribuição de parâmetros que acompanham
 linearmente o tamanho do MN, o tempo que o \textit{twitch} leva para
 alcançar o pico e a velocidade de condução axonal foram interpolados
 a partir dos valores máximos e mínimos fornecidos em
 \citeonline{burke71} e \citeonline{zengel85}, respectivamente.
+
+No ReMoto, a saturação da força das unidades motoras se dá por
+meio de uma sigmoide. Dessa forma, também foi necessário encontrar
+uma constante de saturação que fizesse com que essa função, para
+cada MN, tivesse como saídas o recíproco da relação
+\textit{twitch}-tétano e 1 quando as entradas fossem 1 e a 
+força tetânica, respetivamente.
 
 Existem outros parâmetros do modelo de MN no ReMoto, mas esses
 não foram alterados ou por que a parametrização adequada já foi feita
@@ -126,23 +131,24 @@ dados experimentais utilizados e suas referências são apresentados
 na Tabela \ref{tab:met_MNparams}.
 
 \begin{table}[ht!]
-\caption{Dados experimentais utilizados na parametrização dos MNs.}
+\caption{Dados experimentais de unidades motoras utilizados na parametrização dos MNs. Os valores,
+    fornecidos na forma de intervalos, foram distribuídos linearmente pelo núcleo motor de acordo
+    com os tamanhos dos MNs. Referências: (a) \citeonline{mrowczynski06}, (b) \citeonline{burke71}
+    e (c) \citeonline{zengel85}.}
 \label{tab:met_MNparams}
 \centering
-    \begin{tabular}{p{3.5cm} c c c p{3.5cm}}\hline 
+    \begin{tabular}{p{6.4cm} c c c c}\hline 
         \multirow{2}{*}{Propriedades} & \multicolumn{3}{c}{Unidades motoras} &
             \multirow{2}{*}{Referência} \\
         & FF & FR & S & \\ \hline 
-        Intervalo da tensão tetânica máxima (g) & 30 até 130 &
-            4.5 até 55 & 1.2 até 12.6 & \citeonline{burke71} \\
-        Mediana da tensão tetânica máxima (g) & 60 & 20 & 5 & 
-        \citeonline{burke71} \\
-        Intervalos de tempo de contração do \textit{twitch} (ms) & 20 até 47 &
-            30 até 55 & 58 até 110 & \citeonline{burke71} \\
-        Tensão do \textit{twitch} (g) & 6.7$\pm$ 0.8 & 0.3$\pm$ 0.1 & 0.4$\pm$ 0.1 &
-            \citeonline{fleshman81} \\
+        \textit{Twitches} (mN) & 12 até 380 &
+            2 até 74 & 2 até 53 & (a) \\
+        Forças tetânicas (mN) & 30 até 1032 & 37 até 570 & 17 até 396 &
+        (a) \\
+        Tempos de contrações (ms) & 20 até 47 &
+            30 até 55 & 58 até 110 & (b) \\
         Velocidade de condução axonal (m/s) & 99$\pm$ 1 & 100$\pm$ 1 & 86$\pm$ 1 &
-            \citeonline{zengel85} \\
+            (c) \\
 	\hline
     \end{tabular}
 \end{table}
