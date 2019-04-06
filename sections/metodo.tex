@@ -565,7 +565,7 @@ uma janela de Hann de 400 ms de largura e área unitária com
 um trem de impulsos unitários representando os instantes de 
 disparos dos MNs.
 
-\subsection{Alterações na Força Gerada pelo Modelo}
+\subsection{Diminuições dos níveis de força}
 O efeito do modelo de CR na força muscular foi estudado baseando-se
 no trabalho de \citeonline{granit61}, que fizeram uma estimativa 
 do quanto a inibição recorrente diminuiria a tensão gerado pelo 
@@ -614,41 +614,53 @@ relacionada com a força gerada, a taxa de disparos média dos MNs
 (computada como a média das taxas individuais) e sua diminuição 
 causada pela inibição recorrente também foi analisada.
 
-\subsection{Oscilações de 10 Hz em Níveis baixos de Força}
-Para reproduzir os resultados encontrados por \citeonline{williams09}, um
-cenário de simulação semelhante ao desses autores foi emulado. Com o
-intuito de fazer com que os MNs disparem a uma taxa aproximada de 10 Hz,
-a frequência de disparos das fibras descendentes que os ativavam
-foi modelada como uma onda quadrada com período de 100 ms. Essa possui
-picos com duração de 10 ms e amplitude de 15 Hz, enquanto que seus vales
-são nulos.
-
-Ademais, cada MN também foi ativado por um ruído excitatório
-com o mesmo formato, mas com condutância sináptica máxima de 12 $\mu$S.
-Essa ativação, além de introduzir mais variabilidade nos disparos,
-foi utilizada para fazer com que as forças musculares geradas na ausência
-e presença de inibição recorrente estivessem próximas, assim
-como na seção \ref{sec:met_onion}.
-Nesse caso, as amplitudes dos picos foram de 3300 e
-1400 Hz em simulações com e sem CR, respectivamente. Nota-se,
-ainda, que
-os disparos dessa a entrada excitatória ocorre de acordo com
-um processo pontual Poisson e que, sem as CRs, a média de condutâncias
-sinápticas causadas pelo ruído no compartimento dendrítico dos MNs
-foi cerca de 3.8 vezes a das fibras descendentes. Essa proporção é
-parecida com a utilizada por \citeonline{williams09}.
-
+\subsection{Análise espectral da força gerada pelo modelo}
+\label{sec:met_psd}
 Os trabalhos realizados por \citeonline{williams09} levaram em 
 consideração um núcleo motor disparando a 10 Hz, gerando forças de
 5\% do MVC. Estudos na literatura
 associam essa situação com a atividade de apenas 25\%
-da população de MNs \cite{hoffer87,walmsley78}. Sendo assim, 
-a simulação foi efetuada com apenas 75 MNs do tipo S distribuídos em 1.5 mm de 
-medula espinhal. Vale notar que, como \citeonline{williams09} consideraram
+da população de MNs \cite{hoffer87,walmsley78}. Para reproduzir os
+resultados encontrados por esses autores, um
+cenário de simulação semelhante ao desses autores foi emulado.
+
+Com tal intuito, cada MN foi ativado por ruídos excitatórios
+independentes com condutância sináptica máxima de 12 $\mu$S e fibras
+descendentes disparando de acordo com uma sen\'{o}ide com per\'{i}odo
+de 100 ms. As amplitudes foram determinadas como mostrado a seguir.
+
+Primeiramente, usando o caso com inibiç\~{a}o recorrente, a
+frequ\^{e}ncia de disparo do ru\'{i}do independente foi ajustada
+para recrutar a quantidade de MNs associados com 5\% do MVC. Em
+seguida, a sen\'{o}ide foi adicionada, certificando-se que 
+sua frequ\^{e}cia fosse suficiente para que se fosse observada uma
+sincronizaç\~{a}o nos instantes de disparos dos MNs e no espectro
+da força, mas que n\~{a}o ativasse mais do que 10 MNs que n\~{a}o
+tivessem sido recrutados previamente. Nas simulaç\~{o}es sem
+inibiç\~{a}o recorrente, o mesmo sinal
+oscilat\'{o}rio foi utilizado e o ru\'{i}do foi ajustado para
+para fazer com que as m\'{e}dias das forças geradas estivessem
+variaç\~{o}es na faixa de 10\% das geradas anteriormente.
+
+Sendo assim, a frequência de disparos das fibras descendentes
+teve valor
+m\'{e}dio de 25 Hz e amplitude pico a pico de 50 Hz. 
+As intensidades dos ru\'{i}dos independentes foram de 1040 e
+575 Hz em simulações com e sem CR, respectivamente. Nota-se, ainda, que
+os disparos dessa a entrada excitatória ocorre de acordo com
+um processo pontual Poisson.
+% Because the square wave input is very brief, I do not think this is
+% a valid comparison anymore, so I am taking this out for now
+%e que, sem as CRs, a média de condutâncias
+%sinápticas causadas pelo ruído no compartimento dendrítico dos MNs
+%foi cerca de 3.8 vezes a das fibras descendentes. Essa proporção é
+%parecida com a utilizada por \citeonline{williams09}.
+
+Vale notar que, como \citeonline{williams09} consideraram
 a distribuição da inibição recorrente como uniforme, a força da entrada
 excitatória utilizada
 foi escolhida para ativar o menor número possível de unidades motoras 
-do tipo FR, se estivessem presentes. Por fim, a população de CRs foi a mesma
+do tipo FR. Por fim, a população de CRs foi a mesma
 utilizada anteriormente.
 
 As simulações realizadas aqui tiveram duração de 9 s e passo de
@@ -678,6 +690,44 @@ foram, então, comparados qualitativamente com a Figura
 	\label{fig:met_williams09}
 \end{figure}
 
+Também foram realizadas simulações em que o controle da atividade
+do núcle motor se dá 
+por meio de fibras descendentes. Isso foi motivado pelo fato de que
+a estratégia utilizada por \citeonline{williams09} não leva em
+consideração que o ruído independente injetado para compensar a
+atividade das CRs descorrelaciona os MNs e, portanto, por si só
+já é capaz de atenuar os picos na densidade espectral de potência
+do sinal estudado.
+
+Além das situações estudadas nas primeiras simulações dessa seção (inibição
+recorrente ausente e normal), foram
+considerados os cenários em que a condutância das CRs
+sob os MNs fosse o dobro e a metade do valor normal (forte e fraca,
+respectivamente). Todos esses casos
+foram simulados com 5\% e 70\% do MVC, determinados como anteriormente.
+As características das entradas utilizadas são apresentadas na Tabela
+\ref{tab:met_dcistrat}. Uma taxa pequena de 90 Hz de ruído independente
+também foi adicionada a todos os MNs e em todos os casos.
+
+\begin{table}[ht!]
+\caption{Valores utilizados para as entradas nas simulações em cada
+    uma das situações estudadas. Símbolos DC
+    e AC são usados para identificar componentes contínuas e
+    oscilatórias, respectivamente.}
+\label{tab:met_dcistrat}
+\centering
+    \begin{tabular}{c p{1cm} p{1cm} p{1cm} p{1cm}}\hline 
+        \multirow{3}{*}{Situação da inibição recorrente} & \multicolumn{4}{c}{Amplitudes (Hz)} \\
+             & \multicolumn{2}{c}{5\% MVC} & \multicolumn{2}{c}{70\% MVC} \\
+         & DC & AC & DC & AC \\ \hline 
+        Ausente & 146 & 75 & 685 & 150 \\
+        Fraca & 200 & 75 & 815 & 150 \\
+        Normal & 250 & 75 & 950 & 150 \\
+        Forte & 368 & 75 & 1200 & 150 \\
+	\hline
+    \end{tabular}
+\end{table}
+
 \subsection{Estudos de Contrações isométricas}
 A ativação do núcleo motor nessas simulações foi
 realizada por meio de fibras descendentes com taxa de disparos 
@@ -691,7 +741,8 @@ Outros cenários analisados
 foram os da manutenção de 5\% e 70\% do MVC por meio de fibras
 descendentes com taxas de disparo de potenciais de ação constantes e 
 suficientes para recrutar uma porcentagem de MNs próxima à apropriada
-\citeonline{walmsley78}. O coeficiente de variação da força muscular 
+\cite{walmsley78}. Essas simulações foram realizadas 5 vezes para cada
+caso. O coeficiente de variação da força muscular 
 gerada foi calculado pela equação (\ref{eq:cv}) mostrada abaixo:
 
 \begin{equation}
@@ -703,14 +754,9 @@ Nesse caso, as simulações tiveram duração de 2 s e os primeiros 500 ms
 foram removidos para evitar a presença de componentes transitórios
 no sinal.
 
-Com o intuito de entender o efeito de diferentes forças de inibição
-recorrente nos cenários propostos, a condutância sináptica das CRs agindo
-sob os MNs, além de ser mantida em seus valores normais,
-foi alterada para contemplar situações de inibição fraca
-(metade da condutância), forte (dobro da condutância) e ausente.
-Nesses três últimos casos, o valor dessas frequências de disparos foi
-ajustado para que a força muscular gerada estivesse próxima à do primeiro
-caso, como na seção \ref{sec:met_onion}. Em todos eles, os graus de 
+Os cenários abordados na seção \ref{sec:met_psd} também foram analisados aqui.
+O valor das frequências de disparos foram
+ajustados como na seção \ref{sec:met_onion}. Em todos eles, os graus de 
 sincronia foram calculados de acordo com o trabalho de
 \citeonline{golomb01} e comparados.
 
@@ -742,7 +788,7 @@ Por fim, obtém-se o coeficiente
     \chi^2 = \frac{\sigma^2}{\frac{1}{N}\sum_{i=1}^N\sigma^2_i}
 \end{equation}
 
-em que $0\le\chi^2\le 1$. Sendo assim, valore mais próximos de 1 indicam
+em que $0\le\chi^2\le 1$. Sendo assim, valores mais próximos de 1 indicam
 uma atividade mais sincronizada do núcleo motor.
 
 \subsection{Distorções na Saída do Núcleo Motor}

@@ -11,7 +11,6 @@ def maxInput(dataPath, trial):
     #****************************************
     #******* Getting and processing high input data
     #****************************************
-    files = glob.glob(dataPath + '/max/trial' + str(trial) + '/forcema*.dat')
     simTypes = ['o', 'h', 's', 'd']
     nMod = len(simTypes)
     forceOnTrials = {'d': [], 's': [], 'h': [], 'o': []}
@@ -220,7 +219,10 @@ def constInput(dataPath, option, nTrials):
 
 dataPath = ('/home/pablo/osf/Master-Thesis-Data/population/modulation')
 numTrials = 5
+# For the initial instants, result does not change so just pick one trial 
+# for max simulation
+chosenTrial = 5
 
-#maxInput(dataPath, 3)
+maxInput(dataPath, chosenTrial)
 constInput(dataPath, 'low', numTrials)
-#constInput(dataPath, 'high', numTrials)
+constInput(dataPath, 'high', numTrials)

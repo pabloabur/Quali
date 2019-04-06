@@ -12,12 +12,15 @@ def singleTrial(trial, subTrial, simMVC):
     #******* Simulation settings and variables
     #****************************************
     # Simulation
-    # TODO uncomment those values
+    # TODO get values back
     duration = 1500#9000
-    tmin = 200#1000
+    tmin = 500#1000
     dt = 0.05
-    # TODO this is only for noise strategy
-    simTypes = ['o', 's']#['o', 'h', 's', 'd'] # Without and with RC
+    # TODO use proper strat
+    # for noise strategy
+    simTypes = ['o', 's']
+    # for descending command strategy
+    #simTypes = ['o', 'h', 's', 'd']
     fs=1/(dt*1e-3)
 
     # Biophysical parameters
@@ -104,16 +107,16 @@ def singleTrial(trial, subTrial, simMVC):
         staticForce = [y for x,y in enumerate(force) if taux[x]>tmin]
         var = np.var(staticForce)
         ave = np.mean(staticForce)
+        print(simType + ': {:.4f}'.format(ave))
 
-        # TODO comment this
         # Plot used for more detailed investigation
-        plt.figure()
-        plt.plot(taux, force)
-        plt.title(simType+', mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
-        plt.xlabel('t (ms)')
-        plt.ylabel('Force (N)')
-        plt.grid()
-        plt.show()
+        #plt.figure()
+        #plt.plot(taux, force)
+        #plt.title(simType+', mean and variance after 1s: {:.4f} {:.6f}'.format(ave, var))
+        #plt.xlabel('t (ms)')
+        #plt.ylabel('Force (N)')
+        #plt.grid()
+        #plt.show()
 
         #     `boxcar`, `triang`, `blackman`, `hamming`, `hann`, `bartlett`,
         #         `flattop`, `parzen`, `bohman`, `blackmanharris`, `nuttall`,
@@ -135,7 +138,7 @@ def singleTrial(trial, subTrial, simMVC):
                 nfft, detrend, scaling = scale)
 
         #****************************************
-        #******* Getting and processing for coherence# Most of this is not used anymore
+        #******* Getting and processing for coherence
         #****************************************
         fileName = dataPath + '/g_emg' + simMVC + simType + '.dat'
         f = open(fileName, 'r')
@@ -154,16 +157,17 @@ def singleTrial(trial, subTrial, simMVC):
         #print('Mean conductance, in module, is {:}'.format(str(abs(np.mean(
         #   inputConductance[int(tmin/0.05):])))))
 
+        coherenceNperseg = 10000
+        fc, coherence = signal.coherence(inputConductance, np.abs(EMG), fs, 'hann', coherenceNperseg, noverlap)
+
         # Calculating confidence limit
-        K = len(EMG)/(nperseg*2)
+        K = len(EMG)/(coherenceNperseg)
         alpha = .05
         F = stat.f.ppf(q=1-alpha, dfn=2, dfd=2*(K-1))
-        print('Confidence Level: {:}'.format(str(F/(K-1+F))))
-
-        fc, coherence = signal.coherence(inputConductance, np.abs(EMG), fs, ('tukey', 0.1), 10000, noverlap=5000)
+        #print('Confidence Level: {:}'.format(str(F/(K-1+F))))
 
         # Checking input PSD
-        #fi, inputPSD = signal.welch(inputConductance, fs, ('tukey', 0.1), nperseg, noverlap, nfft,
+        #fi, inputPSD = signal.welch(inputConductance, fs, 'hann', nperseg, noverlap, nfft,
         #        detrend, scaling = scale)
         #plt.figure()
         #plt.title('Commom drive synaptic conductance PSD')
@@ -172,15 +176,15 @@ def singleTrial(trial, subTrial, simMVC):
         #plt.xlim([0, 60])
         #plt.plot(fi, 1e6*inputPSD)
         #plt.show()
-        # TODO comment this
+
         # Plot used for more detailed investigation
-        plt.figure()
-        plt.plot(fc, coherence)
-        plt.xlabel('f (Hz)')
-        plt.ylabel('Coherence')
-        plt.xlim([0, 50])
-        plt.grid()
-        plt.show()
+        #plt.figure()
+        #plt.plot(fc, coherence)
+        #plt.xlabel('f (Hz)')
+        #plt.ylabel('Coherence')
+        #plt.xlim([0, 50])
+        #plt.grid()
+        #plt.show()
 
         #****************************************
         #******* Getting synchronization coefficients
@@ -195,13 +199,16 @@ def singleTrial(trial, subTrial, simMVC):
         except:
             print('Warning: File ' + fileName + ' could not be opened.')
 
+        #print('Synchrony coefficient of type {:}: {:.5f}'.format(simType,
+        #     sync[simType]))
+
         #****************************************
         #******* Gathering data for latter use
         #****************************************
         plotF[simType] = ff
         plotPSD[simType] = forcePSD
-        #plotFc[j] = fc
-        #plotCoherence[j] = coherence
+        plotFc[simType] = fc
+        plotCoherence[simType] = coherence
 
     # This is just to check if they are the same. Seem to be. No reason 
     # to believe otherwise
@@ -220,12 +227,13 @@ def singleTrial(trial, subTrial, simMVC):
     ## which caused an error
     #reducPerc = 0#plotPSD['o'][peaksO]/plotPSD['s'][peaksC]
 
-    # Plot PSD
-    plt.figure()
+    # Variables to be used in plots
     labels = {'d': 'Forte', 's': 'Normal', 'h': 'Fraco', 'o': 'Ausente'}
     symbols = {'d': 'k', 's': 'k--', 'h': 'k-.', 'o': 'k:'}
+
+    # Plot PSD
+    plt.figure()
     for simType in simTypes:
-        #import pdb; pdb.set_trace()
         plt.plot(plotF[simType], 1e6*plotPSD[simType], symbols[simType], label=labels[simType])
     # TODO uncomment
     #plt.plot(peaksC, 1e6*plotPSD['s'][peaksC], 'rx')
@@ -240,19 +248,20 @@ def singleTrial(trial, subTrial, simMVC):
     plt.show()
 
     # Plot coherence
-    #plt.figure()
-    #plt.plot(plotFc[0], plotCoherence[0], label='Sem CRs')
-    #plt.plot(plotFc[0], plotCoherence[1], label='Com CRs')
-    #plt.title('Cortico-EMG Coherence')
-    #plt.xlabel('f (Hz)')
-    #plt.ylabel('Coherence')
-    #plt.xlim([0, 50])
-    #plt.legend()
-    #plt.show()
+    # TODO comment back
+    plt.figure()
+    for simType in simTypes:
+        plt.plot(plotFc[simType], plotCoherence[simType], symbols[simType], label=labels[simType])
+    plt.title('Cortico-EMG Coherence')
+    plt.xlabel('f (Hz)')
+    plt.ylabel('Coherence')
+    plt.xlim([0, 50])
+    plt.legend()
+    plt.show()
 
-    return plotF, plotPSD, sync
+    return plotF, plotPSD, plotFc, plotCoherence
 
-def allTrials(PSDs, f, red):
+def allTrials(PSDs, f, Coherences, fc):
     # Files and paths
     filenamepsd = 'res_psd'
     figsFolder = '/home/pablo/git/master-thesis/figuras/'
@@ -260,17 +269,23 @@ def allTrials(PSDs, f, red):
     #****************************************
     #******* Calculating mean
     #****************************************
-    simTypes = ['o', 'h', 's', 'd'] # Without and with RC
+    # DCI or noise strategy
+    #simTypes = ['o', 's']
+    simTypes = ['o', 'h', 's', 'd']
     meanPSD = {'d': [], 's': [], 'h': [], 'o': []}
+    meanCoh = {'d': [], 's': [], 'h': [], 'o': []}
+    labels = {'d': 'Forte', 's': 'Normal', 'h': 'Fraco', 'o': 'Ausente'}
     for simType in simTypes:
         meanPSD[simType] = np.mean([PSD[simType] for PSD in PSDs], axis=0)
+        meanCoh[simType] = np.mean([coh[simType] for coh in Coherences], axis=0)
 
     #****************************************
     #******* Plotting
     #****************************************
     plt.figure()
-    plt.plot(f, 1e6*psdo, label='Sem CRs')
-    plt.plot(f, 1e6*psdc, label='Com CRs')
+    for simType in simTypes:
+        # Here considering f was the same in all trials
+        plt.plot(f[0]['o'], 1e6*meanPSD[simType], label=labels[simType])
     plt.xlabel('frequência (Hz)')
     plt.ylabel('Densidade Espectral de Potência (mN$^2$)')
     plt.grid()
@@ -282,21 +297,39 @@ def allTrials(PSDs, f, red):
     plt.show()
     #plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
 
-    print('Reduction of peaks in 10, 20, 30 and 40 Hz, respectively, in percentage:')
-    print(1-red)
+    plt.figure()
+    for simType in simTypes:
+        # Here considering f was the same in all trials
+        #import pdb; pdb.set_trace()
+        plt.plot(fc[0]['o'], meanCoh[simType], label=labels[simType])
+    plt.xlabel('frequência (Hz)')
+    plt.ylabel('Coerência cortico-muscular')
+    plt.grid()
+    #     plt.yscale('log')
+    plt.xlim([0, 50])
+    #     plt.xlim((0, 500))
+    plt.legend()
+    # TODO configure for saving only again
+    plt.show()
+    #plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
+
+    #print('Reduction of peaks in 10, 20, 30 and 40 Hz, respectively, in percentage:')
+    #print(1-red)
 
 # These are conveniently converted to a numpy 2d array latter because singleTrial function return numpy arrays
 numSubTrials = 10
 psd = [[] for _ in range(1, numSubTrials+1)]
-f = [[] for _ in range(1, numSubTrials+1)]
+fpsd = [[] for _ in range(1, numSubTrials+1)]
+coh = [[] for _ in range(1, numSubTrials+1)]
+fc = [[] for _ in range(1, numSubTrials+1)]
 reduc = [[] for _ in range(1, numSubTrials+1)]
 syncs = [[] for _ in range(1, numSubTrials+1)]
 
 trial = input('Trial number: ')
 mvc = input('MVC percentage: ')
-subtrials = [x for x in range(1, numSubTrials+1)]
-#subtrial = input('Subtrial number: ')
+# TODO starting in 1
+subtrials = [x for x in range(6, numSubTrials+1)]
 for subtrial in subtrials:
-    f[subtrial-1], psd[subtrial-1], syncs[subtrial-1] = singleTrial(trial, subtrial, str(mvc))
+    fpsd[subtrial-1], psd[subtrial-1], fc[subtrial-1], coh[subtrial-1] = singleTrial(trial, subtrial, str(mvc))
 
-allTrials(psd, f, syncs)
+allTrials(psd, fpsd, coh, fc)
