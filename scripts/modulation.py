@@ -36,7 +36,7 @@ def maxInput(dataPath, trial):
         staticForce = [y for x,y in enumerate(forceOnTrials[simType]) if t[x]>200]
         var = np.var(staticForce)
         ave = np.mean(staticForce)
-        labels[simType] = labels[simType] + str(ave)
+        labels[simType] = labels[simType]
 
     plt.figure()
     for simType in simTypes:
@@ -45,8 +45,7 @@ def maxInput(dataPath, trial):
     plt.ylabel('Força (N)')
     plt.xlabel('Tempo (ms)')
     plt.xlim((0, 110))
-    # TODO save only
-    #plt.savefig(figsFolder + filenamemod + '.svg', format='svg')
+    plt.savefig(figsFolder + filenamemod + '.svg', format='svg')
 
     dx = 0.05
     plt.figure()
@@ -56,9 +55,8 @@ def maxInput(dataPath, trial):
     plt.ylabel('Derivada da força (N/s)')
     plt.xlabel('Tempo (ms)')
     plt.xlim((0, 35))
-    # TODO save only
-    #plt.savefig(figsFolder + filenameder + '.svg', format='svg')
-    plt.show()
+    plt.savefig(figsFolder + filenameder + '.svg', format='svg')
+    #plt.show()
 
 def constInput(dataPath, option, nTrials):
     tmin = 500
@@ -68,9 +66,11 @@ def constInput(dataPath, option, nTrials):
     if option == 'low':
         datFile = '/force*.dat'
         dataPath = dataPath + '/low/'
+        filenamestats = filenamestats + 'Low'
     else:
         datFile = '/force*.dat'
         dataPath = dataPath + '/high/'
+        filenamestats = filenamestats + 'High'
 
     #****************************************
     #******* Getting and processing input data
@@ -81,43 +81,43 @@ def constInput(dataPath, option, nTrials):
         #*****************************
         #*********** Spikes plot
         #*****************************
-        # TODO save this image for discussion
-        #spikeTimes = []
-        #spikeUnits = []
-        #fileName = dataPath + 'trial' + str(nTrial) + '/spikeo.dat'
-        #f = open(fileName, 'r')
-        #lines = f.readlines()
-        #for line in lines:
-        #    spikeTimes.append(float(line.split()[0]))
-        #    spikeUnits.append(float(line.split()[1]))
-        #f.close()
+        if nTrial==1 and option=='low':
+            spikeTimes = []
+            spikeUnits = []
+            fileName = dataPath + 'trial' + str(nTrial) + '/spikeo.dat'
+            f = open(fileName, 'r')
+            lines = f.readlines()
+            for line in lines:
+                spikeTimes.append(float(line.split()[0]))
+                spikeUnits.append(float(line.split()[1]))
+            f.close()
 
-        #fig, ax = plt.subplots(1)
-        #plt.plot(spikeTimes, spikeUnits, '.')
-        ##ax.plot((spikeTimes, spikeTimes), (0, 100), 'k-', linewidth=0.1)
-        #plt.xlabel('Tempo (ms)')
-        #plt.ylabel('Índices dos MNs')
-        #plt.title('open')
-        #plt.xlim([1750, 2000])
+            fig, ax = plt.subplots(1)
+            plt.plot(spikeTimes, spikeUnits, 'k.')
+            ax.plot((spikeTimes, spikeTimes), (0, 100), 'k-', linewidth=0.1)
+            plt.xlabel('Tempo (ms)')
+            plt.ylabel('Índices dos motoneurônios')
+            plt.xlim([1750, 2000])
+            #plt.savefig(figsFolder + 'res_modo' + '.svg', format='svg')
 
-        #spikeTimes = []
-        #spikeUnits = []
-        #fileName = dataPath + 'trial' + str(nTrial) + '/spiked.dat'
-        #f = open(fileName, 'r')
-        #lines = f.readlines()
-        #for line in lines:
-        #    spikeTimes.append(float(line.split()[0]))
-        #    spikeUnits.append(float(line.split()[1]))
-        #f.close()
+            spikeTimes = []
+            spikeUnits = []
+            fileName = dataPath + 'trial' + str(nTrial) + '/spiked.dat'
+            f = open(fileName, 'r')
+            lines = f.readlines()
+            for line in lines:
+                spikeTimes.append(float(line.split()[0]))
+                spikeUnits.append(float(line.split()[1]))
+            f.close()
 
-        #fig, ax = plt.subplots(1)
-        #plt.plot(spikeTimes, spikeUnits, '.')
-        ##ax.plot((spikeTimes, spikeTimes), (0, 100), 'k-', linewidth=0.1)
-        #plt.xlabel('Tempo (ms)')
-        #plt.ylabel('Índices dos MNs')
-        #plt.title('double')
-        #plt.xlim([1750, 2000])
-        #plt.show()
+            fig, ax = plt.subplots(1)
+            plt.plot(spikeTimes, spikeUnits, 'k.')
+            ax.plot((spikeTimes, spikeTimes), (0, 100), 'k-', linewidth=0.1)
+            plt.xlabel('Tempo (ms)')
+            plt.ylabel('Índices dos motoneurônios')
+            plt.xlim([1750, 2000])
+            #plt.savefig(figsFolder + 'res_modd' + '.svg', format='svg')
+            plt.show()
 
         files = glob.glob(dataPath + 'trial' + str(nTrial) + datFile)
         forceOnTrials = [[] for _ in range(nMod)]
@@ -158,15 +158,14 @@ def constInput(dataPath, option, nTrials):
                 meanCoeffVar['Ausente'].append(coeffVar)
 
         ## Plot forces
-        # TODO comment this
-        plt.figure()
-        symbols = ['k', 'k--', 'k:', 'k-.']
-        for i in range(nMod):
-            plt.plot(t, forceOnTrials[i], symbols[i], label = labels[i])
-        plt.legend()
-        plt.ylabel('Força (N)')
-        plt.xlabel('Tempo (ms)')
-        plt.show()
+        #plt.figure()
+        #symbols = ['k', 'k--', 'k:', 'k-.']
+        #for i in range(nMod):
+        #    plt.plot(t, forceOnTrials[i], symbols[i], label = labels[i])
+        #plt.legend()
+        #plt.ylabel('Força (N)')
+        #plt.xlabel('Tempo (ms)')
+        #plt.show()
 
     for key, value in meanCoeffVar.items():
         print('mean CV of force:{:.2f}, {}'.format(np.mean(value), key))
@@ -206,23 +205,24 @@ def constInput(dataPath, option, nTrials):
     for i, j in enumerate(meanSync):
         ticks.append(j)
         ax[0].plot([i+1]*nTrials, meanSync[j], 'ko', fillstyle='none')
+    ax[0].plot(range(1, 5), [np.mean(value) for key, value in meanSync.items()], 'k')
     for i, j in enumerate(meanCoeffVar):
         if ticks[i] != j:
             print('Potential danger')
         ax[1].plot([i+1]*nTrials, meanCoeffVar[j], 'ko', fillstyle='none')
+    ax[1].plot(range(1, 5), [np.mean(value) for key, value in meanCoeffVar.items()], 'k')
     plt.xticks(range(1, len(meanSync)+1), list(meanSync.keys()))
     ax[0].set(ylabel='Coeficiente de sincronia')
     ax[1].set(xlabel='Força da inibição recorrente', ylabel='Coeficiente de variação')
-    # TODO save only
-    plt.show()
+    #plt.show()
     #plt.savefig(figsFolder + filenamestats + '.svg', format='svg')
 
 dataPath = ('/home/pablo/osf/Master-Thesis-Data/population/modulation')
-numTrials = 5
+numTrials = 10
 # For the initial instants, result does not change so just pick one trial 
 # for max simulation
 chosenTrial = 5
 
-maxInput(dataPath, chosenTrial)
+#maxInput(dataPath, chosenTrial)
 constInput(dataPath, 'low', numTrials)
-constInput(dataPath, 'high', numTrials)
+#constInput(dataPath, 'high', numTrials)

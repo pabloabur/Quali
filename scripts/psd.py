@@ -1,4 +1,5 @@
 import matplotlib
+#matplotlib.use('TkAgg') # For X11 forwarding
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import signal
@@ -12,15 +13,13 @@ def singleTrial(trial, subTrial, simMVC):
     #******* Simulation settings and variables
     #****************************************
     # Simulation
-    # TODO get values back
-    duration = 1500#9000
-    tmin = 500#1000
+    duration = 9000
+    tmin = 1000
     dt = 0.05
-    # TODO use proper strat
     # for noise strategy
-    simTypes = ['o', 's']
+    #simTypes = ['o', 's']
     # for descending command strategy
-    #simTypes = ['o', 'h', 's', 'd']
+    simTypes = ['d', 's', 'h', 'o']
     fs=1/(dt*1e-3)
 
     # Biophysical parameters
@@ -83,12 +82,12 @@ def singleTrial(trial, subTrial, simMVC):
         #    plt.show()
 
         # Plot used for more detailed investigation
-        plt.figure()
-        plt.plot(spikeTimes, spikeUnits, '.')
-        plt.title(simType)
-        plt.xlabel('Tempo (ms)')
-        plt.ylabel('Índices dos MNs')
-        plt.show()
+        #plt.figure()
+        #plt.plot(spikeTimes, spikeUnits, '.')
+        #plt.title(simType)
+        #plt.xlabel('Tempo (ms)')
+        #plt.ylabel('Índices dos MNs')
+        #plt.show()
 
         #****************************************
         #******* Getting and processing force data
@@ -107,7 +106,7 @@ def singleTrial(trial, subTrial, simMVC):
         staticForce = [y for x,y in enumerate(force) if taux[x]>tmin]
         var = np.var(staticForce)
         ave = np.mean(staticForce)
-        print(simType + ': {:.4f}'.format(ave))
+        #print(simType + ': {:.4f}'.format(ave))
 
         # Plot used for more detailed investigation
         #plt.figure()
@@ -157,11 +156,16 @@ def singleTrial(trial, subTrial, simMVC):
         #print('Mean conductance, in module, is {:}'.format(str(abs(np.mean(
         #   inputConductance[int(tmin/0.05):])))))
 
-        coherenceNperseg = 10000
-        fc, coherence = signal.coherence(inputConductance, np.abs(EMG), fs, 'hann', coherenceNperseg, noverlap)
+        # Using parameter below I can see decrease in coherence peak
+        coherenceNperseg = 2000
+        staticEMG = [y for x,y in enumerate(EMG) if taux[x]>tmin]
+        staticInput = [y for x,y in enumerate(inputConductance) if taux[x]>tmin]
+        fc, coherence = signal.coherence(staticInput, staticEMG, fs, 'hann',
+                                         nperseg, noverlap,
+                                         nfft, detrend)
 
         # Calculating confidence limit
-        K = len(EMG)/(coherenceNperseg)
+        K = len(staticEMG)/(nperseg)
         alpha = .05
         F = stat.f.ppf(q=1-alpha, dfn=2, dfd=2*(K-1))
         #print('Confidence Level: {:}'.format(str(F/(K-1+F))))
@@ -199,10 +203,6 @@ def singleTrial(trial, subTrial, simMVC):
         except:
             print('Warning: File ' + fileName + ' could not be opened.')
 
-        #print('Synchrony coefficient of type {:}: {:.5f}'.format(simType,
-        #     sync[simType]))
-
-        #****************************************
         #******* Gathering data for latter use
         #****************************************
         plotF[simType] = ff
@@ -215,55 +215,44 @@ def singleTrial(trial, subTrial, simMVC):
     #print(plotF[0], plotF[1])
     #print(plotFc[0], plotFc[1])
 
-    #****************************************
-    #******* Calculating reduction in peaks
-    #****************************************
-    # TODO I think I will not make this calculation anymore, only in noise strategy
-    #peaksO, _ = signal.find_peaks(plotPSD['o'])
-    #peaksC, _ = signal.find_peaks(plotPSD['s'])
-    #peaksO = [x for x in peaksO if abs(10-x)<1 or abs(20-x)<1 or abs(30-x)<1 or abs(40-x)<1]
-    #peaksC = [x for x in peaksC if abs(10-x)<1 or abs(20-x)<1 or abs(30-x)<1 or abs(40-x)<1]
-    ## TODO uncomment this but be ware that previosly the peaks vector had length of only 1, 
-    ## which caused an error
-    #reducPerc = 0#plotPSD['o'][peaksO]/plotPSD['s'][peaksC]
-
     # Variables to be used in plots
     labels = {'d': 'Forte', 's': 'Normal', 'h': 'Fraco', 'o': 'Ausente'}
     symbols = {'d': 'k', 's': 'k--', 'h': 'k-.', 'o': 'k:'}
 
     # Plot PSD
-    plt.figure()
-    for simType in simTypes:
-        plt.plot(plotF[simType], 1e6*plotPSD[simType], symbols[simType], label=labels[simType])
-    # TODO uncomment
-    #plt.plot(peaksC, 1e6*plotPSD['s'][peaksC], 'rx')
-    #plt.plot(peaksO, 1e6*plotPSD['o'][peaksO], 'gx')
-    plt.xlabel('frequência (Hz)')
-    plt.ylabel('Densidade Espectral de Potência (mN$^2$)')
-    plt.grid()
-    #     plt.yscale('log')
-    plt.xlim([0, 50])
-    #     plt.xlim((0, 500))
-    plt.legend()
-    plt.show()
+    #plt.figure()
+    #for simType in simTypes:
+    #    plt.plot(plotF[simType], 1e6*plotPSD[simType], symbols[simType], label=labels[simType])
+    #plt.xlabel('frequência (Hz)')
+    #plt.ylabel('Densidade Espectral de Potência (mN$^2$)')
+    #plt.grid()
+    ##     plt.yscale('log')
+    #plt.xlim([0, 50])
+    ##     plt.xlim((0, 500))
+    #plt.legend()
+    #plt.show()
 
     # Plot coherence
-    # TODO comment back
-    plt.figure()
-    for simType in simTypes:
-        plt.plot(plotFc[simType], plotCoherence[simType], symbols[simType], label=labels[simType])
-    plt.title('Cortico-EMG Coherence')
-    plt.xlabel('f (Hz)')
-    plt.ylabel('Coherence')
-    plt.xlim([0, 50])
-    plt.legend()
-    plt.show()
+    #plt.figure()
+    #for simType in simTypes:
+    #    plt.plot(plotFc[simType], plotCoherence[simType], symbols[simType], label=labels[simType])
+    #plt.title('Cortico-EMG Coherence')
+    #plt.xlabel('f (Hz)')
+    #plt.ylabel('Coherence')
+    #plt.xlim([0, 50])
+    #plt.legend()
+    #plt.show()
 
     return plotF, plotPSD, plotFc, plotCoherence
 
 def allTrials(PSDs, f, Coherences, fc):
     # Files and paths
-    filenamepsd = 'res_psd'
+    # 70
+    filenamepsd = 'res_psdNew70'
+    filenamecoh = 'res_cohNew70'
+    # 05
+    #filenamepsd = 'res_psdNew05'
+    #filenamecoh = 'res_cohNew05'
     figsFolder = '/home/pablo/git/master-thesis/figuras/'
 
     #****************************************
@@ -271,6 +260,7 @@ def allTrials(PSDs, f, Coherences, fc):
     #****************************************
     # DCI or noise strategy
     #simTypes = ['o', 's']
+    symbols = {'d': 'k', 's': 'k--', 'h': 'k-.', 'o': 'k:'}
     simTypes = ['o', 'h', 's', 'd']
     meanPSD = {'d': [], 's': [], 'h': [], 'o': []}
     meanCoh = {'d': [], 's': [], 'h': [], 'o': []}
@@ -285,36 +275,31 @@ def allTrials(PSDs, f, Coherences, fc):
     plt.figure()
     for simType in simTypes:
         # Here considering f was the same in all trials
-        plt.plot(f[0]['o'], 1e6*meanPSD[simType], label=labels[simType])
-    plt.xlabel('frequência (Hz)')
-    plt.ylabel('Densidade Espectral de Potência (mN$^2$)')
+        plt.plot(f[0]['o'], 1e6*meanPSD[simType], symbols[simType], label=labels[simType])
+    plt.xlabel('Frequência (Hz)')
+    plt.ylabel('Densidade espectral de potência (mN$^2$)')
     plt.grid()
     #     plt.yscale('log')
     plt.xlim([0, 50])
     #     plt.xlim((0, 500))
     plt.legend()
-    # TODO configure for saving only again
-    plt.show()
-    #plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
+    #plt.show()
+    plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
 
     plt.figure()
     for simType in simTypes:
         # Here considering f was the same in all trials
         #import pdb; pdb.set_trace()
-        plt.plot(fc[0]['o'], meanCoh[simType], label=labels[simType])
-    plt.xlabel('frequência (Hz)')
-    plt.ylabel('Coerência cortico-muscular')
+        plt.plot(fc[0]['o'], meanCoh[simType], symbols[simType], label=labels[simType])
+    plt.xlabel('Frequência (Hz)')
+    plt.ylabel('Coerência córtico-muscular')
     plt.grid()
     #     plt.yscale('log')
     plt.xlim([0, 50])
     #     plt.xlim((0, 500))
     plt.legend()
-    # TODO configure for saving only again
-    plt.show()
-    #plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
-
-    #print('Reduction of peaks in 10, 20, 30 and 40 Hz, respectively, in percentage:')
-    #print(1-red)
+    #plt.show()
+    plt.savefig(figsFolder + filenamecoh + '.svg', format='svg')
 
 # These are conveniently converted to a numpy 2d array latter because singleTrial function return numpy arrays
 numSubTrials = 10
@@ -327,8 +312,7 @@ syncs = [[] for _ in range(1, numSubTrials+1)]
 
 trial = input('Trial number: ')
 mvc = input('MVC percentage: ')
-# TODO starting in 1
-subtrials = [x for x in range(6, numSubTrials+1)]
+subtrials = [x for x in range(1, numSubTrials+1)]
 for subtrial in subtrials:
     fpsd[subtrial-1], psd[subtrial-1], fc[subtrial-1], coh[subtrial-1] = singleTrial(trial, subtrial, str(mvc))
 

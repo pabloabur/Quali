@@ -618,11 +618,8 @@ causada pela inibição recorrente também foi analisada.
 \label{sec:met_psd}
 Os trabalhos realizados por \citeonline{williams09} levaram em 
 consideração um núcleo motor disparando a 10 Hz, gerando forças de
-5\% do MVC. Estudos na literatura
-associam essa situação com a atividade de apenas 25\%
-da população de MNs \cite{hoffer87,walmsley78}. Para reproduzir os
-resultados encontrados por esses autores, um
-cenário de simulação semelhante ao desses autores foi emulado.
+5\% do MVC. Para reproduzir alguns de seus resultados, um
+cenário de simulação parecido foi emulado.
 
 Com tal intuito, cada MN foi ativado por ruídos excitatórios
 independentes com condutância sináptica máxima de 12 $\mu$S e fibras
@@ -631,7 +628,12 @@ de 100 ms. As amplitudes foram determinadas como mostrado a seguir.
 
 Primeiramente, usando o caso com inibiç\~{a}o recorrente, a
 frequ\^{e}ncia de disparo do ru\'{i}do independente foi ajustada
-para recrutar a quantidade de MNs associados com 5\% do MVC. Em
+para recrutar cerca de 75 MNs, pois estudos na literatura
+associam níveis de força de 5\% do MVC com a atividade de apenas 25\%
+da população de MNs \cite{hoffer87,walmsley78}. Por causa
+da variabilidade das conexões e da distribuição topográfica das CRs,
+houveram casos de unidades motoras com índices entre 75 e 90
+disparando, mas de forma isolada e a taxas pequenas. Em
 seguida, a sen\'{o}ide foi adicionada, certificando-se que 
 sua frequ\^{e}cia fosse suficiente para que se fosse observada uma
 sincronizaç\~{a}o nos instantes de disparos dos MNs e no espectro
@@ -640,7 +642,7 @@ tivessem sido recrutados previamente. Nas simulaç\~{o}es sem
 inibiç\~{a}o recorrente, o mesmo sinal
 oscilat\'{o}rio foi utilizado e o ru\'{i}do foi ajustado para
 para fazer com que as m\'{e}dias das forças geradas estivessem
-variaç\~{o}es na faixa de 10\% das geradas anteriormente.
+dentre da faixa de 10\% das geradas anteriormente.
 
 Sendo assim, a frequência de disparos das fibras descendentes
 teve valor
@@ -656,36 +658,45 @@ um processo pontual Poisson.
 %foi cerca de 3.8 vezes a das fibras descendentes. Essa proporção é
 %parecida com a utilizada por \citeonline{williams09}.
 
-Vale notar que, como \citeonline{williams09} consideraram
-a distribuição da inibição recorrente como uniforme, a força da entrada
-excitatória utilizada
-foi escolhida para ativar o menor número possível de unidades motoras 
-do tipo FR. Por fim, a população de CRs foi a mesma
-utilizada anteriormente.
-
-As simulações realizadas aqui tiveram duração de 9 s e passo de
-integração de 0.05 ms. Para evitar a
-interferências de respostas transitórias, apenas os últimos 
-8 segundos da força gerada pelo ReMoto foram utilizados nas análises
-de densidade espectral de potência, que
-foi estimada por meio do método de 
-Welch \cite{bendat11} com janelas de Hann e segmentos com 8000 amostras
+A densidade espectral de potência da força muscular foi estimada por
+meio do método de 
+Welch \cite{bendat11} com janelas de Hann e segmentos com 20000 amostras
 sem superposição. Antes de realizar esses cálculos o nível médio
-desse sinal foi removido. Esse procedimento foi repetido dez vezes
+dessa força foi removido. A coerência entre o EMG e a condutância
+sináptica total foi estimada da mesma forma. Nessa situação, o
+valor dessa condutância foi obtido de um único MN que apenas recebia
+todas as entradas sinápticas desse sistema, ou seja, potenciais de 
+ação de fibras descendentes e do ruído.
+
+As simulações realizadas tiveram duração de 9 s e passo de
+integração de 0.05 ms. Para evitar
+interferências de respostas transitórias, apenas os últimos 
+8 segundos dos sinais gerados pelo ReMoto foram utilizados.
+As simulações foram repetido dez vezes
 para que se fosse obtido uma resposta média dos resultados, que 
 foram, então, comparados qualitativamente com a Figura
 \ref{fig:met_williams09}.
 
 \begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.5]{williams09b}
+    \centering
+    \subfloat[][]{
+        \label{fig:met_williams09a}
+        \includegraphics[scale=0.9]{met_williams09a}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:met_williams09b}
+        \includegraphics[scale=0.4]{met_williams09b}
+    }
     \caption[Efeitos da ausência e presença da célula de Renshaw em
-            espectros de potência.]{Efeitos da ausência e presença da
-            célula de Renshaw em espectros de potência.
-            da força muscular. Linhas pretas e vermelhas
+            análises espectrais.]{Efeitos da ausência e presença da
+            célula de Renshaw análises espectrais.
+            Linhas pretas e vermelhas
             são os resultados de simulações sem e com CRs, respectivamente.
             A linha azul representa uma situação intermediária e não será
             reproduzida aqui \cite{williams09}.
+             \subref{fig:met_williams09a} Coerência córtico-muscular.
+             \subref{fig:met_williams09b} Espectro de potência da força muscular.
             }
 	\label{fig:met_williams09}
 \end{figure}
@@ -720,15 +731,18 @@ também foi adicionada a todos os MNs e em todos os casos.
         \multirow{3}{*}{Situação da inibição recorrente} & \multicolumn{4}{c}{Amplitudes (Hz)} \\
              & \multicolumn{2}{c}{5\% MVC} & \multicolumn{2}{c}{70\% MVC} \\
          & DC & AC & DC & AC \\ \hline 
-        Ausente & 146 & 75 & 685 & 150 \\
-        Fraca & 200 & 75 & 815 & 150 \\
-        Normal & 250 & 75 & 950 & 150 \\
-        Forte & 368 & 75 & 1200 & 150 \\
+        Ausente & 121 & 40 & 645 & 150 \\
+        Fraca & 170 & 40 & 775 & 150 \\
+        Normal & 210 & 40 & 910 & 150 \\
+        Forte & 323 & 40 & 1160 & 150 \\
 	\hline
     \end{tabular}
 \end{table}
 
 \subsection{Estudos de Contrações isométricas}
+Os forças de inibição recorrente e a forma como as entradas são
+definidas para cada caso foram as mesmas das descritas na seção 
+anterior.
 A ativação do núcleo motor nessas simulações foi
 realizada por meio de fibras descendentes com taxa de disparos 
 constantes e suficiente para gerar valores de força próximos ao MVC.
@@ -741,7 +755,7 @@ Outros cenários analisados
 foram os da manutenção de 5\% e 70\% do MVC por meio de fibras
 descendentes com taxas de disparo de potenciais de ação constantes e 
 suficientes para recrutar uma porcentagem de MNs próxima à apropriada
-\cite{walmsley78}. Essas simulações foram realizadas 5 vezes para cada
+\cite{walmsley78}. Essas simulações foram realizadas 10 vezes para cada
 caso. O coeficiente de variação da força muscular 
 gerada foi calculado pela equação (\ref{eq:cv}) mostrada abaixo:
 

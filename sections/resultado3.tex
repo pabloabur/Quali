@@ -92,7 +92,7 @@ mais sutil.
     \caption[Disparos de motoneurônios ativados por fibras descendentes.]{
              Disparos de motoneurônios ativados por fibras descendentes.
              Linhas verticais para cada instante de disparo são sobrepostas
-             no gráfico. Dessa forma, regiões mais escuras indicam
+             no gráfico. Dessa forma, contrastes indicam
              uma tendência de 
              motoneurônios de diferentes tamanho a disparar praticamente
              ao mesmo tempo.
@@ -420,24 +420,91 @@ se aproximando progressivamente da contínua na Figura \ref{fig:granit}
 As curvas da Figura \ref{fig:res_psd} mostram que as CRs claramente
 reduziram os 
 picos em 10 Hz encontrados na densidade espectral de potência dos
-disparos dos MNs. Pode-se observar que as harmônicas dessa frequência
-também foram atenuadas.
-Pôde-se notar, também, uma componente centrada em torno de 2Hz.
+disparos dos MNs. 
+Pôde-se notar, também, uma componente centrada em torno de 1Hz.
 Essa apresentou uma alta variabilidade e provavelmente está ligada
 a características aleatórias das entradas excitatórias, de forma que não foi
 possível atribuir significados relevantes a esse resultado.
 
+Na Figura
+\ref{fig:res_coh}, é possível ver que quase não houve redução do pico em 10 Hz.
+Esse resultado sugere que a CR, por si só, pode não ser tão eficiente 
+em alterar as relações de coerência córtico-muscular, mas ainda assim conseguiria
+diminuir os picos encontrados no espectro de potência da força.
+
 \begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.6]{res_psd.eps}
+    \centering
+    \subfloat[][]{
+        \label{fig:res_psd}
+        \includegraphics[scale=0.5]{res_psd.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:res_coh}
+        \includegraphics[scale=0.5]{res_coh.eps}
+    }
     \caption[Efeitos da CR na densidade espectral de potência dos
              disparos de MNs.]{Efeitos da CR na densidade espectral
-             de potência dos disparos de MNs.}
-	\label{fig:res_psd}
+             de potência dos disparos de MNs.
+             \subref{fig:res_psd} Espectro de potência da força muscular.
+             \subref{fig:res_coh} Coerência córtico-muscular.
+             }
+	\label{fig:res_williams}
+\end{figure}
+
+A Figura \ref{fig:res_williamsnew} mostra os resultados das simulações
+realizadas com a segunda estratégia proposta. As Figuras
+\ref{fig:res_williamsnew}\subref{fig:res_psdnew05} e
+\subref{fig:res_cohnew05} são condizentes com o que foi encontrado 
+na Figura \ref{fig:res_williams}. Para o caso de 70\% do MVC apresentado
+na Figura \ref{fig:res_williamsnew}\subref{fig:res_psdnew70}, houve muita
+variabilidade nos picos dos espectros de potência, de forma que, em média,
+apenas as CRs com mais força de inibição afetaram o pico de 10 Hz, mas com
+uma diminuição modesta. Pela Figura
+\ref{fig:res_williamsnew}\subref{fig:res_cohnew70}, pode-se perceber
+que o pico em 10 Hz também ficou praticamente inalterado. Além disso,
+nota-se que o caso com maior força de inibição foi o único que se
+distinguiu dos demais, possuindo coerência reduzida
+em outras faixas de frequências. A relevância fisiológica disso,
+entretanto, é pequena quando se considera que as CRs são gradualmente 
+inibidas com o aumento da força muscular \cite{hultborn79b}.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:res_psdnew05}
+        \includegraphics[scale=0.4]{res_psdNew05.eps}
+    }
+    \subfloat[][]{
+        \label{fig:res_cohnew05}
+        \includegraphics[scale=0.4]{res_cohNew05.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:res_psdnew70}
+        \includegraphics[scale=0.4]{res_psdNew70.eps}
+    }
+    \subfloat[][]{
+        \label{fig:res_cohnew70}
+        \includegraphics[scale=0.4]{res_cohNew70.eps}
+    }
+    \caption[Efeitos da CR na densidade espectral de potência dos
+             disparos de MNs com compensação obtida por meio de fibras
+             descendentes.]{Efeitos da CR na densidade espectral
+             de potência dos disparos de MNs com compensação obtida
+             por meio de fibras descendentes. Resultados da parte superior
+             são referentes à simulação com 5\% do MVC, enquanto que os
+             inferiores, 70\%.
+             \subref{fig:res_psdnew05} e \subref{fig:res_psdnew70}
+             Espectro de potência da força muscular.
+             \subref{fig:res_cohnew05} e \subref{fig:res_cohnew70}
+             Coerência córtico-muscular.
+             }
+	\label{fig:res_williamsnew}
 \end{figure}
 
 Antes de se fazer comparações com a Figura \ref{fig:met_williams09},
-é preciso entender algumas diferenças entre os modelos neuronais.
+é importante entender algumas diferenças entre os modelos.
 Em seus trabalhos, \citeonline{williams09} incluiram artifícios
 para fazer com que o núcleo motor como um todo estivesse sincronizado em
 10 Hz. Apesar de não reproduzir de forma precisa o recrutamento desses MNs,
@@ -445,46 +512,53 @@ isso possibilitou que os autores pudessem estudar essa situação
 hipotética. Os MNs do ReMoto, em contrapartida, não são compatíveis
 com essa abordagem pois se comportam de acordo
 com o princípio de \textit{common drive} \cite{deluca94}. Consequentemente,
-nas simulações realizadas aqui, foi necessária uma entrada excitatória 
-artificial que fosse capaz de impor uma sincronização mais acentuada na
+nas simulações realizadas aqui, optou-se por utilizar uma entrada senoidal
+que fosse capaz de impor uma sincronização mais acentuada na
 frequência desejada.
+Essa diferença pode ter sido responsável pela ausência das
+harmônicas observadas na Figura \ref{fig:met_williams09}.
 
-Ainda assim, essa entrada não foi capaz de impedir que os MNs maiores
+A entrada utilizada aqui não foi capaz de impedir que os MNs maiores
 disparassem a taxas menores e pode ter sido responsável pelo aparecimento
-do pico em frequências próximas a 2 Hz.
+do pico em frequências próximas a 1 Hz.
 Como os \textit{twitches} dessas unidades motoras são mais elevados,
 é de se esperar que sejam observados componentes de baixas frequências mais
 elevadas do que as mostradas por \citeonline{williams09}.
 
-Outra diferença encontrada foi a porcentagem de diminuição dos picos,
-que foi maior em outros trabalhos de simulação. Um exemplo
-disso foi mostrado na Figura \ref{fig:met_williams09}. Essa divergência 
-pode ter sido ocasionada pelas diferenças entre modelos de MNs e de 
-ativações, como discutido nos parágrafos anteriores. O forte 
-decréscimo encontrado por \citeonline{maltenfort98} pode ser atribuído
-ao fato de que nenhuma compensação foi utilizada quando o circuito de
-inibição recorrente foi adicionado.
+% This is not the case anymore, but I will leave it here just in case
+%Outra diferença encontrada foi a porcentagem de diminuição dos picos,
+%que foi maior em outros trabalhos de simulação. Um exemplo
+%disso foi mostrado na Figura \ref{fig:met_williams09}. Essa divergência 
+%pode ter sido ocasionada pelas diferenças entre modelos de MNs e de 
+%ativações, como discutido nos parágrafos anteriores. O forte 
+%decréscimo encontrado por \citeonline{maltenfort98} pode ser atribuído
+%ao fato de que nenhuma compensação foi utilizada quando o circuito de
+%inibição recorrente foi adicionado.
 
-Em geral, a estratégia de se utilizar mais ativação para compensar 
-os efeitos da presença da CR no circuito neuronal simulado não foi
-suficiente para garantir características de taxa e recrutamento similares,
-apesar de manter níveis de força próximos. Esse fenômeno pode ser
-explicado pela própria natureza da inibição recorrente
-\cite{adam78,uchiyama07} e pelas
-conclusões apresentadas na seção \ref{sec:res_recruit} e não 
-parece ter afetado negativamente os resultados apresentados.
+% I do not think I need to make that clear. Somewhat obvious. But I leave
+% here as well
+%Em geral, a estratégia de se utilizar mais ativação para compensar 
+%os efeitos da presença da CR no circuito neuronal simulado não foi
+%suficiente para garantir características de taxa e recrutamento similares,
+%apesar de manter níveis de força próximos. Esse fenômeno pode ser
+%explicado pela própria natureza da inibição recorrente
+%\cite{adam78,uchiyama07} e pelas
+%conclusões apresentadas na seção \ref{sec:res_recruit} e não 
+%parece ter afetado negativamente os resultados apresentados.
 
-É importante dizer que os resultados expostos dependeram principalmente
-dos ruídos independentes, pois esses causaram
-alterações de condutâncias bem maiores do que as fibras descendentes.
-Consequentemente, baixas frequências de disparos dessa entrada excitatória,
-como no caso do circuito neuronal sem inibição recorrente,
-poderiam ocasionalmente não ser suficientes para fazer com que alguns MNs 
-disparassem a 10 Hz. Essa alteração de recrutamento poderia ser observada
-nas análises de densidade espectral de potência como uma diminuição no 
-pico relativo a essa frequência e um aumento no de bandas inferiores.
-Isso poderia decorrer em conclusões equivocadas sobre os efeitos das
-CRs nas simulações.
+% This does not make much sense anymore now that I do not have the step input,
+% but I am also leaving for now
+%É importante dizer que os resultados expostos dependeram principalmente
+%dos ruídos independentes, pois esses causaram
+%alterações de condutâncias bem maiores do que as fibras descendentes.
+%Consequentemente, baixas frequências de disparos dessa entrada excitatória,
+%como no caso do circuito neuronal sem inibição recorrente,
+%poderiam ocasionalmente não ser suficientes para fazer com que alguns MNs 
+%disparassem a 10 Hz. Essa alteração de recrutamento poderia ser observada
+%nas análises de densidade espectral de potência como uma diminuição no 
+%pico relativo a essa frequência e um aumento no de bandas inferiores.
+%Isso poderia decorrer em conclusões equivocadas sobre os efeitos das
+%CRs nas simulações.
 
 A redução da potência de oscilações em 10 Hz pode ter implicações
 importantes na diminuição de tremores. Estudos mostram que a CR
@@ -547,7 +621,11 @@ com condutâncias menores.
 Apesar das diferenças entre as forças geradas terem sido relativamente
 pequenas, os resultados apresentados sugerem que a ação da inibição
 recorrente poderia ser relevante em situações de perigo que demandam
-contrações rápidas.
+contrações rápidas. Experimentos realizados em ratos geraram conclusões
+semelhantes, apontando a inibição recorrente como um mecanismo capaz
+de manter uma temporização de disparos coordenada de unidades motoras
+quando CRs são sincronizadas pela atividade conjunta dos MNs \cite{obeidat14}.
+Essa característica poderia afetar a taxa de geração da força muscular.
 
 Vale notar que as limitações mostradas na seção \ref{sec:res_dyn}
 podem influenciar os resultados apresentados. A presença
@@ -557,7 +635,7 @@ gerariam níveis de força maiores para um mesmo instante de tempo.
 Em uma situação normal, por exemplo,
 isso poderia ser observado na Figura \ref{fig:res_moda}
 como uma curva mais próxima à contínua que gradualmente se aproxima
-à pontilhada.
+da pontilhada.
 Uma conclusão semelhante poderia ser esboçada quando se considera
 uma diminuição da inibição recorrente com o aumento da contração muscular
 \cite{hultborn79b}.
@@ -570,9 +648,85 @@ Essas suposições carecem de mais dados experimentais, pois
 não se sabe como as CRs se comportam quando os MNs disparam taxas 
 tão altas e de forma repentina.
 
-Além disso, por causa da falta de dados experimentais,
+Em geral, os coeficientes estudados tiveram características parecidas
+tanto em situações de contrações fracas quanto fortes, como mostrado 
+na Figura \ref{fig:res_modSpk}. O coeficiente de variação da força foram
+maiores para forças de inibição recorrente mais intensas, enquanto que, em
+média, os outros casos estiveram muito próximos entre si. Algo
+semelhante foi observado nos coeficientes de sincronia, que podem também
+explicar os resultados anteriores. Nota-se que esses coeficiente estiveram
+muito baixos, sendo necessárias outras análises para determinar se os MNs
+envolvidos estariam de fato sincronizados ou não. Esse assunto é desafiado 
+pelos diversos estudos mostrando as CRs sincronizando ou desincronizando
+MNs \cite{uchiyama07,mattei03,obeidat14}.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:res_statlow}
+        \includegraphics[scale=0.5]{res_statLow.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:res_stathigh}
+        \includegraphics[scale=0.5]{res_statHigh.eps}
+    }
+    \caption[Medidas de coeficientes de sincronia e variação.]{
+             Medidas de coeficientes de sincronia e variação em
+             diferentes níveis de força muscular. Circunferências
+             representam o resultado de uma simulação para cada
+             intensidade de inibição recorrente e linhas, suas
+             médias.
+             \subref{fig:res_statlow} 5\%.
+             \subref{fig:res_stathigh} 70\%.
+             }
+	\label{fig:res_stat}
+\end{figure}
+
+A Figura \ref{fig:res_modSpk} é apresentada para explorar com mais 
+detalhes o aumento no coeficiente de sincronia. Pode-se observar que
+os MNs sob forte inibição recorrente tendem a disparar ao mesmo tempo.
+Esse fenômeno, em contrapartida, é menor quando as CRs estão ausentes.
+Vale notar que os coeficientes de sincronia
+também foram calculados na seção anterior, mas foram iguais aos
+apresentados aqui.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:res_modo}
+        \includegraphics[scale=0.5]{res_modo.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:res_modd}
+        \includegraphics[scale=0.5]{res_modd.eps}
+    }
+    \caption[.]{
+             Linhas verticais para cada instante de disparo são sobrepostas
+             para indicar uma tendência dos MNs a dispararem juntos. Os 
+             últimos 250 ms da simulação com 5\% do MVC foram utilizados
+             para essa demonstração.
+             \subref{fig:res_modo} Inibição recorrente forte.
+             \subref{fig:res_modd} Inibição recorrente ausente.
+             }
+	\label{fig:res_modSpk}
+\end{figure}
+
+Tal resultado é condizente com o que foi apresentado na Figura 
+\ref{fig:recruitpoisson} e estudos que confirmam o efeito modulatório
+da inibição recorrente na temporização dos disparos de MNs
+\cite{davey93,obeidat14}. A lógica por trás disso é que MNs disparando
+ao mesmo instante (ou próximos) geram uma força de inibição intensa que
+atrasa o próximo disparo dos MNs nas proximidades.
+
+É importante notar que, por causa da falta de dados experimentais,
 elementos responsáveis por modular as CRs não foram explicitamente
-modelados. Apesar das diferentes condutâncias em cada simulação servirem
+modelados. Estudos realizados em ratos mostram que CRs recebem entradas
+sinápticas inibitórias com magnitudes correlacionadas com as entradas
+excitatóriasde MNs, mas a origem dessa modulação ainda é desconhecida
+\cite{nishimaru10}. Apesar das diferentes condutâncias em cada
+simulação servirem
 ao propósito de elucidar possíveis efeitos modulatórios da inibição 
 recorrente, é importante destacar que experimentos fisiológicos são
 necessários para determinar se a distribuição homogênea desses efeitos
