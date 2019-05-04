@@ -1,5 +1,5 @@
 \chapter{Metodologia}
-\section{Desempenho Computacional}
+\section{Desempenho computacional}
 Três abordagens distintas serão consideradas nessa parte: A utilização de um 
 \textit{cluster}, Python na sua implementação original (CPython) e Cython.
 As medições do tempo de execução, realizadas por meio da biblioteca \textit{time},
@@ -85,7 +85,7 @@ Cython. A métrica usada para medir o ganho de desempenho é a mesma da
 Equação (\ref{eq:speedup}), mas usando os tempos de execução das soluções em 
 Python e Cython.
 
-\section{Estudo das Parametrizações}
+\section{Estudo das parametrizações}
 Baseado na literatura fornecendo dados de procedimentos experimentais
 realizados em gatos,
 os modelos de neurônios estudados passaram por etapas de
@@ -93,15 +93,16 @@ parametrização e validação.
 A ideia é que se tenha, ao final desse processo, um modelo
 apropriado para os estudos explicitados nas próximas seções da metodologia.
 
-\subsection{Parametrização do Modelo de Motoneurônios}
+\subsection{Parametrização do modelo de motoneurônios}
 O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
 medial do gato. Em simulações envolvendo populações desses neurônios,
 foi considerado um comprimento de 6 mm do núcleo motor \cite{burke77}
 com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
-\citeonline{uchiyama03a}. A eventual ativação desses MNs por
-meio de fibras descendentes foi causada por 400 elementos pré
+\citeonline{uchiyama03a}. Fibras descendentes responsáveis pela
+ativação do núcleo motor foram modeladas no ReMoto como 400 elementos pré-
 sinápticos disparando potenciais de ação de acordo com um processo pontual
-Poisson e com conectividade de 30\%. A ordem desses processos estocástico
+Gama e com 30\% de conectividade com o compartimento dendrítico dos MNs.
+A ordem desses processos estocásticos em função do nível de força estudado
 foi adotada como no trabalho de \citeonline{watanabe13}.
 
 Os valores de pico dos \textit{twitches} e força tetânica das unidades
@@ -109,7 +110,7 @@ motoras utilizados foram os publicados por \citeonline{mrowczynski06},
 considerando que os limites dos intervalos fornecidos estivessem 
 relacionados linearmente com o tamanho dos MNs. A partir disso, as
 relações \textit{twitch}-tétano foram calculadas para cada MN como
-o valor do tétano divido pelo \textit{twitch}.
+o valor da força tetânica divido pela amplitude de pico do \textit{twitch}.
 
 Também considerando uma distribuição de parâmetros que acompanham
 linearmente o tamanho do MN, o tempo que o \textit{twitch} leva para
@@ -121,7 +122,7 @@ No ReMoto, a saturação da força das unidades motoras se dá por
 meio de uma sigmoide. Dessa forma, também foi necessário encontrar
 uma constante de saturação que fizesse com que essa função, para
 cada MN, tivesse como saídas o recíproco da relação
-\textit{twitch}-tétano e 1 quando as entradas fossem 1 e a 
+\textit{twitch}-tétano e 1 quando as entradas fossem iguais a 1 e a 
 força tetânica, respetivamente.
 
 Existem outros parâmetros do modelo de MN no ReMoto, mas esses
@@ -153,7 +154,7 @@ na Tabela \ref{tab:met_MNparams}.
     \end{tabular}
 \end{table}
 
-\subsection{Parametrização do Modelo de Célula de Renshaw}
+\subsection{Parametrização do modelo de célula de Renshaw}
 As parametrizações foram efetuadas na ordem em que são apresentadas
 e iterativamente, com base nos conhecimentos sobre a CR ou o circuito
 de inibição recorrente descritos na literatura.
@@ -163,7 +164,7 @@ simulações do núcleo motor inteiro foram realizadas com 600 CRs.
 Os demais parâmetros, quando não mencionados na metodologia, foram mantidos 
 de acordo com o que foi descrito em \citeonline{cisi07}.
 
-\subsubsection{Potenciais Excitatórios Pós Sinápticos}
+\subsubsection{Potenciais excitatórios pós sinápticos}
 Mantendo-se o padrão de $C_m = \text{1 }\mu\text{Fcm}^{-2}$,
 a resistência específica foi ajustada para reproduzir os 
 seguintes resultados descritos na literatura:
@@ -192,7 +193,7 @@ MN do tipo S que fazia sinapse com uma CR. Para garantir uma atividade
 passiva da membrana, a condutância sináptica ativada pelo disparo do MN
 foi diminuída.
 
-\subsubsection{Características de Disparos}
+\subsubsection{Características de disparos}
 Os parâmetros de limiar, comprimento, diâmetro e densidade e variáveis de
 transição das condutâncias iônicas do modelo da CR podem ser alterados
 para reproduzir diferentes características de disparos. As alterações feitas 
@@ -245,7 +246,7 @@ foram baseadas nas seguintes referências:
 \end{figure}
 
 Primeiramente, é necessário definir quando a CR irá disparar
-um potencial de ação. Sabe-se que essas células possuem
+um potencial de ação. Sabe-se que esses neurônios possuem
 baixo limiar \cite{uchiyama03a}, mas não existem estudos quantitativos
 especificamente sobre esse parâmetro. O valor do limiar foi calculado como
 
@@ -273,7 +274,7 @@ injetadas em cada caso estiveram de acordo com os dados mostrados na Figura
 foi necessário alterar o valor da condutância máxima do ruído agindo sobre
 a CR.
 
-\subsubsection{Potenciais Inibitórios Pós Sinápticos}
+\subsubsection{Potenciais inibitórios pós sinápticos}
 As condutâncias sinápticas ativadas pelos disparos das CRs em cada
 tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
 
@@ -304,8 +305,8 @@ compartimento dendrítico do MN e simulações foram realizadas para encontrar
 três valores de condutâncias (um para cada tipo) que reproduzam a Figura 
 \ref{fig:met_IPSP}.
 
-\subsubsection{Distribuição de Potenciais Inibitórios Pós
-                Sinápticos Recorrentes}
+\subsubsection{Distribuição de potenciais inibitórios pós
+                sinápticos recorrentes}
                 \label{sec:met_ipsp}
 A distribuição dos PIPS recorrentes pelo núcleo motor depende 
 de fatores topográficos e funcionais. No ReMoto, isso está relacionado
@@ -363,7 +364,7 @@ permitiu que apenas a condutância máxima dos MNs do tipo FF
 ($g_{max_{FF}}$) fosse parametrizado, sendo as outras ajustadas
 de acordo com a proporção.
 
-\subsubsection{Dinâmica e Depressão Sináptica}
+\subsubsection{Dinâmica e depressão sináptica}
 Para abordar as características dinâmicas e de depressão pós sináptica,
 as referências utilizadas foram:
 
@@ -410,7 +411,7 @@ população de CRs recebendo um estímulo antidrômico
 com frequências variadas para que a taxa de disparos gerada
 fosse contabilizada.
 
-\subsection{Validação do Modelo}
+\subsection{Validação do modelo}
 Nesta seção, de forma qualitativa e
 semiquantitativa, a robustez da parametrização adotada foi testada por meio
 da comparação de resultados de procedimentos experimentais com resultados
@@ -433,7 +434,7 @@ foram as mesmas da parametrização na Seção \ref{sec:met_ipsp}.
 	\label{fig:met_hamm}
 \end{figure}
 
-\subsubsection{Relação estática das entradas e saídas das células de renshaw}
+\subsubsection{Relação estática das entradas e saídas das células de Renshaw}
 A relação estática de entrada e saída realizada por \citeonline{cleveland81}
 é importante para a caracterização de CRs. Foi observado que os resultados
 obtidos poderiam ser ajustados a uma função hiperbólica, que por
@@ -501,7 +502,7 @@ para ativar diferentes tipos de MNs. As taxas de disparos instantâneas
 foram calculadas como o recíproco do intervalo entre cada potencial de
 ação, em pps.
 
-\section{Efeitos da Parametrização em Simulações}
+\section{Efeitos da parametrização em simulações}
 O objetivo desta etapa é entender como o modelo parametrizado se comporta 
 em diferentes situações, algumas das quais se basearam em trabalhos
 experimentais ou em outros computacionais. Dessa forma,
@@ -510,7 +511,7 @@ trabalhos para que os resultados pudessem ser apropriadamente comparados.
 De formal geral, todas as simulações tiveram
 CRs disparando espontaneamente.
 
-\subsection{Disparos de Motoneurônios}
+\subsection{Disparos de motoneurônios}
 \label{sec:met_onion}
 Com o intuito de analisar o recrutamento dos MNs,
 uma corrente $i(t)$
@@ -541,9 +542,9 @@ foi dada por
     FR(t)=
     \left\{
         \begin{aligned}
-            &\frac{mvcPerc}{4000}t,\quad t\le 4000 ms \\
-            &mvcPerc,\quad 4000<t<5000 ms \\
-            &-\frac{mvcPerc}{4000}(t-9000),\quad t\ge 5000 ms
+            &\frac{cvmPerc}{4000}t,\quad t\le 4000 ms \\
+            &cvmPerc,\quad 4000<t<5000 ms \\
+            &-\frac{cvmPerc}{4000}(t-9000),\quad t\ge 5000 ms
         \end{aligned}
     \right.
     \label{eq:ramphold}
@@ -551,9 +552,9 @@ foi dada por
 
 Esta equação representa os disparos de fibras descendentes agindo sobre
 o núcleo motor com o intuito de realizar uma contração em rampa até 70 \%
-do MVC. Após 1 segundo nesse valor, eles decaíram com a mesma derivada.
+da CVM. Após 1 segundo nesse valor, eles decaíram com a mesma derivada.
 
-Nas simulações com inibição recorrente, $mvcPerc=950$ foi suficiente
+Nas simulações com inibição recorrente, $cvmPerc=950$ foi suficiente
 para recrutar por volta de 240 MNs \cite{walmsley78} no pico da
 Equação (\ref{eq:ramphold}). Para fazer com que
 o nível de força muscular gerado nessa situação
@@ -616,65 +617,100 @@ causada pela inibição recorrente também foi analisada.
 
 \subsection{Análise espectral da força gerada pelo modelo}
 \label{sec:met_psd}
-Os trabalhos realizados por \citeonline{williams09} levaram em 
-consideração um núcleo motor disparando a 10 Hz, gerando forças de
-5\% do MVC. Para reproduzir alguns de seus resultados, um
-cenário de simulação parecido foi emulado.
+Algumas condições simuladas por \citeonline{williams09},
+como explicado  na seção \ref{sec:intro_williams},
+foram reproduzidas aqui para verificar se o modelo implementado no
+ReMoto era capaz de reduzir oscilações em 10 Hz.
 
-Com tal intuito, cada MN foi ativado por ruídos excitatórios
-independentes com condutância sináptica máxima de 12 $\mu$S e fibras
-descendentes disparando de acordo com uma sen\'{o}ide com per\'{i}odo
-de 100 ms. As amplitudes foram determinadas como mostrado a seguir.
+Cada MN foi ativado por fibras descendentes com taxas de disparos
+moduladas por
+uma senoide com período de 100 ms e valor médio suficiente para gerar
+um nível de força desejado. Ruídos excitatórios
+nos compartimentos dendríticos dos MNs foram adicionados
+por meio de condutâncias sinápticas com valor de pico igual a 12 $\mu$S
+ativadas por um processo pontual Poisson.
+As frequências dessas duas entradas excitatórias foram determinadas
+como mostrado a seguir.
 
-Primeiramente, usando o caso com inibiç\~{a}o recorrente, a
-frequ\^{e}ncia de disparo do ru\'{i}do independente foi ajustada
-para recrutar cerca de 85 MNs. Esse valor é próximo de 25\%
-da população de MNs ativados em níveis de força de 5\% do MVC
-\cite{hoffer87,walmsley78}. Por causa
-das conexões das fibras descendentes e da distribuição topográfica das CRs,
-foi comum encontrar variabilidade no número de unidades motoras
-recrutadas. Em
-seguida, a sen\'{o}ide foi adicionada, certificando-se que 
-sua frequ\^{e}cia fosse suficiente para que se fosse observada uma
-sincronizaç\~{a}o nos instantes de disparos dos MNs e no espectro
-da força, mas que n\~{a}o ativasse mais do que 10 MNs que n\~{a}o
-tivessem sido recrutados previamente. Nas simulaç\~{o}es sem
-inibiç\~{a}o recorrente, o mesmo sinal
-oscilat\'{o}rio foi utilizado e o ru\'{i}do foi ajustado para
+Primeiramente, usando o caso sem inibiç\~{a}o recorrente, a
+frequ\^{e}ncia média de disparo de fibras descendentes necessária 
+para recrutar cerca de 75 MNs foi determinada. Essa quantidade
+foi próxima de
+25\% da população de MNs ativados em níveis de força de 5\% da CVM
+\cite{hoffer87,walmsley78}. Por causa de fatores como conectividade e
+propriedades dos MNs, algumas unidades motoras do tipo
+FR foram ativadas. O mesmo procedimento foi realizado para níveis
+de 70\% da CVM, mas tendo a atividade de 80\% do núcleo motor como
+alvo \cite{hoffer87,walmsley78}.
+
+Em seguida, para cada porcentagem da CVM adotada, foram considerados
+cenários com inibição recorrente em que a condutância das CRs
+sob os MNs de cada tipo fosse igual, o dobro e a metade dos
+respectivos valores apresentados na Tabela \ref{tab:params_final}.
+Em cada um desses casos,
+frequências médias de disparos foram ajustadas
 para fazer com que as m\'{e}dias das forças geradas estivessem
-dentre da faixa de 10\% das geradas anteriormente.
+dentro de uma faixa de 10\% em torno da respectiva força gerada
+na ausência de CRs.
 
-Sendo assim, a frequência de disparos das fibras descendentes
-teve valor
-m\'{e}dio de 25 Hz e amplitude pico a pico de 50 Hz. 
-As intensidades dos ru\'{i}dos independentes foram de 1040 e
-575 Hz em simulações com e sem CR, respectivamente. Nota-se, ainda, que
-os disparos dessa a entrada excitatória ocorre de acordo com
-um processo pontual Poisson.
-% Because the square wave input is very brief, I do not think this is
-% a valid comparison anymore, so I am taking this out for now
-%e que, sem as CRs, a média de condutâncias
-%sinápticas causadas pelo ruído no compartimento dendrítico dos MNs
-%foi cerca de 3.8 vezes a das fibras descendentes. Essa proporção é
-%parecida com a utilizada por \citeonline{williams09}.
+As frequências médias determinadas anteriormente foram utilizadas como valor
+médio de uma senoide, que foi igual para todas as situações simuladas
+nessa seção. Sua amplitude pico a pico, determinada na situação
+com condutâncias das CRs inalteradas e com 5\% da CVM, 
+foi aquela necessária para
+fazer com que se fosse 
+possível observar picos no espectro da força e na coerência
+córtico-muscular parecidos com os de \citeonline{williams09}.
+
+As características das fibras descendentes são
+resumidas na Tabela
+\ref{tab:met_dcistrat}. Em todos os cenários, a amplitude pico a pico
+da senoide
+foi de 4.6 Hz. Ademais, um ruído independente com uma taxa pequena
+de 90/s, suficiente para gerar cerca de 1/10 da condutância total
+causada pelas fibras descendentes no compartimento dendrítico,
+foi associado a todos os MNs.
+
+\begin{table}[ht!]
+\caption{Valores utilizados para as entradas nas simulações em cada
+    uma das situações estudadas.}
+\label{tab:met_dcistrat}
+\centering
+    \begin{tabular}{c c c}\hline 
+        \multirow{2}{*}{Situação da inibição recorrente} & \multicolumn{2}{c}{Frequências (Hz)} \\
+             & \multicolumn{1}{c}{5\% CVM} & \multicolumn{1}{c}{70\% CVM} \\ \hline
+        Ausente & 141 & 665 \\
+        Fraca & 190 & 795 \\
+        Normal & 230 & 930 \\
+        Forte & 333 & 1180 \\
+	\hline
+    \end{tabular}
+\end{table}
+
+Uma outra condição simulada foi uma em que o valor médio da senoide
+foi mantido o mesmo sem e com inibição recorrente.
+Nesse caso, apenas a situação com 5\% da CVM e condutâncias das CRs
+inalteradas foi considerada.
 
 A densidade espectral de potência da força muscular foi estimada por
 meio do método de 
-Welch \cite{bendat11} com janelas de Hann e segmentos com 20000 amostras
-sem superposição. Antes de realizar esses cálculos o nível médio
-dessa força foi removido. A coerência entre o EMG e a condutância
-sináptica total foi estimada da mesma forma. Nessa situação, o
-valor dessa condutância foi obtido de um único MN que apenas recebia
-todas as entradas sinápticas desse sistema, ou seja, potenciais de 
-ação de fibras descendentes e do ruído.
+Welch \cite{bendat11} com 5 janelas de Hann com 50\% de sobreposição.
+A coerência entre o EMG e o potencial de membrana do dendrito do MN de
+índice 1, tomado como representativo da atividade neural descendente
+oriunda do encéfalo, foi estimada
+da mesma forma, mas com 33 janelas. O MN em questão recebia apenas
+as entradas sinápticas excitatórias (potenciais de ação de fibras
+descendentes e ruído), não era capaz de gerar potenciais de ação 
+e nem de fazer conexões com CRs.
 
-As simulações realizadas tiveram duração de 9 s e passo de
+As simulações realizadas tiveram duração de 11 s e passo de
 integração de 0.05 ms. Para evitar
 interferências de respostas transitórias, apenas os últimos 
-8 segundos dos sinais gerados pelo ReMoto foram utilizados.
-As simulações foram repetido dez vezes
-para que se fosse obtido uma resposta média dos resultados, que 
-foram, então, comparados qualitativamente com a Figura
+10 segundos dos sinais gerados pelo ReMoto foram utilizados.
+As simulações foram repetidas dez vezes
+para que se fosse obtida uma resposta média dos resultados, que 
+foram, então, comparadas qualitativamente com os resultados de
+\citeonline{williams09} mostrados na Figura
 \ref{fig:met_williams09}.
 
 \begin{figure}[ht]
@@ -701,58 +737,20 @@ foram, então, comparados qualitativamente com a Figura
 	\label{fig:met_williams09}
 \end{figure}
 
-Também foram realizadas simulações em que o controle da atividade
-do núcle motor se dá 
-por meio de fibras descendentes. Isso foi motivado pelo fato de que
-a estratégia utilizada por \citeonline{williams09} não leva em
-consideração que o ruído independente injetado para compensar a
-atividade das CRs descorrelaciona os MNs e, portanto, por si só
-já é capaz de atenuar os picos na densidade espectral de potência
-do sinal estudado.
-
-Além das situações estudadas nas primeiras simulações dessa seção (inibição
-recorrente ausente e normal), foram
-considerados os cenários em que a condutância das CRs
-sob os MNs fosse o dobro e a metade do valor normal (forte e fraca,
-respectivamente). Todos esses casos
-foram simulados com 5\% e 70\% do MVC, determinados como anteriormente.
-As características das entradas utilizadas são apresentadas na Tabela
-\ref{tab:met_dcistrat}. Uma taxa pequena de 90 Hz de ruído independente
-também foi adicionada a todos os MNs e em todos os casos.
-
-\begin{table}[ht!]
-\caption{Valores utilizados para as entradas nas simulações em cada
-    uma das situações estudadas. Símbolos DC
-    e AC são usados para identificar componentes contínuas e
-    oscilatórias, respectivamente.}
-\label{tab:met_dcistrat}
-\centering
-    \begin{tabular}{c p{1cm} p{1cm} p{1cm} p{1cm}}\hline 
-        \multirow{3}{*}{Situação da inibição recorrente} & \multicolumn{4}{c}{Amplitudes (Hz)} \\
-             & \multicolumn{2}{c}{5\% MVC} & \multicolumn{2}{c}{70\% MVC} \\
-         & DC & AC & DC & AC \\ \hline 
-        Ausente & 121 & 40 & 645 & 150 \\
-        Fraca & 170 & 40 & 775 & 150 \\
-        Normal & 210 & 40 & 910 & 150 \\
-        Forte & 323 & 40 & 1160 & 150 \\
-	\hline
-    \end{tabular}
-\end{table}
-
-\subsection{Estudos de Contrações isométricas}
+\subsection{Estudos de contrações isométricas}
 Os forças de inibição recorrente e a forma como as entradas são
 definidas para cada caso foram as mesmas das descritas na seção 
 anterior.
 A ativação do núcleo motor nessas simulações foi
 realizada por meio de fibras descendentes com taxa de disparos 
-constantes e suficiente para gerar valores de força próximos ao MVC.
+constantes e suficiente para gerar valores de força próximos à CVM.
 Essa taxa foi mantida por 500 ms.
 Essa configuração permitiu que a derivada da força, ou seja, sua 
 sensibilidade ao comando descendente, pudesse ser avaliada para uma
 situação de fuga de uma ameaça repentina.
 
 Outros cenários analisados
-foram os da manutenção de 5\% e 70\% do MVC por meio de fibras
+foram os da manutenção de 5\% e 70\% da CVM por meio de fibras
 descendentes com taxas de disparo de potenciais de ação constantes e 
 suficientes para recrutar uma porcentagem de MNs próxima à apropriada
 \cite{walmsley78}. Essas simulações foram realizadas 10 vezes para cada
@@ -805,5 +803,5 @@ Por fim, obtém-se o coeficiente
 em que $0\le\chi^2\le 1$. Sendo assim, valores mais próximos de 1 indicam
 uma atividade mais sincronizada do núcleo motor.
 
-\subsection{Distorções na Saída do Núcleo Motor}
-\section{Estudos sobre a Conectividade do Circuito de Inibição Recorrente}
+\subsection{Distorções na saída do núcleo motor}
+\section{Estudos sobre a conectividade do circuito de inibição recorrente}

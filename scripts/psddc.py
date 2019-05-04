@@ -1,6 +1,7 @@
 import matplotlib
 #matplotlib.use('TkAgg') # For X11 forwarding
 import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
 import numpy as np
 from scipy import signal
 from scipy.fftpack import fft
@@ -13,7 +14,7 @@ def singleTrial(trial, subTrial, simMVC):
     #******* Simulation settings and variables
     #****************************************
     # Simulation
-    duration = 9000
+    duration = 11000
     tmin = 1000
     dt = 0.05
     simTypes = ['d', 's', 'h', 'o']
@@ -122,7 +123,7 @@ def singleTrial(trial, subTrial, simMVC):
 
         fr = 1
         nperseg = 4*fs/2/fr
-        noverlap = 0#None
+        noverlap = None
         nfft = None#8*nperseg
         #detrend = 'constant'
         detrend = False
@@ -156,8 +157,7 @@ def singleTrial(trial, subTrial, simMVC):
         #   inputConductance[int(tmin/0.05):])))))
 
         # Using parameter below I can see decrease in coherence peak
-        # TODO Decide on which nperseg
-        nperseg = 8000
+        nperseg = 6000
         staticEMG = [y for x,y in enumerate(EMG) if taux[x]>tmin]
         staticInput = [y for x,y in enumerate(dendPotSOL) if taux[x]>tmin]
         fc, coherence = signal.coherence(staticInput, staticEMG, fs, 'hann',
@@ -238,14 +238,16 @@ def singleTrial(trial, subTrial, simMVC):
 
     return plotF, plotPSD, plotFc, plotCoherence
 
-def allTrials(PSDs, f, Coherences, fc):
+def allTrials(PSDs, f, Coherences, fc, mvc):
     # Files and paths
-    # 70
-    filenamepsd = 'res_psdNew70'
-    filenamecoh = 'res_cohNew70'
-    # 05
-    #filenamepsd = 'res_psdNew05'
-    #filenamecoh = 'res_cohNew05'
+    if mvc=='70':
+        filenamepsd = 'res_psdNew70'
+        filenamecoh = 'res_cohNew70'
+        ylimit = 4000
+    elif mvc=='05':
+        filenamepsd = 'res_psdNew05'
+        filenamecoh = 'res_cohNew05'
+        ylimit = 150
     figsFolder = '/home/pablo/git/master-thesis/figuras/'
 
     #****************************************
@@ -263,23 +265,34 @@ def allTrials(PSDs, f, Coherences, fc):
     #****************************************
     #******* Plotting
     #****************************************
-    plt.figure()
+    fig, ax1 = plt.subplots()
     for simType in simTypes:
         # Here considering f was the same in all trials
         #import pdb; pdb.set_trace()
         # N.B. f[0] is supposed to be the same for all simTypes
         if not meanPSD[simType].any():
             continue
-        plt.plot(f[0][simType], 1e6*meanPSD[simType], symbols[simType], label=labels[simType])
-    plt.xlabel('Frequência (Hz)')
-    plt.ylabel('Densidade espectral de potência (mN$^2$)')
-    plt.grid()
+        ax1.plot(f[0][simType], 1e6*meanPSD[simType], symbols[simType], label=labels[simType])
+    ax1.set_xlabel('Frequência (Hz)')
+    ax1.set_ylabel('Densidade espectral de potência (mN$^2$)')
+    ax1.grid()
     #plt.yscale('log')
-    plt.xlim([0, 50])
-    plt.ylim([0, 500])
-    plt.legend()
-    plt.show()
-    #plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
+    ax1.set_xlim([0, 50])
+    ax1.set_ylim([0, ylimit])
+    ax1.legend()
+    # creating inset
+    axInset = zoomed_inset_axes(ax1,
+                    2,
+                    loc=10)
+    for simType in simTypes:
+        if not meanPSD[simType].any():
+            continue
+        axInset.plot(f[0][simType], 1e6*meanPSD[simType], symbols[simType])
+    mark_inset(ax1, axInset, loc1=2, loc2=3, fc="none", ec="0.5")
+    axInset.set_xlim(8, 12)
+    axInset.set_ylim(20, 80)
+    #plt.show()
+    plt.savefig(figsFolder + filenamepsd + '.svg', format='svg')
 
     plt.figure()
     for simType in simTypes:
@@ -294,21 +307,24 @@ def allTrials(PSDs, f, Coherences, fc):
     plt.xlim([0, 50])
     #     plt.xlim((0, 500))
     plt.legend()
-    plt.show()
-    #plt.savefig(figsFolder + filenamecoh + '.svg', format='svg')
+    #plt.show()
+    plt.savefig(figsFolder + filenamecoh + '.svg', format='svg')
 
 # These are conveniently converted to a numpy 2d array latter because singleTrial function return numpy arrays
-# TODO make it 10
-numSubTrials = 3
+numSubTrials = 10
 psd = [{} for _ in range(1, numSubTrials+1)]
 fpsd = [{} for _ in range(1, numSubTrials+1)]
 coh = [{} for _ in range(1, numSubTrials+1)]
 fc = [{} for _ in range(1, numSubTrials+1)]
 
+print('Trials:\n - 1: step input\n - 2: sine input (very high amplitude)\n'
+      ' - 3: All sine input same as 5% and with 5% amplitude\n'
+      ' - 4: Same as 3 but with 1% amplitude\n'
+      ' - 5: Same as 4 but s case not compensated')
 trial = input('Trial number: ')
 mvc = input('MVC percentage: ')
 subtrials = [x for x in range(1, numSubTrials+1)]
 for subtrial in subtrials:
     fpsd[subtrial-1], psd[subtrial-1], fc[subtrial-1], coh[subtrial-1] = singleTrial(trial, subtrial, str(mvc))
 
-allTrials(psd, fpsd, coh, fc)
+allTrials(psd, fpsd, coh, fc, str(mvc))

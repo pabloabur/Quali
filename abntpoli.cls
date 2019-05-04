@@ -70,18 +70,18 @@
 \providecommand{\leftmarkformat}{\itshape}
 \providecommand{\thepageformat}{\small}
 \providecommand{\ABNTchaptersize}{\huge}
-\providecommand{\ABNTCHAPTERfont}{\bfseries\normalsize\selectfont}
-\providecommand{\ABNTChapterfont}{\bfseries\normalsize\selectfont}
+\providecommand{\ABNTCHAPTERfont}{\bfseries\Large\selectfont}
+\providecommand{\ABNTChapterfont}{\bfseries\Large\selectfont}
 \providecommand{\ABNTtocchapterfont}{\ABNTchapterfont\upshape}
 % Font which section titles will be printed
 \providecommand{\ABNTsectionfontsize}{\normalsize}
-\providecommand{\ABNTsectionfont}{\upshape}
+\providecommand{\ABNTsectionfont}{\bfseries}
 \providecommand{\ABNTsubsectionfontsize}{\normalsize}
-\providecommand{\ABNTsubsectionfont}{\bfseries}
+\providecommand{\ABNTsubsectionfont}{\bfseries\itshape}
 \providecommand{\ABNTsubsubsectionfontsize}{\normalsize}
-\providecommand{\ABNTsubsubsectionfont}{\bfseries}
+\providecommand{\ABNTsubsubsectionfont}{\upshape}
 \providecommand{\ABNTparagraphfontsize}{\normalsize}
-\providecommand{\ABNTparagraphfont}{\bfseries}
+\providecommand{\ABNTparagraphfont}{\upshape}
 \providecommand{\ABNTsubparagraphfontsize}{\normalsize}
 \providecommand{\ABNTsubparagraphfont}{\bfseries}
 \providecommand{\ABNTanapsize}{\normalsize}
@@ -91,7 +91,9 @@
 \setcounter{tocdepth}{3}
 
 %% Section number will appear up to \subsubsection
-\setcounter{secnumdepth}{3}
+% Commented this to get proper section numbering, dont know why
+% it did not work
+%\setcounter{secnumdepth}{5}
 \providecommand{\instituicaoformat}{\scshape}
 \providecommand{\autorformat}{\large\ABNTsectionfont}
 \providecommand{\orientadornameformat}{}
@@ -187,12 +189,12 @@
 \DeclareOption{appendix=NAME}       {\setboolean{ABNTCapAnnexAppendix}{true}\setboolean{ABNTAnApName}{true}}
 \DeclareOption{appendix=titlebox}   {\setboolean{ABNTAnApIndicativoIndent}{true}}
 \DeclareOption{appendix=notitlebox} {\setboolean{ABNTAnApIndicativoIndent}{false}}
-\DeclareOption{chapter=TITLE}       {\setboolean{ABNTcapchap}{true}\ExecuteOptions{appendix=NAME}}
-\DeclareOption{chapter=Title}       {\setboolean{ABNTcapchap}{false}}
+\DeclareOption{chapter=TITLE}       {\setboolean{ABNTcapchap}{false}\ExecuteOptions{appendix=NAME}}
+\DeclareOption{chapter=Title}       {\setboolean{ABNTcapchap}{true}}
 \DeclareOption{pretextual=Title}    {\setboolean{ABNTcappre}{false}}
 \DeclareOption{pretextual=TITLE}    {\setboolean{ABNTcappre}{true}}
-\DeclareOption{section=TITLE}       {\setboolean{ABNTcapsec}{true}}
-\DeclareOption{section=Title}       {\setboolean{ABNTcapsec}{false}}
+\DeclareOption{section=TITLE}       {\setboolean{ABNTcapsec}{false}}
+\DeclareOption{section=Title}       {\setboolean{ABNTcapsec}{true}}
 %%deprecated options
 \DeclareOption{capchap}         {\ExecuteOptions{chapter=TITLE,appendix=NAME}}
 \DeclareOption{cappre}          {\ExecuteOptions{pretextual=TITLE}}

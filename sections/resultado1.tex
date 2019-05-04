@@ -1,5 +1,5 @@
 \chapter{Resultados e discussões}
-\section{Desempenho Computacional}
+\section{Desempenho computacional}
 Na Figura \ref{fig:clustera} são apresentados os valores de \textit{speed up} das
 simulações com diferentes números de processadores. Como se pode perceber, foi 
 possível alcançar uma diminuição no tempo de execução com as simulações feitas em
@@ -120,7 +120,7 @@ outras opções, esta é postergada para trabalhos futuros.
 %\end{table}
 
 \section{Parametrizações}
-\subsection{Potencial Excitatório Pós Sinápico nas Células de Renshaw}
+\subsection{Potencial excitatório pós sinápico nas células de Renshaw}
 O resultado mostrado na Figura
 \label{sec:res_epsp}
 \ref{fig:RCepsp} foi obtido com $R_m=\text{2500 }\Omega\text{cm}^2$ . O PEPS é
@@ -156,7 +156,7 @@ o tempo de subida aqui apresentado, mas isso teria um impacto negativo
 na duração do PEPS. Portanto, a parametrização realizada foi tomada
 para satisfazer razoavelmente cada característica.
 
-\subsection{Características dos disparos das Células de Renshaw}
+\subsection{Características dos disparos das células de Renshaw}
 Usando o $R_m$ obtido na seção anterior,
 $a=\text{1753.8+16756 }\mu\text{m}^2$ e considerando que $I_r=\text{0.5 }$ nA,
 a Equação (\ref{eq:vth}) resulta em $V_l=\text{6.75 }$ mV.
@@ -209,7 +209,7 @@ A curva FxI obtida, por sua vez, é apresentada na Figura
 \ref{fig:RCfxi}, juntamente com 
 detalhes sobre a AHP, na Figura \ref{fig:RCahp}.
 A saturação observada foi 
-causada pela período refratário absoluto da célula, que é de 1 ms.
+causada pela período refratário absoluto do neurônio, que é de 1 ms.
 O pico da AHP
 observado foi de -2.4 mV e sua duração foi de aproximadamente 33 ms.
 
@@ -286,7 +286,7 @@ característica.
 De fato, estudos sugerem que as CRs possuem outros tipos de canais iônicos.
 Sabe-se que correntes de hiperpolarização e de potássio dependente
 de cálcio são responsáveis por importantes características
-de disparos dessas células, como, por exemplo, taxas de disparos
+de disparos desses neurônios, como, por exemplo, taxas de disparos
 \cite{perry15}. A utilização de dados disponíveis para implementação 
 desses canais no modelo, entretanto, não é muito apropriada por dois
 motivos: 
@@ -318,7 +318,7 @@ estiveram, portanto, de acordo com as referências utilizadas.
 	\label{fig:PIPSres}
 \end{figure}
 
-\subsection{Distribuição e Amplitudes da Inibição Recorrente}
+\subsection{Distribuição e amplitudes da inibição recorrente}
 \label{sec:conn}
 Após uma série de simulações, o valor de $g_{max_{FF}}$ que mostrou os
 resultados mais apropriados de acordo com a literatura foi 15 nS.
@@ -361,7 +361,7 @@ das CRs fosse muito baixo. Sendo assim, o valor de condutância adotado
 fornece um equilíbrio razoável dos resultados.
 
 \subsection{Característica dinâmica e depressão pós sináptica
-            da célula de renshaw}
+            da célula de Renshaw}
 \label{sec:res_dyn}
 Para que os resultados de \citeonline{hultborn79} possam ser
 reproduzidos, 
@@ -399,7 +399,15 @@ Sendo assim, optou-se por não utilizar esse mecanismo de depressão
 sináptica no modelo. Isso implica que em simulações que envolvam
 uma parte transiente da resposta da CR, como algumas realizadas na
 seção \ref{sec:danger}, é de se esperar que a inibição recorrente 
-seja maior, mesmo que por um breve período.
+seja maior, mesmo que por um breve período. Essa consideração é
+condizente com investigações experimentais realizadas por
+Sawicki\footnote{SAWICKI, P. \textbf{Dynamisches Verhalten der rekurrenten
+Hemmung monosynaptischer Reflexe}. Dissertação. Alemanha:
+Universidade de Düsseldorf, 1984.}
+(1984, apud \citeauthor{windhorst90}, 1982, p. 154). Além disso,
+nota-se que as CRs não apresentam \textit{overshoot} para
+entradas com pequenas variações (círculos na Figura \ref{fig:met_dyn}),
+como é o caso das usadas nas seções \ref{sec:danger} e \ref{sec:distort}.
 
 Vale citar um estudo recente mostrando que, para baixas frequências
 de estimulação, essa depressão quase não altera as correntes 
