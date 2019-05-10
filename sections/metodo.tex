@@ -34,21 +34,22 @@ As computações das unidades
 motoras serão divididas igualmente entre os processos criados, 
 enquanto que a \textit{task} de cálculo da força deve ocupar sozinha um único
 processo. Os parâmetros que serão usados para analisar a qualidade do programa
-paralelo são o \textit{speed up} (ou aceleração), calculado pela equação
+paralelo são o \textit{Speedup} (ou aceleração, em português) \speedUp,
+calculado pela equação
 
 \begin{equation}
-    S = \frac{t_s}{t_p},
+    \speedUp = \frac{\tempSer}{\tempPar},
 \label{eq:speedup}
 \end{equation}
 
-em que $t_s$ e $t_p$ são o tempo de execução serial e paralelo, respectivamente,
-e a eficiência, calculada por
+em que $t_s$ e $t_p$ são o tempo de execução serial e paralelo,
+respectivamente, e a eficiência \Eff, calculada por
 
 \begin{equation}
-    E = \frac{t_s}{N t_p},
+    E = \frac{t_s}{N_{proc}t_p},
 \end{equation}
 
-sendo $N$ o número de processadores utilizados.
+sendo \numProc o número de processadores utilizados \cite{grama03}.
 
 Os valores de $t_s$ e $t_p$ são obtidos a partir da média de 10 simulações com
 400 unidades motoras e duração de 0.5 segundos.
@@ -60,8 +61,8 @@ realizar cálculos sobre os potenciais de membrana. O objetivo é criar uma
 matriz maior que contenha cada uma dessas matrizes menores, de forma que o 
 processo de vetorização possa trazer otimizações. Isso será realizado para 
 todos os MNs, INs e algumas outras variáveis envolvidas no cálculo do potencial
-de membrana. A implementação antiga das matrizes será identificada como $G_c$ e
-a nova proposta, como $G_g$.
+de membrana. A implementação antiga das matrizes será identificada como \Ga e
+a nova proposta, como \Gn.
 
 Nessa parte será utilizado um sistema operacional Linux
 64 bits com oito processadores Intel Core i7-2600 a 3.40 GHz e 7.8 GB de RAM.
@@ -132,7 +133,7 @@ dados experimentais utilizados e suas referências são apresentados
 na Tabela \ref{tab:met_MNparams}.
 
 \begin{table}[ht!]
-\caption{Dados experimentais de unidades motoras utilizados na parametrização dos MNs. Os valores,
+\caption[Dados experimentais de unidades motoras utilizados na parametrização dos MNs.]{Dados experimentais de unidades motoras utilizados na parametrização dos MNs. Os valores,
     fornecidos na forma de intervalos, foram distribuídos linearmente pelo núcleo motor de acordo
     com os tamanhos dos MNs. Referências: (a) \citeonline{mrowczynski06}, (b) \citeonline{burke71}
     e (c) \citeonline{zengel85}.}
@@ -203,7 +204,7 @@ foram baseadas nas seguintes referências:
     \item \citeonline{walmsley81}: Foi mostrado que CRs disparam
         espontaneamente a uma taxa de 7 pps.
     \item \citeonline{hultborn79}: Relações de frequência de disparo
-        \textit{versus} corrente injetada (FxI) foram obtidas para 
+        \textit{versus} corrente injetada ($\freq\times\iinj$) foram obtidas para 
         diferentes correntes, como visto na Figura
         \ref{fig:HP79}\subref{fig:fxiRC}. Nessas curvas, informações sobre
         a forma como a CR se adapta a uma dada corrente e a intensidade 
@@ -251,12 +252,12 @@ baixo limiar \cite{uchiyama03a}, mas não existem estudos quantitativos
 especificamente sobre esse parâmetro. O valor do limiar foi calculado como
 
 \begin{equation}
-V_{l}=\frac{I_rR_m}{a}
+\thresh=\frac{\rheo R_m}{\supArea}
 \label{eq:vth}
 \end{equation}
 
 com $V_l$ sendo a tensão de limiar, $I_r$ a corrente de reobase e $a$ a 
-área superficial total \cite{cisi07}. Para calcular o comprimento $l$ de um
+área superficial total \cite{cisi07}. Para calcular o comprimento \length de um
 único compartimento, por sua vez, foi usada a expressão
 
 \begin{equation}
@@ -264,11 +265,11 @@ com $V_l$ sendo a tensão de limiar, $I_r$ a corrente de reobase e $a$ a
     \label{eq:area}
 \end{equation}
 
-sendo $d$ o diâmetro da CR \cite{sterratt11}.
+sendo \diam o diâmetro da CR \cite{sterratt11}.
 
 A partir de então, simulações foram realizadas com diferentes valores de
 variáveis de transição e densidade das condutâncias iônicas de uma única CR
-para se encontrar resultados de AHP e curva FxI apropriados. As correntes
+para se encontrar resultados de AHP e curva $F\times I$ apropriados. As correntes
 injetadas em cada caso estiveram de acordo com os dados mostrados na Figura
 \ref{fig:HP79}. Por fim, para obter uma taxa de disparos espontâneos de 7 pps,
 foi necessário alterar o valor da condutância máxima do ruído agindo sobre
@@ -284,7 +285,7 @@ tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
         as resistências de entrada dos MNs em cada tipo.
     \item \citeonline{fyffe91}: Conexões sinápticas identificadas como
         provenientes de CRs foram todas localizadas nos dendritos de MNs
-        do tipo $\alpha$.
+        do tipo alfa.
     \item \citeonline{uchiyama03a}: Baseado em dados fisiológicos
         \cite{friedman81,hultborn88b,vankeulen79}, um procedimento para
         estimar PIPS nos MNs de um núcleo motor foi adotado, tendo os 
@@ -361,7 +362,7 @@ O número
 de botões sinápticos de cada tipo de MN nas CRs foi implementado como valores
 de condutância seguindo uma proporção de 1:0.55:0.45 (FF:FR:S). Isso
 permitiu que apenas a condutância máxima dos MNs do tipo FF
-($g_{max_{FF}}$) fosse parametrizado, sendo as outras ajustadas
+\gmaxff fosse parametrizado, sendo as outras ajustadas
 de acordo com a proporção.
 
 \subsubsection{Dinâmica e depressão sináptica}
@@ -695,7 +696,7 @@ inalteradas foi considerada.
 A densidade espectral de potência da força muscular foi estimada por
 meio do método de 
 Welch \cite{bendat11} com 5 janelas de Hann com 50\% de sobreposição.
-A coerência entre o EMG e o potencial de membrana do dendrito do MN de
+A coerência entre o sinal de EMG e o potencial de membrana do dendrito do MN de
 índice 1, tomado como representativo da atividade neural descendente
 oriunda do encéfalo, foi estimada
 da mesma forma, mas com 33 janelas. O MN em questão recebia apenas
@@ -804,4 +805,41 @@ em que $0\le\chi^2\le 1$. Sendo assim, valores mais próximos de 1 indicam
 uma atividade mais sincronizada do núcleo motor.
 
 \subsection{Distorções na saída do núcleo motor}
-\section{Estudos sobre a conectividade do circuito de inibição recorrente}
+As entradas sinápticas utilizadas nas simulações descritas aqui
+foram: Fibras descendentes com taxas de disparos moduladas por 3 senoides e 
+um determinado valor médio agindo sob o núcleo motor e ruídos independentes
+agindo sob cada MN. As senoides usadas para a modulação tiveram frequências
+de 0.5, 1 e 2.5 Hz, tendo amplitudes de 10, 5 e 2.5 Hz, respectivamente. O
+ruído, por sua vez, tiveram condutância sináptica máxima de 12 $\mu$S e 
+e taxa de disparos de 50/s.
+
+As simulações envolveram
+situações com e sem inibição recorrente. O valor médio da taxa de disparo
+das fibras descendentes na ausência das CRs foi ajustado para recrutar
+cerca de 130 MNs. Em simulações com CRs, o valor médio foi aumentado para
+que fossem geradas forças dentro de uma faixa de 10 \% em torno da força
+gerada na situação anterior. Dessa forma, os valores utilizados foram de
+300 e 438 Hz.
+
+A duração das simulações foi de 10 s, sendo que os primeiros 2 s dos
+sinais gerados foram retirados das análises subsequentes para eliminar 
+possíveis respostas transitórias. A representação no domínio da frequência
+da força muscular resultante foi obtida por meio da transformada de Fourier. 
+Denominando \Bi como o pico do módulo da resposta em frequência em
+0.5 ($i=1$), 1 ($i=2$) e 2.5 ($i=3$) Hz e \Bj como o das outras frequências,
+os seguintes quantificadores foram calculados:
+
+\begin{equation}
+    \frac{B_1}{B_2}
+    \label{eq:b1b2}
+\end{equation}
+
+\begin{equation}
+    \frac{B_1}{B_3}
+    \label{eq:b1b3}
+\end{equation}
+
+\begin{equation}
+    \frac{\sqrt{B_1^2+B_2^2+B_3^2}}{\sqrt{\sum B_j^2}}
+    \label{eq:pbipbni}
+\end{equation}

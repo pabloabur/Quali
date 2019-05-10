@@ -1,9 +1,9 @@
 \chapter{Resultados e discussões}
 \section{Desempenho computacional}
-Na Figura \ref{fig:clustera} são apresentados os valores de \textit{speed up} das
+Na Figura \ref{fig:clustera} são apresentados os valores de \textit{Speedup} das
 simulações com diferentes números de processadores. Como se pode perceber, foi 
 possível alcançar uma diminuição no tempo de execução com as simulações feitas em
-paralelo, de forma que os valores de \textit{speed up} aumentam de forma linear,
+paralelo, de forma que os valores de \textit{Speedup} aumentam de forma linear,
 aproximadamente. Na Figura \ref{fig:clusterb}, por sua vez, são apresentados os valores das
 eficiências calculadas. Esses valores são
 bem próximos para 2, 4 e 8 processos, mas uma queda começa a se tornar visível em
@@ -22,7 +22,7 @@ acentue.
         \includegraphics[scale=0.3]{efs}
     }
     \caption[Resultados de aceleração e eficiência em função do número de processadores]{
-        \subref{fig:clustera} Os círculos representam o \textit{speed up} obtido para cada
+        \subref{fig:clustera} Os círculos representam o \textit{Speedup} obtido para cada
         número de processador utilizado. A reta em azul mostra uma regressão linear dos
         resultados. \subref{fig:clusterb} eficiência em função do número de processadores.
          }
@@ -31,12 +31,12 @@ acentue.
 Outro resultado sobre desempenho computacional obtido foi o de tempo de
 execução com as matrizes de condutância alteradas no Python. Como mostrado na 
 Tabela \ref{tab:matrixG}, não é observada uma melhora de desempenho quando se 
-usa a $G_g$ para 10 MNs. Entretanto, a medida em que se aumentam
+usa a \Gn para 10 MNs. Entretanto, a medida em que se aumentam
 o número de elementos neuronais para 50, 100 e 400 MNs, esta implementação
 apresenta uma diminuição do tempo de execução de aproximadamente 23\%, 29\% e
-26\% em relação à $G_c$ com
+26\% em relação à \Ga com
 10, 50, 100 e 400 MNs, respectivamente. Isso sugere que as otimizações trazidas
-por essa estratégia só são vantajosas para simulações que envolvam $G_g$
+por essa estratégia só são vantajosas para simulações que envolvam \Gn
 relativamente grandes. Como essas matrizes são esparsas, algoritmos que se
 aproveitam dessa estrutura podem ser usados para reduzir ainda mais o tempo de
 simulação.
@@ -48,15 +48,15 @@ simulação.
 \centering
     \begin{tabular}{ccccc}\hline 
         & 10 MNs & 50 MNs & 100 MNs & 400 MNs \\ \hline 
-        $G_c$ & 5.21 s & 21.22 s & 42.34 s & 170.97 s \\ 
-        $G_g$ & 5.63 s & 16.50 s & 30.01 s & 125.31 s \\ 
+        \Ga & 5.21 s & 21.22 s & 42.34 s & 170.97 s \\ 
+        \Gn & 5.63 s & 16.50 s & 30.01 s & 125.31 s \\ 
 	\hline
     \end{tabular}
 \end{table}
 
 Os resultados mostrados anteriormente são positivos, mas possuem muitas
 limitações. Em primeiro lugar, apesar das melhoras obtidas com a matriz
-$G_g$, a diferença de tempo de execução entre as versões Java e Python
+\Gn, a diferença de tempo de execução entre as versões Java e Python
 ainda são muito grandes e outras soluções precisariam ser exploradas
 para diminuir essa discrepância.
 
@@ -71,7 +71,7 @@ Em um cenário mais realista, como o que está sendo estudado na Figura
 geradas em outro. Por causa da alta complexidade de conexões
 sinapticas, seriam necessárias muitas comunicações entre processos
 e isso poderia causar uma diminuição significativa nos valores de
-\textit{speed up}.
+\textit{Speedup}.
 
 Isso, de qualquer forma, não tira a validade desse resultado, visto
 que existem maneiras de paralelizar simuladores de redes neuronais
@@ -404,10 +404,7 @@ condizente com investigações experimentais realizadas por
 Sawicki\footnote{SAWICKI, P. \textbf{Dynamisches Verhalten der rekurrenten
 Hemmung monosynaptischer Reflexe}. Dissertação. Alemanha:
 Universidade de Düsseldorf, 1984.}
-(1984, apud \citeauthor{windhorst90}, 1982, p. 154). Além disso,
-nota-se que as CRs não apresentam \textit{overshoot} para
-entradas com pequenas variações (círculos na Figura \ref{fig:met_dyn}),
-como é o caso das usadas nas seções \ref{sec:danger} e \ref{sec:distort}.
+(1984, apud \citeauthor{windhorst90}, 1982, p. 154).
 
 Vale citar um estudo recente mostrando que, para baixas frequências
 de estimulação, essa depressão quase não altera as correntes 
