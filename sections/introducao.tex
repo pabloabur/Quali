@@ -110,7 +110,7 @@ liberam o neurotransmissor acetilcolina (ACh). Cada botão é posicionado sobre
 uma região especializado da membrana muscular contendo uma alta densidade de
 receptores de ACh nicotínicos. Como resultado, ACh liberada dos terminais dos
 axônios motores interagem com esses receptores para produzir um
-potencial excitatório pós sináptico (PEPS) \cite{kandel13}. Tal atividade
+potencial excitatório pós-sináptico (PEPS) \cite{kandel13}. Tal atividade
 elétrica, conhecida como potencial de ação de unidades motoras, se
 propaga pelas fibras musculares e dá origem à suas atividades contráteis.
 
@@ -200,7 +200,7 @@ começa e termina no mesmo neurônio: um MN excita uma CR, que por sua vez inibe
 os MNs homônimos. Essa situação, em que um núcleo motor inibe a si mesmo por
 meio de algum IN inibitório, é conhecida como uma inibição recorrente.
 Outros elementos envolvidos nesse esquema também recebem esse termo, como, por
-exemplo, ramos colaterais recorrentes e potencial inibitório pós sináptico
+exemplo, ramos colaterais recorrentes e potencial inibitório pós-sináptico
 (PIPS) recorrente.
 
 \subsection{Origens das entradas das células de renshaw}
@@ -475,9 +475,10 @@ várias outras
 extensões e estudos foram realizados \cite{elias14,watanabe15,watanabe17}.
 
 Muitos dos parâmetros das CRs foram ajustados empiricamente para reproduzir o que é
-mostrado na literatura. Isso resultou em 2 mV de amplitude e 30 ms de duração da pós
-hiperpolarização, taxa de disparo de até 1000 pps por meio de um período
-refratário absoluto de 1 ms \cite{hultborn79}.
+mostrado na literatura. Isso resultou em 2 mV de amplitude e 30 ms de duração da
+hiperpolarização pós-potencial de ação (do inglês
+\textit{afterhyperpolarization}, AHP), taxa de disparo de até 1000 pps
+por meio de um período refratário absoluto de 1 ms \cite{hultborn79}.
 
 As conexões sinápticas no simulador seguiram o modelo cinético de transmissão e 
 ligação de neurotransmissores proposto por \citeonline{destexhe94a}. Esse 
@@ -533,8 +534,8 @@ GitHub em \url{https://github.com/rnwatanabe/projectPR}.
 \label{sec:intro_williams}
 O modelo de \citeonline{williams09} consiste em 377 MNs que recebem entradas do
 córtex motor. A inibição recorrente foi adicionada por meio de 64 CRs com
-modelo semelhante ao de \citeonline{maltenfort98}, de forma que a pós
-hiperpolarização apresentou duração de 36 ms e pico de 2.3 mV.
+modelo semelhante ao de \citeonline{maltenfort98}, de forma que a AHP
+apresentou duração de 36 ms e pico de 2.3 mV.
 
 As entradas sinápticas dos MNs nas CRs produziram PEPS com 7.6 ms de tempo de 
 subida, 50 ms de duração e pico de 0.6 mV, semelhante ao que foi reportado por 
@@ -575,8 +576,7 @@ desse neurônio é acionada e
 inicia uma despolarização lenta. Por outro lado, as
 condutâncias de 
 potássio rápida e lenta causam uma repolarização, sendo que esta
-última tem mais influência sob a pós hiperpolarização (do inglês
-\textit{afterhyperpolarization}, AHP).
+última tem mais influência sob a AHP.
 
 Como o modelo de condutância utilizado é baseado em pulsos \cite{destexhe94a},
 as variáveis de ativação de cada condutância podem ser expressas como 

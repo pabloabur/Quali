@@ -16,5 +16,24 @@
 \printsymline{l}{l}{length}{Comprimento do compartimento}{vi}
 \printsymline{d}{d}{diam}{Diâmetro do compartimento}{vi}
 \printsymline{\bar{g}_{max_{FF}}}{\bar{g}_{max_{FF}}}{gmaxff}{Condutância máxima de um motoneurônio FF}{vi}
+\printsymline{g_{dyn}}{g_{dyn}}{gsyn}{Condutância quando há depressão pós-sináptica}{vi}
+\printsymline{\bar{g}_{max}}{\bar{g}_{max}}{gmax}{Condutância máxima}{vi}
+\printsymline{var}{var}{vari}{Taxa de depressão pós-sináptica}{vi}
+\printsymline{t_d}{t_d}{td}{Instante do último potencial de ação}{vi}
+\printsymline{f_{CR}}{f_{CR}}{fcr}{Taxa média de disparos de um célula de Renshaw em regime estacionário}{vi}
+\printsymline{c}{c}{satConst}{Constante de saturação}{vi}
+\printsymline{f_{AD}}{f_{AD}}{fad}{Frequência do estímulo antidrômico}{vi}
+\printsymline{k}{k}{constSemiSat}{Constante de semissaturação}{vi}
+\printsymline{i}{i}{injCur}{Corrente injetada em função do tempo}{vi}
+\printsymline{FD}{FD}{fd}{Frequência de disparos das fibras descendentes}{vi}
+\printsymline{C_p}{C_p}{cvmPerc}{Valor relativo à uma porcentagem da contração voluntária máxima}{vi}
+\printsymline{N}{N}{numMN}{Número de motoneurônios recrutados}{vi}
+\printsymline{\bar{V}}{\bar{V}}{vMean}{Média do potencial de membrana do soma de motoneurônios}{vi}
+\printsymline{V_i}{V_i}{vInd}{Potencial de membrana do soma de um motoneurônio}{vi}
+\printsymline{\sigma^2}{\sigma^2}{statVar}{Variância}{vi}
+\printsymline{\chi^2}{\chi^2}{syncCoef}{Coeficiente de sincronia}{vi}
+\printsymline{Q_1}{Q_1}{qum}{Quantificador 1}{vi}
 \printsymline{B_i}{B_i}{Bi}{Picos do módulo da resposta em frequência nas harmônicas do sinal}{vi}
+\printsymline{Q_2}{Q_2}{qdois}{Quantificador 2}{vi}
+\printsymline{Q_3}{Q_3}{qtres}{Quantificador 3}{vi}
 \printsymline{B_j}{B_j}{Bj}{Picos diferentes de $B_i$ no espectro do sinal}{vi}

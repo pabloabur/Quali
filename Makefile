@@ -17,3 +17,4 @@ $(thesis).pdf: $(thesis).tex $(texs) $(bibs)
 .PHONY: clean
 clean:
 	latexmk -C
+	rm $(thesis).sy*

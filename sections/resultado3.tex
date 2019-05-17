@@ -817,6 +817,68 @@ recorrente, é importante destacar que experimentos fisiológicos são
 necessários para determinar se a distribuição homogênea desses efeitos
 é de fato apropriada.
 
-\subsection{Distorções}
+\subsection{Distorções introduzidas pelas CRs}
 \label{sec:distort}
-\subsection{Conectividade}
+A relevância da resposta em frequência das CRs nas simulações pode
+ser entendida melhor 
+por meio da comparação dos picos da transformada de Fourier da força.
+As médias dos resultados obtidos das equações (\ref{eq:b1b2}),
+(\ref{eq:b1b3}) e (\ref{eq:pbipbni}) são mostradas na Tabela
+\ref{tab:res_peaks}.
+
+\begin{table}[ht!]
+\caption[Relações entre picos da transformada de Fourier da força.]{Relações
+    entre picos da transformada de Fourier da força sem e com inibição 
+    recorrente.}
+\label{tab:res_peaks}
+\centering
+    \begin{tabular}{c c c}\hline 
+        Quantificador & sem CRs & com CRs \\ \hline 
+        \qum & 2.09 & 2.08 \\
+        \qdois & 6.01 & 5.91 \\
+        \qtres & 0.0020 & 0.0003 \\
+	\hline
+    \end{tabular}
+\end{table}
+
+Foi possível observar que, em média, os quantificadores 
+\qum e \qdois quase não apresentaram diferenças. Isso indica que 
+as CRs pouco influenciam o intervalo espectral estudado. O quantificador
+\qtres, por sua vez, foi cerca de 10 vezes menor com as CRs, sugerindo
+que a adição de inibição recorrente ocasionou no surgimento de componentes
+em frequência espúrias na força muscular. Isso pode ser visualizado na 
+Figura \ref{fig:res_fft}, que mostra que esse fenômeno é mais acentuado 
+nas frequências mais baixas.
+
+\begin{figure}[ht]
+	\center
+    \includegraphics[scale=0.6]{res_fft.eps}
+    \caption[Transformada de Fourier da força muscular.]{
+            Transformada de Fourier da força muscular.}
+	\label{fig:res_fft}
+\end{figure}
+
+Nesse ponto, faz-se necessária uma pequena observação sobre a simulação
+sem inibição recorrente. O sinal de ativação em questão, ou seja,
+$10sen(2\pi0.5)+5sen(2\pi1.0)+2.5sen(2\pi2.5)$, é composto por autofunções
+do sistema linear de segunda ordem criticamente amortecido 
+utilizado para gerar \textit{twitches}. Se o módulo da função 
+resposta em frequência desse sistema de segunda ordem fosse relativamente plano
+para as baixas frequências estudadas, os valores de \qum e \qdois
+estariam perto de 2 e 4, respectivamente. Como visto na primeira coluna 
+da Tabela \ref{tab:res_peaks}, isso foi verdade apenas no caso de \qum.
+
+Na verdade, cada unidade motora está associado a um sistema de segunda
+ordem diferente. A frequência de corte de sua função resposta em
+frequência é proporcional ao tamanho do MN. Sendo assim, o MN de índice
+1, por exemplo, com frequência de corte em 0.9 Hz, causaria um aumento
+considerável em \qum e \qdois.
+
+O valor de \qdois encontrado, entretanto, pode ser explicado pelo fato de que,
+no nível de contração muscular simulado, as unidades motoras maiores
+teriam mais influencia sob a força muscular gerada. Dessa forma,
+uma análise da função resposta em frequência associada ao MN de índice 90
+mostrou que o cálculo de \qdois, nesse caso, resultaria em 6.33, que é
+um valor próximo ao encontrado na primeira coluna da Tabela
+\ref{tab:res_peaks}. De qualquer forma, outros
+estudos são necessários para determinar a relevância dessa diminuição.
