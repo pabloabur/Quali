@@ -1,39 +1,44 @@
-\printsymline{\tau}{\tau}{timeConst}{Constante de tempo}{vi}
-\printsymline{R_m}{R_m}{resMemb}{Resistência específica de membrana}{vi}
-\printsymline{C_m}{C_m}{capMemb}{Capacitância específica de membrana}{vi}
-\printsymline{S}{S}{speedUp}{Speedup}{vi}
-\printsymline{t_s}{t_s}{tempSer}{Tempo de execução serial}{vi}
-\printsymline{t_p}{t_p}{tempPar}{Tempo de execução paralelo}{vi}
-\printsymline{E}{E}{Eff}{Eficiência}{vi}
-\printsymline{N_{proc}}{N_{proc}}{numProc}{Número de processadores}{vi}
-\printsymline{G_a}{G_a}{Ga}{Implementação antiga da matriz de condutância}{vi}
-\printsymline{G_n}{G_n}{Gn}{Implementação nova da matriz de condutância}{vi}
-\printsymline{F}{F}{freq}{Frequência de disparo}{vi}
-\printsymline{I}{I}{iinj}{Corrente injetada}{vi}
-\printsymline{V_l}{V_l}{thresh}{Tensão de limiar da membrana}{vi}
-\printsymline{I_r}{I_r}{rheo}{Corrente de reobase}{vi}
-\printsymline{a}{a}{supArea}{Área superficial total do compartimento}{vi}
-\printsymline{l}{l}{length}{Comprimento do compartimento}{vi}
-\printsymline{d}{d}{diam}{Diâmetro do compartimento}{vi}
-\printsymline{\bar{g}_{max_{FF}}}{\bar{g}_{max_{FF}}}{gmaxff}{Condutância máxima de um motoneurônio FF}{vi}
-\printsymline{g_{dyn}}{g_{dyn}}{gsyn}{Condutância quando há depressão pós-sináptica}{vi}
-\printsymline{\bar{g}_{max}}{\bar{g}_{max}}{gmax}{Condutância máxima}{vi}
-\printsymline{var}{var}{vari}{Taxa de depressão pós-sináptica}{vi}
-\printsymline{t_d}{t_d}{td}{Instante do último potencial de ação}{vi}
-\printsymline{f_{CR}}{f_{CR}}{fcr}{Taxa média de disparos de um célula de Renshaw em regime estacionário}{vi}
-\printsymline{c}{c}{satConst}{Constante de saturação}{vi}
-\printsymline{f_{AD}}{f_{AD}}{fad}{Frequência do estímulo antidrômico}{vi}
-\printsymline{k}{k}{constSemiSat}{Constante de semissaturação}{vi}
-\printsymline{i}{i}{injCur}{Corrente injetada em função do tempo}{vi}
-\printsymline{FD}{FD}{fd}{Frequência de disparos das fibras descendentes}{vi}
-\printsymline{C_p}{C_p}{cvmPerc}{Valor relativo à uma porcentagem da contração voluntária máxima}{vi}
-\printsymline{N}{N}{numMN}{Número de motoneurônios recrutados}{vi}
-\printsymline{\bar{V}}{\bar{V}}{vMean}{Média do potencial de membrana do soma de motoneurônios}{vi}
-\printsymline{V_i}{V_i}{vInd}{Potencial de membrana do soma de um motoneurônio}{vi}
-\printsymline{\sigma^2}{\sigma^2}{statVar}{Variância}{vi}
-\printsymline{\chi^2}{\chi^2}{syncCoef}{Coeficiente de sincronia}{vi}
-\printsymline{Q_1}{Q_1}{qum}{Quantificador 1}{vi}
-\printsymline{B_i}{B_i}{Bi}{Picos do módulo da resposta em frequência nas harmônicas do sinal}{vi}
-\printsymline{Q_2}{Q_2}{qdois}{Quantificador 2}{vi}
-\printsymline{Q_3}{Q_3}{qtres}{Quantificador 3}{vi}
-\printsymline{B_j}{B_j}{Bj}{Picos diferentes de $B_i$ no espectro do sinal}{vi}
+\printsymline{\tau}{\tau}{timeConst}{Constante de tempo}{x}
+\printsymline{R_m}{R_m}{resMemb}{Resistência específica de membrana}{x}
+\printsymline{C_m}{C_m}{capMemb}{Capacitância específica de membrana}{x}
+\printsymline{S}{S}{speedUp}{Speedup}{x}
+\printsymline{t_s}{t_s}{tempSer}{Tempo de execução serial}{x}
+\printsymline{t_p}{t_p}{tempPar}{Tempo de execução paralelo}{x}
+\printsymline{E}{E}{Eff}{Eficiência}{x}
+\printsymline{N_{proc}}{N_{proc}}{numProc}{Número de processadores}{x}
+\printsymline{G_a}{G_a}{Ga}{Implementação antiga da matriz de condutância}{x}
+\printsymline{G_n}{G_n}{Gn}{Implementação nova da matriz de condutância}{x}
+\printsymline{F}{F}{freq}{Frequência de disparo}{x}
+\printsymline{I}{I}{iinj}{Corrente injetada}{x}
+\printsymline{V_l}{V_l}{thresh}{Tensão de limiar da membrana}{x}
+\printsymline{I_r}{I_r}{rheo}{Corrente de reobase}{x}
+\printsymline{a}{a}{supArea}{Área superficial total do compartimento}{x}
+\printsymline{l}{l}{length}{Comprimento do compartimento}{x}
+\printsymline{d}{d}{diam}{Diâmetro do compartimento}{x}
+\printsymline{\bar{g}_{max_{FF}}}{\bar{g}_{max_{FF}}}{gmaxff}{Condutância máxima de um motoneurônio FF}{x}
+\printsymline{g_{dyn}}{g_{dyn}}{gsyn}{Condutância quando há depressão pós-sináptica}{x}
+\printsymline{\bar{g}_{max}}{\bar{g}_{max}}{gmax}{Condutância máxima}{x}
+\printsymline{var}{var}{vari}{Taxa de depressão pós-sináptica}{x}
+\printsymline{\tau_d}{\tau_d}{taud}{Constante de tempo da depressão pós-sináptica}{x}
+\printsymline{t_d}{t_d}{td}{Instante do último potencial de ação}{x}
+\printsymline{f_{CR}}{f_{CR}}{fcr}{Taxa média de disparos de um célula de Renshaw em regime estacionário}{x}
+\printsymline{c}{c}{satConst}{Constante de saturação}{x}
+\printsymline{f_{AD}}{f_{AD}}{fad}{Frequência do estímulo antidrômico}{x}
+\printsymline{k}{k}{constSemiSat}{Constante de semissaturação}{x}
+\printsymline{i}{i}{injCur}{Corrente injetada em função do tempo}{x}
+\printsymline{FD}{FD}{fd}{Frequência de disparos das fibras descendentes}{x}
+\printsymline{C_p}{C_p}{cvmPerc}{Valor relativo à uma porcentagem da contração voluntária máxima}{x}
+\printsymline{N}{N}{numMN}{Número de motoneurônios recrutados}{x}
+\printsymline{\bar{V}}{\bar{V}}{vMean}{Média do potencial de membrana do soma de motoneurônios}{x}
+\printsymline{V_i}{V_i}{vInd}{Potencial de membrana do soma de um motoneurônio}{x}
+\printsymline{\sigma^2}{\sigma^2}{statVar}{Variância}{x}
+\printsymline{\chi^2}{\chi^2}{syncCoef}{Coeficiente de sincronia}{x}
+\printsymline{Q_1}{Q_1}{qum}{Quantificador 1}{x}
+\printsymline{B_i}{B_i}{Bi}{Picos do módulo da resposta em frequência nas harmônicas do sinal}{x}
+\printsymline{Q_2}{Q_2}{qdois}{Quantificador 2}{x}
+\printsymline{Q_3}{Q_3}{qtres}{Quantificador 3}{x}
+\printsymline{B_j}{B_j}{Bj}{Picos diferentes de $B_i$ no espectro do sinal}{x}
+\printsymline{R_i}{R_i}{ri}{Resistência de entrada}{x}
+\printsymline{\alpha_Q}{\alpha_Q}{alphaq}{Variável de transição de estados relacionada com a abertura dos canais de potássio lento}{x}
+\printsymline{\beta_Q}{\beta_Q}{betaq}{Variável de transição de estados relacionada com o fechamento dos canais de potássio lento}{x}
+\printsymline{q(t)}{q(t)}{qt}{Variável de ativação dos canais de potássio lento}{x}

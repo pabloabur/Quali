@@ -407,12 +407,12 @@ as referências utilizadas foram:
 No ReMoto, uma depressão pós sináptica em função do tempo é descrita por
 
 \begin{equation}
-    \gsyn (t)=\gmax-(\gmax-g_{dyn}\vari)e^{-\frac{(\td+t)}{\tau}}
+    \gsyn (t)=\gmax-(\gmax-g_{dyn}\vari)e^{-\frac{(\td+t)}{\tau_d}}
 \end{equation}
 
 sendo $g_{dyn}$ a condutância dinâmica alterada pela depressão
 após um disparo, \gmax a condutância máxima original, \vari o 
-quanto de depressão ocorrerá ($0\le\vari\le 1$), $\tau$ a 
+quanto de depressão ocorrerá ($0\le\vari\le 1$), \taud a 
 constante de tempo e $t_d$ o instante do último disparo.
 
 As simulações para ambas características foram feitas com uma 
@@ -815,28 +815,30 @@ em que $0\le\chi^2\le 1$. Sendo assim, valores mais próximos de 1 indicam
 uma atividade mais sincronizada do núcleo motor.
 
 \subsection{Distorções na saída do núcleo motor}
-Nas simulações descritas aqui, as entradas sinápticas agindo sob o
-núcleo motor foram: Fibras descendentes com taxas de disparos com determinado
+Nas simulações descritas aqui, as entradas sinápticas agindo sobre o
+núcleo motor foram: fibras descendentes com taxas de disparos com determinado
 valor médio e moduladas por 3 senoides; ruídos independentes
 agindo sob cada MN. As senoides usadas para a modulação tiveram frequências
-de 0.5, 1 e 2.5 Hz, tendo amplitudes de 10, 5 e 2.5 Hz, respectivamente. O
-ruído, por sua vez, tiveram condutância sináptica máxima de 12 $\mu$S e 
-e taxa de disparos de 50/s.
+de 0.5, 1 e 2.5 Hz, tendo amplitudes de 10, 5 e 2.5 Hz, respectivamente.
+Por sua vez, os
+ruídos, gerados por processos Poisson, tiveram condutância sináptica
+máxima de 12 $\mu$S e taxa de disparos de 50/s.
 
 As simulações envolveram
 situações com e sem inibição recorrente. O valor médio da taxa de disparo
 das fibras descendentes na ausência das CRs foi ajustado para recrutar
 cerca de 130 MNs. Em simulações com CRs, o valor médio foi aumentado para
-que fossem geradas forças dentro de uma faixa de 10 \% em torno da força
+que fossem geradas forças com valor médio dentro de uma faixa de
+10 \% em torno da força média
 gerada na situação anterior. Dessa forma, os valores utilizados foram de
-300 e 438 Hz.
+300 e 438 potenciais de ação por segundo.
 
 No total, foram realizadas 30 simulações com 10 s de duração cada, sendo
 os primeiros 2 s dos
 sinais gerados removidos para eliminar possíveis respostas transitórias
 nas análises subsequentes. A representação no domínio da frequência
 da força muscular resultante foi obtida por meio da transformada de Fourier. 
-Além disso, denominando \Bi como o pico do módulo da resposta em frequência em
+Além disso, denominando \Bi como o pico do módulo do espectro da força em
 0.5 ($i=1$), 1 ($i=2$) e 2.5 ($i=3$) Hz e \Bj como o das outras frequências,
 os seguintes quantificadores foram calculados:
 
@@ -856,8 +858,15 @@ os seguintes quantificadores foram calculados:
 \end{equation}
 
 Nessa última expressão, a somatória foi realizada apenas até as
-componentes em frequência de 6 Hz. Para representar o sinal que é 
-entregue aos músculos pelos MNs recrutados, foi utilizado um trem de disparos
-cumulativo (CST, do inglês \textit{cumulative spike train}) filtrado
+componentes em frequência de 6 Hz. Nota-se que na entrada as relações de
+amplitude entre a segunda harmônica e a fundamental é igual a 2 e 
+entre a quinta harmônica e a fundamental é 4.
+
+Para representar o sinal de ativação dos
+músculos pelos MNs recrutados, foi utilizado um trem de disparos
+cumulativo (CST, do inglês \textit{cumulative spike train})
+em que os instantes de disparos de 5 MNs foram utilizados para formar
+um novo trem de disparos que espelha a contribuição total e temporal
+do conjunto de MNs selecionados. O CST foi filtrado
 por um filtro passa-baixas de quarta ordem, do tipo \textit{Butterworth} e
 com frequência de corte de 10 Hz.

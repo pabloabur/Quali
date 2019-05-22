@@ -14,9 +14,9 @@ os MNs são recrutados de forma ordenada, ou seja, do menor para o maior.
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.6]{recruitCxO.eps}
-    \caption[Momentos de disparo dos somas de todos os motoneurônios simulados
+    \caption[Instantes de disparo dos somas de todos os motoneurônios simulados
              com uma corrente injetada.]{
-             Momentos de disparo dos somas de todos os motoneurônios simulados
+             Instantes de disparo dos somas de todos os motoneurônios simulados
              com uma corrente injetada.
              O eixo das ordenadas representa os índices dos motoneurônios, 
              que são diretamente proporcionais ao tamanho dos mesmos, e o
@@ -817,11 +817,10 @@ recorrente, é importante destacar que experimentos fisiológicos são
 necessários para determinar se a distribuição homogênea desses efeitos
 é de fato apropriada.
 
-\subsection{Distorções introduzidas pelas CRs}
+\subsection{Distorções e controle da força}
 \label{sec:distort}
-A relevância da resposta em frequência das CRs nas simulações pode
-ser entendida melhor 
-por meio da comparação dos picos da transformada de Fourier da força.
+Eventuais distorções introduzidas pelas CRs podem ser entendidas melhor 
+por meio da análise dos picos da transformada de Fourier da força.
 As médias dos resultados obtidos das equações (\ref{eq:b1b2}),
 (\ref{eq:b1b3}) e (\ref{eq:pbipbni}) são mostradas na Tabela
 \ref{tab:res_peaks}.
@@ -842,13 +841,19 @@ As médias dos resultados obtidos das equações (\ref{eq:b1b2}),
 \end{table}
 
 Foi possível observar que, em média, os quantificadores 
-\qum e \qdois quase não apresentaram diferenças. Isso indica que 
-as CRs pouco influenciam o intervalo espectral estudado. O quantificador
-\qtres, por sua vez, foi cerca de 10 vezes menor com as CRs, sugerindo
-que a adição de inibição recorrente ocasionou no surgimento de componentes
-em frequência espúrias na força muscular. Isso pode ser visualizado na 
-Figura \ref{fig:res_fft}, que mostra que esse fenômeno é mais acentuado 
-nas frequências mais baixas.
+\qum e \qdois quase não apresentaram diferenças quando a inibição
+recorrente foi adicionada. Isso indica que 
+as CRs pouco influenciam o espectro da força no intervalo espectral
+estudado. Entretanto,a
+pequena diminuição no quantificador \qdois pode significar uma
+tendência das CRs a agirem como um filtro passa-baixas.
+
+Por sua vez, o quantificador
+\qtres foi cerca de 10 vezes menor com as CRs, sugerindo
+que a adição de inibição recorrente ocasionou o surgimento de componentes
+em frequências espúrias na força muscular. Isso pode ser visualizado na 
+Figura \ref{fig:res_fft}, que mostra que esse fenômeno é mais relevante 
+nas frequências menores que a primeira harmônica.
 
 \begin{figure}[ht]
 	\center
@@ -860,25 +865,154 @@ nas frequências mais baixas.
 
 Nesse ponto, faz-se necessária uma pequena observação sobre a simulação
 sem inibição recorrente. O sinal de ativação em questão, ou seja,
-$10sen(2\pi0.5)+5sen(2\pi1.0)+2.5sen(2\pi2.5)$, é composto por autofunções
+$10sen(2\pi0.5t)+5sen(2\pi1.0t)+2.5sen(2\pi2.5t)$, é composto por autofunções
 do sistema linear de segunda ordem criticamente amortecido 
 utilizado para gerar \textit{twitches}. Se o módulo da função 
 resposta em frequência desse sistema de segunda ordem fosse relativamente plano
 para as baixas frequências estudadas, os valores de \qum e \qdois
 estariam perto de 2 e 4, respectivamente. Como visto na primeira coluna 
-da Tabela \ref{tab:res_peaks}, isso foi verdade apenas no caso de \qum.
+da Tabela \ref{tab:res_peaks}, isso foi verdade apenas no caso de $Q_1$.
 
-Na verdade, cada unidade motora está associado a um sistema de segunda
-ordem diferente. A frequência de corte de sua função resposta em
-frequência é proporcional ao tamanho do MN. Sendo assim, o MN de índice
+Na verdade, cada unidade motora está associada a um sistema de segunda
+ordem diferente, de forma que a frequência de corte de uma função resposta em
+frequência é proporcional ao tamanho de um MN. Sendo assim, o MN de índice
 1, por exemplo, com frequência de corte em 0.9 Hz, causaria um aumento
-considerável em \qum e \qdois.
+considerável em \qum e $Q_2$.
 
 O valor de \qdois encontrado, entretanto, pode ser explicado pelo fato de que,
 no nível de contração muscular simulado, as unidades motoras maiores
-teriam mais influencia sob a força muscular gerada. Dessa forma,
+teriam mais influencia sobre a força muscular gerada. Dessa forma,
 uma análise da função resposta em frequência associada ao MN de índice 90
 mostrou que o cálculo de \qdois, nesse caso, resultaria em 6.33, que é
 um valor próximo ao encontrado na primeira coluna da Tabela
 \ref{tab:res_peaks}. De qualquer forma, outros
 estudos são necessários para determinar a relevância dessa diminuição.
+
+Os resultados da Figura \ref{fig:res_mncst} mostram CSTs de 5 MNs.
+Para facilitar a comparação com a entrada fornecida pelas fibras
+descendentes (em cinza claro), ambos sinais tiveram suas respectivas 
+médias subtraídas e, em seguida, foram divididos por seus respectivos
+valores máximos.
+
+Foi possível notar que a adição da inibição recorrente,
+como mostrado na Figura \ref{fig:res_mncst}\subref{fig:res_csts7},
+resultou em algo mais ruidoso quando comparado com a situação sem CRs 
+da Figura \ref{fig:res_mncst}\subref{fig:res_csto7}. Uma 
+conclusão semelhante pode ser tirada quando MNs maiores são simulados,
+como visto na Figura \ref{fig:res_mncst}\subref{fig:res_csto97} e 
+\subref{fig:res_csts97}. Contudo, nesse caso observou-se que o
+CST desses MNs (Figura \ref{fig:res_mncst}\subref{fig:res_csts97})
+não representa tão bem a entrada comum quanto o
+dos MNs menores (Figura \ref{fig:res_mncst}\subref{fig:res_csts7}).
+Para investigar a causa disso, o CST das CRs também foi computado.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:res_csto7}
+        \includegraphics[scale=0.4]{res_csto7.eps}
+    }
+    \subfloat[][]{
+        \label{fig:res_csts7}
+        \includegraphics[scale=0.4]{res_csts7.eps}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:res_csto97}
+        \includegraphics[scale=0.4]{res_csto97.eps}
+    }
+    \subfloat[][]{
+        \label{fig:res_csts97}
+        \includegraphics[scale=0.4]{res_csts97.eps}
+    }
+    \caption[CSTs filtrados e normalizados de MNs.]{CSTs filtrados e
+             normalizados de MNs. Primeira coluna
+             mostra resultados sem CRs, enquanto que segunda coluna mostra
+             resultados com CRs. Em \subref{fig:res_csto7} e
+             \subref{fig:res_csts7}, CST foi computado por meio de MNs
+             de índices 5 até 9. Em \subref{fig:res_csto97} e
+             \subref{fig:res_csts97}, foram utilizados MNs 95 até 99.
+             Curva em cinza claro mostra o formato da entrada fornecida
+             pelas fibras descendentes, também normalizadas.
+             }
+	\label{fig:res_mncst}
+\end{figure}
+
+A média dos CSTs das 5 CRs mais próximas dos MNs de índices 7 e 
+184 foram próximas (0.046 e 0.045, respectivamente), sugerindo que
+o comportamento observado na Figura
+\ref{fig:res_mncst}\subref{fig:res_csts97} não foi ocasionado por isso.
+Por outro lado, tais CSTs são diferentes, como visto na Figura
+\ref{fig:res_rccst}. CRs próximas a MNs menores não tiveram CSTs
+(Figura \ref{fig:res_rccst}\subref{fig:res_cstrc7}) tão parecidos
+com a entrada comum quanto CSTs de CRs próximas a MNs maiores
+(Figura \ref{fig:res_rccst}\subref{fig:res_cstrc97}).
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:res_cstrc7}
+        \includegraphics[scale=0.4]{res_cstrc7.eps}
+    }
+    \subfloat[][]{
+        \label{fig:res_cstrc97}
+        \includegraphics[scale=0.4]{res_cstrc97.eps}
+    }
+    \caption[CSTs filtrados e normalizados de CRs.]{
+             CSTs filtrados e normalizados de CRs.
+             \subref{fig:res_cstrc7} CSTs das 5 CRs mais próximas ao MN de
+             índice 7.
+             \subref{fig:res_cstrc97} CSTs das 5 CRs mais próximas ao MN de
+             índice 92.
+             .
+             }
+	\label{fig:res_rccst}
+\end{figure}
+
+Uma possível explicação para as diferenças observadas na Figura
+\ref{fig:res_rccst} pode ser a saturação
+das respostas dos MNs menores, já que, nesse caso, esses dispararam
+a uma taxa relativamente alta de 110 pps. Outra possibilidade seria
+a força sináptica
+excitatória de MNs maiores sobre as CRs ser maior do que a de MNs menores
+\cite{hultborn88a,cullheim78}. Como os MNs do tipo S do
+modelo não são eficientes em ativar CRs (vide
+Figura \ref{fig:mchammamplitude}), é de se esperar que essas
+não apresentem saídas parecidas com suas entradas se alguns desses MNs
+não dispararem simultaneamente. Por outro lado, essa condição não
+seria tão importante 
+no caso dos MNs do tipo FR pois a força sináptica de suas conexões
+com as CRs são mais elevadas.
+
+De qualquer forma, os resultados da Figura \ref{fig:res_rccst} sugerem
+que, em alguns casos, a atividade das CRs pode não ser apropriada
+para representar uma predição \cite{brownstone15}
+ou mudanças da ativação muscular \cite{loeb90}.
+
+Por fim, vale notar um resultado apresentado na Figura
+\ref{fig:res_cstrec}. Nessa, observou-se que houve um aumento
+no número de MNs recrutados quando as CRs foram adicionadas 
+(com um simultâneo aumento na taxa média dos comandos
+descendentes). Uma explicação para esse resultado é que 
+com as CRs há uma diminuição na taxa de disparos dos MNs recrutados 
+(vide Figura \ref{fig:onion}) e para que a força gerada seja a mesma
+em média, novos MNs tiveram que ser recrutados.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:res_cstreco}
+        \includegraphics[scale=0.4]{res_cstreco.eps}
+    }
+    \subfloat[][]{
+        \label{fig:res_cstrecs}
+        \includegraphics[scale=0.4]{res_cstrecs.eps}
+    }
+    \caption[Instantes de disparo dos somas do MNs simulados com
+             a entrada utilizada nessa seção.]{Instantes de disparo dos
+             somas do MNs simulados com a entrada utilizada nessa seção.
+             \subref{fig:res_cstreco} Sem CRs.
+             \subref{fig:res_cstrecs} Com CRs.
+             }
+	\label{fig:res_cstrec}
+\end{figure}

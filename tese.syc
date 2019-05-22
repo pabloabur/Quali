@@ -19,6 +19,7 @@
 \newcommand{\gsyninclude}{yes}
 \newcommand{\gmaxinclude}{yes}
 \newcommand{\variinclude}{yes}
+\newcommand{\taudinclude}{yes}
 \newcommand{\tdinclude}{yes}
 \newcommand{\fcrinclude}{yes}
 \newcommand{\satConstinclude}{yes}
@@ -37,3 +38,7 @@
 \newcommand{\qdoisinclude}{yes}
 \newcommand{\qtresinclude}{yes}
 \newcommand{\Bjinclude}{yes}
+\newcommand{\riinclude}{yes}
+\newcommand{\alphaqinclude}{yes}
+\newcommand{\betaqinclude}{yes}
+\newcommand{\qtinclude}{yes}

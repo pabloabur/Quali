@@ -71,7 +71,7 @@ def singleTrial(subTrial):
         mnSpikes, rcSpikes = [], []
 
         # MN CST
-        for i in range(5, 35, 1):
+        for i in range(5, 10):
             auxSpks = [y for x, y in enumerate(spikeTimes) if spikeUnits[x]==i]
             mnSpikes = np.append(mnSpikes, auxSpks, axis=0)
         mnSpikes = np.sort(mnSpikes)
@@ -79,7 +79,7 @@ def singleTrial(subTrial):
             idx = int(round(instant/dt))
             mnSpkTrain[idx] = mnSpkTrain[idx] + 1
         # RC CST
-        for i in range(10, 70, 1):
+        for i in range(192, 197):
             auxSpks = [y for x, y in enumerate(inSpikeTimes) if inSpikeUnits[x]==i]
             rcSpikes = np.append(rcSpikes, auxSpks, axis=0)
         rcSpikes = np.sort(rcSpikes)
@@ -88,13 +88,13 @@ def singleTrial(subTrial):
             rcSpkTrain[idx] = rcSpkTrain[idx] + 1
 
         # Relevant plots
-        #plt.figure()
-        #plt.plot(spikeTimes, spikeUnits, '.')
-        #plt.title(simType)
-        #plt.ylim([0, 150])
-        #plt.xlabel('Tempo (ms)')
-        #plt.ylabel('Índices dos neurônios')
+        plt.figure()
+        plt.plot(spikeTimes, spikeUnits, 'k.')
+        plt.xlabel('Tempo (ms)')
+        plt.ylabel('Índices dos MNs')
+        plt.ylim([0, 150])
         #plt.show()
+        plt.savefig(figsFolder + 'res_cstrec' + simType + '.svg', format='svg')
         #plt.figure()
         #plt.plot(t, force, 'k')
         #plt.title(simType)
@@ -121,19 +121,20 @@ def singleTrial(subTrial):
         #w, h = signal.freqz(b, a, worN=10000)
         #plt.figure()
         #plt.plot(fnyq*w/np.pi, abs(h))
+        #plt.plot(fnyq*w/np.pi, np.angle(h))
         #plt.title('Filter frequency response')
         #plt.xlim([0, 20])
         #plt.show()
         staticForce = [y for x,y in enumerate(force) if t[x]>tmin]
         staticForce = staticForce - np.mean(staticForce)
-        filtForce = signal.filtfilt(b, a, staticForce)
+        filtForce = signal.lfilter(b, a, staticForce)
 
         # Filter to compute CST
         fc = 10
         w = fc/fnyq
         b, a = signal.butter(4, w, 'low')
-        rcCST = signal.filtfilt(b, a, rcSpkTrain)
-        mnCST = signal.filtfilt(b, a, mnSpkTrain)
+        rcCST = signal.lfilter(b, a, rcSpkTrain)
+        mnCST = signal.lfilter(b, a, mnSpkTrain)
 
         staticMN = [y for x,y in enumerate(mnCST) if t[x]>tmin]
         staticMN = staticMN - np.mean(staticMN)
@@ -147,17 +148,20 @@ def singleTrial(subTrial):
         #****************************************
         #******* Compare signals
         #****************************************
-        #plt.figure()
+        plt.figure()
         #plt.plot(taux, np.array(staticForce)/np.max(staticForce), label='raw force')
         #plt.plot(taux, np.array(filtForce)/np.max(filtForce), label='filtered force')
-        #plt.plot(taux, np.array(staticMN)/np.max(staticMN), label='MN CST')
-        #plt.plot(taux, np.array(staticRC)/np.max(staticRC), label='RC CST')
-        #plt.plot(taux, np.array(staticFR)/np.max(staticFR), label='raw input')
-        #plt.legend()
-        #plt.title(simType)
-        #plt.xlabel('t (ms)')
-        #plt.grid()
-        #plt.show()
+        #plt.plot(taux, np.array(staticMN)/np.max(staticMN), 'k', label='MN')
+        if simType=='s': # This if should be in other parts of the code too
+            plt.plot(taux, np.array(staticRC)/np.max(staticRC), 'k', label='RC')
+        plt.plot(taux, np.array(staticFR)/np.max(staticFR), '#D3D3D3', label='Entrada')
+        plt.legend()
+        plt.xlabel('Tempo (ms)')
+        plt.ylabel('CST normalizado')
+        plt.grid()
+        plt.show()
+        # Saved this in a non automatic way
+        #plt.savefig(figsFolder + 'res_cstrc97' + simType + '.svg', format='svg')
 
         #****************************************
         #******* Performing FFT on signals
@@ -230,7 +234,7 @@ def singleTrial(subTrial):
     return out, ff, B1B2, B1B3, PBiPBni
 
 figsFolder = '/home/pablo/git/master-thesis/figuras/'
-subTrials = 30
+subTrials = 1
 ffto = {'o': [[] for i in range(subTrials)], 's': [[] for i in range(subTrials)]}
 b1b2 = {'o': [[] for i in range(subTrials)], 's': [[] for i in range(subTrials)]}
 b1b3 = {'o': [[] for i in range(subTrials)], 's': [[] for i in range(subTrials)]}
@@ -239,7 +243,7 @@ f = []
 
 for subTrial in range(1, subTrials+1):
     print('running subtrial {}'.format(subTrial))
-    auxo, f, auxb1, auxb2, auxp = singleTrial(subTrial)
+    auxo, f, auxb1, auxb2, auxp = singleTrial(subTrial + 9) # 4 used to select trial 5
     for k, val in auxo.items():
         ffto[k][subTrial-1] = val
     for k, val in auxb1.items():
@@ -257,17 +261,19 @@ print('mean q3 without = {:.6f}'.format(np.mean(pbipbni['o'])))
 print('mean q3 with = {:.6f}'.format(np.mean(pbipbni['s'])))
 
 #import pdb; pdb.set_trace()
+# Select indices of selected range (used to save computational efficiency)
+inds = [x for x, y in enumerate(f) if y>=0 and y<8]
 # Use following index to select a plot from a trial
-idx = 5
+idx = 0
 plt.figure()
-plt.plot(f, ffto['o'][idx], 'ko', label='Sem CR')
-plt.vlines(f, 0, ffto['o'][idx], color='k')
-plt.plot(f, ffto['s'][idx], 'rx', label='Com CR')
-plt.vlines(f, 0, ffto['s'][idx], color='r')
-plt.xlabel('frequência (Hz)')
+plt.plot([f[i] for i in inds], [ffto['o'][idx][i] for i in inds], 'ko', label='Sem CR')
+plt.vlines([f[i] for i in inds], 0, [ffto['o'][idx][i] for i in inds], color='k')
+plt.plot([f[i] for i in inds], [ffto['s'][idx][i] for i in inds], 'rx', label='Com CR')
+plt.vlines([f[i] for i in inds], 0, [ffto['s'][idx][i] for i in inds], color='r')
+plt.xlabel('Frequência (Hz)')
 plt.ylabel('Módulo da transformada de fourier da força')
-plt.xlim([0, 7])
 plt.legend()
+plt.xlim([0, 7])
 plt.grid()
-#plt.show()
-plt.savefig(figsFolder + 'res_fft' + '.svg', format='svg')
+plt.show()
+#plt.savefig(figsFolder + 'res_fft' + '.svg', format='svg')

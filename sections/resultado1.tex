@@ -163,16 +163,17 @@ a Equação (\ref{eq:vth}) resulta em $V_l=\text{6.75 }$ mV.
 Além disso,
 considerando $d=27 \mu$m, a Equação (\ref{eq:area}) fornece o valor de
 $l=\text{218.2168 }\mu$m.
-Com os resultados obtidos, a resistência de entrada $R_i=\frac{R_m}{a}$
+Com os resultados obtidos, a resistência de entrada $\ri=\frac{R_m}{a}$
 resultante foi de 13.50 M$\Omega$. Esse valor é condizente com o fato
 de que as CRs são menores do que os menores MNs.
 
-Com esses parâmetros, torna-se possível parametrizar a AHP e a curva FxI.
-As variáveis de transição $\alpha_N$ e $\beta_N$, relacionadas com a
-dinâmica dos canais de potássio rápido, foram aumentadas para evitar
+Com esses parâmetros, torna-se possível parametrizar a AHP e a curva
+$F\times I$.
+As variáveis de transição relacionadas com a
+dinâmica dos canais de potássio rápido foram aumentadas para evitar
 algum tipo de somação de suas correntes. 
 A partir de então, optou-se por utilizar apenas
-os canais de potássio lento, com $\alpha_Q$ e $\beta_Q$,
+os canais de potássio lento, com \alphaq e \betaq,
 para se obter as taxas de disparos e adaptação apropriados.
 
 Considerando uma sequência de potenciais
@@ -180,7 +181,7 @@ de ação, uma diminuição no valor de $\alpha_Q$ faz com que
 a exponencial que dita a velocidade de ativação do canal seja mais lenta.
 Reciprocamente,
 uma diminuição em $\beta_Q$ com o intuito de retardar o fechamento permite que 
-haja uma superposição nos valores da variável de transição $q(t)$,
+haja uma superposição nos valores da variável de transição \qt,
 fazendo com que exista uma corrente iônica
 abaixando o potencial de membrana para o equilíbrio do canal de potássio
 lento (-10 mV). Esse comportamento é mostrada na Figura \ref{fig:qt}. 
@@ -199,13 +200,13 @@ uma adaptação na frequência de disparo das CRs.
 Em uma bateria de simulações,
 os valores de $\alpha_Q$ e $\beta_Q$ foram ajustados com base nas
 considerações do parágrafo anterior até se obter
-uma AHP e uma curva FxI semelhantes à da Figura \ref{fig:HP79}.
+uma AHP e uma curva $F\times I$ semelhantes à da Figura \ref{fig:HP79}.
 Feito isso, a amplitude do AHP foi obtida alterando as densidades
 das condutâncias de potássio rápida e lenta. A diferença
 nos disparos introduzida por isso era verificada e corrigida iterativamente.
 
 Os disparos espontâneos da CR modelada são mostrados na Figura \ref{fig:spont}.
-A curva FxI obtida, por sua vez, é apresentada na Figura
+A curva $F\times I$ obtida, por sua vez, é apresentada na Figura
 \ref{fig:RCfxi}, juntamente com 
 detalhes sobre a AHP, na Figura \ref{fig:RCahp}.
 A saturação observada foi 
@@ -242,7 +243,7 @@ observado foi de -2.4 mV e sua duração foi de aproximadamente 33 ms.
 
 A AHP e o disparo espontâneo foram semelhantes aos dos estudos
 eletrofisiológicos.
-A curva FxI apresentada se aproximou do que foi descrito na literatura, 
+A curva $F\times I$ apresentada se aproximou do que foi descrito na literatura, 
 mas os três primeiros intervalos foram mais rápido do que o esperado,
 especialmente o segundo e o terceiro. A curva do regime estacionário,
 por sua vez, foi similar à experimental. De forma geral, outras
@@ -320,7 +321,7 @@ estiveram, portanto, de acordo com as referências utilizadas.
 
 \subsection{Distribuição e amplitudes da inibição recorrente}
 \label{sec:conn}
-Após uma série de simulações, o valor de $g_{max_{FF}}$ que mostrou os
+Após uma série de simulações, o valor de $\bar{g}_{max_{FF}}$ que mostrou os
 resultados mais apropriados de acordo com a literatura foi 15 nS.
 O efeito da utilização desse parâmetro na distribuição topográfica dos
 PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}.
@@ -354,9 +355,9 @@ Nos resultados aqui obtidos, esta variabilidade não foi observada
 e, por isso, a média de PIPS recorrentes
 para pares de MNs próximos foi maior do que o esperado.
 
-Vale notar que outros valores maiores de $g_{max_{FF}}$ geraram resultados
+Vale notar que outros valores maiores de $\bar{g}_{max_{FF}}$ geraram resultados
 semelhantes, mas com amplitudes máximas e valores médios elevados.
-Menores $g_{max_{FF}}$, por sua vez, fariam com que o efeito 
+Menores $\bar{g}_{max_{FF}}$ por sua vez, fariam com que o efeito 
 das CRs fosse muito baixo. Sendo assim, o valor de condutância adotado
 fornece um equilíbrio razoável dos resultados.
 
@@ -365,7 +366,7 @@ fornece um equilíbrio razoável dos resultados.
 \label{sec:res_dyn}
 Para que os resultados de \citeonline{hultborn79} possam ser
 reproduzidos, 
-valores elevados de $a$ e $tau$, tais como 0.9 e 
+valores elevados de \vari e $\tau_d$, tais como 0.9 e 
 400, respectivamente, foram necessários.
 Isso, entretanto, faz com
 que as características dinâmicas da CR sejam comprometidas, como
