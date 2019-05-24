@@ -2,10 +2,10 @@
 Em todas as simulações descritas a seguir, foi utilizado o método de 
 integração numérica de Runge-Kutta de quarta ordem e com passo de
 integração de 0.05 ms. Os dados obtidos podem ser acessados por meio
-do link: https://dx.doi.org/10.17605/OSF.IO/QNMBH. Os códigos
+do link: \url{https://dx.doi.org/10.17605/OSF.IO/QNMBH}. Os códigos
 desenvolvidos para realizar as simulações e processar os resultados,
 por sua vez, podem ser encontrados no GitHub:
-https://github.com/pabloabur/projectFR/tree/masters.
+\url{https://github.com/pabloabur/projectFR/tree/masters}.
 
 \section{Desempenho computacional}
 Três abordagens distintas serão consideradas nessa parte: A utilização de um 
@@ -95,12 +95,10 @@ Equação (\ref{eq:speedup}), mas usando os tempos de execução das soluções em
 Python e Cython.
 
 \section{Estudo das parametrizações}
-Baseando-se em dados de procedimentos experimentais realizados em gatos
-fornecidos na literatura,
-os modelos de neurônios estudados passaram por etapas de
-parametrização e validação.
-A ideia é que se tenha, ao final desse processo, um modelo
-apropriado para os estudos explicitados nas próximas seções da metodologia.
+Os dados utilizados aqui vêm
+de experimentos realizados em membros inferiores de gatos por que estudos
+experimentais ou computacionais sobre o circuito de inibição recorrente
+em seres humanos são escassos e indiretos.
 
 \subsection{Parametrização do modelo de motoneurônios}
 O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
@@ -512,12 +510,10 @@ foram calculadas como o recíproco do intervalo entre cada potencial de
 ação, em pps.
 
 \section{Efeitos da parametrização em simulações}
-O objetivo desta etapa é entender como o modelo parametrizado se comporta 
-em diferentes situações, algumas das quais se basearam em trabalhos
-experimentais ou em outros computacionais. Dessa forma,
-foram configuradas simulações que eram o mais semelhantes possível a esses 
-trabalhos para que os resultados pudessem ser apropriadamente comparados.
-De formal geral, todas as simulações tiveram
+Nessa seção, as simulações realizadas
+foram configuradas para serem o mais semelhantes possível aos trabalhos
+usados como referência para que os resultados pudessem ser apropriadamente
+comparados. De formal geral, todas as simulações tiveram
 CRs disparando espontaneamente.
 
 \subsection{Disparos de motoneurônios}

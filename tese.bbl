@@ -117,12 +117,6 @@ ISSN 0036-8075, 1095-9203.}
 \emph{Journal of Neurophysiology}, v.~40, n.~3, p. 667--680, maio 1977.
 ISSN 0022-3077, 1522-1598.}
 
-\bibitem[Carnevale e Hines 2006]{carnevale06}
-\abntrefinfo{Carnevale e Hines}{CARNEVALE; HINES}{2006}
-{CARNEVALE, N.~T.; HINES, M.~L. \emph{The {NEURON} {Book}}. 1 edition. ed.
-  Cambridge u.a: Cambridge University Press, 2006.
-ISBN 978-0-521-84321-8.}
-
 \bibitem[Carr et al. 1998]{carr98}
 \abntrefinfo{Carr et al.}{CARR et al.}{1998}
 {CARR, P.~A. et al. Calbindin {D}28k expression in immunohistochemically
@@ -259,12 +253,6 @@ ISSN 0006-8993.}
   \emph{Handbook of {Biological} {Physics}}. [S.l.]: North-Holland, 2001,
   (Neuro-{Informatics} and {Neural} {Modelling}, v.~4). p. 887--968.}
 
-\bibitem[Goodman 2009]{goodman09}
-\abntrefinfo{Goodman}{GOODMAN}{2009}
-{GOODMAN, D. F.~M. The {Brian} simulator.
-\emph{Frontiers in Neuroscience}, v.~3, n.~2, p. 192--197, set. 2009.
-ISSN 16624548, 1662453X.}
-
 \bibitem[Gorelick e Ozsvald 2014]{gorelick14}
 \abntrefinfo{Gorelick e Ozsvald}{GORELICK; OZSVALD}{2014}
 {GORELICK, M.; OZSVALD, I. \emph{High performance {Python}}. First edition.
@@ -323,13 +311,6 @@ ISSN 9780470650714.}
   {CELL} {SIZE} {IN} {SPINAL} {MOTONEURONS}.
 \emph{Journal of Neurophysiology}, v.~28, p. 560--580, maio 1965.
 ISSN 0022-3077.}
-
-\bibitem[Hoang et al. 2013]{hoang13}
-\abntrefinfo{Hoang et al.}{HOANG et al.}{2013}
-{HOANG, R.~V. et al. A novel {CPU}/{GPU} simulation environment for large-scale
-  biologically realistic neural modeling.
-\emph{Frontiers in Neuroinformatics}, v.~7, 2013.
-ISSN 1662-5196.}
 
 \bibitem[Hoffer et al. 1987]{hoffer87}
 \abntrefinfo{Hoffer et al.}{HOFFER et al.}{1987}
@@ -455,13 +436,6 @@ ISSN 0304-3940.}
   intracellular staining with horseradish peroxidase.
 \emph{Brain Research}, v.~167, n.~1, p. 157--162, maio 1979.
 ISSN 0006-8993.}
-
-\bibitem[Kim e Kim 2018]{kim18}
-\abntrefinfo{Kim e Kim}{KIM; KIM}{2018}
-{KIM, H.; KIM, M. {PyMUS}: {Python}-{Based} {Simulation} {Software} for
-  {Virtual} {Experiments} on {Motor} {Unit} {System}.
-\emph{Frontiers in Neuroinformatics}, v.~12, 2018.
-ISSN 1662-5196.}
 
 \bibitem[Koehler e Windhorst 1985]{koehler85}
 \abntrefinfo{Koehler e Windhorst}{KOEHLER; WINDHORST}{1985}
@@ -705,11 +679,6 @@ ISBN 9780198612292.}
   {Neuroscience}}. 1 edition. ed. Cambridge ; New York: Cambridge University
   Press, 2011.
 ISBN 978-0-521-87795-4.}
-
-\bibitem[Thibeault, Hoang e Jr 2011]{thibeault11}
-\abntrefinfo{Thibeault, Hoang e Jr}{THIBEAULT; HOANG; JR}{2011}
-{THIBEAULT, C.~M.; HOANG, R.~V.; JR, F.~C. H. A {Novel} {Multi}-{GPU} {Neural}
-  {Simulator}. In:  \emph{{BICoB}}. [S.l.: s.n.], 2011. p. 146--151.}
 
 \bibitem[Uchiyama, Johansson e Windhorst 2003]{uchiyama03a}
 \abntrefinfo{Uchiyama, Johansson e Windhorst}{UCHIYAMA; JOHANSSON;

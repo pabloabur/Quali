@@ -1,12 +1,4 @@
 \chapter{Introdução}
-O objetivo desse trabalho é estudar as Células de Renshaw e suas funções 
-usando modelos computacionais baseados em dados experimentais. A maioria
-desses dados usados aqui vêm
-de experimentos realizados em membros inferiores de gatos.
-
-As seções a seguir mostram uma breve introdução aos conceitos
-abordados neste trabalho.
-
 \section{O sistema motor}
 O Sistema Nervoso Central (SNC) é composto pelo cérebro e pela 
 medula espinhal. O segundo é subdividido em cervical, torácico,
@@ -526,9 +518,10 @@ Por fim, vale ressaltar que o ReMoto foi disponibilizado com um
 interessado.
 O simulador foi originalmente desenvolvido para ser uma aplicação \textit{web},
 acessada remotamente pelo endereço \url{http://remoto.leb.usp.br}. Atualmente,
-existe
-ainda uma versão em Python do simulador, que pode ser baixada pelo
-GitHub em \url{https://github.com/rnwatanabe/projectPR}.
+existem
+ainda versões em Python e Fortran do simulador, que podem ser baixadas pelo
+GitHub em \url{https://github.com/rnwatanabe/projectPR} e
+\url{https://github.com/rnwatanabe/projectFR}, respectivamente.
 
 \subsection{Williams e Baker}
 \label{sec:intro_williams}
@@ -564,15 +557,25 @@ da inibição recorrente
 ajuda a reduzir oscilações de 10 Hz que são transmitidas por tratos
 corticoespinhais para a medula espinhal e dela para os músculos.
 
-\section{Modelo da Célula de Renshaw}
+\section{Detalhes sobre os modelos de motoneurônios e Células de Renshaw}
+No ReMoto, que é o \textit{software} utilizado para realizar as simulações
+nesse trabalho, a posição de MNs e CRs é determinada de forma a
+representar a distribuição rostro-caudal desses neurônios na medula
+espinhal.
+O modelo de MN é composto por um compartimento representando
+a árvore dendrítica e outro para o soma. As CRs, por
+sua vez, possuem apenas um compartimento para o soma. Esses
+modelos são do tipo \textit{integrate and fire} e contém condutâncias
+sinápticas, de fuga e, no caso do soma, de canais de sódio e
+de potássio \cite{cisi07}.
+
 A constante de tempo de membrana dos modelos aqui utilizados é definida 
 como $\timeConst=\resMemb\capMemb$, sendo $R_m$ e $C_m$ a resistência e capacitância 
 específicas, respectivamente. Essa grandeza expressa, de forma geral, 
 quão rápido é o carregamento ou descarregamento da membrana \cite{sterratt11}.
-
-Quando o potencial de membrana do modelo da CR utilizado
+Quando o potencial de membrana do modelo utilizado
 ultrapassa o limiar de disparo, a condutância de sódio 
-desse neurônio é acionada e
+do neurônio é acionada e
 inicia uma despolarização lenta. Por outro lado, as
 condutâncias de 
 potássio rápida e lenta causam uma repolarização, sendo que esta
@@ -583,114 +586,57 @@ as variáveis de ativação de cada condutância podem ser expressas como
 exponenciais com taxas de crescimento ou decaimento dependendo de variáveis
 de transição.
 
-\section{Comparação das duas versões do ReMoto}
-\subsection{Parametrizações}
-A parametrização original das CRs no simulador ReMoto foi baseada em dados
-fisiológicos obtidos de experimentos em gatos e mostrou uma elevada
-influência destas no comportamento dos MNs. Outra parametrização para as CRs,
-baseada nos trabalhos de \citeonline{williams09}, foi adotada por
-\citeonline{watanabe15}. Esta não leva em consideração as
-diferenças de condutâncias sinápticas de acordo com os tipos de MNs envolvidos 
-e considera que a conectividade entre CRs e MNs são menores, mas seria adequada
-para estudos de níveis de força reduzidos \cite{williams09}.
+\section{Breve histórico do ReMoto}
+\subsection{Versões}
+O ReMoto foi originalmente escrito em Java para facilitar seu o
+desenvolvimento como aplicação \textit{web}, mas seu código se tornou
+demasiadamente complexo, dificultando sua manutenção e a adição de
+novas funcionalidades. Com o intuito de lidar com essas limitações,
+o simulador foi reescrito em Python (R. N. Watanabe, comunicação pessoal).
 
-A parametrização de \citeonline{cisi08}, a partir de agora, será identificada
-como parametrização antiga, enquanto que a de \citeonline{watanabe15},
-como parametrização nova. Seus valores são apresentados na Tabela 
-\ref{tab:params}. Pode-se perceber que a porcentagem de conectividade diminuiu
-drasticamente da parametrização antiga para a nova. Sendo assim, de maneira geral,
-a força de inibição das CRs sobre os MNs foi diminuída.
-
-\begin{table}[ht!]
-\caption{Principais diferenças entre valores conectividade, condutância e
-    morfologia nas parametrizações antiga e nova.}
-\label{tab:params}
-\centering
-    \begin{tabular}{c C{3cm} C{3cm}}\hline 
-	Parâmetro & Parametrização Antiga & Parametrização Nova \\ \hline 
-    Conectividade CR-MN S [\%] & 100 & 4  \\ 
-    Conectividade CR-MN FR [\%] & 100 & 4  \\ 
-    Conectividade CR-MN FF [\%] & 100 & 4  \\ 
-    Conectividade MN S-CR [\%] & 100 & 6  \\ 
-    Conectividade MN FR-CR [\%] & 100 & 6  \\ 
-    Conectividade MN FF-CR [\%] & 100 & 6  \\ 
-    Condutância máxima MN S-CR [nS] & 150 & 150 \\
-    Condutância máxima MN FR-CR [nS] & 170 & 150 \\
-    Condutância máxima MN FF-CR [nS] & 300 & 150 \\
-    Condutância máxima CR-MN S [nS] & 440 & 440 \\
-    Condutância máxima CR-MN FR [nS] & 300 & 440 \\
-    Condutância máxima CR-MN FF [nS] & 240 & 440 \\
-    Resistência específica de membrana da CR [$\Omega\text{cm}^2$] & 200 & 760\\
-    Diâmetro do soma da CR [$\mu\text{m}$] & 65 & 25\\
-    Comprimento do soma da CR [$\mu\text{m}$] & 285 & 242\\
-    Corrente de reobase [nA] & 0.5 & 1.25 a 3.75\\
-	\hline
-    \end{tabular}
-\end{table}
-
-\subsection{Desempenho computacional}
-Uma das maiores vantagens da linguagem de programação Python é a facilidade
+Uma das grandes vantagens da linguagem de programação Python é a facilidade
 de modularização do código sendo desenvolvido. Esse aspecto, quando usado
 apropriadamente, pode ser de grande utilidade para a neurociência computacional,
 pois esta frequentemente envolve processamento de grande volume de dados e
-simulações de sistemas complexos \cite{muller15}.
+simulações de sistemas complexos \cite{muller15}. Além disso, a simplicidade
+da linguagem e a grande disponibilidade de bibliotecas faz com que a
+escrita de códigos em Python seja relativamente rápida.
 
-De fato, a popularidade do Python na neurociência computacional vem crescendo,
-de forma que hoje é possível importar o NEURON, que é uma poderosa ferramenta 
-para realizar simulações de neurônios e redes neuronais \cite{carnevale06},
-para dentro do Python ou até mesmo utilizar outros simuladores escritos nesta
-linguagem, como o Brian \cite{goodman09} ou o PyMUS \cite{kim18}.
+Entretanto, à medida que mais detalhes são adicionados às simulações,
+o tempo de execução se torna maior. Python, nesse
+sentido, possui limitações por causa de suas características de gerenciamento
+de memória, tipagem dinâmica e não ser compilado \cite{gorelick14}. Como
+simulações no ReMoto em geral envolvem uma grande quantidade de neurônios
+e sinapses, o baixo desempenho computacional da versão em Python se tornou
+uma grande desvantagem. Para solucionar esse problema, uma versão em
+Fortran do ReMoto foi desenvolvida por R. N. Watanabe (comunicação pessoal).
 
-Nesse contexto, entretanto, à medida que mais detalhes são adicionados às simulações,
-o tempo de execução se torna maior. Isso pode ser uma fator limitante em
-pesquisas que exigem um alto grau de realismo, de forma que muitos esforços têm
-sido realizados para melhorar esse desempenho computacional de diferentes maneiras
-\cite{morrison05,thibeault11,hoang13}. Python, nesse
-sentido, parece ser uma escolha inapropriada por ser uma linguagem de alto nível
-de abstração e, consequentemente, mais lenta do que outras linguagens como C ou 
-Java, por exemplo. Mais especificamente, suas características de gerenciamento
-de memória, tipagem dinâmica e não ser compilado são um dos
-principais fatores que prejudicam otimizações \cite{gorelick14}.
+Naturalmente, simulações com a versão do ReMoto em Fortran têm um tempo
+de execução significativamente menor do que em Python, fazendo com que
+a transição para a versão em Fortran seja a escolha mais coerente.
+Dentro do contexto da computação científica e análise numérica,
+Fortran é uma linguagem de programação conhecida por seu alto desempenho.
+Essa linguagem foi criada em 1957, mas veio se atualizando ao longo 
+dos anos, de forma que sua versão mais recente possui suporte a
+programação concorrente, operações vetorizadas e orientação a objetos.
 
-Entretanto, existem muitas técnicas, ferramentas e estratégias
-para fazer com que um código escrito em Python seja rápido.
-Uma maneira simples de fazer isso, independente da linguagem de programação,
-é considerando a capacidade de
-vetorização de CPUs, em que uma instrução pode ser executada em
-múltiplos dados dentro de um único ciclo de \textit{clock}. Esta prática,
-possível em Python por meio da biblioteca Numpy,
-pode ser aliada com poucos acessos à memória para atingir algumas otimizações.
-Outra possibilidade é a utilização do Cython, um compilador que
-converte um código Python com sintaxe diferente em um módulo compilado e pode trazer grandes
-diminuições no tempo de execução de programas. Além disso, com bibliotecas 
-apropriadas, é possível rodar códigos em Python em \textit{clusters}, que são 
-basicamente vários computadores interligados entre si. Essa opção exige mais 
-recursos, mas pode trazer melhoras significativas \cite{gorelick14}.
+\subsection{Considerações sobre as parametrizações das CRs}
+A parametrização original das CRs no trabalho de \citeonline{cisi08}
+ocasionou resultados inesperados em alguns casos, como inversão na ordem de
+recrutamento de MNs ou supressão na atividades das CRs. Como isso pode ser
+resultado de uma elevada influência inibitória desses INs, um trabalho
+subsequente envolvendo inibição recorrente foi realizado com
+conectividades entre CRs e MNs reduzidas, diminuindo, assim,
+essa força da inibição \cite{watanabe15}.
 
-O desempenho computacional do simulador estudado aqui, como esperado, também pode
-ser um fator limitante. Na verdade, como a máquina virtual do Java é conhecida por
-suas otimizações, uma comparação entre esta versão e a em Python é inevitável. Sendo
-assim, a Tabela \ref{tab:javaxpython} traz informações sobre o tempo de execução das 
-duas versões para dois tipos de simulação: uma mais simples, com apenas alguns
-MNs e comandos descendentes (Cenário 1); e outra um pouco mais complexa, com a mesma 
-quantidade de MNs e comandos descendentes, mas com algumas CRs (Cenário 2). Cada
-simulação foi 
-executada cinco vezes para que se pudesse obter a média do tempo de execução.
-
-\begin{table}[ht]
-    \caption{Comparação do tempo de execução (em segundos) das duas versões do
-             simulador em dois cenários distintos.}
-\label{tab:javaxpython}
-\centering
-    \begin{tabular}{c C{3cm} C{3cm}}\hline 
-	 & Java & Python \\ \hline 
-	 Cenário 1 & 1 & 38.4 \\ \hline 
-	 Cenário 2 & 1.8 & 70.4 \\
-	\hline
-    \end{tabular}
-\end{table}
-
-A simulação do Cenário 1 consiste em 100 MNs do tipo, 100 axônios descendentes
-com uma média de 3 ms entre seus disparos distribuídos como uma distribuição 
-Poisson, 200 ms de simulação e com passo de integração de 0.05 ms. Já na do 
-Cenário 2, as configurações foram mantidas, mas foram adicionadas 100 CRs.
+Tais comportamentos inesperados ou alterações nos parâmetros
+motivam uma nova avaliação da parametrização como um todo, já que
+uma eventual modificação para corrigir algum problema poderia fazer com
+que outras características do circuito de inibição fossem alteradas, como
+PIPS e PEPS gerados nos neurônios envolvidos. Outra motivação
+vem da falta de dados experimentais sobre as CRs em seres humanos. Como
+a literatura sobre as CRs em gatos é extensa e o objetivo principal do
+trabalho apresentado aqui é o estudo da inibição
+recorrente, é preferível adequar a parametrização dos MNs (originalmente
+feita para reproduzir experimentos fisiológicos em seres humanos) para
+gatos.
