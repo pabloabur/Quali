@@ -1,5 +1,6 @@
 \chapter{Resultados e discussões}
 \section{Desempenho computacional}
+\label{sec:res_perf}
 Na Figura \ref{fig:clustera} são apresentados os valores de \textit{Speedup} das
 simulações com diferentes números de processadores. Como se pode perceber, foi 
 possível alcançar uma diminuição no tempo de execução com as simulações feitas em
@@ -29,7 +30,7 @@ acentue.
 \end{figure}
 
 Outro resultado sobre desempenho computacional obtido foi o de tempo de
-execução com as matrizes de condutância alteradas no Python. Como mostrado na 
+execução com as matrizes de condutância alteradas no código em Python. Como mostrado na 
 Tabela \ref{tab:matrixG}, não é observada uma melhora de desempenho quando se 
 usa a \Gn para 10 MNs. Entretanto, a medida em que se aumentam
 o número de elementos neuronais para 50, 100 e 400 MNs, esta implementação
@@ -54,73 +55,34 @@ simulação.
     \end{tabular}
 \end{table}
 
-Os resultados mostrados anteriormente são positivos, mas possuem muitas
-limitações. Em primeiro lugar, apesar das melhoras obtidas com a matriz
-\Gn, a diferença de tempo de execução entre as versões Java e Python
-ainda são muito grandes e outras soluções precisariam ser exploradas
-para diminuir essa discrepância.
-
-Em segundo lugar, é preciso enfatizar que os MNs das simulações
+Os resultados mostrados anteriormente são positivos, mas possuem 
+limitações. Em primeiro lugar, é preciso enfatizar que os MNs das simulações
 realizadas no \textit{cluster} não recebem nenhuma entrada sináptica
 de INs. A paralelização desse tipo de configuração é
 facilmente obtida e dificilmente apresenta resultados negativos, pois,
 como as unidades motoras são independentes umas das outras, os
-processos podem executar em paralelo sem a necessidade de se comunicar. 
+processos podem executar em paralelo sem a necessidade de se comunicar
+(são os chamados problemas embaraçosamente paralelos). 
 Em um cenário mais realista, como o que está sendo estudado na Figura
 \ref{fig:circuit}, MNs em um processo podem precisar receber informações
 geradas em outro. Por causa da alta complexidade de conexões
-sinapticas, seriam necessárias muitas comunicações entre processos
+sinápticas, seriam necessárias muitas comunicações entre processos
 e isso poderia causar uma diminuição significativa nos valores de
 \textit{Speedup}.
 
 Isso, de qualquer forma, não tira a validade desse resultado, visto
 que existem maneiras de paralelizar simuladores de redes neuronais
-complexas mantendo um bom desempenho computacional \cite{morrison05}.
-Entretanto, pode-se perceber que os resultados obtidos no \textit{cluster},
-em essência, poderiam ser reproduzidos em computadores comuns por meio
-da utilização de \textit{threads} ou processos. O uso destas estratégias,
-na verdade, seria preferível à utilização de um \textit{cluster}, pois
-envolvem menos alterações na estrutura do código do simulador e
-possibilitam que outras pessoas interessadas em utilizar esse
-\textit{software} possam fazer simulações com um bom desempenho
-computacional em seus próprios computadores.
+complexas mantendo um bom desempenho computacional, como feito
+no trabalho de \citeonline{morrison05}. Entretanto, se essa estratégia
+for adotada no ReMoto, seria aconselhável utilizar a versão em
+Fortran por causa de seu desempenho superior.
 
-A utilização de \textit{threads} no Python, entretanto, não é
-possível por causa do \textit{Global Interpreter Lock} (GIL). Esse
-mecanismo faz com que apenas uma \textit{thread} exista por processo.
-Uma alternativa para essa limitação é o uso de processos para realizar
-a paralelização do código. Esse recurso pode ser explorado no Python
-através da biblioteca \textit{Multiprocessing} e pode trazer melhoras
-significativas, especialmente quando há a possibilidade de se trabalhar
-com memória compartilhada. O código do simulador, no entanto, teria que
-passar por grandes modificações e sua estrutura de orientação a objetos
-não é muito compatível com essa biblioteca. Além disso, a elevado 
-volume de comunicações entre processos aqui também seria um gargalo.
-
-Sendo assim, de acordo com as observações feitas, convém propor outras
-estratégias para alcançar um aumento no desempenho computacional. Para
-esse fim, o Cython surge como uma boa alternativa e será explorado 
-nesse trabalho, já que seu uso pode ocasionar em tempos de execução
-muitas vezes similares ao de um código escrito em C \cite{gorelick14}.
-Vale notar que o uso de \textit{clusters} ainda seria uma boa solução,
-mas por causa da dificuldade de tal implementação e da existência de
-outras opções, esta é postergada para trabalhos futuros.
-
-%\begin{table}[ht!]
-%\caption{Tempo de execução das simulações relacionadas 
-%         à matriz de condutância para diferentes tempos simulados.}
-%\label{tab:matrixGt}
-%\centering
-%    \begin{tabular}{cccc}\hline 
-%        & 200 ms & 500 ms & 1000 ms \\ \hline 
-%        $G_c$ & 21.52 s & 53.03129 s &  s \\ 
-%        $G_g$ & 16.55 s & 41.15 s &  s \\ 
-%	\hline
-%    \end{tabular}
-%\end{table}
+Vale notar que, como o Fortran possui suporte nativo à operações 
+vetorizadas, a implementação de $G_n$ já foi realizada por R. N. 
+Watanabe (comunicação pessoal) na versão do ReMoto em Fortran.
 
 \section{Parametrizações}
-\subsection{Potencial excitatório pós sinápico nas células de Renshaw}
+\subsection{Potencial excitatório pós-sinápico nas células de Renshaw}
 O resultado mostrado na Figura
 \label{sec:res_epsp}
 \ref{fig:RCepsp} foi obtido com $R_m=\text{2500 }\Omega\text{cm}^2$ . O PEPS é
@@ -135,7 +97,7 @@ que obtiveram 10\% do pico em 55 ms.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.8]{EPSP.eps}
-    \caption[PEPS em uma CR.]{Potencial excitatório pós sináptico 
+    \caption[PEPS em uma CR.]{Potencial excitatório pós-sináptico 
         em uma célula de Renshaw.}
 	\label{fig:RCepsp}
 \end{figure}
@@ -229,7 +191,7 @@ observado foi de -2.4 mV e sua duração foi de aproximadamente 33 ms.
         Característica de disparos da CR
         \subref{fig:RCfxi} Curva de frequência de disparo
         \textit{versus} corrente injetada.
-        \subref{fig:RCahp} Pós hiperpolarização.
+        \subref{fig:RCahp} Pós-hiperpolarização.
          }
     \label{fig:fxiahp}
 \end{figure}
@@ -298,12 +260,12 @@ motivos:
           que é a principal fonte de dados utilizada nesse estudo.
     \item Como as conexões sinápticas relacionadas com as CRs são diferentes
           em cada estágio de desenvolvimento do rato \cite{alvarez07}
-          e os dados em questão foram obtidos em um estágio pós
+          e os dados em questão foram obtidos em um estágio pós-
           natal precoce, não se pode garantir que estas propriedades sejam
           as mesmas das CRs utilizadas aqui.
 \end{itemize}
 
-\subsection{Potencial inibitório pós sináptico em motoneurônios causados pela
+\subsection{Potencial inibitório pós-sináptico em motoneurônios causados pela
             célula de Renshaw}
 Após sucessivas simulações, em que ajustes foram sendo feitos de forma
 empírica, o resultado final obtido é mostrado na 
@@ -314,7 +276,7 @@ estiveram, portanto, de acordo com as referências utilizadas.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.8]{IPSP.eps}
-    \caption[PIPS de uma CR.]{Potencial inibitório pós sináptico
+    \caption[PIPS de uma CR.]{Potencial inibitório pós-sináptico
         de célula de Renshaw em diferentes tipos de motoneurônios.}
 	\label{fig:PIPSres}
 \end{figure}
@@ -330,8 +292,8 @@ PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}.
 	\center
 	\includegraphics[scale=0.8]{mchammdecay.eps}
     \caption[Distribuição topográfica de potenciais inibitórios
-            pós sinápticos recorrentes.]{Distribuição topográfica de
-            potenciais inibitórios pós sinápticos recorrentes. Cada
+            pós-sinápticos recorrentes.]{Distribuição topográfica de
+            potenciais inibitórios pós-sinápticos recorrentes. Cada
             ponto representa a amplitude desses potenciais após o estímulo
             de outro motoneurônio, localizado em zero na abcissa.
             Se observado em um motoneurônio
@@ -361,7 +323,7 @@ Menores $\bar{g}_{max_{FF}}$ por sua vez, fariam com que o efeito
 das CRs fosse muito baixo. Sendo assim, o valor de condutância adotado
 fornece um equilíbrio razoável dos resultados.
 
-\subsection{Característica dinâmica e depressão pós sináptica
+\subsection{Característica dinâmica e depressão pós-sináptica
             da célula de Renshaw}
 \label{sec:res_dyn}
 Para que os resultados de \citeonline{hultborn79} possam ser
@@ -409,7 +371,7 @@ Universidade de Düsseldorf, 1984.}
 
 Vale citar um estudo recente mostrando que, para baixas frequências
 de estimulação, essa depressão quase não altera as correntes 
-pós sinápticas geradas \cite{moore15}. Esse resultado vai de encontro
+pós-sinápticas geradas \cite{moore15}. Esse resultado vai de encontro
 com os de \citeonline{hultborn79} e
 deve ser analisado com cautela pois foi realizado em ratos.
 

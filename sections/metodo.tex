@@ -8,12 +8,17 @@ por sua vez, podem ser encontrados no GitHub:
 \url{https://github.com/pabloabur/projectFR/tree/masters}.
 
 \section{Desempenho computacional}
-Três abordagens distintas serão consideradas nessa parte: A utilização de um 
-\textit{cluster}, Python na sua implementação original (CPython) e Cython.
+Duas abordagens distintas foram consideradas nessa parte: A utilização de um 
+\textit{cluster} e o Python na sua implementação original (CPython).
 As medições do tempo de execução, realizadas por meio da biblioteca \textit{time},
-levarão em conta apenas os trechos do código
+levaram em conta apenas os trechos do código
 que se repetem várias vezes e que, consequentemente, contém os maiores
 ``gargalos'' na simulação.
+
+Vale notar que, na época da escrita dessa seção e dos resultados 
+obtidos, a versão do ReMoto em Fortran ainda não estava disponível.
+Dessa forma, apenas aqui e na sessão \ref{sec:res_perf}, a versão
+utilizada do ReMoto foi a em Python.
 
 \subsection{Cluster Águia}
 O \textit{cluster} Águia é composto por 64 servidores físicos com 20 \textit{cores} e 
@@ -70,7 +75,7 @@ matriz maior que contenha cada uma dessas matrizes menores, de forma que o
 processo de vetorização possa trazer otimizações. Isso será realizado para 
 todos os MNs, INs e algumas outras variáveis envolvidas no cálculo do potencial
 de membrana. A implementação antiga das matrizes será identificada como \Ga e
-a nova proposta, como \Gn.
+a nova proposta, como $G_n$.
 
 Nessa parte será utilizado um sistema operacional Linux
 64 bits com oito processadores Intel Core i7-2600 a 3.40 GHz e 7.8 GB de RAM.
@@ -81,24 +86,15 @@ O tempo de execução será obtido a partir da média de 5 resultados
 para diferentes quantidades de MNs
 (variação no tamanho da matriz de condutância).
 
-\subsection{Cython}
-A biblioteca relativa a esse compilador pode ser carregada de forma simples no
-Python. A estrutura do código, entretanto, terá que passar por algumas
-modificações. De forma geral, as maiores diferenças entre um código que usa
-Cython um com Python puro são algumas chamadas de funções e declaração de
-variáveis. Considerando o tamanho e complexidade do código do simulador e o
-fato de algumas declarações do Cython serem opcionais, pretende-se iniciar uma
-conversão de uma parte desse código, de forma que, ao final desse processo, os
-módulos principais usados nas simulações possam ser compilados com
-Cython. A métrica usada para medir o ganho de desempenho é a mesma da 
-Equação (\ref{eq:speedup}), mas usando os tempos de execução das soluções em 
-Python e Cython.
-
 \section{Estudo das parametrizações}
 Os dados utilizados aqui vêm
 de experimentos realizados em membros inferiores de gatos por que estudos
 experimentais ou computacionais sobre o circuito de inibição recorrente
-em seres humanos são escassos e indiretos.
+em seres humanos são escassos e indiretos. Todas as simulações foram
+realizadas com o ReMoto versão Fortran em um computador com sistema
+operacional Linux 64 bits com oito processadores Intel Core i7-2600
+a 3.40 GHz e 7.8 GB de RAM. Os dados foram processados e analisados com
+Python versão 3.7.3.
 
 \subsection{Parametrização do modelo de motoneurônios}
 O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
@@ -171,7 +167,7 @@ simulações do núcleo motor inteiro foram realizadas com 600 CRs.
 Os demais parâmetros, quando não mencionados na metodologia, foram mantidos 
 de acordo com o que foi descrito em \citeonline{cisi07}.
 
-\subsubsection{Potenciais excitatórios pós sinápticos}
+\subsubsection{Potenciais excitatórios pós-sinápticos}
 Mantendo-se o padrão de $C_m = \text{1 }\mu\text{Fcm}^{-2}$,
 a resistência específica foi ajustada para reproduzir os 
 seguintes resultados descritos na literatura:
@@ -189,7 +185,7 @@ seguintes resultados descritos na literatura:
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.7]{PEPS}
-	\caption{Potencial excitatório pós sináptico recorrente em uma
+	\caption{Potencial excitatório pós-sináptico recorrente em uma
              célula de Rewshaw \cite{walmsley81}.}
 	\label{fig:PEPS}
 \end{figure}
@@ -247,7 +243,7 @@ foram baseadas nas seguintes referências:
         primeiro intervalo, e assim por diante. O regime estacionário foi
         considerado como sendo após 80 ms. 
         \subref{fig:AHPRC} Detalhes de
-        amplitude e duração da pós hiperpolarização.
+        amplitude e duração da pós-hiperpolarização.
 }
     \label{fig:HP79}
 \end{figure}
@@ -281,7 +277,7 @@ injetadas em cada caso estiveram de acordo com os dados mostrados na Figura
 foi necessário alterar o valor da condutância máxima do ruído agindo sobre
 a CR.
 
-\subsubsection{Potenciais inibitórios pós sinápticos}
+\subsubsection{Potenciais inibitórios pós-sinápticos}
 As condutâncias sinápticas ativadas pelos disparos das CRs em cada
 tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
 
@@ -313,7 +309,7 @@ três valores de condutâncias (um para cada tipo) que reproduzam a Figura
 \ref{fig:met_IPSP}.
 
 \subsubsection{Distribuição de potenciais inibitórios pós
-                sinápticos recorrentes}
+               -sinápticos recorrentes}
                 \label{sec:met_ipsp}
 A distribuição dos PIPS recorrentes pelo núcleo motor depende 
 de fatores topográficos e funcionais. No ReMoto, isso está relacionado
@@ -372,7 +368,7 @@ permitiu que apenas a condutância máxima dos MNs do tipo FF
 de acordo com a proporção.
 
 \subsubsection{Dinâmica e depressão sináptica}
-Para abordar as características dinâmicas e de depressão pós sináptica,
+Para abordar as características dinâmicas e de depressão pós-sináptica,
 as referências utilizadas foram:
 
 \begin{itemize}
@@ -402,7 +398,7 @@ as referências utilizadas foram:
 	\label{fig:met_dyn}
 \end{figure}
 
-No ReMoto, uma depressão pós sináptica em função do tempo é descrita por
+No ReMoto, uma depressão pós-sináptica em função do tempo é descrita por
 
 \begin{equation}
     \gsyn (t)=\gmax-(\gmax-g_{dyn}\vari)e^{-\frac{(\td+t)}{\tau_d}}
@@ -425,7 +421,7 @@ da comparação de resultados de procedimentos experimentais com resultados
 obtidos da simulação desses experimentos.
 
 \subsubsection{Características de potenciais inibitórios
-            pós sinápticos recorrentes}
+            pós-sinápticos recorrentes}
 As características de PIPS recorrentes que foram verificadas 
 são mostradas na Figura \ref{fig:met_hamm}. As simulações realizadas 
 foram as mesmas da parametrização na Seção \ref{sec:met_ipsp}.
