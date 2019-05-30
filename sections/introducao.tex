@@ -190,7 +190,7 @@ seção \ref{sec:conns}.
 Pode-se perceber que essa rede de neurônios contém um circuito disináptico que
 começa e termina no mesmo neurônio: um MN excita uma CR, que por sua vez inibe
 os MNs homônimos. Essa situação, em que um núcleo motor inibe a si mesmo por
-meio de algum IN inibitório, é conhecida como uma inibição recorrente.
+meio de um INs inibitórios, é conhecida como uma inibição recorrente.
 Outros elementos envolvidos nesse esquema também recebem esse termo, como, por
 exemplo, ramos colaterais recorrentes e potencial inibitório pós-sináptico
 (PIPS) recorrente.
@@ -331,6 +331,31 @@ Além disso, estudos sugerem que um MN pode fazer sinapse com mais de uma CR,
 e vice versa \cite{hamm87b,maltenfort04}.
 
 \subsection{Hipóteses sobre a função de células de Renshaw}
+Apesar de existirem inúmeros estudos sobre as CRs, a função desse
+IN ainda não está definida. Isso deve-se, em parte, à complexidade
+da circuitaria da medula espinhal como um todo e ao fato de que a
+inibição recorrente poderia ter múltiplas funções, principalmente quando 
+se trata de núcleos motores em diferentes tarefas \cite{windhorst96}.
+
+A seguir são apresentadas algumas das principais teorias sobre a
+função da inibição recorrente de MNs:
+
+\begin{itemize}
+    \item As CRs são responsáveis por inverter o recrutamento ordenado 
+          dos MNs \cite{friedman81}. Essa possibilidade, entretanto,
+          se tornou questionável por causa de inúmeros estudos experimetais
+          a favor do recrutamento ordenado de unidades motoras
+          \cite{windhorst96}.
+    \item As CRs funcionam como um regulador de ganho de uma relação
+          linear entre as entradas e saídas de um MN \cite{hultborn79c}.
+          Apesar de sua boa aceitação, essa teoria
+          apresenta algumas limitações pois foi desenvolvida com suposições
+          que ainda precisam ser testadas experimentalmente e considerando
+          apenas as características estáticas das CRs \cite{windhorst96}.
+    \item As CRs são responsáveis por descorrelacionar os disparos 
+          do MNs \cite{maltenfort98}. Existem estudos, entretanto, que
+          relatam resultados conflitantes \cite{mccurdy94,uchiyama07}
+\end{itemize}
 
 \section{Modelagens computacionais descritas na literatura}
 Como mostrado nas seções anteriores, o circuito de inibição recorrente é
@@ -620,7 +645,7 @@ Essa linguagem foi criada em 1957, mas veio se atualizando ao longo
 dos anos, de forma que sua versão mais recente possui suporte a
 programação concorrente, operações vetorizadas e orientação a objetos.
 
-\subsection{Considerações sobre as parametrizações das CRs}
+\subsection{Considerações sobre as parametrizações}
 A parametrização original das CRs no trabalho de \citeonline{cisi08}
 ocasionou resultados inesperados em alguns casos, como inversão na ordem de
 recrutamento de MNs ou supressão na atividades das CRs. Como isso pode ser
@@ -633,10 +658,12 @@ Tais comportamentos inesperados ou alterações nos parâmetros
 motivam uma nova avaliação da parametrização como um todo, já que
 uma eventual modificação para corrigir algum problema poderia fazer com
 que outras características do circuito de inibição fossem alteradas, como
-PIPS e PEPS gerados nos neurônios envolvidos. Outra motivação
-vem da falta de dados experimentais sobre as CRs em seres humanos. Como
+PIPS e PEPS gerados nos neurônios envolvidos. Nota-se também que
+existe uma escassez de 
+dados experimentais sobre as CRs em seres humanos. Como
 a literatura sobre as CRs em gatos é extensa e o objetivo principal do
 trabalho apresentado aqui é o estudo da inibição
-recorrente, é preferível adequar a parametrização dos MNs (originalmente
+recorrente, é preferível adequar a parametrização dos MNs no ReMoto
+(originalmente
 feita para reproduzir experimentos fisiológicos em seres humanos) para
 gatos.

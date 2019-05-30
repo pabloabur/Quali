@@ -1,13 +1,54 @@
 \chapter{Conclusões}
 Os resultados relativos ao desempenho computacional apontam possíveis
 melhorias para o ReMoto.
-A implementação de uma matriz de condutâncias adequada para operações
+A implementação de matrizes de condutâncias adequada para operações
 vetorizadas foi, inclusive, incorporada na versão do ReMoto em 
 Fortran. A utilização de \textit{clusters}, por sua vez, seria mais
-complexa e envolveria modificações consideráveis no código.
+complexa, envolvendo o desenvolvimento de uma arquitetura de processamento
+que incluísse INs.
 
-A parametrização dos MNs e CRs foi realizada baseando-se em dados
-experimentais e os resultados foram satisfatórios. Características
-dinâmicas e de depressão pós-sinápticas não puderam ser
-reproduzidas, mas essas limitações foram discutidas e consideradas dentro
-do contexto apropriado.
+Baseando-se em dados experimentais, parâmetros de MNs e CRs foram
+ajustados para simular características importantes do circuito de
+inibição recorrente. A parametrização foi satisfatória e foi possível
+observar uma série de respostas apropriadas. Características dinâmicas
+e de depressão pós-sináptica não puderam ser
+reproduzidas como na literatura, mas essa limitação, quando relevante,
+foi considerada nas análises dos resultados de simulações.
+
+Para testar a parametrização adotada, simulações de procedimentos
+experimentais também foram realizadas. Relações estáticas das CRs,
+PIPS recorrentes e resposta a estímulos antidrômicos do modelo foram
+comparados com a literatura e utilizados
+para delimitar propriedades gerais do modelo do circuito de inibição
+recorrente gerado.
+
+Considerando o que foi apresentado nos dois parágrafos anteriores,
+pode-se dizer que o modelo parametrizado foi suficiente para os estudos 
+aqui realizados sobre o circuito de inibição recorrente no gato.
+Diferentemente
+de outros trabalhos computacionais sobre as CRs, esse modelo foi
+implementado em uma sistema de simulação \textit{open source},
+reforçando aspectos importantes como extensibilidade e reproduzibilidade.
+
+Considerando as parametrizações realizadas,
+resultados de simulações sem e com inibição recorrente foram
+avaliados sob diversas perspectivas. Os MNs sob efeito das CRs apresentaram
+maior tendência a inverter a ordem de seus recrutamentos,
+algo que parece ter um efeito sobre a velocidade do desenvolvimento da
+força muscular. Coeficientes de sincronia e de variação da força 
+muscular também foram calculados, mas estudos experimentais são
+necessários para esclarecer seus significados.
+
+Diminuições da força muscular foram comparáveis aos dados disponíveis
+na literatura. Além disso, análises no domínio da frequência mostraram
+que as CRs poderiam atuar como um filtro passa baixas, atenuar oscilações
+de 10 Hz por meio de cancelamento de fases e causar distorções.
+
+Foi observado também que,
+nas comparações com aproximadamente o mesmo nível de força,
+a presença das CRs causou diminuições das taxas
+de disparos, que foram acompanhadas por um aumento nas unidades motoras
+recrutadas. O efeito das CRs nos CSTs, por sua vez, foi diferente
+dependendo de quais MNs fossem escolhidos para realizar as computações.
+Tais resultados reforçam a ideia de que a inibição recorrente seja
+um mecanismo importante para o controle motor.

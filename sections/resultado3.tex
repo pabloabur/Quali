@@ -103,7 +103,7 @@ mais sutil.
 \end{figure}
 
 É de se esperar que essas características apresentadas tenham um
-impacto na sincronia dos MNs. Esse aspecto, entretanto, será abordado
+impacto na sincronia dos MNs. Esse aspecto, entretanto, foi abordado
 na seção \ref{sec:forca}. Por hora, convém analisar a ordem de 
 recrutamento dos MNs simulados.
 
@@ -207,16 +207,16 @@ próximos uns aos outros, um recrutamento seletivo de MNs maiores não
 foi observado.
 
 Portanto, pelos resultados apresentados, a presença da CR parece ser
-um elemento capaz de causar um inversão na ordem de recrutamento em
-situações aonde existem MNs de diferentes tipos próximos uns aos outros.
-Além disso, ela também parece ser capaz de atrasar os disparos destes,
+um elemento capaz de causar uma certa inversão na ordem de recrutamento
+de MNs próximos uns aos outros.
+Além disso, ela parece ser capaz de atrasar os disparos desses,
 possibilitando que mais inversões possam acontecer em outras regiões
 do núcleo motor e aumentando suas respectivas diferenças entre instantes
 de disparo. Isso poderia ser uma vantagem em situações
 de contração muscular rápida, pois \textit{twichtes} maiores contribuiriam
 nos instantes inicias de força muscular mais baixa.
 Os possíveis desdobramentos fisiológicos desses resultados 
-serão explorados na sessão \ref{sec:danger}.
+foram explorados na sessão \ref{sec:danger}.
 
 \subsection{Taxa de disparos de motoneurônios}
 A Figura \ref{fig:onion} mostra o resultado de uma simulação
@@ -228,7 +228,7 @@ de alguns MNs ativados (escolhidos ao acaso), indicados pelo
 mapa de cores de acordo com
 seus tamanhos. Nota-se que, na presença da CR 
 (Figura \ref{fig:onion}\subref{fig:onionwithRC}), houve 
-um aumento de variabilidade e diminuição de taxas de disparos
+um pequeno aumento de variabilidade e diminuição de taxas de disparos
 em comparação com a simulação sem essa inibição recorrente
 (Figura \ref{fig:onion}\subref{fig:onionwithoutRC}). Além disso,
 foi observado que alguns MNs maiores não tiveram suas taxas
@@ -409,7 +409,7 @@ que a CR pode atuar como um regulador de ganho variável
 pode ser reforçado \cite{hultborn04}. Nesse contexto, é
 importante dizer que as CRs
 podem ser inibidas com o
-aumento da força \cite{hultborn79b}. Sendo assim, é de se esperar
+aumento da força \cite{hultborn79b}. Sendo assim, é possível
 que as respostas se tornem
 mais parecidas, com a curva de força pontilhada
 se aproximando progressivamente da contínua na Figura \ref{fig:granit}
@@ -929,7 +929,7 @@ Para investigar a causa disso, o CST das CRs também foi computado.
              normalizados de MNs. Primeira coluna
              mostra resultados sem CRs, enquanto que segunda coluna mostra
              resultados com CRs. Em \subref{fig:res_csto7} e
-             \subref{fig:res_csts7}, CST foi computado por meio de MNs
+             \subref{fig:res_csts7}, CST foi computado com os disparos de MNs
              de índices 5 até 9. Em \subref{fig:res_csto97} e
              \subref{fig:res_csts97}, foram utilizados MNs 95 até 99.
              Curva em cinza claro mostra o formato da entrada fornecida
@@ -964,7 +964,6 @@ com a entrada comum quanto CSTs de CRs próximas a MNs maiores
              índice 7.
              \subref{fig:res_cstrc97} CSTs das 5 CRs mais próximas ao MN de
              índice 92.
-             .
              }
 	\label{fig:res_rccst}
 \end{figure}
