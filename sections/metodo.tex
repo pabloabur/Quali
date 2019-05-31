@@ -1,4 +1,4 @@
-\chapter{Metodologia}
+\chapter{METODOLOGIA}
 Em todas as simulações descritas a seguir, foi utilizado o método de 
 integração numérica de Runge-Kutta de quarta ordem e com passo de
 integração de 0.05 ms. Os dados obtidos podem ser acessados por meio
@@ -141,10 +141,10 @@ na Tabela \ref{tab:met_MNparams}.
     e (c) \citeonline{zengel85}.}
 \label{tab:met_MNparams}
 \centering
-    \begin{tabular}{p{6.4cm} c c c c}\hline 
+    \begin{tabu}{p{6.4cm} c c c c}\tabucline[1.5pt]{-}
         \multirow{2}{*}{Propriedades} & \multicolumn{3}{c}{Unidades motoras} &
             \multirow{2}{*}{Referência} \\
-        & FF & FR & S & \\ \hline 
+        & FF & FR & S & \\ \tabucline[1.5pt]{-} 
         \textit{Twitches} (mN) & 12 até 380 &
             2 até 74 & 2 até 53 & (a) \\
         Forças tetânicas (mN) & 30 até 1032 & 37 até 570 & 17 até 396 &
@@ -154,7 +154,7 @@ na Tabela \ref{tab:met_MNparams}.
         Velocidade de condução axonal (m/s) & 99$\pm$ 1 & 100$\pm$ 1 & 86$\pm$ 1 &
             (c) \\
 	\hline
-    \end{tabular}
+    \end{tabu}
 \end{table}
 
 \subsection{Parametrização do modelo de célula de Renshaw}
@@ -172,15 +172,15 @@ Mantendo-se o padrão de $C_m = \text{1 }\mu\text{Fcm}^{-2}$,
 a resistência específica foi ajustada para reproduzir os 
 seguintes resultados descritos na literatura:
 
-\begin{itemize}
+\begin{enumerate}[label=\alph*)]
     \item \citeonline{walmsley81}: Medições da atividade intracelular em
         CRs após uma estimulação de raízes ventrais forneceram alguns
         dados sobre os PEPSs resultantes, como mostrado na Figura
-        \ref{fig:PEPS}.
+        \ref{fig:PEPS};
     \item \citeonline{williams09}: Nesse trabalho de simulações, os
         autores adotam 7.6 ms de tempo de subida
         e 50 ms de duração dos PEPSs descritos por \citeonline{walmsley81}.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[ht]
 	\center
@@ -202,9 +202,9 @@ transição das condutâncias iônicas do modelo da CR podem ser alterados
 para reproduzir diferentes características de disparos. As alterações feitas 
 foram baseadas nas seguintes referências:
 
-\begin{itemize}
+\begin{enumerate}[label=\alph*)]
     \item \citeonline{walmsley81}: Foi mostrado que CRs disparam
-        espontaneamente a uma taxa de 7 pps.
+        espontaneamente a uma taxa de 7 pps;
     \item \citeonline{hultborn79}: Relações de frequência de disparo
         \textit{versus} corrente injetada ($\freq\times\iinj$) foram obtidas para 
         diferentes correntes, como visto na Figura
@@ -214,13 +214,13 @@ foram baseadas nas seguintes referências:
         também podem ser extraídas. Além dessas contribuições, os autores
         mostraram que, após um breve pulso de corrente injetada,
         a AHP apresentou uma amplitude de -2 mV e duração por volta de 30 ms,
-        como visto na Figura \ref{fig:HP79}\subref{fig:AHPRC}.
+        como visto na Figura \ref{fig:HP79}\subref{fig:AHPRC};
     \item \citeonline{fyffe90}: Estudos morfológicos mostraram CRs com 
-        diâmetro médio de de 27 $\mu$m.
+        diâmetro médio de de 27 $\mu$m;
     \item \citeonline{bui03}: Estimativas da área superficial média do soma
         e do dendrito foram 1753.8 $\mu\text{m}^2$ e 16756 $\mu\text{m}^2$,
         respectivamente.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[ht]
     \centering
@@ -281,18 +281,18 @@ a CR.
 As condutâncias sinápticas ativadas pelos disparos das CRs em cada
 tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
 
-\begin{itemize}
+\begin{enumerate}[label=\alph*)]
     \item \citeonline{friedman81}: Correlações foram encontradas entre
         amplitude dos PIPS e o tipo do MN, mas não entre amplitudes e 
-        as resistências de entrada dos MNs em cada tipo.
+        as resistências de entrada dos MNs em cada tipo;
     \item \citeonline{fyffe91}: Conexões sinápticas identificadas como
         provenientes de CRs foram todas localizadas nos dendritos de MNs
-        do tipo alfa.
+        do tipo alfa;
     \item \citeonline{uchiyama03a}: Baseado em dados fisiológicos
         \cite{friedman81,hultborn88b,vankeulen79}, um procedimento para
         estimar PIPS nos MNs de um núcleo motor foi adotado, tendo os 
         resultados mostrados na Figura \ref{fig:met_IPSP}.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[ht]
 	\center
@@ -318,7 +318,7 @@ a conectividade entre MNs e CRs foi considerada como sendo de
 100\% e as condutâncias e suas distribuições topográficas são parametrizadas
 de acordo com:
 
-\begin{itemize}
+\begin{enumerate}[label=\alph*)]
     \item \citeonline{mccurdy94}: A Distribuição topográfica das amplitudes
         significativas de PIPS recorrentes obtida de pares de MNs é
         inversamente correlacionada com a distância. Os autores fornecem uma
@@ -328,7 +328,7 @@ de acordo com:
         \ref{fig:met_RIPSP} mostra o resultado dos autores. Para o músculo
         em questão, os valores médios de amplitudes foram de 
         -19,63 $\pm$ 2,42 $\mu$V e -41.36 $\pm$ 7.19 $\mu$V para pares
-        distantes e próximos, respectivamente.
+        distantes e próximos, respectivamente;
     \item \citeonline{uchiyama03a}: O padrão de distribuição topográfica 
         da força sináptica é o de uma gaussiana que decresce na medida
         em que se afasta do neurônio pré sináptico. O desvio padrão da
@@ -338,7 +338,7 @@ de acordo com:
         axônios colaterais dos MNs que alcançam a região onde as CRs se
         encontram possuam 78.5 $\pm$ 7.5, 43.0 $\pm$ 4.2 e 35.5 $\pm$ 3
         destes botões sinápticos se forem do tipo FF, FR e S, respectivamente.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[ht]
 	\center
@@ -371,17 +371,17 @@ de acordo com a proporção.
 Para abordar as características dinâmicas e de depressão pós-sináptica,
 as referências utilizadas foram:
 
-\begin{itemize}
+\begin{enumerate}[label=\alph*)]
     \item \citeonline{hultborn79}: Os autores apresentaram
           evidências da existência de um mecanismo de decréscimo da eficácia
           sináptica dos terminais de axônios colaterais agindo sobre as CRs.
           Essa conclusão foi baseada na diminuição de taxas de disparo para
-          diferentes frequências de estímulo. 
+          diferentes frequências de estímulo;
     \item \citeonline{uchiyama03a}: Um aumento abrupto na frequência de
           estimulação da CR fez com que sua
           taxa de disparo apresentasse um \textit{overshoot}, como
-          mostrado na Figura \ref{fig:met_dyn}
-\end{itemize}
+          mostrado na Figura \ref{fig:met_dyn}.
+\end{enumerate}
 
 \begin{figure}[ht]
 	\center
@@ -679,15 +679,15 @@ foi associado a todos os MNs.
     uma das situações estudadas.}
 \label{tab:met_dcistrat}
 \centering
-    \begin{tabular}{c c c}\hline 
+    \begin{tabu}{c c c}\tabucline[1.5pt]{-} 
         \multirow{2}{*}{Situação da inibição recorrente} & \multicolumn{2}{c}{Frequências (Hz)} \\
-             & \multicolumn{1}{c}{5\% CVM} & \multicolumn{1}{c}{70\% CVM} \\ \hline
+             & \multicolumn{1}{c}{5\% CVM} & \multicolumn{1}{c}{70\% CVM} \\ \tabucline[1.5pt]{-}
         Ausente & 141 & 665 \\
         Fraca & 190 & 795 \\
         Normal & 230 & 930 \\
         Forte & 333 & 1180 \\
 	\hline
-    \end{tabular}
+    \end{tabu}
 \end{table}
 
 Uma outra condição simulada foi uma em que o valor médio da senoide

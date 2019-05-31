@@ -1,4 +1,4 @@
-\chapter{Introdução}
+\chapter{INTRODUÇÃO}
 \section{O sistema motor}
 O Sistema Nervoso Central (SNC) é composto pelo cérebro e pela 
 medula espinhal. O segundo é subdividido em cervical, torácico,
@@ -8,7 +8,6 @@ encéfalo e, dentre outras funções, auxilia no
 controle de movimentos. Nesse contexto, o termo aferente é usado para
 identificar sinais chegando à medula espinhal, enquanto sinais levados aos
 músculos são chamados de eferentes \cite{kandel13}.
-
 
 O tipo de músculo estudado aqui é o músculo esquelético, que é
 responsável por movimentar os ossos, olhos, inalação e exalação, controlar
@@ -21,7 +20,7 @@ mesma função em uma dada tarefa motora, são chamados de sinergistas
 um do outro. Como cada grau de liberdade de uma articulação é controlada por
 pelo menos dois músculos fornecendo ações opostas, é útil também defini-los
 como agonistas (aqueles que proporcionam aceleração em direção a
-um objeto) e antagonista (aqueles que gera aceleração na
+um objeto) e antagonista (aqueles que geram aceleração na
 direção oposta) \cite{enoka08}.
 
 Em cada músculo esquelético existem, em geral, centenas de fibras musculares.
@@ -43,8 +42,8 @@ corno ventral e corno dorsal.
 	\includegraphics[scale=0.6]{slice.eps}
     \caption[Visão da sessão transversal da medula espinhal.]{
         Visão da sessão transversal da medula espinhal.
-        A parte pintada de cinza representa a matéria cinzenta,
-        enquanto que a parte em branco que a circunda representa
+        A parte delimitada central representa a matéria cinzenta,
+        enquanto que a parte que a circunda representa
         a substância branca.}
 	\label{fig:ce}
 \end{figure}
@@ -340,22 +339,22 @@ se trata de núcleos motores em diferentes tarefas \cite{windhorst96}.
 A seguir são apresentadas algumas das principais teorias sobre a
 função da inibição recorrente de MNs:
 
-\begin{itemize}
-    \item As CRs são responsáveis por inverter o recrutamento ordenado 
+\begin{enumerate}[label=\alph*)]
+    \item as CRs são responsáveis por inverter o recrutamento ordenado 
           dos MNs \cite{friedman81}. Essa possibilidade, entretanto,
           se tornou questionável por causa de inúmeros estudos experimetais
           a favor do recrutamento ordenado de unidades motoras
-          \cite{windhorst96}.
-    \item As CRs funcionam como um regulador de ganho de uma relação
+          \cite{windhorst96};
+    \item as CRs funcionam como um regulador de ganho de uma relação
           linear entre as entradas e saídas de um MN \cite{hultborn79c}.
           Apesar de sua boa aceitação, essa teoria
           apresenta algumas limitações pois foi desenvolvida com suposições
           que ainda precisam ser testadas experimentalmente e considerando
-          apenas as características estáticas das CRs \cite{windhorst96}.
-    \item As CRs são responsáveis por descorrelacionar os disparos 
+          apenas as características estáticas das CRs \cite{windhorst96};
+    \item as CRs são responsáveis por descorrelacionar os disparos 
           do MNs \cite{maltenfort98}. Existem estudos, entretanto, que
-          relatam resultados conflitantes \cite{mccurdy94,uchiyama07}
-\end{itemize}
+          relatam resultados conflitantes \cite{mccurdy94,uchiyama07}.
+\end{enumerate}
 
 \section{Modelagens computacionais descritas na literatura}
 Como mostrado nas seções anteriores, o circuito de inibição recorrente é
@@ -617,7 +616,7 @@ O ReMoto foi originalmente escrito em Java para facilitar seu o
 desenvolvimento como aplicação \textit{web}, mas seu código se tornou
 demasiadamente complexo, dificultando sua manutenção e a adição de
 novas funcionalidades. Com o intuito de lidar com essas limitações,
-o simulador foi reescrito em Python (R. N. Watanabe, comunicação pessoal).
+o simulador foi reescrito em Python (R. N. Watanabe, informação pessoal).
 
 Uma das grandes vantagens da linguagem de programação Python é a facilidade
 de modularização do código sendo desenvolvido. Esse aspecto, quando usado
@@ -634,7 +633,7 @@ de memória, tipagem dinâmica e não ser compilado \cite{gorelick14}. Como
 simulações no ReMoto em geral envolvem uma grande quantidade de neurônios
 e sinapses, o baixo desempenho computacional da versão em Python se tornou
 uma grande desvantagem. Para solucionar esse problema, uma versão em
-Fortran do ReMoto foi desenvolvida por R. N. Watanabe (comunicação pessoal).
+Fortran do ReMoto foi desenvolvida por R. N. Watanabe (informação pessoal).
 
 Naturalmente, simulações com a versão do ReMoto em Fortran têm um tempo
 de execução significativamente menor do que em Python, fazendo com que

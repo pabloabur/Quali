@@ -1,4 +1,4 @@
-\chapter{Resultados e discussões}
+\chapter{RESULTADOS E DISCUSSÕES}
 \section{Desempenho computacional}
 \label{sec:res_perf}
 Na Figura \ref{fig:clustera} são apresentados os valores de \textit{Speedup} das
@@ -47,12 +47,12 @@ simulação.
          à matriz de condutância para diferentes quantidades de MNs.}
 \label{tab:matrixG}
 \centering
-    \begin{tabular}{ccccc}\hline 
-        & 10 MNs & 50 MNs & 100 MNs & 400 MNs \\ \hline 
+    \begin{tabu}{ccccc}\tabucline[1.5pt]{-} 
+        & 10 MNs & 50 MNs & 100 MNs & 400 MNs \\ \tabucline[1.5pt]{-} 
         \Ga & 5.21 s & 21.22 s & 42.34 s & 170.97 s \\ 
         \Gn & 5.63 s & 16.50 s & 30.01 s & 125.31 s \\ 
 	\hline
-    \end{tabular}
+    \end{tabu}
 \end{table}
 
 Os resultados mostrados anteriormente são positivos, mas possuem 
@@ -79,7 +79,7 @@ Fortran por causa de seu desempenho superior.
 
 Vale notar que, como o Fortran possui suporte nativo à operações 
 vetorizadas, a implementação de $G_n$ já foi realizada por R. N. 
-Watanabe (comunicação pessoal) na versão do ReMoto em Fortran.
+Watanabe (informação pessoal) na versão do ReMoto em Fortran.
 
 \section{Parametrizações}
 \subsection{Potencial excitatório pós-sinápico nas células de Renshaw}
@@ -254,16 +254,16 @@ de disparos desses neurônios, como, por exemplo, taxas de disparos
 desses canais no modelo, entretanto, não é muito apropriada por dois
 motivos: 
 
-\begin{itemize}
-    \item Estes dados foram obtidos de ratos e não há garantias que as CRs
+\begin{enumerate}[label=\alph*)]
+    \item estes dados foram obtidos de ratos e não há garantias que as CRs
           desses animais tenham as mesmas características das de gatos,
-          que é a principal fonte de dados utilizada nesse estudo.
-    \item Como as conexões sinápticas relacionadas com as CRs são diferentes
+          que é a principal fonte de dados utilizada nesse estudo;
+    \item como as conexões sinápticas relacionadas com as CRs são diferentes
           em cada estágio de desenvolvimento do rato \cite{alvarez07}
           e os dados em questão foram obtidos em um estágio pós-
           natal precoce, não se pode garantir que estas propriedades sejam
           as mesmas das CRs utilizadas aqui.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Potencial inibitório pós-sináptico em motoneurônios causados pela
             célula de Renshaw}
@@ -364,7 +364,7 @@ uma parte transiente da resposta da CR, como algumas realizadas na
 seção \ref{sec:danger}, é de se esperar que a inibição recorrente 
 seja maior, mesmo que por um breve período. Essa consideração é
 condizente com investigações experimentais realizadas por
-Sawicki\footnote{SAWICKI, P. \textbf{Dynamisches Verhalten der rekurrenten
+Sawicki\footnote{SAWICKI, P. \textit{Dynamisches Verhalten der rekurrenten
 Hemmung monosynaptischer Reflexe}. Dissertação. Alemanha:
 Universidade de Düsseldorf, 1984.}
 (1984, apud \citeauthor{windhorst90}, 1982, p. 154).
@@ -385,8 +385,8 @@ por meio de um arquivo de configuração.
     configuração do ReMoto.}
 \label{tab:params_final}
 \centering
-    \begin{tabular}{c C{3cm} C{3cm}}\hline 
-	Parâmetro & Valor & Unidade \\ \hline 
+    \begin{tabu}{c C{3cm} C{3cm}}\tabucline[1.5pt]{-} 
+	Parâmetro & Valor & Unidade \\ \tabucline[1.5pt]{-} 
     Resistência específica de membrana & 2500  & $\Omega\text{cm}^2$ \\
     Capacitância específica de membrana & 1  & $\mu\text{Fcm}^{-2}$ \\
     Corrente de reobase & 0.5 & nA \\
@@ -407,5 +407,5 @@ por meio de um arquivo de configuração.
     Condutância máxima MN FR - CR & 8.33 & nS \\
     Condutância máxima MN FF - CR & 15 & nS \\
 	\hline
-    \end{tabular}
+    \end{tabu}
 \end{table}
