@@ -45,9 +45,9 @@ ISSN 1469-7793.}
 \bibitem[Baldissera, Hultborn e Illert 2011]{baldissera11}
 \abntrefinfo{Baldissera, Hultborn e Illert}{BALDISSERA; HULTBORN; ILLERT}{2011}
 {BALDISSERA, F.; HULTBORN, H.; ILLERT, M. Integration in {Spinal} {Neuronal}
-  {Systems}. In:  \emph{Comprehensive {Physiology}}. [S.l.]: John Wiley \&
-  Sons, 2011.
-ISBN 978-0-470-65071-4.
+  {Systems}.
+\emph{Comprehensive {Physiology}}, jan. 2011.
+ISSN 2040-4603.
 DOI: 10.1002/cphy.cp010212.}
 
 \bibitem[Bawa, Jones e Stein 2014]{bawa14}
@@ -60,7 +60,7 @@ ISSN 1662-5161.}
 \bibitem[Bear, Connors e Paradiso 2016]{bear16}
 \abntrefinfo{Bear, Connors e Paradiso}{BEAR; CONNORS; PARADISO}{2016}
 {BEAR, M.~F.; CONNORS, B.~W.; PARADISO, M.~A. \emph{Neuroscience: exploring the
-  brain}. Fourth edition. [S.l.]: Wolters Kluwer, 2016.
+  brain}. 4th. ed. Philadelphia: Wolters Kluwer, 2016.
 ISBN 978-0-7817-7817-6.}
 
 \bibitem[Benda e Herz 2003]{benda03}
@@ -71,9 +71,9 @@ ISSN 0899-7667.}
 
 \bibitem[Bendat e Piersol 2011]{bendat11}
 \abntrefinfo{Bendat e Piersol}{BENDAT; PIERSOL}{2011}
-{BENDAT, J.; PIERSOL, A. \emph{Random {Data}: {Analysis} and {Measurement}
-  {Procedures}}. [S.l.]: Wiley, 2011.  (Wiley {Series} in {Probability} and
-  {Statistics}).
+{BENDAT, J.; PIERSOL, A. \emph{Random {Data}: {analysis} and {measurement}
+  {procedures}}. 4th. ed. New Jersey: Wiley, 2011.  (Wiley {Series} in
+  {Probability} and {Statistics}).
 ISBN 978-1-118-21082-6.}
 
 \bibitem[Bhumbra et al. 2014]{bhumbra14}
@@ -98,10 +98,10 @@ ISSN 0022-3077, 1522-1598.}
 
 \bibitem[Burke 2011]{burke11}
 \abntrefinfo{Burke}{BURKE}{2011}
-{BURKE, R.~E. Motor {Units}: {Anatomy}, {Physiology}, and {Functional}
-  {Organization}. In:  \emph{Comprehensive {Physiology}}. [S.l.]: American
-  Cancer Society, 2011. p. 345--422.
-ISBN 978-0-470-65071-4.}
+{BURKE, R.~E. Motor {Units}: {anatomy}, {physiology}, and {functional}
+  {organization}.
+\emph{Comprehensive {Physiology}}, American Cancer Society, p. 345--422, 2011.
+ISSN 2040-4603.}
 
 \bibitem[Burke et al. 1971]{burke71}
 \abntrefinfo{Burke et al.}{BURKE et al.}{1971}
@@ -151,7 +151,7 @@ ISSN 0340-1200, 1432-0770.}
 {CULLHEIM, S.; KELLERTH, J.~O. A morphological study of the axons and recurrent
   axon collaterals of cat alpha-motoneurones supplying different hind-limb
   muscles.
-v.~281, p. 285--299, 1978.
+\emph{The Journal of Physiology}, v.~281, p. 285--299, 1978.
 ISSN 0022-3751.}
 
 \bibitem[Davey et al. 1993]{davey93}
@@ -194,15 +194,15 @@ ISSN 0022-3751.}
 \abntrefinfo{Eccles, Fatt e Koketsu}{ECCLES; FATT; KOKETSU}{1954}
 {ECCLES, J.~C.; FATT, P.; KOKETSU, K. Cholinergic and inhibitory synapses in a
   pathway from motor-axon collaterals to motoneurones.
-v.~126, n.~3, p. 524--562, 1954.
+\emph{The Journal of Physiology}, v.~126, n.~3, p. 524--562, 1954.
 ISSN 0022-3751.}
 
 \bibitem[Elias, Watanabe e Kohn 2014]{elias14}
 \abntrefinfo{Elias, Watanabe e Kohn}{ELIAS; WATANABE; KOHN}{2014}
 {ELIAS, L.~A.; WATANABE, R.~N.; KOHN, A.~F. Spinal {Mechanisms} {May} {Provide}
   a {Combination} of {Intermittent} and {Continuous} {Control} of {Human}
-  {Posture}: {Predictions} from a {Biologically} {Based} {Neuromusculoskeletal}
-  {Model}.
+  {Posture}: {predictions} from a {biologically} {based} {neuromusculoskeletal}
+  {model}.
 \emph{PLoS Computational Biology}, v.~10, n.~11, nov. 2014.
 ISSN 1553-734X.}
 
@@ -215,8 +215,8 @@ ISSN 0022-3751.}
 
 \bibitem[Enoka 2008]{enoka08}
 \abntrefinfo{Enoka}{ENOKA}{2008}
-{ENOKA, R. \emph{Neuromechanics of {Human} {Movement} - 4th {Edition}}. 4
-  edition. ed. Champaign, Ill.: Human Kinetics, 2008.
+{ENOKA, R. \emph{Neuromechanics of Human Movement}. 4th. ed. Champaign, Ill.:
+  Human Kinetics, 2008.
 ISBN 978-0-7360-6679-2.}
 
 \bibitem[Farina e Negro 2015]{farina15}
@@ -255,13 +255,13 @@ ISSN 0006-8993.}
 
 \bibitem[Gorelick e Ozsvald 2014]{gorelick14}
 \abntrefinfo{Gorelick e Ozsvald}{GORELICK; OZSVALD}{2014}
-{GORELICK, M.; OZSVALD, I. \emph{High performance {Python}}. First edition.
+{GORELICK, M.; OZSVALD, I. \emph{High performance {Python}}. 1st. ed.
   Sebastopol, CA: O'Reilly, 2014. OCLC: ocn868080968.
 ISBN 978-1-4493-6159-4.}
 
 \bibitem[Grama et al. 2003]{grama03}
 \abntrefinfo{Grama et al.}{GRAMA et al.}{2003}
-{GRAMA, A. et al. \emph{Introduction to {Parallel} {Computing}}. 2 edition. ed.
+{GRAMA, A. et al. \emph{Introduction to {Parallel} {Computing}}. 2nd. ed.
   Harlow, England ; New York: Pearson, 2003.
 ISBN 978-0-201-64865-2.}
 
@@ -307,8 +307,8 @@ ISSN 9780470650714.}
 
 \bibitem[Henneman, Somjen e Carpenter 1965]{henneman65}
 \abntrefinfo{Henneman, Somjen e Carpenter}{HENNEMAN; SOMJEN; CARPENTER}{1965}
-{HENNEMAN, E.; SOMJEN, G.; CARPENTER, D.~O. {FUNCTIONAL} {SIGNIFICANCE} {OF}
-  {CELL} {SIZE} {IN} {SPINAL} {MOTONEURONS}.
+{HENNEMAN, E.; SOMJEN, G.; CARPENTER, D.~O. {Functional} {Significance} {of}
+  {Cell} {Size} {in} {Spinal} {Motoneurons}.
 \emph{Journal of Neurophysiology}, v.~28, p. 560--580, maio 1965.
 ISSN 0022-3077.}
 
@@ -329,7 +329,9 @@ ISSN 1741-2552.}
 \bibitem[Hultborn et al. 2004]{hultborn04}
 \abntrefinfo{Hultborn et al.}{HULTBORN et al.}{2004}
 {HULTBORN, H. et al. Key mechanisms for setting the input-output gain across
-  the motoneuron pool - {ScienceDirect}. In:  . [S.l.: s.n.], 2004.}
+  the motoneuron pool. In:  \emph{Brain Mechanisms for the Integration of
+  Posture and Movement}. [S.l.]: Elsevier, 2004,  (Progress in Brain Research,
+  v.~143). p. 75 -- 95.}
 
 \bibitem[Hultborn, Jankowska e Lindstr\"{O}m 1971]{hultborn71a}
 \abntrefinfo{Hultborn, Jankowska e Lindstr\"{O}m}{HULTBORN; JANKOWSKA;
@@ -415,6 +417,14 @@ ISBN 978-0-07-139011-8 978-0-07-181001-2 978-1-283-65624-5.}
 \emph{Experimental Brain Research}, v.~20, n.~2, p. 135--143, maio 1974.
 ISSN 0014-4819, 1432-1106.}
 
+\bibitem[Kernell 1965]{kernell65}
+\abntrefinfo{Kernell}{KERNELL}{1965}
+{KERNELL, D. The {Limits} of {Firing} {Frequency} in {Cat} {Lumbosacral}
+  {Motoneurones} {Possessing} {Different} {Time} {Course} of
+  {Afterhyperpolarization}.
+\emph{Acta Physiologica Scandinavica}, v.~65, n.~1-2, p. 87--100, set. 1965.
+ISSN 1365-201X.}
+
 \bibitem[Kernell 2006]{kernell06}
 \abntrefinfo{Kernell}{KERNELL}{2006}
 {KERNELL, D. \emph{Motoneurone and its {Muscle} {Fibres} - {Oxford}
@@ -457,7 +467,8 @@ ISSN 1096-9861.}
 \abntrefinfo{Liddell et al.}{LIDDELL et al.}{1925}
 {LIDDELL, E. G.~T. et al. Recruitment and some other features of reflex
   inhibition.
-\emph{Proc. R. Soc. Lond. B}, v.~97, n.~686, p. 488--518, abr. 1925.
+\emph{Proceedings of the Royal Society of London}, v.~97, n.~686, p. 488--518,
+  abr. 1925.
 ISSN 0950-1193, 2053-9185.}
 
 \bibitem[Lindsay e Binder 1991]{lindsay91}
@@ -476,7 +487,7 @@ ISSN 0001-6772.}
 
 \bibitem[Loeb, He e Levine 1990]{loeb90}
 \abntrefinfo{Loeb, He e Levine}{LOEB; HE; LEVINE}{1990}
-{LOEB, G.; HE, J.; LEVINE, W. S. Spinal cord circuits: {Are} they mirrors of
+{LOEB, G.; HE, J.; LEVINE, W. S. Spinal cord circuits: {are} they mirrors of
   musculoskeletal mechanics?
 \emph{Journal of motor behavior}, v.~21, p. 473--91, jan. 1990.}
 
@@ -556,8 +567,8 @@ ISSN 0270-6474, 1529-2401.}
   CELICHOWSKI; KRUTKI}{2006}
 {MR\'OWCZY\'NSKI, W.; CELICHOWSKI, J.; KRUTKI, P. Interspecies differences in
   the force-frequency relationship of the medial gastrocnemius motor units.
-\emph{Journal of Physiology and Pharmacology: An Official Journal of the Polish
-  Physiological Society}, v.~57, n.~3, p. 491--501, set. 2006.
+\emph{Journal of Physiology and Pharmacology: an official journal of the polish
+  physiological society}, v.~57, n.~3, p. 491--501, set. 2006.
 ISSN 0867-5910.}
 
 \bibitem[Muller et al. 2015]{muller15}
@@ -621,7 +632,7 @@ ISSN 0031-6768, 1432-2013.}
 \abntrefinfo{Renshaw}{RENSHAW}{1941}
 {RENSHAW, B. Influence of discharge of motoneurons upon excitation of
   neighboring motoneurons.
-v.~4, n.~2, p. 167--183, 1941.
+\emph{Journal of Neurophysiology}, v.~4, n.~2, p. 167--183, 1941.
 ISSN 0022-3077, 1522-1598.}
 
 \bibitem[Romanes 1951]{romanes51}
@@ -664,7 +675,8 @@ ISSN 0022-3751.}
 \abntrefinfo{Sherrington, M e S}{SHERRINGTON; M; S}{1925}
 {SHERRINGTON, S. C.~S.; M, O.; S, P.~R. Remarks on some aspects of reflex
   inhibition.
-\emph{Proc. R. Soc. Lond. B}, v.~97, n.~686, p. 519--545, abr. 1925.
+\emph{Proceedings of the Royal Society of London}, v.~97, n.~686, p. 519--545,
+  abr. 1925.
 ISSN 0950-1193, 2053-9185.}
 
 \bibitem[Simpson, Weiner e Press 1989]{oxford}
@@ -676,8 +688,8 @@ ISBN 9780198612292.}
 \bibitem[Sterratt et al. 2011]{sterratt11}
 \abntrefinfo{Sterratt et al.}{STERRATT et al.}{2011}
 {STERRATT, D. et al. \emph{Principles of {Computational} {Modelling} in
-  {Neuroscience}}. 1 edition. ed. Cambridge ; New York: Cambridge University
-  Press, 2011.
+  {Neuroscience}}. 1st. ed. Cambridge ; New York: Cambridge University Press,
+  2011.
 ISBN 978-0-521-87795-4.}
 
 \bibitem[Uchiyama, Johansson e Windhorst 2003]{uchiyama03a}

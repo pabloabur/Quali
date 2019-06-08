@@ -1,11 +1,15 @@
 \section{Efeitos da inibição recorrente em simulações}
 \subsection{Características de recrutamento de motoneurônios}
 \label{sec:res_recruit}
+Nas simulações seguintes, o núcleo motor é sujeito a uma corrente
+em rampa injetada intracelularmente em cada MN, levando a um recrutamento
+gradativo dos MNs bem como a um aumento gradativo com o tempo da taxa
+de disparos de cada MN.
 No intervalo de 1 segundo mostrado na Figura \ref{fig:recruitCxO}, pode-se
 perceber que a presença
 das CRs resulta em padrões de disparos
 distintos quando o núcleo motor é estimulado pela corrente descrita pela
-Equação (\ref{eq:i}).
+equação (\ref{eq:i}).
 Como esperado, as CRs atrasam os disparos dos MNs e 
 também diminuem suas ocorrências.
 Além disso, é possível notar que, em ambos os casos e de forma geral,
@@ -15,12 +19,12 @@ os MNs são recrutados de forma ordenada, ou seja, do menor para o maior.
 	\center
 	\includegraphics[scale=0.6]{recruitCxO.eps}
     \caption[Instantes de disparo dos somas de todos os motoneurônios simulados
-             com uma corrente injetada.]{
+             com uma corrente injetada]{
              Instantes de disparo dos somas de todos os motoneurônios simulados
              com uma corrente injetada.
              O eixo das ordenadas representa os índices dos motoneurônios, 
              que são diretamente proporcionais ao tamanho dos mesmos, e o
-             eixo das abcissas são os
+             eixo das abcissas representa os
              instantes de disparo. Os disparos dos motoneurônios com (pontos vermelhos)
              e sem (pontos pretos) células de Renshaw estão sobrepostos.
             }
@@ -32,15 +36,11 @@ Nesse aspecto, todavia, existem algumas ressalvas. A Figura
 de MNs sob o efeito da inibição recorrente. Como visto na Figura
 \ref{fig:recruitzoom}\subref{fig:recruitzoom1}, alguns MNs maiores inicialmente
 disparam praticamente ao mesmo tempo. Os menores, por
-sua vez, ainda apresentam um comportamento de disparos similar,
-mas não parecem estar tão sincronizados,
+sua vez, apresentam um comportamento menos sincronizado,
 como visto na Figura \ref{fig:recruitzoom}\subref{fig:recruitzoom2}.
-A maior ativação de CRs ocasionada por MNs do tipo FF, o efeito do
-decaimento da inibição recorrente com a distância e o 
-respectivo atraso nos disparos dos MNs podem explicar esse resultado,
-mas levantam questionamentos sobre a forma como o circuito de 
-inibição recorrente distribui suas entradas pelo núcleo motor e a ordem
-de recrutamento deste sob essas condições.
+Estes efeitos parecem ser razoavelmente complexos, envolvendo sincronismos
+na interação sináptica de populações de modelos não lineares de neurônios
+com propriedades não uniformes.
 
 \begin{figure}[ht]
     \centering
@@ -53,8 +53,12 @@ de recrutamento deste sob essas condições.
         \label{fig:recruitzoom2}
         \includegraphics[scale=0.5]{recruitzoom2.eps}
     }
-    \caption[Visão de um intervalo reduzido dos disparos dos motoneurônios.]{
-             Visão de um intervalo reduzido dos disparos dos motoneurônios.
+    \caption[Visão de um intervalo reduzido dos disparos dos motoneurônios
+             sob efeito da inibição recorrente]{
+             Visão de um intervalo reduzido dos disparos dos motoneurônios
+             sob efeito da inibição recorrente
+             (é um \textit{zoom} da Figura \ref{fig:recruitCxO}
+             usando somente os pontos em vermelho).
              \subref{fig:recruitzoom1} Instantes de disparos de alguns
              motoneurônios do tipo FF. \subref{fig:recruitzoom2}
              Instantes de disparos de alguns motoneurônios do tipo S.
@@ -62,55 +66,19 @@ de recrutamento deste sob essas condições.
     \label{fig:recruitzoom}
 \end{figure}
 
-Para estudar isso, uma configuração de simulação
-um pouco mais realista foi utilizada. De forma semelhante à
-corrente injetada usada anteriormente, o núcleo motor foi ativado
-pela entrada descrita na Equação (\ref{eq:fd}).
-
-Esses resultados são mostrados na Figura \ref{fig:recruitpoisson}.
-Pode-se observar que, na presença de CRs
-(Figura \ref{fig:recruitpoisson}\subref{fig:recruitpoissonC}),
-o comportamento descrito 
-anteriormente diminui, mas ainda pode ser observado.
-A variabilidade nos disparos causada pela ativação utilizada
-também parece ter ocasionado algo parecido na ausência das 
-CRs, como visto na Figura
-\ref{fig:recruitpoisson}\subref{fig:recruitpoissonO}, mas de forma
-mais sutil.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:recruitpoissonO}
-        \includegraphics[scale=0.5]{recruitpoissonO.eps}
-    }
-    \hspace{-1cm}
-    \subfloat[][]{
-        \label{fig:recruitpoissonC}
-        \includegraphics[scale=0.5]{recruitpoissonC.eps}
-    }
-    \caption[Disparos de motoneurônios ativados por fibras descendentes.]{
-             Disparos de motoneurônios ativados por fibras descendentes.
-             Linhas verticais para cada instante de disparo são sobrepostas
-             no gráfico. Dessa forma, contrastes indicam
-             uma tendência de 
-             motoneurônios de diferentes tamanho a disparar praticamente
-             ao mesmo tempo.
-             \subref{fig:recruitpoissonO} Simulação sem células de Renshaw.
-             \subref{fig:recruitpoissonC} Simulação com células de Renshaw.
-         }
-    \label{fig:recruitpoisson}
-\end{figure}
-
-É de se esperar que essas características apresentadas tenham um
-impacto na sincronia dos MNs. Esse aspecto, entretanto, foi abordado
-na seção \ref{sec:forca}. Por hora, convém analisar a ordem de 
-recrutamento dos MNs simulados.
+Uma análise mais quantitativa sobre um sincronismo gerado no núcleo motor
+foi abordada na seção \ref{sec:danger}.
+A seguir, uma simulação
+um pouco mais realista foi utilizada para 
+analisar a ordem de recrutamento dos MNs.
+Nessa nova simulação, o núcleo motor foi ativado
+pelo comando descendente composto por processos pontuais estocásticos
+com frequência de disparos média descrita pela equação (\ref{eq:fd}).
 
 Na Figura \ref{fig:revrecruit}, a região de transição entre MNs do tipo
-S para o tipo FR na presença de inibição recorrente é mostrada. Tomando
+S para o tipo FR na presença de inibição recorrente foi mostrada. Tomando
 o instante do primeiro disparo do índice 83 como referência,
-é possível identificar casos em que ocorreram uma inversão na ordem de 
+foi possível identificar casos em que ocorreram inversões na ordem de 
 recrutamento, ou seja, MNs maiores começam a disparar antes de menores.
 Também existiram casos de MNs sendo recrutados praticamente ao mesmo
 instante, como é o caso do 83 com o 67. 
@@ -118,11 +86,11 @@ instante, como é o caso do 83 com o 67.
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.6]{revrecruit.eps}
-    \caption[Inversão na ordem de recrutamento de motoneurônios.]{
+    \caption[Inversão na ordem de recrutamento de motoneurônios]{
              Inversão na ordem de recrutamento de motoneurônios.
              Motoneurônios do tipo S (abaixo de 75) e do tipo FR
              (acima de 75) são separados por uma linha horizontal
-             pontilhada. Uma linha vertical tracejada foi traçada sob o
+             pontilhada. Uma linha vertical tracejada foi traçada sobre o
              instante do primeiro disparo do motoneurônio 83 e 
              linhas horizontais sólidas representam o quanto algumas
              unidades menores estiveram atrasadas.
@@ -133,17 +101,17 @@ instante, como é o caso do 83 com o 67.
 Ocorrências
 semelhantes podem ser encontradas em outras partes do gráfico, mas não
 foram mostradas para não prejudicar a visualização deste resultado. Deve-se
-notar, porém, que essa característica também foi observada na ausência
-das CRs, como visto na Figura \ref{fig:recruitpoissonO}. Isso pode ser
+notar, porém, que essa característica também pode ser observada na ausência
+das CRs. Isso pode ser
 explicado pelo fato de que as fibras descendentes,
 além de gerarem potenciais de ação de maneira estocástica, foram 
 parametrizadas com uma conectividade com MNs de 30\%, possibilitando
 MNs próximos entre si a receber correntes sinápticas que ocasionalmente
 não favoreçam o princípio do tamanho.
 
-Sendo assim, uma comparação mais direta entre esses casos é necessária. Para
-esse fim, a Figura \ref{fig:recruitFirsts} é apresentada. Com apenas os 
-instantes do primeiro disparo de cada MNs mostrado, é possível ver que
+Sendo assim, uma comparação mais direta entre esses casos se faz necessária. Para
+esse fim, a Figura \ref{fig:recruitFirsts} foi apresentada. Com apenas os 
+instantes do primeiro disparo de cada MN mostrado, é possível ver que
 a presença da CR faz com que haja uma maior dispersão destes, ou seja,
 o intervalo de tempo entre os disparos foi maior.
 
@@ -158,7 +126,7 @@ o intervalo de tempo entre os disparos foi maior.
         \label{fig:recruitFirstsO}
         \includegraphics[scale=0.5]{recruitFirstsO.eps}
     }
-    \caption[Primeiros instantes de disparos dos motoneurônios.]{
+    \caption[Primeiros instantes de disparos dos motoneurônios]{
              Primeiros instantes de disparos dos motoneurônios.
              \subref{fig:recruitFirstsC} Com células de Renshaw.
              \subref{fig:recruitFirstsO} Sem células de Renshaw.
@@ -184,14 +152,13 @@ Apesar de uma vasta literatura confirmando o princípio do tamanho, existem
 relatos de que, em algumas situações, esse padrão pode não ser rigorosamente
 reproduzido \cite{heckman12}. Uma contração balística, que se assemelha
 à simulação em questão, é um desses casos. Nesse contexto, acredita-se
-que um recrutamento invertido ou misto esteja associado a mecanismos 
-do sistema nervoso central responsáveis por conformar a força de acordo
-com a contração muscular \cite{bawa14,allen18}.
+que um recrutamento invertido ou misto possa ser responsável pela
+geração de forças muscular mais intensas \cite{bawa14,allen18}.
 
 Estudos computacionais
 mostraram que variabilidade das propriedades de MNs podem
 reproduzir esse comportamento no músculo gastrocnêmio medial do gato
-\cite{allen18}. Esses características não estão presentes nas simulações
+\cite{allen18}. Essas características não estão presentes nas simulações
 realizadas aqui, indicando que as CRs podem, também, ser um mecanismo para
 introduzir uma certa inversão na ordem de recrutamento dos MNs.
 De fato, a forma como o 
@@ -216,11 +183,11 @@ de disparo. Isso poderia ser uma vantagem em situações
 de contração muscular rápida, pois \textit{twichtes} maiores contribuiriam
 nos instantes inicias de força muscular mais baixa.
 Os possíveis desdobramentos fisiológicos desses resultados 
-foram explorados na sessão \ref{sec:danger}.
+serão explorados na seção \ref{sec:danger}.
 
 \subsection{Taxa de disparos de motoneurônios}
 A Figura \ref{fig:onion} mostra o resultado de uma simulação
-com a entrada apresentada na Equação (\ref{eq:ramphold}).
+com a entrada apresentada na equação (\ref{eq:ramphold}).
 Tipicamente mostrada em trabalhos que tratam
 sobre o fenômeno de \textit{onion skin} \cite{deluca94},
 as curvas mostram a evolução temporal das taxas de disparos
@@ -229,7 +196,7 @@ mapa de cores de acordo com
 seus tamanhos. Nota-se que, na presença da CR 
 (Figura \ref{fig:onion}\subref{fig:onionwithRC}), houve 
 um pequeno aumento de variabilidade e diminuição de taxas de disparos
-em comparação com a simulação sem essa inibição recorrente
+em comparação com a simulação sem CRs
 (Figura \ref{fig:onion}\subref{fig:onionwithoutRC}). Além disso,
 foi observado que alguns MNs maiores não tiveram suas taxas
 diminuídas tanto quanto as dos menores (por exemplo, cinza e bege
@@ -246,9 +213,9 @@ claro).
         \label{fig:onionwithRC}
         \includegraphics[scale=0.5]{onionwithRC.eps}
     }
-    \caption[Taxa de disparo de MNs em função da taxa de disparo de
-             fibras descendentes.]{
-             Taxa de disparo de MNs em função da taxa de disparo de
+    \caption[Taxa de disparo de motoneurônios em função da taxa de disparo de
+             fibras descendentes]{
+             Taxa de disparo de motoneurônios em função da taxa de disparo de
              fibras descendentes. O mapa de cores identifica os
              motoneurônios de acordo com o seus índices.
              \subref{fig:onionwithoutRC} Sem célula de Renshaw.
@@ -256,20 +223,6 @@ claro).
          }
     \label{fig:onion}
 \end{figure}
-
-Apesar de não ter sido mencionada, a taxa de disparos dos MNs é
-importante para compreender fisiologicamente a relevância dos resultados.
-Existem trabalhos na literatura que tentaram relacioná-las com
-diferentes tipos de movimentos.
-\citeonline{hoffer87} mostraram que em um esteira, à velocidade de 0.5 ms/s,
-taxas de disparos de MNs dos músculos das patas traseiras
-de gatos estão contidas no intervalo de 15 até 35 pps, aproximadamente.
-Paralelamente, \citeonline{walmsley78} sugeriram que,
-nessa velocidade, a porcentagem da força tetânica realizada está por
-volta de 8\%.  
-Em movimentos como o pulo vertical, contrações próximas
-à 100\% da CVM são atingidas \cite{walmsley78} e isso poderia envolver
-maiores taxas de disparos.
 
 \citeonline{deluca94} ocasionalmente observaram
 disparos de uma unidade motora atingindo taxas maiores
@@ -290,14 +243,28 @@ voluntárias pode ter um efeito direto nesse resultado, sendo necessário
 determinar a forma como esse efeito modulatório afeta essa população
 de neurônios.
 
-Levando em consideração esses estudos, pode-se perceber que as
+Existem, ainda, trabalhos experimentais que
+tentaram relacionar a taxa de disparos de MNs com
+diferentes tipos de movimentos.
+\citeonline{hoffer87} mostraram que em um esteira, à velocidade de 0.5 ms/s,
+taxas de disparos de MNs dos músculos das patas traseiras
+de gatos estão contidas no intervalo de 15 até 35 pps, aproximadamente.
+Paralelamente, \citeonline{walmsley78} sugeriram que,
+nessa velocidade, a porcentagem da força tetânica realizada está por
+volta de 8\%.  
+Em movimentos como o pulo vertical, contrações próximas
+à 100\% da CVM são atingidas \cite{walmsley78} e isso poderia envolver
+maiores taxas de disparos. Um exemplo disso são alguns MNs que durante
+longos períodos de estimulação podem alcançar até 200 pps \cite{kernell65}.
+
+Sendo assim, pode-se perceber que as
 taxas de disparos encontradas nas simulações
 estiveram dentro de limites fisiologicamente relevantes.
 Quando se trata do fenômeno da \textit{onion skin}, todavia,
 foi observada uma característica mista. Em ambos os casos (sem ou
 com CRs), curvas de MNs com tamanhos parecidos se sobrepõe frequentemente,
-mas, na medida em que a diferença entre os tamanhos aumenta, esse
-comportamento cessa. Apesar da ocorrência um caso em que um MN do tipo
+mas, à medida que a diferença entre os tamanhos aumenta, esse
+comportamento cessa. Apesar da ocorrência de um caso em que um MN do tipo
 FF tenha disparado a taxas mais altas do que um do tipo S, outros
 estudos devem ser realizados para analisar a relevância
 fisiológica desses resultados.
@@ -342,10 +309,10 @@ semelhante à função de Langmuir descrita na literatura \cite{cleveland81}.
         \label{fig:granitrate}
         \includegraphics[scale=0.5]{granitrate.eps}
     }
-    \caption[Efeitos da presença da CR no força gerada pelo modelo
-             e nos disparos de MNs.]{
-             Efeitos da presença da CR no força gerada pelo modelo
-             e nos disparos de MNs. 
+    \caption[Efeitos da presença da célula de Renshaw no força gerada pelo modelo
+             e nos disparos de motoneurônios]{
+             Efeitos da presença da célula de Renshaw no força gerada pelo modelo
+             e nos disparos de motoneurônios. 
              Curvas pontilhadas e contínuas para respostas com e sem
              CR, respectivamente. Linha tracejada obtida da subtração
              dessas duas.
@@ -354,16 +321,6 @@ semelhante à função de Langmuir descrita na literatura \cite{cleveland81}.
          }
     \label{fig:granit}
 \end{figure}
-
-% This is something that could be changed, but I think it is not worth 
-% mentioning. If I do mention it, I should use Walmsley et al. (1978)
-% because they report force of 19.6 N, which is a little higher than that
-% of Granit
-%Os níveis de força gerados pelo modelo não foram os mesmos dos obtidos
-%na literatura, mas foram próximos. Caso se queira reproduzir a força 
-%máxima de 17.15 N \cite{granit61}, os parâmetros de pico dos
-%\textit{twitches} e força tetânica poderiam ser aumentados. Para
-%esses casos, a proporcionalidade observada foi mantida.
 
 Existem muitos dados conflitantes na literatura sobre o ganho da
 inibição recorrente e a consequente diminuição da taxa de disparos.
@@ -397,7 +354,7 @@ indicar ganhos maiores nesse circuito de inibição recorrente.
 Mediante o exposto, os resultados das simulações aqui realizadas,
 de forma geral, foram condizentes com o que foi 
 apresentado por \citeonline{uchiyama03b}. As reduções na força 
-gerada ocorreram como previsto na literatura, enquanto que a
+gerada ocorreram como previsto na literatura, enquanto a
 diminuição nas taxas de disparos dos MNs foi um pouco maior do 
 que o esperado. Isso, entretanto, não desvalida a parametrização
 adotada, tendo em visto que o ganho do circuito de inibição
@@ -421,9 +378,9 @@ No contexto de se estudar os efeitos das CRs quando existem oscilações
 de 10 Hz no núcleo motor devido ao comando descendente,
 a Figura \ref{fig:res_williamsnew} mostra os resultados de coerências
 córtico-musculares e espectros da força em variados cenários envolvendo
-um aumento das taxas de disparos médias das fibras descendentes quando
-havia realimentação negativa por parte das CRs para manter a média
-das forças inalterada.
+um aumento das taxas de disparos médias das fibras descendentes para
+manter a média das forças inalterada quando
+havia realimentação negativa por parte das CRs.
 Por conveniência, os casos relativos à conexões apresentados na seção
 \ref{sec:met_psd} foram denominados da seguinte forma:
 Ausente (sem CRs), Normal (condutâncias das CRs sob 
@@ -431,8 +388,9 @@ MNs inalteradas), Fraca e Forte (metade e o dobro das condutâncias
 das CRs sob MNs, respectivamente).
 Na Figura \ref{fig:res_williamsnew}\subref{fig:res_psdnew05}, é possível
 ver um pico de 10 Hz que diminui com o aumento
-da influência das CRs, com exceção do caso Normal
-e Forte, que estiveram muito próximos. Curiosamente, para 70\% da força
+da influência das CRs. Nos casos denominados Normal
+e Forte, os respectivos picos a 10 Hz estiveram muito próximos.
+Curiosamente, para 70\% da força
 muscular essa ordem se inverte, como mostrado na Figura 
 \ref{fig:res_williamsnew}\subref{fig:res_psdnew70}.
 
@@ -463,13 +421,14 @@ demais, também em outras faixas de frequências.
         \label{fig:res_cohnew70}
         \includegraphics[scale=0.4]{res_cohNew70.eps}
     }
-    \caption[Efeitos da CR na densidade espectral de potência dos
-             disparos de MNs com compensação obtida por meio de fibras
-             descendentes.]{Efeitos da CR na densidade espectral
-             de potência dos disparos de MNs com compensação obtida
+    \caption[Efeitos da célula de Renshaw na densidade espectral de potência dos
+             disparos de motoneurônios com compensação obtida por meio de fibras
+             descendentes]{Efeitos da célula de Renshaw na densidade espectral
+             de potência dos disparos de motoneurônios com compensação obtida
              por meio de fibras descendentes. Resultados da parte superior
-             são referentes à simulação com 5\% da CMV, enquanto que os
-             inferiores, 70\%.
+             são referentes a simulações com 5\% da contração voluntária máxima,
+             enquanto os
+             inferiores, 70\% da contração voluntária máxima.
              \subref{fig:res_psdnew05} e \subref{fig:res_psdnew70}
              Espectro de potência da força muscular.
              \subref{fig:res_cohnew05} e \subref{fig:res_cohnew70}
@@ -486,8 +445,10 @@ muscular \cite{hultborn79b}.
 
 É possível que a diminuição dos picos em 10 Hz observada
 tenha sido causada majoritariamente
-pelo aumento da taxa média de disparo das fibras descendentes em situações
-de maior inibição recorrente. Para verificar essa possibilidade, foi
+pelo aumento da taxa média de disparos das fibras descendentes em situações
+de maior inibição recorrente, aumentando o ruído sináptico nos MNs e com isto
+diminuindo a probabilidade de sincronismo nos disparos dos MNs com a senoide
+de 10 Hz. Para verificar essa possibilidade, foi
 realizada uma simulação em que a intensidade média dos comandos
 descendentes no caso Normal foi mantida igual ao caso sem \textit{feedback}
 das CRs. As análises espectrais resultantes apresentadas na
@@ -495,10 +456,12 @@ Figura \ref{fig:res_uncomp} mostram que nessa situação também
 houve um decréscimo considerável do pico em 10 Hz. Em comparação com 
 a Figura \ref{fig:res_williamsnew}\subref{fig:res_psdnew05}, em 10 Hz 
 o caso normal diminuiu de 35 (com compensação) para 27 (sem compensação),
-aproximadamente, enquanto que os picos da coerência
+aproximadamente, enquanto os picos da coerência
 (Figuras \ref{fig:res_uncomp}\subref{fig:res_uncompcoh} e 
 \ref{fig:res_williamsnew}\subref{fig:res_cohnew05}) ficaram praticamente
-inalteradas.
+inalterados. Portanto, pode-se descartar a hipótese de que a causa primordial
+para a diminuição do pico espectral foi o aumento da intensidade dos 
+processos pontuais descendentes.
 
 \begin{figure}[ht]
     \centering
@@ -511,8 +474,9 @@ inalteradas.
         \includegraphics[scale=0.4]{res_uncompcoh.eps}
     }
     \caption[Análise espectral sem compensação quando o \textit{feedback}
-             das CRs é adicionado.]{Análise espectral
-             sem compensação quando o \textit{feedback} das CRs é adicionado.
+             das células de Renshaw é adicionado]{Análise espectral
+             sem compensação quando o \textit{feedback} das células
+             de Renshaw é adicionado.
              \subref{fig:res_uncomppsd} Espectro de potência da força
              muscular. \subref{fig:res_uncompcoh} Coerência córtico-muscular.
              }
@@ -528,7 +492,9 @@ pelas CRs
 ao circuito neural \cite{koehler85,williams09}, agindo, assim, como um
 ``filtro neural''.
 
-Com o intuito de investigar essa possibilidade, um nova simulação foi
+Com o intuito de investigar a possibilidade de ser gerado nos circuitos
+de inibição recorrente um sinal para cancelar a fase de oscilação de 10 Hz,
+um nova simulação foi
 realizada com MNs adicionais que recebiam apenas entradas excitatórias
 (fibras descendentes e ruído independente) ou somente inibitórias
 (CRs). Flutuações de condutância e potencial de membrana
@@ -560,9 +526,9 @@ facilitar a visualização dos resultados.
         \label{fig:res_gsyncsdex}
         \includegraphics[scale=0.4]{res_gsyncsdex.eps}
     }
-    \caption[Exemplo de como um cancelamento de fases causado pelas CRs
-             pode ser observado.]{Exemplo de como um cancelamento de fases
-             causado pelas CRs pode ser observado. Resultados extraídos de
+    \caption[Exemplo de como um cancelamento de fases causado pelas células de Renshaw
+             pode ser observado]{Exemplo de como um cancelamento de fases
+             causado pelas células de Renshaw pode ser observado. Resultados extraídos de
              um MN de índice 40, escolhido arbitrariamente. Linhas tracejadas
              e contínuas em \subref{fig:res_vmpsdex} e
              \subref{fig:res_gsynpsdex} são relativas às entradas
@@ -570,12 +536,13 @@ facilitar a visualização dos resultados.
              para entradas inibitórias também foi mostrado com amplificação
              das escalas.
              \subref{fig:res_vmpsdex} Espectros de potência dos potenciais de
-             membrana \subref{fig:res_gsynpsdex} Espectros de potência das
-             condutâncias sinápticas
+             membrana. \subref{fig:res_gsynpsdex} Espectros de potência das
+             condutâncias sinápticas.
              \subref{fig:res_gsyncohex} Módulo da coerência entre as
              condutâncias associadas às entradas
-             excitatórias e inibitórias \subref{fig:res_gsyncsdex} Fase da
-             coerência entre as condutâncias associadas às entradas excitatórias e inibitórias 
+             excitatórias e inibitórias. \subref{fig:res_gsyncsdex} Fase da
+             coerência entre as condutâncias associadas às entradas
+             excitatórias e inibitórias.
              }
 	\label{fig:res_exs}
 \end{figure}
@@ -586,10 +553,10 @@ nas densidades de
 potência dos potenciais de membrana e das condutâncias, respectivamente,
 para MNs que recebem apenas entradas excitatórias (linhas pontilhadas)
 ou inibitórias (linhas contínuas).
-Analogamente, o módulo da coerência para os sinais de
-condutância sináptica da Figura
-\ref{fig:res_exs}\subref{fig:res_gsyncohex} mostra uma relação alta
-entre esses sinais nessa frequência. O gráfico da Figura
+Analogamente, o módulo da coerência entre os sinais de
+condutância sináptica do par de MNs (Figura
+\ref{fig:res_exs}\subref{fig:res_gsyncohex}) mostra uma coerência alta
+entre esses sinais em 10 Hz. O gráfico da Figura
 \ref{fig:res_exs}\subref{fig:res_gsyncsdex}, por sua vez, apresenta
 muitas flutuações, mas em 10 Hz tem fase próxima de zero. Isso significa
 que, quando o núcleo motor é sincronizado pela entrada utilizada, correntes
@@ -621,10 +588,12 @@ inibitórias indicando, novamente, a possibilidade de um cancelamento de fase.
         \includegraphics[scale=0.4]{res_csdsvm.eps}
     }
     \caption[Fases da coerência entre entradas excitatórias e inibitórias
-             em 10Hz de 10 simulações.]{Fases da coerência entre
-             condutâncias \subref{fig:res_csdsgsyn} e potenciais 
-             de membrana \subref{fig:res_csdsvm} excitatórias e
-             inibitórias em 10 Hz de 10 simulações.
+             em 10Hz de 10 simulações]{Fases da coerência entre
+             \subref{fig:res_csdsgsyn} condutâncias excitatórias e
+             inibitórias em 10 Hz e \subref{fig:res_csdsvm}
+             potenciais de membrana excitatórias e
+             inibitórias em 10 Hz. Cada círculo vazio representa
+             o resultado de uma das 10 simulações realizadas.
              }
 	\label{fig:res_csds}
 \end{figure}
@@ -653,10 +622,13 @@ de MNs e CRs indicam que, conforme sugerido por outros trabalhos,
 o \textit{feedback} negativo das CRs tende a reduzir oscilações de 10 Hz
 na força, pelo menos em parte, devido à dinâmica do \textit{feedback} que
 gerou um sinal com fase oposta à da excitação dos comandos descendentes.
+No presente estudo, a oscilação foi gerada por
+comandos descendentes. Outra origem seria espinhal, mas essa não foi
+coberta nas presentes simulações.
 
 \subsection{Análises de contrações isométricas}
 \label{sec:danger}
-A Figura \ref{fig:res_moda} mostra o efeito de diferentes forças de
+A Figura \ref{fig:res_moda} mostra o efeito de diferentes intensidades de
 inibição recorrente em contrações isométricas rápidas. Isso pode ser
 visualizado de forma mais intuitiva por meio da Figura \ref{fig:res_modb},
 que mostra a derivada da força muscular gerada. Como foi observado que
@@ -676,7 +648,7 @@ fenômeno.
 Nota-se que as linhas pontilhadas e tracejadas da Figura \ref{fig:res_modb}
 não foram iguais, mas as respectivas curvas da Figura \ref{fig:res_moda}
 estiveram muito próximas, indicando pouca diferença entre forças geradas
-com condutâncias menores.
+com condutâncias menores nos instantes iniciais.
 
 \begin{figure}[ht]
     \centering
@@ -689,8 +661,8 @@ com condutâncias menores.
         \label{fig:res_modb}
         \includegraphics[scale=0.5]{res_modb.eps}
     }
-    \caption[Efeitos das CRs em contrações isométricas rápidas.]{
-             Efeitos das CRs em contrações isométricas rápidas. Força
+    \caption[Efeitos das células de Renshaw em contrações isométricas rápidas]{
+             Efeitos das células de Renshaw em contrações isométricas rápidas. Força
              da inibição recorrente foi simulada como o dobro (forte) e 
              a metade (fraca) da condutância originalmente parametrizada
              (normal).
@@ -713,7 +685,7 @@ Vale notar que as limitações mostradas na seção \ref{sec:res_dyn}
 podem influenciar os resultados apresentados. A presença
 da depressão pós-sináptica ou de características dinâmicas no modelo,
 pelo menos inicialmente, 
-gerariam níveis de força maiores para um mesmo instante de tempo.
+gerariam níveis de inibição recorrente maiores.
 Em uma situação normal, por exemplo,
 isso poderia ser observado na Figura \ref{fig:res_moda}
 como uma curva mais próxima à contínua que gradualmente se aproxima
@@ -727,20 +699,25 @@ sugerem um efeito de mudança da inclinação da curva
 apresentada, o que também significa uma alteração da sensibilidade dessa 
 população de MNs a mudanças da entrada excitatória.
 Essas suposições carecem de mais dados experimentais, pois
-não se sabe como as CRs se comportam quando os MNs disparam taxas 
+não se sabe como as CRs se comportam quando os MNs disparam a taxas 
 tão altas e de forma repentina.
 
-Em geral, os coeficientes estudados tiveram características parecidas
+Em geral, os coeficientes estudados tiveram características parecidas,
 tanto em situações de contrações fracas quanto fortes, como mostrado 
-na Figura \ref{fig:res_modSpk}. O coeficiente de variação da força foram
-maiores para forças de inibição recorrente mais intensas, enquanto que, em
+na Figura \ref{fig:res_stat}. Os coeficientes de variação da força foram
+maiores para intensidades de inibição recorrente maiores, enquanto, em
 média, os outros casos estiveram muito próximos entre si. Algo
 semelhante foi observado nos coeficientes de sincronia, que podem também
-explicar os resultados anteriores. Nota-se que esses coeficiente estiveram
-muito baixos, sendo necessárias outras análises para determinar se os MNs
-envolvidos estariam de fato sincronizados ou não. Esse assunto é desafiado 
-pelos diversos estudos mostrando as CRs sincronizando ou desincronizando
-MNs \cite{uchiyama07,mattei03,obeidat14}.
+explicar os resultados anteriores. Nota-se que esses coeficientes estiveram
+muito baixos, sendo necessárias análises complementares para determinar
+de forma mais confiável um grau de sincronismo de MNs
+e como este grau dependeria do \textit{feedback}
+inibitório das CRs. Esse assunto é controverso, pois existem
+diversos estudos mostrando as CRs sincronizando ou desincronizando
+os MNs \cite{uchiyama07,mattei03,obeidat14}.
+Nota-se que os coeficientes de sincronia
+também foram calculados nas simulações da seção \ref{sec:forca},
+mas foram iguais aos apresentados aqui.
 
 \begin{figure}[ht]
     \centering
@@ -753,11 +730,11 @@ MNs \cite{uchiyama07,mattei03,obeidat14}.
         \label{fig:res_stathigh}
         \includegraphics[scale=0.5]{res_statHigh.eps}
     }
-    \caption[Medidas de coeficientes de sincronia e variação.]{
+    \caption[Medidas de coeficientes de sincronia e variação]{
              Medidas de coeficientes de sincronia e variação em
-             diferentes níveis de força muscular. Circunferências
+             diferentes níveis de força muscular. Círculos vazios
              representam o resultado de uma simulação para cada
-             intensidade de inibição recorrente e linhas, suas
+             intensidade de inibição recorrente e linhas representam suas
              médias.
              \subref{fig:res_statlow} 5\%.
              \subref{fig:res_stathigh} 70\%.
@@ -766,50 +743,52 @@ MNs \cite{uchiyama07,mattei03,obeidat14}.
 \end{figure}
 
 A Figura \ref{fig:res_modSpk} é apresentada para explorar com mais 
-detalhes o aumento no coeficiente de sincronia. Pode-se observar que
-os MNs sob forte inibição recorrente tendem a disparar ao mesmo tempo.
-Esse fenômeno, em contrapartida, é menor quando as CRs estão ausentes.
-Vale notar que os coeficientes de sincronia
-também foram calculados na seção anterior, mas foram iguais aos
-apresentados aqui.
-
-\begin{figure}[ht]
-    \centering
-    \subfloat[][]{
-        \label{fig:res_modo}
-        \includegraphics[scale=0.5]{res_modo.eps}
-    }
-    \hspace{-1cm}
-    \subfloat[][]{
-        \label{fig:res_modd}
-        \includegraphics[scale=0.5]{res_modd.eps}
-    }
-    \caption[Linhas verticais para cada instante de disparo são sobrepostas
-             para indicar uma tendência dos MNs a dispararem juntos. Os 
-             últimos 250 ms da simulação com 5\% da CVM foram utilizados
-             para essa demonstração.]{
-             Linhas verticais para cada instante de disparo são sobrepostas
-             para indicar uma tendência dos MNs a dispararem juntos. Os 
-             últimos 250 ms da simulação com 5\% da CVM foram utilizados
-             para essa demonstração.
-             \subref{fig:res_modo} Inibição recorrente forte.
-             \subref{fig:res_modd} Inibição recorrente ausente.
-             }
-	\label{fig:res_modSpk}
-\end{figure}
-
-Tal resultado é condizente com o que foi apresentado na Figura 
-\ref{fig:recruitpoisson} e estudos que confirmam o efeito modulatório
+detalhes o aumento no coeficiente de sincronia, mesmo que de forma
+qualitativa. Para cada instante em que ocorre um disparo de algum MN,
+há uma linha vertical. Havendo maior sincronismo
+de disparos durante um dado intervalo de tempo, haverá uma maior
+densidade de linhas verticais neste mesmo intervalo de tempo.
+Sendo assim, pode-se observar que
+os MNs sob forte inibição recorrente
+(Figura \ref{fig:res_modSpk}\subref{fig:res_modd}) tendem a disparar ao mesmo tempo.
+Esse fenômeno, em contrapartida, é menor quando as CRs estão ausentes
+(Figura \ref{fig:res_modSpk}\subref{fig:res_modo}).
+Tal resultado é condizente com
+estudos que confirmam o efeito modulatório
 da inibição recorrente na temporização dos disparos de MNs
 \cite{davey93,obeidat14}. A lógica por trás disso é que MNs disparando
 ao mesmo instante (ou próximos) geram uma força de inibição intensa que
 atrasa o próximo disparo dos MNs nas proximidades.
 
+\begin{figure}[ht]
+    \centering
+    \subfloat[][]{
+        \label{fig:res_modd}
+        \includegraphics[scale=0.5]{res_modd}
+    }
+    \hspace{-1cm}
+    \subfloat[][]{
+        \label{fig:res_modo}
+        \includegraphics[scale=0.5]{res_modo}
+    }
+    \caption[Linhas verticais para cada instante de disparo são sobrepostas
+             para indicar uma tendência dos motoneurônios a dispararem juntos]{
+             Linhas verticais para cada instante de disparo são sobrepostas
+             para indicar uma tendência dos motoneurônios a dispararem juntos. Os 
+             últimos 250 ms da simulação com 5\% da contração
+             voluntária máxima foram utilizados
+             para essa demonstração.
+             \subref{fig:res_modd} Inibição recorrente forte.
+             \subref{fig:res_modo} Inibição recorrente ausente.
+             }
+	\label{fig:res_modSpk}
+\end{figure}
+
 É importante notar que, por causa da falta de dados experimentais,
 elementos responsáveis por modular as CRs não foram explicitamente
 modelados. Estudos realizados em ratos mostram que CRs recebem entradas
 sinápticas inibitórias com magnitudes correlacionadas com as entradas
-excitatóriasde MNs, mas a origem dessa modulação ainda é desconhecida
+excitatórias de MNs, mas a origem dessa modulação ainda é desconhecida
 \cite{nishimaru10}. Apesar das diferentes condutâncias em cada
 simulação servirem
 ao propósito de elucidar possíveis efeitos modulatórios da inibição 
@@ -826,16 +805,16 @@ As médias dos resultados obtidos das equações (\ref{eq:b1b2}),
 \ref{tab:res_peaks}.
 
 \begin{table}[ht!]
-\caption[Relações entre picos da transformada de Fourier da força.]{Relações
+\caption[Relações entre picos da transformada de Fourier da força]{Relações
     entre picos da transformada de Fourier da força sem e com inibição 
     recorrente.}
 \label{tab:res_peaks}
 \centering
     \begin{tabu}{c c c}\tabucline[1.5pt]{-} 
         Quantificador & sem CRs & com CRs \\ \tabucline[1.5pt]{-} 
-        \qum & 2.09 & 2.08 \\
-        \qdois & 6.01 & 5.91 \\
-        \qtres & 0.0020 & 0.0003 \\
+        \qum & 2.13 & 2.11 \\
+        \qdois & 6.52 & 6.38 \\
+        \qtres & 0.00180 & 0.00036 \\
 	\hline
     \end{tabu}
 \end{table}
@@ -844,12 +823,12 @@ Foi possível observar que, em média, os quantificadores
 \qum e \qdois quase não apresentaram diferenças quando a inibição
 recorrente foi adicionada. Isso indica que 
 as CRs pouco influenciam o espectro da força no intervalo espectral
-estudado. Entretanto,a
+em questão. Entretanto, a
 pequena diminuição no quantificador \qdois pode significar uma
 tendência das CRs a agirem como um filtro passa-baixas.
 
 Por sua vez, o quantificador
-\qtres foi cerca de 10 vezes menor com as CRs, sugerindo
+\qtres foi cerca de 5 vezes menor com as CRs, sugerindo
 que a adição de inibição recorrente ocasionou o surgimento de componentes
 em frequências espúrias na força muscular. Isso pode ser visualizado na 
 Figura \ref{fig:res_fft}, que mostra que esse fenômeno é mais relevante 
@@ -858,13 +837,13 @@ nas frequências menores que a primeira harmônica.
 \begin{figure}[ht]
 	\center
     \includegraphics[scale=0.6]{res_fft.eps}
-    \caption[Transformada de Fourier da força muscular.]{
+    \caption[Transformada de Fourier da força muscular]{
             Transformada de Fourier da força muscular.}
 	\label{fig:res_fft}
 \end{figure}
 
 Nesse ponto, faz-se necessária uma pequena observação sobre a simulação
-sem inibição recorrente. O sinal de ativação em questão, ou seja,
+sem inibição recorrente apresentada. O sinal de ativação em questão, ou seja,
 $10sen(2\pi0.5t)+5sen(2\pi1.0t)+2.5sen(2\pi2.5t)$, é composto por autofunções
 do sistema linear de segunda ordem criticamente amortecido 
 utilizado para gerar \textit{twitches}. Se o módulo da função 
@@ -888,6 +867,10 @@ um valor próximo ao encontrado na primeira coluna da Tabela
 \ref{tab:res_peaks}. De qualquer forma, outros
 estudos são necessários para determinar a relevância dessa diminuição.
 
+Dando prosseguimento ao que foi proposto na seção \ref{sec:met_distcontrol},
+os CSTs de alguns MNs foram computados para que se pudesse entender
+melhor a influência das CRs na transmissão do sinal de entrada para os 
+músculos.
 Os resultados da Figura \ref{fig:res_mncst} mostram CSTs de 5 MNs.
 Para facilitar a comparação com a entrada fornecida pelas fibras
 descendentes (em cinza claro), ambos sinais tiveram suas respectivas 
@@ -925,13 +908,16 @@ Para investigar a causa disso, o CST das CRs também foi computado.
         \label{fig:res_csts97}
         \includegraphics[scale=0.4]{res_csts97.eps}
     }
-    \caption[CSTs filtrados e normalizados de MNs.]{CSTs filtrados e
-             normalizados de MNs. Primeira coluna
-             mostra resultados sem CRs, enquanto que segunda coluna mostra
-             resultados com CRs. Em \subref{fig:res_csto7} e
-             \subref{fig:res_csts7}, CST foi computado com os disparos de MNs
+    \caption[Trens de disparos cumulativos filtrados e normalizados dos motoneurônios]{
+             Trens de disparos cumulativos filtrados e
+             normalizados de motoneurônios. A primeira coluna
+             mostra resultados sem células de Renshaw, enquanto a segunda coluna mostra
+             resultados com células de Renshaw. Em \subref{fig:res_csto7} e
+             \subref{fig:res_csts7}, o trem de disparos cumulativo foi
+             computado com os disparos de
+             motoneurônios
              de índices 5 até 9. Em \subref{fig:res_csto97} e
-             \subref{fig:res_csts97}, foram utilizados MNs 95 até 99.
+             \subref{fig:res_csts97}, foram utilizados motoneurônios 95 até 99.
              Curva em cinza claro mostra o formato da entrada fornecida
              pelas fibras descendentes, também normalizadas.
              }
@@ -939,7 +925,7 @@ Para investigar a causa disso, o CST das CRs também foi computado.
 \end{figure}
 
 A média dos CSTs das 5 CRs mais próximas dos MNs de índices 7 e 
-184 foram próximas (0.046 e 0.045, respectivamente), sugerindo que
+97 foram próximas (0.046 e 0.045, respectivamente), sugerindo que
 o comportamento observado na Figura
 \ref{fig:res_mncst}\subref{fig:res_csts97} não foi ocasionado por isso.
 Por outro lado, tais CSTs são diferentes, como visto na Figura
@@ -958,12 +944,14 @@ com a entrada comum quanto CSTs de CRs próximas a MNs maiores
         \label{fig:res_cstrc97}
         \includegraphics[scale=0.4]{res_cstrc97.eps}
     }
-    \caption[CSTs filtrados e normalizados de CRs.]{
-             CSTs filtrados e normalizados de CRs.
-             \subref{fig:res_cstrc7} CSTs das 5 CRs mais próximas ao MN de
+    \caption[Trens de disparos cumulativos filtrado e normalizado das células de Renshaw]{
+             Trens de disparos cumulativos filtrado e normalizado das células de Renshaw.
+             \subref{fig:res_cstrc7} Trem de disparos cumulativo das 5 células
+             de Renshaw mais próximas ao motoneurônio de
              índice 7.
-             \subref{fig:res_cstrc97} CSTs das 5 CRs mais próximas ao MN de
-             índice 92.
+             \subref{fig:res_cstrc97} Trem de disparos cumulativo das 5 células
+             de Renshaw mais próximas ao motoneurônio de
+             índice 97.
              }
 	\label{fig:res_rccst}
 \end{figure}
@@ -1007,11 +995,11 @@ em média, novos MNs tiveram que ser recrutados.
         \label{fig:res_cstrecs}
         \includegraphics[scale=0.4]{res_cstrecs.eps}
     }
-    \caption[Instantes de disparo dos somas do MNs simulados com
-             a entrada utilizada nessa seção.]{Instantes de disparo dos
-             somas do MNs simulados com a entrada utilizada nessa seção.
-             \subref{fig:res_cstreco} Sem CRs.
-             \subref{fig:res_cstrecs} Com CRs.
+    \caption[Instantes de disparo dos somas do motoneurônios simulados com
+             a entrada utilizada nessa seção]{Instantes de disparo dos
+             somas do motoneurônios simulados com a entrada utilizada nessa seção.
+             \subref{fig:res_cstreco} Sem células de Renshaw.
+             \subref{fig:res_cstrecs} Com células de Renshaw.
              }
 	\label{fig:res_cstrec}
 \end{figure}

@@ -9,7 +9,8 @@ por sua vez, podem ser encontrados no GitHub:
 
 \section{Desempenho computacional}
 Duas abordagens distintas foram consideradas nessa parte: A utilização de um 
-\textit{cluster} e o Python na sua implementação original (CPython).
+\textit{cluster} e a implementação de
+uma única matriz com as condutâncias de um determinado neurônio.
 As medições do tempo de execução, realizadas por meio da biblioteca \textit{time},
 levaram em conta apenas os trechos do código
 que se repetem várias vezes e que, consequentemente, contém os maiores
@@ -17,37 +18,36 @@ que se repetem várias vezes e que, consequentemente, contém os maiores
 
 Vale notar que, na época da escrita dessa seção e dos resultados 
 obtidos, a versão do ReMoto em Fortran ainda não estava disponível.
-Dessa forma, apenas aqui e na sessão \ref{sec:res_perf}, a versão
+Dessa forma, apenas aqui e na seção \ref{sec:res_perf}, a versão
 utilizada do ReMoto foi a em Python.
 
 \subsection{Cluster Águia}
 O \textit{cluster} Águia é composto por 64 servidores físicos com 20 \textit{cores} e 
 512 GB de RAM. Seu processador é um Intel(R) Xeon(R) CPU E7-2870 com 2.4 GHz.
-A versão do Python disponível para utilização nesse sistema é 2.7.13, da
+A versão do Python disponível para utilização nesse sistema é a 2.7.13, da
 distribuição Anaconda2 4.4.0.
 
-Primeiramente, o uso de ferramentas para passagem de mensagens em um sistema
-distribuído será analisado para simulações simples, com uma corrente injetada
-de 10 nA no soma de MNs. O cálculo da força gerada também será computado.
+O uso de ferramentas para passagem de mensagens em um sistema
+distribuído foi analisado em uma simulação simples, com uma corrente
+de 10 nA injetada no soma de MNs e força muscular sendo computada.
 Para esse fim, o pacote
-Python MPI4Py, que possibilita o uso do todos os recursos do \textit{cluster},
-será utilizado. Serão utilizados 2, 4, 8 e 16 processos em um único servidor.
+MPI4Py, que possibilita o uso de todos os recursos do \textit{cluster},
+foi utilizado para criar 2, 4, 8 e 16 processos em um único servidor.
 
-Para possibilitar que o problema abordado pudesse ser divididos em unidades menores
-de computação, foram identificados algumas \textit{tasks} primitivas: os cálculos
-da força e das equações diferenciais das unidades motoras. As unidades
+Para possibilitar que o problema abordado pudesse ser dividido em unidades menores
+de computação, foram identificadas as seguintes \textit{tasks} primitivas: o cálculo
+da força gerada e das equações diferenciais das unidades motoras. As unidades
 motoras são independentes entre si e não precisam receber mensagens durante a
-simulação, mas a parte de cálculo de força precisa receber, a cada passo de
-tempo, valores relativos de disparos das unidades motoras. Sendo assim,  as
-unidades motoras enviam, no final de cada passo da simulação,
-seus valores de disparos para as \textit{tasks} de cálculo de força, que
-apenas as recebem e realizam suas computações.
+simulação, mas o cálculo da força depende
+dos disparos dos MNs. Sendo assim, as \textit{tasks} das
+unidades motoras enviam, ao final de cada passo da simulação,
+seus disparos para a \textit{task} de cálculo da força.
 
-As computações das unidades
-motoras serão divididas igualmente entre os processos criados, 
-enquanto que a \textit{task} de cálculo da força deve ocupar sozinha um único
-processo. Os parâmetros que serão usados para analisar a qualidade do programa
-paralelo são o \textit{Speedup} (ou aceleração, em português) \speedUp,
+As \textit{tasks} das unidades
+motoras foram divididas igualmente entre os processos criados, 
+enquanto a \textit{task} de cálculo da força ocupou sozinha um único
+processo. Os parâmetros que foram usados para analisar a qualidade do programa
+paralelo foram o \textit{Speedup} (ou aceleração, em português) $S$,
 calculado pela equação
 
 \begin{equation}
@@ -67,22 +67,26 @@ sendo \numProc o número de processadores utilizados \cite{grama03}.
 Os valores de $t_s$ e $t_p$ são obtidos a partir da média de 10 simulações com
 400 unidades motoras e duração de 0.5 segundos.
 
-\subsection{Python}
-Essa estratégia se baseia no uso do conceito de vetorização. O código atual 
-utiliza uma matriz de condutâncias de cada compartimento do modelo para
-realizar cálculos sobre os potenciais de membrana. O objetivo é criar uma
-matriz maior que contenha cada uma dessas matrizes menores, de forma que o 
-processo de vetorização possa trazer otimizações. Isso será realizado para 
+\subsection{Matrizes de condutâncias}
+Originalmente, o cálculo dos potenciais de membrana de um
+neurônio no ReMoto era
+realizado com uma matriz contendo as condutâncias
+dos compartimentos em questão. A estratégia proposta aqui
+se baseia no uso de
+uma única matriz com os valores das condutâncias de um
+grupo de neurônios (por exemplo, MNs de um núcleo motor),
+de forma que as computações pudessem ser vetorizadas.
+Isso foi realizado para 
 todos os MNs, INs e algumas outras variáveis envolvidas no cálculo do potencial
-de membrana. A implementação antiga das matrizes será identificada como \Ga e
+de membrana. A implementação antiga das matrizes foi identificada como \Ga e
 a nova proposta, como $G_n$.
 
-Nessa parte será utilizado um sistema operacional Linux
+Nessa parte, foi utilizado um sistema operacional Linux
 64 bits com oito processadores Intel Core i7-2600 a 3.40 GHz e 7.8 GB de RAM.
-A versão do Python utilizada é a 2.7.14, da distribuição Anaconda2 5.0.1-1.
-De forma geral, as simulações consistirão de comandos descendentes ativando
+A versão do Python utilizada foi a 2.7.14, da distribuição Anaconda2 5.0.1-1.
+De forma geral, as simulações consistiram de comandos descendentes ativando
 MNs.
-O tempo de execução será obtido a partir da média de 5 resultados
+O tempo de execução foi obtido a partir da média de 5 resultados
 para diferentes quantidades de MNs
 (variação no tamanho da matriz de condutância).
 
@@ -97,12 +101,14 @@ a 3.40 GHz e 7.8 GB de RAM. Os dados foram processados e analisados com
 Python versão 3.7.3.
 
 \subsection{Parametrização do modelo de motoneurônios}
-O modelo adotado foi o de um núcleo motor do músculo gastrocnêmios 
+O modelo adotado foi o de um núcleo motor do músculo gastrocnêmio 
 medial do gato. Em simulações envolvendo populações desses neurônios,
 foi considerado um comprimento de 6 mm do núcleo motor \cite{burke77}
 com 75 MNs do tipo S, 75 do tipo FR e 150 do tipo FF, como em
-\citeonline{uchiyama03a}. Fibras descendentes responsáveis pela
-ativação do núcleo motor foram modeladas no ReMoto como 400 elementos pré-
+\citeonline{uchiyama03a}.
+
+Para representar as fibras descendentes responsáveis pela
+ativação do núcleo motor, foram utilizados 400 elementos pré-
 sinápticos disparando potenciais de ação de acordo com um processo pontual
 Gama e com 30\% de conectividade com o compartimento dendrítico dos MNs.
 A ordem desses processos estocásticos em função do nível de força estudado
@@ -185,8 +191,10 @@ seguintes resultados descritos na literatura:
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.7]{PEPS}
-	\caption{Potencial excitatório pós-sináptico recorrente em uma
-             célula de Rewshaw \cite{walmsley81}.}
+    \caption[Potencial excitatório pós-sináptico na
+             célula de Rewshaw]
+            {Potencial excitatório pós-sináptico na
+             célula de Rewshaw. Fonte: Adaptado de \citeonline{walmsley81}.}
 	\label{fig:PEPS}
 \end{figure}
 
@@ -216,7 +224,7 @@ foram baseadas nas seguintes referências:
         a AHP apresentou uma amplitude de -2 mV e duração por volta de 30 ms,
         como visto na Figura \ref{fig:HP79}\subref{fig:AHPRC};
     \item \citeonline{fyffe90}: Estudos morfológicos mostraram CRs com 
-        diâmetro médio de de 27 $\mu$m;
+        diâmetro médio de 27 $\mu$m;
     \item \citeonline{bui03}: Estimativas da área superficial média do soma
         e do dendrito foram 1753.8 $\mu\text{m}^2$ e 16756 $\mu\text{m}^2$,
         respectivamente.
@@ -233,10 +241,9 @@ foram baseadas nas seguintes referências:
         \label{fig:AHPRC}
         \includegraphics[scale=0.5]{AHPRC}
     }
-    \caption[Características de disparos disparos da célula de Renshaw
-            \cite{hultborn79}]{
-        Características de disparos disparos da célula de Renshaw
-        \cite{hultborn79}. \subref{fig:fxiRC} Relação entre corrente
+    \caption[Características de disparos da célula de Renshaw]{
+        Características de disparos da célula de Renshaw. Fonte: Adaptado de
+        \citeonline{hultborn79}. \subref{fig:fxiRC} Relação entre corrente
         injetada e taxa de disparo de uma célula de Renshaw.
         A taxa de disparo instantânea entre o primeiro e segundo potencial
         de ação é entendido como o 
@@ -283,8 +290,8 @@ tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
 
 \begin{enumerate}[label=\alph*)]
     \item \citeonline{friedman81}: Correlações foram encontradas entre
-        amplitude dos PIPS e o tipo do MN, mas não entre amplitudes e 
-        as resistências de entrada dos MNs em cada tipo;
+        amplitude dos PIPS e o tipo do MN, mas não entre essas amplitudes e 
+        resistências de entrada dos MNs em cada tipo;
     \item \citeonline{fyffe91}: Conexões sinápticas identificadas como
         provenientes de CRs foram todas localizadas nos dendritos de MNs
         do tipo alfa;
@@ -297,8 +304,9 @@ tipo de MN foram ajustadas, levando em conta os seguintes dados experimentais:
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.4]{met_IPSP}
-    \caption[PIPS resultante agindo nos MNs]{
-             PIPS resultante agindo nos MNs \cite{uchiyama03a}.
+    \caption[Potencial inibitório pós-sináptico agindo nos motoneurônios]{
+             Potencial inibitório pós-sináptico agindo nos motoneurônios.
+             Fonte: Adaptado de \citeonline{uchiyama03a}.
             }
 	\label{fig:met_IPSP}
 \end{figure}
@@ -308,8 +316,7 @@ compartimento dendrítico do MN e simulações foram realizadas para encontrar
 três valores de condutâncias (um para cada tipo) que reproduzam a Figura 
 \ref{fig:met_IPSP}.
 
-\subsubsection{Distribuição de potenciais inibitórios pós
-               -sinápticos recorrentes}
+\subsubsection{Distribuição de potenciais inibitórios pós-sinápticos recorrentes}
                 \label{sec:met_ipsp}
 A distribuição dos PIPS recorrentes pelo núcleo motor depende 
 de fatores topográficos e funcionais. No ReMoto, isso está relacionado
@@ -331,7 +338,7 @@ de acordo com:
         distantes e próximos, respectivamente;
     \item \citeonline{uchiyama03a}: O padrão de distribuição topográfica 
         da força sináptica é o de uma gaussiana que decresce na medida
-        em que se afasta do neurônio pré sináptico. O desvio padrão da
+        em que se afasta do neurônio pré-sináptico. O desvio padrão da
         curva é de 0.167 mm e 1.164 mm para os MNs e para as CRs, 
         respectivamente. A quantidade de botões sinápticos também é
         um indicativo da força sináptica das conexões. Estima-se que os
@@ -343,13 +350,15 @@ de acordo com:
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.4]{met_RIPSP}
-    \caption[Distribuição topográfica de PIPS recorrentes]{
-             Distribuição topográfica de PIPS recorrentes. Valores
-             na abcissa indicam a distância entre os pares de MNs
-             enquanto que a ordenada mostra o valor da amplitude do 
-             PIPS recorrente gerado. Pontos pretos e brancos representam as respostas
-             significantes e as possivelmente equívocas, respectivamente
-             \cite{mccurdy94}.}
+    \caption[Distribuição topográfica de potenciais inibitórios pós-sinápticos 
+            recorrentes]{
+             Distribuição topográfica de potenciais inibitórios pós-sinápticos
+             recorrentes. Valores
+             na abcissa indicam a distância entre os pares de motoneurônios
+             enquanto a ordenada mostra o valor da amplitude do 
+             potencial inibitório pós-sináptico recorrente gerado. Pontos pretos e brancos representam as respostas
+             significantes e as possivelmente equívocas, respectivamente.
+             Fonte: Adaptado de \citeonline{mccurdy94}.}
 	\label{fig:met_RIPSP}
 \end{figure}
 
@@ -357,14 +366,14 @@ Para reproduzir o experimento como em \citeonline{mccurdy94}, as simulações
 consistiram em correntes injetadas no soma de MNs por um curto período de 
 tempo para que o PIPS recorrente pudesse ser observado em outros MNs.
 Foram levados em conta 180 pares, separados por distâncias entre
-86 $\mu$m e 4.7 mm. O número de CRs, de acordo com as estimativas,
-foi de 600.
+86 $\mu$m e 4.7 mm.
 
 O número
-de botões sinápticos de cada tipo de MN nas CRs foi implementado como valores
+de botões sinápticos de cada tipo de MN nas CRs foi
+implementado (de forma indireta) como valores
 de condutância seguindo uma proporção de 1:0.55:0.45 (FF:FR:S). Isso
 permitiu que apenas a condutância máxima dos MNs do tipo FF
-\gmaxff fosse parametrizado, sendo as outras ajustadas
+\gmaxff fosse parametrizada, sendo as outras ajustadas
 de acordo com a proporção.
 
 \subsubsection{Dinâmica e depressão sináptica}
@@ -386,14 +395,14 @@ as referências utilizadas foram:
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.4]{met_dyn.png}
-    \caption[Características dinâmicas da célula de Renshaw.]{
+    \caption[Características dinâmicas da célula de Renshaw]{
              Características dinâmicas da célula de Renshaw.
              A frequência do estímulo
              aplicado, inicialmente
              de 5 Hz (com resposta indicada pelo traço horizontal com o
              número 5 no eixo
              vertical), foi abruptamente aumentada para um dos valores
-             indicados na legenda, em Hz \cite{uchiyama03a}.
+             indicados na legenda, em Hz. Fonte: Adaptado de \citeonline{uchiyama03a}.
             }
 	\label{fig:met_dyn}
 \end{figure}
@@ -423,17 +432,20 @@ obtidos da simulação desses experimentos.
 \subsubsection{Características de potenciais inibitórios
             pós-sinápticos recorrentes}
 As características de PIPS recorrentes que foram verificadas 
-são mostradas na Figura \ref{fig:met_hamm}. As simulações realizadas 
+são mostradas na Figura \ref{fig:met_hamm}, na forma de
+histogramas. As simulações realizadas 
 foram as mesmas da parametrização na Seção \ref{sec:met_ipsp}.
 
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=1.3]{met_hamm}
-    \caption[Resultados experimentais sobre características de PIPS
-            recorrentes.]{
-            Resultados experimentais sobre características de PIPS
-            recorrentes. Eixos verticais são as contagens de ocorrências
-            \cite{hamm87b}.}
+    \caption[Resultados experimentais sobre características de
+             potenciais inibitórios pós-sinápticos
+            recorrentes]{
+            Resultados experimentais sobre características de
+            potenciais inibitórios pós-sinápticos
+            recorrentes. Eixos verticais são as contagens de ocorrências.
+            Fonte: Adaptado de \citeonline{hamm87b}.}
 	\label{fig:met_hamm}
 \end{figure}
 
@@ -463,16 +475,17 @@ os mostrados na Figura \ref{fig:met_cleveland}
 	\center
 	\includegraphics[scale=1.3]{met_cleveland}
     \caption[Resultados experimentais sobre relações estáticas de 
-            entrada e saída.]{
+            entrada e saída]{
             Resultados experimentais sobre relações estáticas de 
             entrada e saída. Uma frequência de estímulo antidrômica
-            $f_{AD}$ em Hz gera uma taxa de disparos $f_{RC}$ na CR.
+            $f_{AD}$ em Hz gera uma taxa de disparos $f_{RC}$ na
+            célula de Renshaw.
             No gráfico superior, 24 funções de Langmuir são ajustadas
-            às respostas de 24 CRs. No gráfico inferior, a média
+            às respostas de 24 células de Renshaw. No gráfico inferior, a média
             normalizada desse grupo é apresentada, também com uma
             função de Langmuir ajustada a ela. Barras verticais
             representam o desvio padrão.
-            \cite{cleveland81}.}
+            Fonte: Adaptado de \citeonline{cleveland81}.}
 	\label{fig:met_cleveland}
 \end{figure}
 
@@ -488,14 +501,14 @@ Figura \ref{fig:met_eccles}
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=1.3]{met_eccles}
-    \caption[CRs e sua resposta à um estímulo antidrômico.
-            ]{CRs e sua resposta à um estímulo antidrômico.
+    \caption[Células de Renshaw e sua resposta à um estímulo antidrômico
+            ]{Células de Renshaw e sua resposta à um estímulo antidrômico.
             O tempo é mostrado na abcissa, em ms, enquanto
-            que a taxa de disparos, na ordenada, em pps.
+            a taxa de disparos, na ordenada, em pps.
             São mostradas respostas de diferentes núcleos 
             motores, de acordo com a legenda: A, plantar;
             B, sóleo; C, gastrocnêmio medial; D, gastrocnêmio
-            lateral \cite{eccles61b}.}
+            lateral. Fonte: Adaptado de \citeonline{eccles61b}.}
 	\label{fig:met_eccles}
 \end{figure}
 
@@ -506,11 +519,12 @@ foram calculadas como o recíproco do intervalo entre cada potencial de
 ação, em pps.
 
 \section{Efeitos da parametrização em simulações}
-Nessa seção, as simulações realizadas
-foram configuradas para serem o mais semelhantes possível aos trabalhos
-usados como referência para que os resultados pudessem ser apropriadamente
-comparados. De formal geral, todas as simulações tiveram
-CRs disparando espontaneamente.
+As simulações realizadas nessa seção
+foram configuradas para serem, na medida do possível, semelhantes
+às situações estudadas nos trabalhos usados como referência,
+possibilitando que os resultados pudessem ser apropriadamente
+comparados. De formal geral, optou-se por utilizar 
+CRs disparando espontaneamente em todas as simulações.
 
 \subsection{Disparos de motoneurônios}
 \label{sec:met_onion}
@@ -572,7 +586,7 @@ disparos dos MNs.
 \subsection{Diminuições dos níveis de força}
 O efeito do modelo de CR na força muscular foi estudado baseando-se
 no trabalho de \citeonline{granit61}, que fizeram uma estimativa 
-do quanto a inibição recorrente diminuiria a tensão gerado pelo 
+do quanto a inibição recorrente diminuiria a tensão gerada pelo 
 músculo sóleo do gato. Isso é mostrado na Figura \ref{fig:met_granit}
 
 \begin{figure}[ht]
@@ -583,9 +597,9 @@ músculo sóleo do gato. Isso é mostrado na Figura \ref{fig:met_granit}
              Tensão isométrica do músculo sóleo (ordenada) em função
              da frequência de estímulo do nervo (abcissa). Os círculos
              preenchidos representam os valores de referência de tensão
-             muscular, enquanto que a curva 1 é uma estimativa dessa
+             muscular, enquanto a curva 1 é uma estimativa dessa
              na ausência de inibição recorrente. A curva 2 é a diferença
-             das outras duas \cite{granit61}.}
+             das outras duas. Fonte: Adaptado de \citeonline{granit61}.}
 	\label{fig:met_granit}
 \end{figure}
 
@@ -593,19 +607,19 @@ Como o músculo utilizado nesse experimento é diferente do empregado
 nas parametrizações, algumas considerações foram necessárias.
 Foi pressuposto que as relações dos MNs desse núcleo motor
 com as CRs e as fibras descendentes (condutâncias sinápticas e conectividade)
-sejam as mesmas.
-Ademais, as características de unidade motora relacionado aos 
+sejam as mesmas apresentadas anteriormente.
+Ademais, as características de unidades motoras relacionadas aos 
 \textit{twitches}, propriedades eletrotônicas e geométricas foram as
 mesmas adotadas para o núcleo motor gastrocnêmio medial.
-Dessa forma, apenas as quantidades e distribuição de tamanhos
-desses neurônios foram alteradas, semelhante ao trabalho de
+Sendo assim, apenas as quantidades e distribuições de tamanhos
+desses neurônios foram alteradas, de forma semelhante ao trabalho de
 \citeonline{maltenfort98}.
 
 A simulação, portanto, foi realizada com
 150 MNs do tipo S, de acordo com estimativas realizadas em trabalhos 
 experimentais \cite{burke11}. Respeitando a proporção de 50 MN/mm de medula
 espinhal \cite{cisi07}, esses neurônios foram distribuídos
-em 3 mm. Sendo assim, 300 CRs foram dispostos nesse comprimento
+em 3 mm. Sendo assim, 300 CRs foram dispostas nesse comprimento
 \cite{carr98}.
 O núcleo motor foi ativado por fibras descendentes durante 4 s,
 com taxas suficientes para gerar os níveis
@@ -632,7 +646,7 @@ um nível de força desejado. Ruídos excitatórios
 nos compartimentos dendríticos dos MNs foram adicionados
 por meio de condutâncias sinápticas com valor de pico igual a 12 $\mu$S
 ativadas por um processo pontual Poisson.
-As frequências dessas duas entradas excitatórias foram determinadas
+As frequências médias dessas duas entradas excitatórias foram determinadas
 como mostrado a seguir.
 
 Primeiramente, usando o caso sem inibiç\~{a}o recorrente, a
@@ -647,18 +661,17 @@ de 70\% da CVM, mas tendo a atividade de 80\% do núcleo motor como
 alvo \cite{hoffer87,walmsley78}.
 
 Em seguida, para cada porcentagem da CVM adotada, foram considerados
-cenários com inibição recorrente em que a condutância das CRs
-sob os MNs de cada tipo fosse igual, o dobro e a metade dos
-respectivos valores apresentados na Tabela \ref{tab:params_final}.
+cenários com inibição recorrente em que a condutância das sinapses das CRs
+sobre os MNs de cada tipo fosse igual, o dobro e a metade dos
+respectivos valores parametrizados (apresentados na Tabela \ref{tab:params_final}).
 Em cada um desses casos,
-frequências médias de disparos foram ajustadas
+frequências médias de disparos de fibras descendentes foram ajustadas
 para fazer com que as m\'{e}dias das forças geradas estivessem
 dentro de uma faixa de 10\% em torno da respectiva força gerada
 na ausência de CRs.
 
 As frequências médias determinadas anteriormente foram utilizadas como valor
-médio de uma senoide, que foi igual para todas as situações simuladas
-nessa seção. Sua amplitude pico a pico, determinada na situação
+médio de uma senoide. Sua amplitude pico a pico, determinada na situação
 com condutâncias das CRs inalteradas e com 5\% da CVM, 
 foi aquela necessária para
 fazer com que se fosse 
@@ -668,14 +681,15 @@ córtico-muscular parecidos com os de \citeonline{williams09}.
 As características das fibras descendentes são
 resumidas na Tabela
 \ref{tab:met_dcistrat}. Em todos os cenários, a amplitude pico a pico
-da senoide
-foi de 4.6 Hz. Ademais, um ruído independente com uma taxa pequena
+da senoide que modulou a intensidade do processo pontual descendente
+foi de 4.6 Hz. Ademais, um ruído independente com
+base em um processo Poisson a uma taxa pequena
 de 90/s, suficiente para gerar cerca de 1/10 da condutância total
 causada pelas fibras descendentes no compartimento dendrítico,
 foi associado a todos os MNs.
 
 \begin{table}[ht!]
-\caption{Valores utilizados para as entradas nas simulações em cada
+\caption{Valores médios das entradas utilizadas nas simulações em cada
     uma das situações estudadas.}
 \label{tab:met_dcistrat}
 \centering
@@ -713,8 +727,7 @@ interferências de respostas transitórias, apenas os últimos
 As simulações foram repetidas dez vezes
 para que se fosse obtida uma resposta média dos resultados, que 
 foram, então, comparadas qualitativamente com os resultados de
-\citeonline{williams09} mostrados na Figura
-\ref{fig:met_williams09}.
+\citeonline{williams09}, mostrados na Figura \ref{fig:met_williams09}.
 
 \begin{figure}[ht]
     \centering
@@ -728,12 +741,13 @@ foram, então, comparadas qualitativamente com os resultados de
         \includegraphics[scale=0.4]{met_williams09b}
     }
     \caption[Efeitos da ausência e presença da célula de Renshaw em
-            análises espectrais.]{Efeitos da ausência e presença da
-            célula de Renshaw análises espectrais.
+            análises espectrais]{Efeitos da ausência e presença da
+            célula de Renshaw em análises espectrais.
             Linhas pretas e vermelhas
-            são os resultados de simulações sem e com CRs, respectivamente.
+            são os resultados de simulações sem e com inibição recorrente,
+            respectivamente.
             A linha azul representa uma situação intermediária e não será
-            reproduzida aqui \cite{williams09}.
+            reproduzida aqui. Fonte: Adaptado de \citeonline{williams09}.
              \subref{fig:met_williams09a} Coerência córtico-muscular.
              \subref{fig:met_williams09b} Espectro de potência da força muscular.
             }
@@ -741,20 +755,22 @@ foram, então, comparadas qualitativamente com os resultados de
 \end{figure}
 
 \subsection{Estudos de contrações isométricas}
-Os forças de inibição recorrente e a forma como as entradas são
-definidas para cada caso foram as mesmas das descritas na seção 
+Para realizar esses estudos, as forças de inibição recorrente (ausente, 
+fraca, normal e forte) e a forma como as entradas foram
+definidas para cada caso foram as mesmas descritas na seção 
 anterior.
 A ativação do núcleo motor nessas simulações foi
 realizada por meio de fibras descendentes com taxa de disparos 
-constantes e suficiente para gerar valores de força próximos à CVM.
+constante e suficiente para gerar valores de força próximos à CVM.
 Essa taxa foi mantida por 500 ms.
-Essa configuração permitiu que a derivada da força, ou seja, sua 
-sensibilidade ao comando descendente, pudesse ser avaliada para uma
-situação de fuga de uma ameaça repentina.
+Tal configuração permitiu que a derivada da força, ou seja, sua 
+sensibilidade ao comando descendente, pudesse ser avaliada.
+Em termos funcionais, isto poderia estar relacionado a um situação
+de fuga do animal em face de uma ameaça repentina.
 
 Outros cenários analisados
-foram os da manutenção de 5\% e 70\% da CVM por meio de fibras
-descendentes com taxas de disparo de potenciais de ação constantes e 
+foram os da manutenção da força a 5\% e 70\% da CVM por meio de fibras
+descendentes com taxas de disparos de potenciais de ação constantes e 
 suficientes para recrutar uma porcentagem de MNs próxima à apropriada
 \cite{walmsley78}. Essas simulações foram realizadas 10 vezes para cada
 caso. O coeficiente de variação da força muscular 
@@ -767,11 +783,7 @@ gerada foi calculado pela equação (\ref{eq:cv}) mostrada abaixo:
 
 Nesse caso, as simulações tiveram duração de 2 s e os primeiros 500 ms 
 foram removidos para evitar a presença de componentes transitórios
-no sinal.
-
-Os cenários abordados na seção \ref{sec:met_psd} também foram analisados aqui.
-O valor das frequências de disparos foram
-ajustados como na seção \ref{sec:met_onion}. Em todos eles, os graus de 
+no sinal. Os graus de 
 sincronia foram calculados de acordo com o trabalho de
 \citeonline{golomb01} e comparados.
 
@@ -806,12 +818,13 @@ Por fim, obtém-se o coeficiente
 em que $0\le\chi^2\le 1$. Sendo assim, valores mais próximos de 1 indicam
 uma atividade mais sincronizada do núcleo motor.
 
-\subsection{Distorções na saída do núcleo motor}
+\subsection{Distorções na saída do núcleo motor e controle da força}
+\label{sec:met_distcontrol}
 Nas simulações descritas aqui, as entradas sinápticas agindo sobre o
 núcleo motor foram: fibras descendentes com taxas de disparos com determinado
 valor médio e moduladas por 3 senoides; ruídos independentes
-agindo sob cada MN. As senoides usadas para a modulação tiveram frequências
-de 0.5, 1 e 2.5 Hz, tendo amplitudes de 10, 5 e 2.5 Hz, respectivamente.
+agindo sobre cada MN. As senoides usadas para a modulação tiveram frequências
+de 0.5, 1.0 e 2.5 Hz, tendo amplitudes de 10, 5.0 e 2.5 Hz, respectivamente.
 Por sua vez, os
 ruídos, gerados por processos Poisson, tiveram condutância sináptica
 máxima de 12 $\mu$S e taxa de disparos de 50/s.
@@ -821,7 +834,7 @@ situações com e sem inibição recorrente. O valor médio da taxa de disparo
 das fibras descendentes na ausência das CRs foi ajustado para recrutar
 cerca de 130 MNs. Em simulações com CRs, o valor médio foi aumentado para
 que fossem geradas forças com valor médio dentro de uma faixa de
-10 \% em torno da força média
+10\% em torno da força média
 gerada na situação anterior. Dessa forma, os valores utilizados foram de
 300 e 438 potenciais de ação por segundo.
 
@@ -829,9 +842,11 @@ No total, foram realizadas 30 simulações com 10 s de duração cada, sendo
 os primeiros 2 s dos
 sinais gerados removidos para eliminar possíveis respostas transitórias
 nas análises subsequentes. A representação no domínio da frequência
-da força muscular resultante foi obtida por meio da transformada de Fourier. 
+da força muscular resultante foi obtida por meio da transformada de Fourier
+com uma resolução espectral de 0.125 Hz. 
 Além disso, denominando \Bi como o pico do módulo do espectro da força em
-0.5 ($i=1$), 1 ($i=2$) e 2.5 ($i=3$) Hz e \Bj como o das outras frequências,
+0.5 ($i=1$), 1.0 ($i=2$) e 2.5 ($i=3$) Hz e \Bj como o de todas as frequências
+(inclusive $i=1$, $2$ e $3$),
 os seguintes quantificadores foram calculados:
 
 \begin{equation}
@@ -849,16 +864,24 @@ os seguintes quantificadores foram calculados:
     \label{eq:pbipbni}
 \end{equation}
 
-Nessa última expressão, a somatória foi realizada apenas até as
-componentes em frequência de 6 Hz. Nota-se que na entrada as relações de
-amplitude entre a segunda harmônica e a fundamental é igual a 2 e 
-entre a quinta harmônica e a fundamental é 4.
+Essa última expressão, que teve a somatória realizada apenas até as
+componentes em frequência de 6 Hz, foi usada para investigar se 
+as CRs poderiam gerar componentes espectrais adicionais ou espúrias.
+Aplicando os quantificadores acima para o sinal de entrada do núcleo motor,
+os resultados das
+equações (\ref{eq:b1b2}) e (\ref{eq:b1b3}) seriam 2 e 4,
+respectivamente. Mesmo sem a ação das CRs, entretanto, não se
+pode garantir que os valores de $Q_1$ e $Q_2$ para o sinal de força
+sejam iguais aos da entrada e nem que $Q_3$ seja igual a 1. Os valores
+desses quantificadores aplicados sobre o sinal de força, sem as
+CRs, é que serviram de referência para se quantificar a ação
+do \textit{feedback} das CRs sobre o sinal da força.
 
-Para representar o sinal de ativação dos
-músculos pelos MNs recrutados, foi utilizado um trem de disparos
-cumulativo (CST, do inglês \textit{cumulative spike train})
-em que os instantes de disparos de 5 MNs foram utilizados para formar
+Por fim, para representar o sinal de ativação dos
+músculos gerado pelos MNs recrutados, foi utilizado um trem de disparos
+cumulativo (CST, do inglês \textit{cumulative spike train}):
+os instantes de disparos de 5 MNs foram utilizados para formar
 um novo trem de disparos que espelha a contribuição total e temporal
-do conjunto de MNs selecionados. O CST foi filtrado
+do conjunto de MNs selecionados. Esse CST foi filtrado
 por um filtro passa-baixas de quarta ordem, do tipo \textit{Butterworth} e
 com frequência de corte de 10 Hz.

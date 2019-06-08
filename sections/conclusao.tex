@@ -1,5 +1,5 @@
 \chapter{CONCLUSÕES}
-Os resultados relativos ao desempenho computacional apontam possíveis
+Os resultados relativos ao desempenho computacional sugeriram possíveis
 melhorias para o ReMoto.
 A implementação de matrizes de condutâncias adequada para operações
 vetorizadas foi, inclusive, incorporada na versão do ReMoto em 
@@ -16,13 +16,14 @@ reproduzidas como na literatura, mas essa limitação, quando relevante,
 foi considerada nas análises dos resultados de simulações.
 
 Para testar a parametrização adotada, simulações de procedimentos
-experimentais também foram realizadas. Relações estáticas das CRs,
-PIPS recorrentes e resposta a estímulos antidrômicos do modelo foram
+experimentais envolvendo CRs também foram realizadas. Relações estáticas,
+PIPS recorrentes, resposta a estímulos antidrômicos e diminuições
+da força muscular causadas pelas CRs foram
 comparados com a literatura e utilizados
 para delimitar propriedades gerais do modelo do circuito de inibição
 recorrente gerado.
 
-Considerando o que foi apresentado nos dois parágrafos anteriores,
+De acordo com o que foi apresentado nos dois parágrafos anteriores,
 pode-se dizer que o modelo parametrizado foi suficiente para os estudos 
 aqui realizados sobre o circuito de inibição recorrente no gato.
 Diferentemente
@@ -34,21 +35,43 @@ Considerando as parametrizações realizadas,
 resultados de simulações sem e com inibição recorrente foram
 avaliados sob diversas perspectivas. Os MNs sob efeito das CRs apresentaram
 maior tendência a inverter a ordem de seus recrutamentos,
-algo que parece ter um efeito sobre a velocidade do desenvolvimento da
-força muscular. Coeficientes de sincronia e de variação da força 
-muscular também foram calculados, mas estudos experimentais são
-necessários para esclarecer seus significados.
+algo que parece ter um afetado a intensidade e velocidade do desenvolvimento da
+força. Isso sugere uma função importante da CR em contrações
+musculares rápidas.
 
-Diminuições da força muscular foram comparáveis aos dados disponíveis
-na literatura. Além disso, análises no domínio da frequência mostraram
-que as CRs poderiam atuar como um filtro passa baixas, atenuar oscilações
-de 10 Hz por meio de cancelamento de fases e causar distorções.
+Nas comparações em regime estacionário e com aproximadamente o mesmo nível de força,
+a presença das CRs em geral causou diminuições das taxas
+de disparos, que foram acompanhadas por um aumento no número de unidades motoras
+recrutadas. Por outro lado,
+as médias dos coeficientes de variação da força, que foram avaliadas com diferentes
+intensidades de inibição recorrente, foram praticamente iguais entre si,
+com exceção do caso de inibição forte, que foi maior.
+Isso mostra que a da inibição recorrente, apesar de ter 
+causado uma mudança na forma como os MNs no núcleo motor disparam,
+não necessariamente afeta a variabilidade da força. Ainda assim,
+nota-se que uma inibição recorrente mais intensa poderia alterar
+esse coeficiente.
 
-Foi observado também que,
-nas comparações com aproximadamente o mesmo nível de força,
-a presença das CRs causou diminuições das taxas
-de disparos, que foram acompanhadas por um aumento nas unidades motoras
-recrutadas. O efeito das CRs nos CSTs, por sua vez, foi diferente
+O mesmo comportamento das médias dos coeficientes de variação da força
+foi observado nas médias dos coeficientes de sincronia.
+De qualquer forma estudos experimentais e computacionais adicionais são
+necessários para se chegar a um consenso sobre a capacidade da CR em sincronizar
+MNs. Vale notar que os resultados observados para forças de inibição 
+recorrente altas reforçam a ideia de que as CRs podem ser moduladas
+para gerarem efeitos distintos.
+
+Por meio de análises no domínio da frequência, foi possível
+confirmar que as CRs podem atenuar tremores indesejados oriundos de vias
+descendentes, como oscilações
+de 10 Hz, por meio de cancelamento de fases. Isso foi estudado por
+outro grupo, mas considerando uma ativação de MNs que poderia naturalmente
+causar esse resultado. As análises também mostraram 
+que as CRs poderiam atuar como um filtro passa baixas e introduzir componentes
+espúrias na força muscular gerada pelo modelo. Esta distorção observada mostra
+que não necessariamente todos os efeitos da CRs no núcleo motor serão
+vantajosos.
+
+O efeito das CRs nos CSTs, por sua vez, foi diferente
 dependendo de quais MNs fossem escolhidos para realizar as computações.
-Tais resultados reforçam a ideia de que a inibição recorrente seja
-um mecanismo importante para o controle motor.
+Tais resultados não foram conclusivos, mas sugerem que a 
+a inibição recorrente não necessariamente reflete a força (ou sua derivada).

@@ -1,6 +1,6 @@
 \chapter{INTRODUÇÃO}
 \section{O sistema motor}
-O Sistema Nervoso Central (SNC) é composto pelo cérebro e pela 
+O Sistema Nervoso Central (SNC) é composto pelo encéfalo e pela 
 medula espinhal. O segundo é subdividido em cervical, torácico,
 lombar e sacral, sendo cada um desses divididos em vários segmentos. A
 medula espinhal recebe e processa informação de músculos, articulações, pele,
@@ -10,17 +10,19 @@ identificar sinais chegando à medula espinhal, enquanto sinais levados aos
 músculos são chamados de eferentes \cite{kandel13}.
 
 O tipo de músculo estudado aqui é o músculo esquelético, que é
-responsável por movimentar os ossos, olhos, inalação e exalação, controlar
-expressões faciais e fala \cite{bear16}. Movimentos que diminuem o ângulo
-entre um segmento e seu segmento proximal são chamados de flexão,
+responsável por atividades como locomoção, respiração e fala
+\cite{bear16}. Considerando os movimentos possibilitados
+pela existência de articulações entre dois ou mais ossos,
+é possível classificar os que diminuem o ângulo
+entre um segmento e seu segmento proximal como flexão,
 enquanto movimentos que aumentam esse ângulo são chamados de
 extensão \cite{oxford}. Dessa forma, músculos podem ser
 classificados como flexores e extensores. Se eles têm a 
 mesma função em uma dada tarefa motora, são chamados de sinergistas
 um do outro. Como cada grau de liberdade de uma articulação é controlada por
 pelo menos dois músculos fornecendo ações opostas, é útil também defini-los
-como agonistas (aqueles que proporcionam aceleração em direção a
-um objeto) e antagonista (aqueles que geram aceleração na
+como agonistas (aqueles que proporcionam aceleração em determinada direção)
+ou antagonistas (aqueles que geram aceleração na
 direção oposta) \cite{enoka08}.
 
 Em cada músculo esquelético existem, em geral, centenas de fibras musculares.
@@ -40,10 +42,10 @@ corno ventral e corno dorsal.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.6]{slice.eps}
-    \caption[Visão da sessão transversal da medula espinhal.]{
+    \caption[Visão da sessão transversal da medula espinhal]{
         Visão da sessão transversal da medula espinhal.
         A parte delimitada central representa a matéria cinzenta,
-        enquanto que a parte que a circunda representa
+        enquanto a parte que a circunda representa
         a substância branca.}
 	\label{fig:ce}
 \end{figure}
@@ -55,7 +57,7 @@ vários circuitos neuronais, seja no nível do segmento ou conectando com
 estruturas de níveis superiores.
 
 A raiz dorsal consiste em fibras nervosas aferentes que carregam informações
-dos músculos, tendões, articulações e pele para a coluna espinal, enquanto que
+dos músculos, tendões, articulações e pele para a medula espinhal, enquanto 
 a raiz ventral, por sua vez, consiste em axônios inervando músculos e fusos
 musculares. Existem duas categorias de MN: alfa e gama.
 O primeiro inicia diretamente as contrações de fibras musculares.
@@ -69,8 +71,9 @@ Apesar de existirem diferentes tipos de fibras musculares em um dado músculo,
 uma unidade motora inerva fibras de apenas um tipo. Essas fibras são 
 classificadas como: fibras lentas (do inglês \textit{slow}, S),
 que podem sustentar uma contração por um longo tempo sem fadigar; fibras resistentes
-à fadiga, que geram forças moderadas e contrações rápidas com relativa
-resistência à fadiga; e fibras rapidamente fadigáveis (do inglês
+à fadiga que geram forças moderadas e contrações rápidas com relativa
+resistência à fadiga (do inglês \textit{fast, fatigue resistant}, FR);
+e fibras rapidamente fadigáveis (do inglês
 \textit{fast, fatiguing}, FF), que geram as contrações mais fortes e rápidas,
 porém são as mais sensíveis à fadiga \cite{bear16}. Essas classificações,
 entretanto, não funcionam muito bem em
@@ -92,21 +95,24 @@ a ordem de ativação de unidades motoras ocorre das menores para as maiores
 
 Os padrões de conectividade também são características importantes.
 O axônio de um MN surge do seu corpo celular e, na
-maioria dos MNs lumbosacrais, dá origem a uma até cinco ramificações chamadas
+maioria dos MNs lumbosacrais, dá origem a uma ou até cinco ramificações chamadas
 ramos colaterais antes de deixar a medula espinhal \cite{cullheim78}.
 
 As terminações dos axônios motores inervando um músculo se separam em diversos
-ramos e formam os botões sinápticos, de onde os MNs
-liberam o neurotransmissor acetilcolina (ACh). Cada botão é posicionado sobre
+ramos para formar a junção neuromuscular, aonde é
+liberado o neurotransmissor acetilcolina (ACh). Cada terminal pré-sináptico
+é posicionado sobre
 uma região especializado da membrana muscular contendo uma alta densidade de
 receptores de ACh nicotínicos. Como resultado, ACh liberada dos terminais dos
 axônios motores interagem com esses receptores para produzir um
-potencial excitatório pós-sináptico (PEPS) \cite{kandel13}. Tal atividade
+potencial excitatório pós-sináptico (PEPS) que, por sua vez, irá ultrapassar
+o limiar e gerar um potencial de ação \cite{kandel13}. Tal atividade
 elétrica, conhecida como potencial de ação de unidades motoras, se
 propaga pelas fibras musculares e dá origem à suas atividades contráteis.
 
-A medição do conjunto de potencial de ação de unidades motoras gerados em 
-um músculo é conhecida como eletromiografia (EMG). O sinal de EMG pode
+A medição da somatória dos potenciais de ação de unidades motoras gerados em 
+um músculo é conhecida como eletromiografia e o sinal em si é denominado 
+eletromiograma (EMG). O sinal de EMG pode
 ser utilizado para diferentes fins, inclusive para estimar a força muscular.
 Em seres humanos,
 uma das formas utilizadas para de fato medir a força muscular é por meio
@@ -121,25 +127,24 @@ de uma forte correlação entre o tamanho de um MN com sua ordem de
 ativação dentro do núcleo motor \cite{henneman65}, o conceito de
 \textit{common drive} introduzido por \citeonline{deluca94} ajuda a
 entender como o SNC controla unidades motoras em certos tipos de
-contrações musculares. Ao invés de
+contrações musculares: ao invés de
 ativar cada unidade motora separadamente, uma entrada comum é distribuída
 por um núcleo motor com MNs que são ativados de acordo com uma 
 gradação ordenada de seus tamanhos.
 
-\citeonline{farina15} acreditam que a forma como as unidades motoras
-interagem com essa entrada sináptica comum seria importante para o
-controle da força. Esses autores postularam que, para frequências
-menores que a
+Considerando esses conceitos, \citeonline{farina15} postularam que,
+para frequências menores que a
 taxa média de disparo dos MNs, o núcleo motor age como um filtro
 linear capaz de eliminar ruídos independentes (entradas que afetam cada
 MN, mas que são independentes entre si) e transmitir para o músculo
-um sinal parecido com a entrada comum. Nesse contexto, eventuais distorções entre
-comandos descendentes e a força gerada diminuem com o aumento de MNs ativos
+um sinal parecido com a entrada comum. Nesse contexto, eventuais
+distorções entre
+o comando descendente e a força gerada diminuem com o aumento de MNs ativos
 na contração.
 
-Além de envolver o recrutamento de unidades motoras, o controle da força
-muscular também depende
-dos suas taxas de disparos. Existem, entretanto, diferentes enfoques sobre
+O controle dessa força muscular não só depende do recrutamento de
+unidades motoras, mas também de suas taxas de disparos.
+Existem, entretanto, diferentes enfoques sobre
 esse assunto que ainda carecem de investigação \cite{piotrkiewicz17}.
 
 Esse
@@ -152,25 +157,25 @@ desse fenômeno (curvas se cruzando), configurando a \textit{onion skin}
 invertida \cite{hu14,oya09}.
 
 \section{As células de Renshaw}
-A célula de Renshaw (CR) é um IN localizado na corno ventral da coluna
-espinhal, medial às colunas de motoneurônios. Suas ramificações axonais se
-espalham por distâncias maiores que 12mm rostralmente ou caudalmente
+A célula de Renshaw (CR) é um IN localizado na corno ventral da medula
+espinhal, medial às colunas de MNs. Suas ramificações axonais se
+espalham por distâncias maiores que 12 mm rostralmente ou caudalmente
 \cite{jankowska71,jankowska73} e fazem sinapses com uma variedade de neurônios.
 
 A existência da CR foi descrita pela primeira vez em 1941 por Birdsey Renshaw
- em um experimento com animais com as respectivas raízes
-dorsais seccionadas cirurgicamente, quando foi demonstrado que uma
+em um experimento em animais com suas raízes
+dorsais seccionadas cirurgicamente. Esse autor demonstrou que uma
 estimulação antidrômica de axônios motores causavam um inibição de MNs alfa
 inervando os mesmos músculos (ou homônimos) e os músculos sinergistas
-\cite{renshaw41}. Mais tarde, foi mostrado que essa inibição é mediada por meio
-de ramos colaterais de axônios motores fornecendo entradas sinápticas
+\cite{renshaw41}. Mais tarde, foi descoberto que essa inibição é mediada por 
+ramos colaterais de axônios motores fornecendo entradas sinápticas
 excitatórias para CRs, que por sua vez inibem diversos MNs que inervam o
 respectivo músculo \cite{eccles54}.
 
 A Figura
 \ref{fig:circuit} apresenta um diagrama com as principais conexões envolvendo 
 as CRs.
-Para facilitar a compreensão, a inibição, por meio das CRs, dos INIa
+Para facilitar a compreensão, a inibição, por meio das CRs, dos INs Ia
 mediando inibição recíproca no sentido do músculo extensor para o flexor foi
 omitida. Os detalhes de cada uma dessas conexões serão apresentados na 
 seção \ref{sec:conns}.
@@ -178,7 +183,7 @@ seção \ref{sec:conns}.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.5]{circuit.eps}
-    \caption[Circuitaria espinhal na qual as células de Renshaw estão inseridas.]{
+    \caption[Circuitaria espinhal na qual as células de Renshaw estão inseridas]{
              Circuitaria espinhal na qual as células de Renshaw estão inseridas.
              Os triângulos representam sinapses, que podem ser excitatórias 
              (brancas) ou inibitórias (pretas). Os símbolos $\alpha$ e $\gamma$ 
@@ -186,23 +191,24 @@ seção \ref{sec:conns}.
 	\label{fig:circuit}
 \end{figure}
 
-Pode-se perceber que essa rede de neurônios contém um circuito disináptico que
+Pode-se perceber a presença de um circuito disináptico que
 começa e termina no mesmo neurônio: um MN excita uma CR, que por sua vez inibe
 os MNs homônimos. Essa situação, em que um núcleo motor inibe a si mesmo por
-meio de um INs inibitórios, é conhecida como uma inibição recorrente.
+meio de INs inibitórios, é conhecida como uma inibição recorrente.
 Outros elementos envolvidos nesse esquema também recebem esse termo, como, por
 exemplo, ramos colaterais recorrentes e potencial inibitório pós-sináptico
 (PIPS) recorrente.
 
-\subsection{Origens das entradas das células de renshaw}
+\subsection{Origens das entradas das células de Renshaw}
 \label{sec:conns}
 \subsubsection{Motoneurônios alfa}
-Ativações de CRs são obtidas de estimulações de vários nervos e aumentam
-gradativamente com o acréscimo de intensidade de estimulação de nervos
+A ativação de CRs é causada por estimulações de vários nervos e aumenta
+gradativamente com o acréscimo da intensidade de estimulação de nervos
 individuais, sugerindo que uma única CR é excitada por ramos colaterais de
 vários MNs \cite{eccles54,eccles61b}. Esses colaterais recorrentes se espalham
 por uma distância de não mais do que 1 mm dos seus corpos celulares de origem
-e possuem a maioria de seus botões sinápticos convergindo para a área onde as
+e possuem a maioria de seus terminais axonais (ou botões sinápticos)
+convergindo para a área onde as
 CRs estão localizadas \cite{cullheim78}. Essa característica mostra que
 excitações podem ser obtidas somente de núcleos motores localizados na
 vizinhança de determinada CR e, portanto, depende da proximidade entre os
@@ -222,9 +228,9 @@ Existem também estudos que mostram uma variação dos pesos sinápticos dessa
 entrada de acordo com o tipo de MN. Foi observado que, em média, MNs FF possuem
 mais colaterais recorrentes e botões sinápticos do que os MNs FR, que por sua
 vez possuem mais do que os MNs S. Dessa forma, a proporção de entradas
-excitatórias para CRs de MNs FF, FR e S seriam 4:2:1 \cite{cullheim78}. Isso,
-entretanto, é observado em média e não significa que CRs individuais recebem
-uma entrada homogênea de tipos de MNs \cite{hultborn88a}.
+excitatórias para CRs de MNs FF, FR e S seria 4:2:1 \cite{cullheim78}. Isso,
+entretanto, é observado em média e não significa que CRs individuais recebam
+uma entrada homogênea dos tipos de MNs \cite{hultborn88a}.
 
 \subsubsection{Vias aferentes}
 Outra via de ativação descrita na literatura é a excitação e/ou inibição
@@ -233,32 +239,31 @@ dorsais, fibras aferentes ipsilaterais dos grupos II e III e aferentes
 contralaterais de alto limiar \cite{baldissera11}.
 
 \subsubsection{Vias descendentes}
-As CRs também podem apresentar efeitos inibitórios e/ou excitatórios quando
+Respostas inibitórias ou excitatórias também podem ser
+observadas nas CRs quando
 estímulos elétricos são aplicados em alguns centros supra espinhais, como o
 córtex cerebral \cite{maclean67}, o núcleo vestibular \cite{pompeiano85}, o
 tálamo \cite{maclean67}, entre outros. Esses efeitos podem se expressar direta
 ou indiretamente por meio dos MNs alfa.
 
-\subsection{Núcleos alvo das células de Renshaw}
+\subsection{Alvos das células de Renshaw}
 \subsubsection{Motoneurônios alfa}
 As ramificações axonais de uma CR são de alta densidade em regiões proximais ao
-soma e decrescem a medida em que a distância da ramificação ao soma aumenta
+soma e decrescem à medida que a distância da ramificação ao soma aumenta
 \cite{jankowska73,vankeulen79}. Dessa forma, é de se esperar que o efeito de
 uma inibição recorrente seja mais forte em MNs alfa adjacentes.
 Outra particularidade de distribuição espacial nesse tipo de conexão vem das
-diferenças de extensões axonais entre MNs e CRs. Isso mostra que conexões
-CRs-MNs são muito menos localizadas do que as conexões MNs-CRs
-\cite{windhorst90}.
+diferenças de extensões axonais entre MNs e CRs: conexões
+de CRs para MNs podem cobrir vários milímetros e por isso são menos
+localizadas do que as conexões de MNs para CRs \cite{windhorst90}.
 
 Fatores funcionais também podem determinar a distribuição de colaterais de CRs.
 Uma inibição recorrente é evocada em grupos de núcleos motores após um estímulo
 de MNs de um dado músculo. Esse PIPS recorrente é mais forte em MNs homônimos,
 mas também muitos outros MNs podem ser fortemente inibidos. Essa inibição
 recorrente heterônima pode ser observada em MNs de músculos
-sinergistas de uma mesma ou outra articulação \cite{eccles54,eccles61b}. Vale
-notar que núcleos motores de músculos ligados por sinergismo Ia são conectados
-por inibição recorrente apesar de suas posições na medula espinhal, e.g. um
-segmento de distância \cite{hultborn71b}.
+sinergistas de uma mesma ou outra articulação \cite{eccles54,eccles61b},
+apesar de estarem localizados em segmentos diferentes \cite{hultborn71b}.
 
 Também nesse tipo de conexão existe uma dependência do tipo do MN. O PIPS
 recorrente é maior em MNs do tipo S do que no tipo FR, que por sua vez é maior
@@ -280,25 +285,27 @@ recebem inibição recorrente via CR predominantemente por meio de MNs alfa
 \cite{ellaway81,appelberg83}.
 
 \subsubsection{Interneurônios Ia}
-Uma CR também pode inibir um INIa realizando inibição recíproca entre músculos
+Uma CR também pode inibir um IN Ia realizando inibição recíproca entre músculos
 antagonistas \cite{hultborn71a}. Dessa forma, CRs excitadas por MNs de um núcleo
 motor agonista inibem INIas, que por sua vez inibem MNs antagonistas e recebem
 entradas excitatórias homônimas ou sinergistas de aferentes Ia.
 
 \subsubsection{Outras células de Renshaw}
-Existem estudos que mostram CRs se inibindo mutamente, de modo que a inibição
-mais forte ocorre entre CRs recebendo a maioria de suas entrada excitatórias de
-MNs alfa antagonistas \cite{ryall81}. Essa inibição, juntamente com a apresentada
-anteriormente sobre INsIa, pode explicar
+Existem estudos que mostram CRs se inibindo mutuamente. Essa inibição
+é mais forte entre CRs associadas com núcleos motores
+antagonistas, mas é possível que também exista entre CRs associadas
+ao mesmo núcleo motor e a sinergistas \cite{ryall81}. Tal inibição,
+juntamente com a apresentada
+anteriormente sobre INs Ia, pode explicar
 a facilitação recorrente de MNs observada em alguns casos
 \cite{renshaw41,windhorst90}.
 
 \subsubsection{Neurônios do trato espinocerebelar anterior}
-As mesmas CRs que projetam seus colaterais para MNs alfa e INIas também podem os
+As mesmas CRs que projetam seus colaterais para MNs alfa e INs Ia também podem os
 projetar para alguns neurônios de origem do trato espino cerebelar anterior
-\cite{lindstrom73}, que são responsáveis por transmitir sinais da coluna
+\cite{lindstrom73}, que são responsáveis por transmitir sinais da medula
 espinhal para o cerebelo \cite{kandel13}. A significância quantitativa dessas
-conexões parecem ser pequenas e sua relevância fisiológica não está clara 
+conexões parece ser pequena e sua relevância fisiológica não está clara 
 \cite{windhorst96}.
 
 \subsection{Considerações sobre o circuito de inibição recorrente}
@@ -313,7 +320,8 @@ Isso é ilustrado na Figura \ref{fig:circuitRC}.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.6]{circuitRC.eps}
-	\caption{Conexões observadas entre células de Renshaw e motoneurônios.}
+    \caption[Conexões observadas entre células de Renshaw e motoneurônios]{
+            Conexões observadas entre células de Renshaw e motoneurônios.}
 	\label{fig:circuitRC}
 \end{figure}
 
@@ -321,17 +329,17 @@ Outro fator não explicitado no diagrama é o fato de
 existirem evidências mostrando que as sinapses das CRs sobre os 
 MNs são localizadas sobre os dendritos, com 64 até 705 $\mu$m de distância do 
 soma \cite{fyffe91}. Outros trabalhos de estimação e simulação também mostraram
-resultados compartíveis \cite{maltenfort04}.
+resultados compatíveis \cite{maltenfort04}.
 
 A distribuição espacial de inibição recorrente também é um aspecto importante. 
 Estudos mostram que, até para músculos diferentes, esta é mais forte entre MNs
 que estejam separados por distâncias menores do que 14 mm \cite{mccurdy94}.
-Além disso, estudos sugerem que um MN pode fazer sinapse com mais de uma CR,
+Além disso, outros trabalhos sugerem que um MN pode fazer sinapse com mais de uma CR,
 e vice versa \cite{hamm87b,maltenfort04}.
 
 \subsection{Hipóteses sobre a função de células de Renshaw}
 Apesar de existirem inúmeros estudos sobre as CRs, a função desse
-IN ainda não está definida. Isso deve-se, em parte, à complexidade
+IN ainda não está bem estabelecida. Isso deve-se, em parte, à complexidade
 da circuitaria da medula espinhal como um todo e ao fato de que a
 inibição recorrente poderia ter múltiplas funções, principalmente quando 
 se trata de núcleos motores em diferentes tarefas \cite{windhorst96}.
@@ -352,30 +360,30 @@ função da inibição recorrente de MNs:
           que ainda precisam ser testadas experimentalmente e considerando
           apenas as características estáticas das CRs \cite{windhorst96};
     \item as CRs são responsáveis por descorrelacionar os disparos 
-          do MNs \cite{maltenfort98}. Existem estudos, entretanto, que
+          de MNs \cite{maltenfort98}. Existem estudos, entretanto, que
           relatam resultados conflitantes \cite{mccurdy94,uchiyama07}.
 \end{enumerate}
 
 \section{Modelagens computacionais descritas na literatura}
-Como mostrado nas seções anteriores, o circuito de inibição recorrente é
-consideravelmente complexo e acredita-se que tenha funções importantes no sinal
-que comanda o músculo. Apesar dos esforços para se compreender o papel da CR
-nesse circuito, ainda não há uma resposta definitiva para essa questão.
+Como mostrado nas seções anteriores,
+uma grande quantidade de trabalhos experimentais foram realizados
+com o intuito de elucidar as funções da CR. O circuito de inibição recorrente,
+entretanto, é consideravelmente complexo e tais estudos são desafiadores,
+de forma que até hoje ainda não há uma resposta definitiva para essa questão.
 
 Nesse aspecto, modelagens computacionais podem ser de grande utilidade, pois
 podem ser usadas para testar teorias, fornecer representações adequadas da
 neurobiologia, inferir comportamentos muitas difíceis de serem observados na
 experimentação, entre outros \cite{sterratt11}.
 
-O estudo de CRs por meio de simulações pode trazer informações valiosas sobre
-esse interneurônio, já que o estudo do circuito de inibição recorrente é de difícil 
-acesso do ponto de vista experimental.
-A seguir, será apresentada uma breve revisão sobre alguns trabalhos de
-simulações envolvendo CRs.
+Nesse caso, já que o estudo de CRs por meio de simulações
+pode trazer informações valiosas sobre
+esse IN, uma breve revisão sobre alguns trabalhos de
+simulação envolvendo CRs será apresentada.
 
 \subsection{Maltenfort, Heckman e Rymer}
 \citeonline{maltenfort98} fizeram um modelo com 256 MNs que foram posicionados
-em uma matriz de quatro colunas por sessenta e quatro linhas (direções
+em uma matriz de 4 colunas por 64 linhas (direções
 mediolaterais por rostrocaudais). De forma semelhante, as CRs foram posicionadas
 em uma única coluna com 64 elementos.
 
@@ -390,7 +398,7 @@ foi estimada como
 o de MNs do tipo S. Um limiar de disparo negativo foi responsável por reproduzir
 a atividade espontânea das CRs.
 
-A magnitude das sinapses dos MNs sobre as CRs foi ajustada de acordo com
+As condutâncias sinápticas dos MNs sobre as CRs foram ajustadas de acordo com
 as proporções de axônios colaterais providos por cada tipo de MN. Sendo
 assim, esses valores estão distribuídos entre 7 e 35 nS. Foi utilizada uma
 constante de tempo de 15 ms para o decaimento dessa condutância excitatória,
@@ -406,12 +414,12 @@ Uma estimativa do número de sinapses de CRs em MNs, baseada em trabalhos com
 dados fisiológicos \cite{eccles61a,cleveland81,lindsay91}, resultou em
 CRs com alcance de $\pm$15 linhas na matriz do modelo, de forma que cada MN
 recebesse entrada inibitória de 31 CRs. Esse valor, considerando o
-núcleo motor do músculo gastrocnemius medial do gato, equivale a uma 
+núcleo motor do músculo gastrocnêmio medial do gato, equivale a uma 
 distribuição espacial de aproximadamente $\pm$1.6 mm e foi usado no 
 cálculo de uma função dependente da distância entre o neurônio disparando
 e seu alvo, que foi multiplicada pelos valores de condutância das
 CRs para incorporar um decaimento da eficácia sináptica ao longo da direção
-rostrocaudal ao modelo. Essa função produziu uma gaussiana e sua utilização,
+rostrocaudal ao modelo. Essa função resultou em uma gaussiana e sua utilização,
 junto com as propriedades do MNs, geraram PIPS de CRs com mesmos valores de
 máximos, mínimos e médias (55, 1.6 e 12.5$\mu$V) descritos por
 \citeonline{vankeulen81}.
@@ -422,9 +430,9 @@ CRs, mas dessa vez baseado nos trabalhos de \citeonline{hamm87a} e
 Essa estimativa resultou em um alcance de $\pm$2 linhas, de forma que cada MN fizesse
 sinapse com cinco CRs.
 
-O principal resultado desse trabalho é que a inibição recorrente pode agir
+O principal resultado desses autores foi que a inibição recorrente pode agir
 como um mecanismo de realimentação negativa que descorrelaciona a atividade
-dos MNs envolvidos com ela.
+dos MNs envolvidos.
 
 \subsection{Uchiyama, Johansson e Windhorst}
 Em \citeonline{uchiyama03a}, os autores criaram um modelo com 300 MNs alfa
@@ -454,19 +462,19 @@ S) ms. As amplitudes adotadas foram de 7.0 $\pm$ 1.4 (tipo FF), 14.0 $\pm$ 3.0
 meio de médias e normalizações de resultados experimentais
 \cite{friedman81,hultborn88b,vankeulen81}.
 
-O método dos mínimos quadrados foi utilizado para aproximar a taxa de
-disparos das CRs descritos por \citeonline{eccles61b} por uma 
-função. Nela, foram incorporados uma taxa de disparos espontâneos de 7 pps
+O método dos mínimos quadrados foi utilizado para aproximar as taxas de
+disparos das CRs descritas por \citeonline{eccles61b} por uma 
+função. Nesta, foram incorporadas uma taxa de disparos espontâneos de 7 pps
 \cite{walmsley81} e uma constante de tempo proporcional ao nível de ativação
 da CR, com valor máximo e mínimo de 15 e 0.7 ms, respectivamente.
 
 Para de fato computar os disparos das CRs, primeiramente, o número de botões
-sinápticos de uma dados MN é distribuído entre todas as CRs dentro de seu
+sinápticos de um dado MN é distribuído entre todas as CRs dentro de seu
 alcance de acordo com uma gaussiana normalizada. Esse procedimento é repetido
 para todos os MNs para que se determine o número total de botões sinápticos em
 cada CR. Dentre esse número total, apenas os que estão ativos e
 alguns recentemente ativados contribuem para o nível de ativação de uma CR que 
-foi citado no parágrafo anterior. Muito dos parâmetros usados nesses cálculos
+foi citado no parágrafo anterior. Muitos dos parâmetros usados nesses cálculos
 foram determinados empiricamente para satisfazer características fisiológicas,
 como por exemplo a saturação da taxa de disparo de CRs em 250 pps.
 
@@ -517,7 +525,7 @@ Para determinar as condutâncias máximas da sinapse de um MN para uma CR, os valo
 PIPS recorrentes homônimos e heterônimos de \citeonline{hultborn88b} foram usados como
 base. Após várias simulações e ajustes, foram obtidos os valores de 220 nS (tipo S),
 150 nS (tipo FR) e 120 nS (tipo FF). Entretanto, com o intuito de reduzir o tempo 
-execução neste simulador, os autores adotaram uma densidade de CRs na coluna 
+de execução neste simulador, os autores adotaram uma densidade de CRs na coluna 
 neuronal reduzida pela metade, mas com o dobro dos valores de condutâncias
 obtidos.
 
@@ -538,7 +546,7 @@ com taxa média de
 7 pps, conforme dados de \citeonline{walmsley81}, e desvio padrão de 0.3.
 
 Por fim, vale ressaltar que o ReMoto foi disponibilizado com um
-\textit{software open source} que poderia ser utilizado por quem estivesse 
+\textit{software open source} que pode ser utilizado por quem estiver 
 interessado.
 O simulador foi originalmente desenvolvido para ser uma aplicação \textit{web},
 acessada remotamente pelo endereço \url{http://remoto.leb.usp.br}. Atualmente,
@@ -561,7 +569,7 @@ capaz de gerar uma taxa de disparo espontâneo de 11 Hz.
 
 A distribuição de inibição recorrente adotada é uniforme e independente do tipo
 do MN no modelo. O número de CRs fazendo sinapse com cada MN variou de 10 até
-20, enquanto que o número de MNs para cada CR, por sua vez, variou de 20 até 50.
+20, enquanto o número de MNs para cada CR, por sua vez, variou de 20 até 50.
 Esses valores foram baseados em dados de conectividade retirados de
 experimentos em ratos \cite{alvarez99} e gatos \cite{vankeulen81,hamm87b}. O
 atraso de condução, tanto dos MNs para CRs, quanto na direção contrária, foi
@@ -576,7 +584,7 @@ experimentais \cite{hamm87b}.
 Com esse modelo, os autores parametrizaram as propriedades dos MNs e de
 suas entradas excitatórias para fazer com que todos os MNs recrutados
 disparassem com uma taxa de aproximadamente 10 Hz, gerando forças de
-5\% do MVC. As análises dos resultados gerados sugeriu que a presença
+5\% do MVC. As análises dos resultados gerados sugeriram que a presença
 da inibição recorrente 
 ajuda a reduzir oscilações de 10 Hz que são transmitidas por tratos
 corticoespinhais para a medula espinhal e dela para os músculos.
@@ -599,8 +607,7 @@ específicas, respectivamente. Essa grandeza expressa, de forma geral,
 quão rápido é o carregamento ou descarregamento da membrana \cite{sterratt11}.
 Quando o potencial de membrana do modelo utilizado
 ultrapassa o limiar de disparo, a condutância de sódio 
-do neurônio é acionada e
-inicia uma despolarização lenta. Por outro lado, as
+do neurônio aumenta rapidamente e logo decai. Por outro lado, as
 condutâncias de 
 potássio rápida e lenta causam uma repolarização, sendo que esta
 última tem mais influência sob a AHP.
@@ -628,8 +635,9 @@ escrita de códigos em Python seja relativamente rápida.
 
 Entretanto, à medida que mais detalhes são adicionados às simulações,
 o tempo de execução se torna maior. Python, nesse
-sentido, possui limitações por causa de suas características de gerenciamento
-de memória, tipagem dinâmica e não ser compilado \cite{gorelick14}. Como
+sentido, não só possui limitações por causa de suas características
+de gerenciamento de memória e tipagem dinâmica, mas também por ser
+uma linguagem interpretada \cite{gorelick14}. Como
 simulações no ReMoto em geral envolvem uma grande quantidade de neurônios
 e sinapses, o baixo desempenho computacional da versão em Python se tornou
 uma grande desvantagem. Para solucionar esse problema, uma versão em
@@ -657,12 +665,11 @@ Tais comportamentos inesperados ou alterações nos parâmetros
 motivam uma nova avaliação da parametrização como um todo, já que
 uma eventual modificação para corrigir algum problema poderia fazer com
 que outras características do circuito de inibição fossem alteradas, como
-PIPS e PEPS gerados nos neurônios envolvidos. Nota-se também que
-existe uma escassez de 
+PIPS e PEPS gerados nos neurônios envolvidos. Infelizmente, há pouquíssimos
 dados experimentais sobre as CRs em seres humanos. Como
 a literatura sobre as CRs em gatos é extensa e o objetivo principal do
 trabalho apresentado aqui é o estudo da inibição
-recorrente, é preferível adequar a parametrização dos MNs no ReMoto
+recorrente, considerou-se preferível adequar a parametrização dos MNs no ReMoto
 (originalmente
 feita para reproduzir experimentos fisiológicos em seres humanos) para
 gatos.

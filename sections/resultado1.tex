@@ -2,12 +2,12 @@
 \section{Desempenho computacional}
 \label{sec:res_perf}
 Na Figura \ref{fig:clustera} são apresentados os valores de \textit{Speedup} das
-simulações com diferentes números de processadores. Como se pode perceber, foi 
+simulações com diferentes números de processos. Como se pode perceber, foi 
 possível alcançar uma diminuição no tempo de execução com as simulações feitas em
 paralelo, de forma que os valores de \textit{Speedup} aumentam de forma linear,
 aproximadamente. Na Figura \ref{fig:clusterb}, por sua vez, são apresentados os valores das
 eficiências calculadas. Esses valores são
-bem próximos para 2, 4 e 8 processos, mas uma queda começa a se tornar visível em
+bem próximos para 2, 4 e 8 processos, mas uma queda começa a se tornar visível com
 16 processos, sugerindo que, a partir desse número, a queda de eficiência se 
 acentue.
 
@@ -22,29 +22,28 @@ acentue.
         \label{fig:clusterb}
         \includegraphics[scale=0.3]{efs}
     }
-    \caption[Resultados de aceleração e eficiência em função do número de processadores]{
-        \subref{fig:clustera} Os círculos representam o \textit{Speedup} obtido para cada
-        número de processador utilizado. A reta em azul mostra uma regressão linear dos
-        resultados. \subref{fig:clusterb} eficiência em função do número de processadores.
+    \caption[Resultados de aceleração e eficiência em função do número de processos]{
+        Resultados de aceleração e eficiência em função do número de processos.
+        \subref{fig:clustera} Os círculo vazio representam o \textit{Speedup} obtido para cada
+        número de processos utilizado. A reta em azul mostra uma regressão linear dos
+        resultados. \subref{fig:clusterb} eficiência em função do número de processos.
          }
 \end{figure}
 
 Outro resultado sobre desempenho computacional obtido foi o de tempo de
 execução com as matrizes de condutância alteradas no código em Python. Como mostrado na 
-Tabela \ref{tab:matrixG}, não é observada uma melhora de desempenho quando se 
-usa a \Gn para 10 MNs. Entretanto, a medida em que se aumentam
+Tabela \ref{tab:matrixG}, não foi observada uma melhora de desempenho quando se 
+usa a \Gn com 10 MNs. Entretanto, à medida em que se aumenta
 o número de elementos neuronais para 50, 100 e 400 MNs, esta implementação
 apresenta uma diminuição do tempo de execução de aproximadamente 23\%, 29\% e
-26\% em relação à \Ga com
-10, 50, 100 e 400 MNs, respectivamente. Isso sugere que as otimizações trazidas
+26\% em relação à $G_a$.
+Isso sugere que as otimizações trazidas
 por essa estratégia só são vantajosas para simulações que envolvam \Gn
-relativamente grandes. Como essas matrizes são esparsas, algoritmos que se
-aproveitam dessa estrutura podem ser usados para reduzir ainda mais o tempo de
-simulação.
+relativamente grandes.
 
 \begin{table}[ht]
-\caption{Tempo de execução das simulações relacionadas 
-         à matriz de condutância para diferentes quantidades de MNs.}
+\caption{Tempo de execução das simulações
+         com diferentes matrizes de condutâncias e quantidades de MNs.}
 \label{tab:matrixG}
 \centering
     \begin{tabu}{ccccc}\tabucline[1.5pt]{-} 
@@ -97,7 +96,8 @@ que obtiveram 10\% do pico em 55 ms.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.8]{EPSP.eps}
-    \caption[PEPS em uma CR.]{Potencial excitatório pós-sináptico 
+    \caption[Potencial excitatório pós-sináptico em uma célula de Renshaw]{
+        Potencial excitatório pós-sináptico 
         em uma célula de Renshaw.}
 	\label{fig:RCepsp}
 \end{figure}
@@ -108,22 +108,23 @@ MN. Essas características foram analisadas junto com estudos
 sobre conectividade e foram abordadas na seção \ref{sec:conn}. A utilização
 de outros valores de resistência para diminuir a amplitude de PEPS, como
 feito por \citeonline{williams09}, alteraram
-significativamente as características de disparos mostrados na próxima
-seção e, por isso, não foram adotados.
+significativamente as características de disparos mostrados na
+seção \ref{sec:res_firing} e, por isso, não foram adotados.
 
 O tempo de subida foi um pouco menor do que o de \citeonline{williams09}, 
 mas ainda está de acordo com o que foi descrito na literatura \cite{walmsley81}.
 Uma alteração na resistência específica mudaria
 o tempo de subida aqui apresentado, mas isso teria um impacto negativo
-na duração do PEPS. Portanto, a parametrização realizada foi tomada
-para satisfazer razoavelmente cada característica.
+na duração do PEPS. Portanto, a parametrização realizada satisfez
+razoavelmente cada característica.
 
 \subsection{Características dos disparos das células de Renshaw}
+\label{sec:res_firing}
 Usando o $R_m$ obtido na seção anterior,
 $a=\text{1753.8+16756 }\mu\text{m}^2$ e considerando que $I_r=\text{0.5 }$ nA,
-a Equação (\ref{eq:vth}) resulta em $V_l=\text{6.75 }$ mV.
+a equação (\ref{eq:vth}) resulta em $V_l=\text{6.75 }$ mV.
 Além disso,
-considerando $d=27 \mu$m, a Equação (\ref{eq:area}) fornece o valor de
+considerando $d=27 \mu$m, a equação (\ref{eq:area}) fornece o valor de
 $l=\text{218.2168 }\mu$m.
 Com os resultados obtidos, a resistência de entrada $\ri=\frac{R_m}{a}$
 resultante foi de 13.50 M$\Omega$. Esse valor é condizente com o fato
@@ -143,10 +144,10 @@ de ação, uma diminuição no valor de $\alpha_Q$ faz com que
 a exponencial que dita a velocidade de ativação do canal seja mais lenta.
 Reciprocamente,
 uma diminuição em $\beta_Q$ com o intuito de retardar o fechamento permite que 
-haja uma superposição nos valores da variável de transição \qt,
+haja uma superposição nos valores da variável de ativação \qt,
 fazendo com que exista uma corrente iônica
 abaixando o potencial de membrana para o equilíbrio do canal de potássio
-lento (-10 mV). Esse comportamento é mostrada na Figura \ref{fig:qt}. 
+lento (-10 mV). Esse comportamento é mostrado na Figura \ref{fig:qt}. 
 Inicialmente, essa corrente é relativamente pequena, mas
 ela cresce de forma cumulativa. Esse fenômeno, então, gera 
 uma adaptação na frequência de disparo das CRs.
@@ -154,8 +155,8 @@ uma adaptação na frequência de disparo das CRs.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.8]{qt.eps}
-    \caption[Evolução temporal da variável de transição $q(t)$.]{
-        Evolução temporal da variável de transição $q(t)$.}
+    \caption[Evolução temporal da variável de transição $q(t)$]{
+        Evolução temporal da variável de ativação $q(t)$.}
 	\label{fig:qt}
 \end{figure}
 
@@ -187,8 +188,8 @@ observado foi de -2.4 mV e sua duração foi de aproximadamente 33 ms.
 	\includegraphics[scale=0.5]{AHP.eps}
     }
     \hspace{-1cm}
-    \caption[Característica de disparos da CR]{
-        Característica de disparos da CR
+    \caption[Característica de disparos da célula de Renshaw]{
+        Característica de disparos da célula de Renshaw.
         \subref{fig:RCfxi} Curva de frequência de disparo
         \textit{versus} corrente injetada.
         \subref{fig:RCahp} Pós-hiperpolarização.
@@ -199,14 +200,15 @@ observado foi de -2.4 mV e sua duração foi de aproximadamente 33 ms.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.8]{spont.eps}
-    \caption[Disparos espontâneos de uma CR.]{Disparos espontâneos de uma CR.}
+    \caption[Disparos espontâneos de uma célula de Renshaw]{
+        Disparos espontâneos de uma célula de Renshaw.}
 	\label{fig:spont}
 \end{figure}
 
 A AHP e o disparo espontâneo foram semelhantes aos dos estudos
 eletrofisiológicos.
 A curva $F\times I$ apresentada se aproximou do que foi descrito na literatura, 
-mas os três primeiros intervalos foram mais rápido do que o esperado,
+mas os três primeiros intervalos foram mais rápidos do que o esperado,
 especialmente o segundo e o terceiro. A curva do regime estacionário,
 por sua vez, foi similar à experimental. De forma geral, outras
 configurações foram encontradas para corrigir os problemas encontrados,
@@ -231,8 +233,8 @@ Isso é ilustrado na Figura \ref{fig:FxIcomp}.
         de 12 nA]{
         Comparação dos potenciais de membrana para uma corrente injetada
         de 12 nA. \subref{fig:refmemb}  Tempo da adaptação em uma
-        CR tem uma duração de aproximadamente 30 ms \cite{hultborn79}.
-        \subref{fig:resmemb} Resultado obtido pelo modelo de uma CR nas
+        CR tem uma duração de aproximadamente 30 ms. Fonte: Adaptado de \citeonline{hultborn79}.
+        \subref{fig:resmemb} Resultado obtido pelo modelo de uma célula de Renshaw nas
         mesmas condições.
          }
     \label{fig:FxIcomp}
@@ -260,8 +262,8 @@ motivos:
           que é a principal fonte de dados utilizada nesse estudo;
     \item como as conexões sinápticas relacionadas com as CRs são diferentes
           em cada estágio de desenvolvimento do rato \cite{alvarez07}
-          e os dados em questão foram obtidos em um estágio pós-
-          natal precoce, não se pode garantir que estas propriedades sejam
+          e os dados em questão foram obtidos em um estágio pós-natal
+          precoce, não se pode garantir que estas propriedades sejam
           as mesmas das CRs utilizadas aqui.
 \end{enumerate}
 
@@ -276,7 +278,8 @@ estiveram, portanto, de acordo com as referências utilizadas.
 \begin{figure}[ht!]
 	\center
 	\includegraphics[scale=0.8]{IPSP.eps}
-    \caption[PIPS de uma CR.]{Potencial inibitório pós-sináptico
+    \caption[Potencial inibitório pós-sináptico de uma célula de Renshaw]{
+        Potencial inibitório pós-sináptico
         de célula de Renshaw em diferentes tipos de motoneurônios.}
 	\label{fig:PIPSres}
 \end{figure}
@@ -292,7 +295,7 @@ PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}.
 	\center
 	\includegraphics[scale=0.8]{mchammdecay.eps}
     \caption[Distribuição topográfica de potenciais inibitórios
-            pós-sinápticos recorrentes.]{Distribuição topográfica de
+            pós-sinápticos recorrentes]{Distribuição topográfica de
             potenciais inibitórios pós-sinápticos recorrentes. Cada
             ponto representa a amplitude desses potenciais após o estímulo
             de outro motoneurônio, localizado em zero na abcissa.
@@ -303,7 +306,7 @@ PIPS recorrentes pode ser visto na Figura \ref{fig:mchammdecay}.
 \end{figure}
 
 O
-padrão de decaimento com distância foi semelhantes ao que foi apresentado
+padrão de decaimento com a distância foi semelhante ao que foi apresentado
 na Figura \ref{fig:met_RIPSP}. A amplitude dos PIPS recorrentes entre pares
 distantes e próximos
 foi, em média, -19.88 $\mu$V e -66.56 $\mu$V, respectivamente.
@@ -319,7 +322,7 @@ para pares de MNs próximos foi maior do que o esperado.
 
 Vale notar que outros valores maiores de $\bar{g}_{max_{FF}}$ geraram resultados
 semelhantes, mas com amplitudes máximas e valores médios elevados.
-Menores $\bar{g}_{max_{FF}}$ por sua vez, fariam com que o efeito 
+Menores valores de $\bar{g}_{max_{FF}}$, por sua vez, fariam com que o efeito 
 das CRs fosse muito baixo. Sendo assim, o valor de condutância adotado
 fornece um equilíbrio razoável dos resultados.
 
@@ -337,7 +340,7 @@ visto na Figura \ref{fig:dynamic}.
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.6]{dynamic.eps}
-    \caption[Características dinâmicas de uma célula de Renshaw modelada.]{
+    \caption[Características dinâmicas de uma célula de Renshaw modelada]{
              Características dinâmicas de uma célula de Renshaw modelada.
              A frequência do estímulo, inicialmente
              de 5 Hz, foi abruptamente aumentada para um dos valores
@@ -352,9 +355,9 @@ de disparo foi diminuída a valores muito baixos. Isto está em
 desacordo com dados
 fornecidos na literatura \cite{ross82,uchiyama03a}. A razão pela
 qual o modelo também não reproduziu esses resultados
-experimentais na ausência da dinâmica das sinapses é, possivelmente,
+experimentais na ausência da dinâmica das sinapses foi, possivelmente,
 a mesma apresentada por meio da Figura \ref{fig:FxIcomp}. Um 
-aumento da condutância sináptica dos MNs sob as CRs traria resultados
+aumento da condutância sináptica dos MNs sobre as CRs traria resultados
 positivos, mas também afetaria negativamente as simulações da seção
 \ref{sec:res_stat}.
 
@@ -366,7 +369,7 @@ seja maior, mesmo que por um breve período. Essa consideração é
 condizente com investigações experimentais realizadas por
 Sawicki\footnote{SAWICKI, P. \textit{Dynamisches Verhalten der rekurrenten
 Hemmung monosynaptischer Reflexe}. Dissertação. Alemanha:
-Universidade de Düsseldorf, 1984.}
+Universidade de Düsseldorf, 1990.}
 (1984, apud \citeauthor{windhorst90}, 1982, p. 154).
 
 Vale citar um estudo recente mostrando que, para baixas frequências
@@ -375,7 +378,7 @@ pós-sinápticas geradas \cite{moore15}. Esse resultado vai de encontro
 com os de \citeonline{hultborn79} e
 deve ser analisado com cautela pois foi realizado em ratos.
 
-Os resultados das parametrizações realizadas nessa seção
+Em suma, os resultados das parametrizações realizadas nessa seção
 foram sumarizados na Tabela \ref{tab:params_final}.
 No ReMoto, os valores desses parâmetros devem ser fornecidos ao programa
 por meio de um arquivo de configuração.
