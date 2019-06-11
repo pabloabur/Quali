@@ -1,44 +1,44 @@
-\printsymline{\tau}{\tau}{timeConst}{Constante de tempo}{xi}
-\printsymline{R_m}{R_m}{resMemb}{Resistência específica de membrana}{xi}
-\printsymline{C_m}{C_m}{capMemb}{Capacitância específica de membrana}{xi}
-\printsymline{S}{S}{speedUp}{Speedup}{xi}
-\printsymline{t_s}{t_s}{tempSer}{Tempo de execução serial}{xi}
-\printsymline{t_p}{t_p}{tempPar}{Tempo de execução paralelo}{xi}
-\printsymline{E}{E}{Eff}{Eficiência}{xi}
-\printsymline{N_{proc}}{N_{proc}}{numProc}{Número de processadores}{xi}
-\printsymline{G_a}{G_a}{Ga}{Implementação antiga da matriz de condutância}{xi}
-\printsymline{G_n}{G_n}{Gn}{Implementação nova da matriz de condutância}{xi}
-\printsymline{F}{F}{freq}{Frequência de disparo}{xi}
-\printsymline{I}{I}{iinj}{Corrente injetada}{xi}
-\printsymline{V_l}{V_l}{thresh}{Tensão de limiar da membrana}{xi}
-\printsymline{I_r}{I_r}{rheo}{Corrente de reobase}{xi}
-\printsymline{a}{a}{supArea}{Área superficial total do compartimento}{xi}
-\printsymline{l}{l}{length}{Comprimento do compartimento}{xi}
-\printsymline{d}{d}{diam}{Diâmetro do compartimento}{xi}
-\printsymline{\bar{g}_{max_{FF}}}{\bar{g}_{max_{FF}}}{gmaxff}{Condutância máxima de um motoneurônio FF}{xi}
-\printsymline{g_{dyn}}{g_{dyn}}{gsyn}{Condutância quando há depressão pós-sináptica}{xi}
-\printsymline{\bar{g}_{max}}{\bar{g}_{max}}{gmax}{Condutância máxima}{xi}
-\printsymline{var}{var}{vari}{Taxa de depressão pós-sináptica}{xi}
-\printsymline{\tau_d}{\tau_d}{taud}{Constante de tempo da depressão pós-sináptica}{xi}
-\printsymline{t_d}{t_d}{td}{Instante do último potencial de ação}{xi}
-\printsymline{f_{CR}}{f_{CR}}{fcr}{Taxa média de disparos de um célula de Renshaw em regime estacionário}{xi}
-\printsymline{c}{c}{satConst}{Constante de saturação}{xi}
-\printsymline{f_{AD}}{f_{AD}}{fad}{Frequência do estímulo antidrômico}{xi}
-\printsymline{k}{k}{constSemiSat}{Constante de semissaturação}{xi}
-\printsymline{i}{i}{injCur}{Corrente injetada em função do tempo}{xi}
-\printsymline{FD}{FD}{fd}{Frequência de disparos das fibras descendentes}{xi}
-\printsymline{C_p}{C_p}{cvmPerc}{Valor relativo à uma porcentagem da contração voluntária máxima}{xi}
-\printsymline{N}{N}{numMN}{Número de motoneurônios recrutados}{xi}
-\printsymline{\bar{V}}{\bar{V}}{vMean}{Média do potencial de membrana do soma de motoneurônios}{xi}
-\printsymline{V_i}{V_i}{vInd}{Potencial de membrana do soma de um motoneurônio}{xi}
-\printsymline{\sigma^2}{\sigma^2}{statVar}{Variância}{xi}
-\printsymline{\chi^2}{\chi^2}{syncCoef}{Coeficiente de sincronia}{xi}
-\printsymline{Q_1}{Q_1}{qum}{Quantificador 1}{xi}
-\printsymline{B_i}{B_i}{Bi}{Picos do módulo da resposta em frequência nas harmônicas do sinal}{xi}
-\printsymline{Q_2}{Q_2}{qdois}{Quantificador 2}{xi}
-\printsymline{Q_3}{Q_3}{qtres}{Quantificador 3}{xi}
-\printsymline{B_j}{B_j}{Bj}{Picos diferentes de $B_i$ no espectro do sinal}{xi}
-\printsymline{R_i}{R_i}{ri}{Resistência de entrada}{xi}
-\printsymline{\alpha_Q}{\alpha_Q}{alphaq}{Variável de transição de estados relacionada com a abertura dos canais de potássio lento}{xi}
-\printsymline{\beta_Q}{\beta_Q}{betaq}{Variável de transição de estados relacionada com o fechamento dos canais de potássio lento}{xi}
-\printsymline{q}{q}{qt}{Variável de ativação dos canais de potássio lento}{xi}
+\printsymline{\tau}{\tau}{timeConst}{Constante de tempo}{xii}
+\printsymline{R_m}{R_m}{resMemb}{Resistência específica de membrana}{xii}
+\printsymline{C_m}{C_m}{capMemb}{Capacitância específica de membrana}{xii}
+\printsymline{S}{S}{speedUp}{Speedup}{xii}
+\printsymline{t_s}{t_s}{tempSer}{Tempo de execução serial}{xii}
+\printsymline{t_p}{t_p}{tempPar}{Tempo de execução paralelo}{xii}
+\printsymline{E}{E}{Eff}{Eficiência}{xii}
+\printsymline{N_{proc}}{N_{proc}}{numProc}{Número de processadores}{xii}
+\printsymline{G_a}{G_a}{Ga}{Implementação antiga da matriz de condutância}{xii}
+\printsymline{G_n}{G_n}{Gn}{Implementação nova da matriz de condutância}{xii}
+\printsymline{F}{F}{freq}{Frequência de disparo}{xii}
+\printsymline{I}{I}{iinj}{Corrente injetada}{xii}
+\printsymline{V_l}{V_l}{thresh}{Tensão de limiar da membrana}{xii}
+\printsymline{I_r}{I_r}{rheo}{Corrente de reobase}{xii}
+\printsymline{a}{a}{supArea}{Área superficial total do compartimento}{xii}
+\printsymline{l}{l}{length}{Comprimento do compartimento}{xii}
+\printsymline{d}{d}{diam}{Diâmetro do compartimento}{xii}
+\printsymline{\bar{g}_{max_{FF}}}{\bar{g}_{max_{FF}}}{gmaxff}{Condutância máxima de um motoneurônio FF}{xii}
+\printsymline{g_{dyn}}{g_{dyn}}{gsyn}{Condutância quando há depressão pós-sináptica}{xii}
+\printsymline{\bar{g}_{max}}{\bar{g}_{max}}{gmax}{Condutância máxima}{xii}
+\printsymline{var}{var}{vari}{Taxa de depressão pós-sináptica}{xii}
+\printsymline{\tau_d}{\tau_d}{taud}{Constante de tempo da depressão pós-sináptica}{xii}
+\printsymline{t_d}{t_d}{td}{Instante do último potencial de ação}{xii}
+\printsymline{f_{CR}}{f_{CR}}{fcr}{Taxa média de disparos de um célula de Renshaw em regime estacionário}{xii}
+\printsymline{c}{c}{satConst}{Constante de saturação}{xii}
+\printsymline{f_{AD}}{f_{AD}}{fad}{Frequência do estímulo antidrômico}{xii}
+\printsymline{k}{k}{constSemiSat}{Constante de semissaturação}{xii}
+\printsymline{i}{i}{injCur}{Corrente injetada em função do tempo}{xii}
+\printsymline{FD}{FD}{fd}{Frequência de disparos das fibras descendentes}{xii}
+\printsymline{C_p}{C_p}{cvmPerc}{Valor relativo à uma porcentagem da contração voluntária máxima}{xii}
+\printsymline{N}{N}{numMN}{Número de motoneurônios recrutados}{xii}
+\printsymline{\bar{V}}{\bar{V}}{vMean}{Média do potencial de membrana do soma de motoneurônios}{xii}
+\printsymline{V_i}{V_i}{vInd}{Potencial de membrana do soma de um motoneurônio}{xii}
+\printsymline{\sigma^2}{\sigma^2}{statVar}{Variância}{xii}
+\printsymline{\chi^2}{\chi^2}{syncCoef}{Coeficiente de sincronia}{xii}
+\printsymline{Q_1}{Q_1}{qum}{Quantificador 1}{xii}
+\printsymline{B_i}{B_i}{Bi}{Picos do módulo da resposta em frequência nas harmônicas do sinal}{xii}
+\printsymline{Q_2}{Q_2}{qdois}{Quantificador 2}{xii}
+\printsymline{Q_3}{Q_3}{qtres}{Quantificador 3}{xii}
+\printsymline{B_j}{B_j}{Bj}{Picos diferentes de $B_i$ no espectro do sinal}{xii}
+\printsymline{R_i}{R_i}{ri}{Resistência de entrada}{xii}
+\printsymline{\alpha_Q}{\alpha_Q}{alphaq}{Variável de transição de estados relacionada com a abertura dos canais de potássio lento}{xii}
+\printsymline{\beta_Q}{\beta_Q}{betaq}{Variável de transição de estados relacionada com o fechamento dos canais de potássio lento}{xii}
+\printsymline{q}{q}{qt}{Variável de ativação dos canais de potássio lento}{xii}
