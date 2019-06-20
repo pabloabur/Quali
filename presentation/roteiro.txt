@@ -1,0 +1,40 @@
+Bom, obrigado professor andre, obrigado professor leonardo
+e renato por aceitarem participar da banca e também obrigado a
+vocês que vieram assistir a minha apresentação. O titulo desse trabalho
+é ... . Trate-se de um trabalho na área de neurociência computacional, e 
+nesse caso o foco foi, por meio de simulações, tentar entender um pouco
+melhor o papel desse neurônio chamado de célula de Reshaw nesse sistema, que
+envolve interações entre o sistema nervoso e o sistema muscular.
+
+Bom primeiramente é importante entender esse sistema neuromuscular. Essa
+figura aqui ilustra a medula espinhal do ser humano com cortes transversais
+em alguns segmentos. Nesses cortes, como mostrado nessa outra
+figura, nós podemos ver que essa região, conhecida como corno ventral,
+abriga neurônios com axônios que se extendem e inervam diretamente fibras
+musculares, que constituem o músculo. Ou seja, para executar um movimento,
+há um comando descendente que é enviado aqui pelo encéfalo e transmitido
+por essa medula espinhal até esses neurônios e aqui vai ser aquela história:
+o potencial de membrana deles vai aumentar e se ultrapassar o limiar
+eles vão gerar um potencial de ação que se propaga por esse axônio 
+e gera uma ativação muscular. Por causa dessa função bem específica
+esses neurônios recebem o nome de MN alfa. Existem outros neurônios nessa
+região, como por exemplo o MN gama, que inerva um tipo diferenciado
+de fibra muscular, e as CR.
+
+Mas antes de falar sobre as CRs é importante passar por mais
+algumas definições. Aqui
+nessa figura nós temos um motoneurônio, seu axônio e todas as fibras
+musculares que ele inerva. A esse conjunto nós damos o nome de unidade
+motora. Cada unidade motora contém fibras muscular de um único tipo, que
+podem ser de três tipos: lentas pra contrair, mas com
+contração sustentada por um bom tempo sem fadiga. São chamadas de tipo S,
+que vem do inglês slow; uma que gera
+contrações relativamente rápidas e fortes, sendo resistentes à fadiga, as
+chamadas FR, do inglês fatigue resistant; e
+outra que gera contrações mais rápidas e fortes, mas que fadigam mais
+rapidamente, são as do tipo FF, do inglês fast fatiguable.
+É importante dizer que o tamanho dos motoneurônios muda conforme o tipo
+de unidade, de forma que os de unidades S são menores, enquanto que
+os de unidades FF são as maiores.
+
+say sth about classification for units? say it is cat?
