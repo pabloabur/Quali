@@ -22,19 +22,22 @@ região, como por exemplo o MN gama, que inerva um tipo diferenciado
 de fibra muscular, e as CR.
 
 Mas antes de falar sobre as CRs é importante passar por mais
-algumas definições. Aqui
-nessa figura nós temos um motoneurônio, seu axônio e todas as fibras
+algumas definições. A primeira delas é relacionado com os tipos de fibras
+musculares. Na literatura é comum encontrar três tipos: lentas
+pra contrair, mas com
+contração sustentada por um bom tempo sem fadiga. Essas são chamadas
+fibras do tipo S, que vem da abreviação da palavra em inglês slow; a outra que
+gera contrações relativamente rápidas e fortes, sendo resistentes à fadiga.
+Essas são chamadas de tipo FR, do inglês fatigue resistant; e por último
+a que gera contrações mais rápidas e fortes, mas que fadigam mais
+rapidamente. Essas são as do tipo FF, do inglês fast fatiguable.
+Outra definição importante é a de unidade motora.
+Nessa figura nós temos um motoneurônio, seu axônio e todas as fibras
 musculares que ele inerva. A esse conjunto nós damos o nome de unidade
-motora. Cada unidade motora contém fibras muscular de um único tipo, que
-podem ser de três tipos: lentas pra contrair, mas com
-contração sustentada por um bom tempo sem fadiga. São chamadas de tipo S,
-que vem do inglês slow; uma que gera
-contrações relativamente rápidas e fortes, sendo resistentes à fadiga, as
-chamadas FR, do inglês fatigue resistant; e
-outra que gera contrações mais rápidas e fortes, mas que fadigam mais
-rapidamente, são as do tipo FF, do inglês fast fatiguable.
-É importante dizer que o tamanho dos motoneurônios muda conforme o tipo
-de unidade, de forma que os de unidades S são menores, enquanto que
-os de unidades FF são as maiores.
-
-say sth about classification for units? say it is cat?
+motora. Cada unidade motora contém fibras musculares de um único tipo e
+por isso é comum também se referir a unidades
+motoras ou MNs como do tipo S, FR, e FF.
+É importante dizer que as propriedades dos motoneurônios também são
+diferentes dependendo do tipo de fibras que eles inervam. Por exemplo
+MNs de unidades motoras S são menores, enquanto que
+MNs de unidades FF são os maiores.
