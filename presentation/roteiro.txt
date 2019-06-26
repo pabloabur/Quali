@@ -41,3 +41,8 @@ motoras ou MNs como do tipo S, FR, e FF.
 diferentes dependendo do tipo de fibras que eles inervam. Por exemplo
 MNs de unidades motoras S são menores, enquanto que
 MNs de unidades FF são os maiores.
+
+Falar sobre uso das versões e porques na hora que mostrar tableofcontents
+
+Quando for falar da parametrização das CRs, dizer que o objetivo foi
+reproduzir fenômenos descritos na literatura.
