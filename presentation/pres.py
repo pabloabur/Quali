@@ -37,34 +37,48 @@ with slide('A circuitaria da medula espinhal'):
 with slide('A circuitaria da medula espinhal'):
     figure('figures/circuit.png', width=400)
 
-with slide('Teorias sobre a célula de Renshaw'):
+with slide('Teorias sobre possíveis funções da célula de Renshaw'):
     itemize(['Ordem de recrutamento',
              'Regulador de ganho variável',
              'Descorrelação',
-             'Inúmeras tentativas!'])
+             'Outras hipóteses'])
 
-with slide('Modelo computacional'):
+with slide('Objetivos'):
+    itemize(['Melhora no desempenho computacional do simulador'],
+            y=100)
+    itemize(['Avaliar estratégias'], x=100, y=150)
+    itemize(['Parametrização e avaliação'], y=200)
+    itemize(['Célula de Renshaw e circuito de inibição recorrente',
+             'Dados experimentais da literatura de gatos'],
+             x=100, y=250)
+    itemize(['Estudos exploratórios'],
+             y=350)
+    itemize(['Recrutamento e taxa de disparos de motoneurônios',
+             'Força muscular',
+             'Análises espectrais'], x=100, y=400)
+
+section('Metodologia')
+subsection('Desempenho computacional')
+with slide():
+    tableofcontents(currentsection=True)
+
+with slide('Modelos computacionais'):
     with group(x='auto', y='center') as g1:
         itemize(['ReMoto',
-                 'Modelo de neurônio',
+                 'Modelos dos neurônios',
                  'Versões: Java, Python e Fortran'])
     with group(x='auto', y='center') as g2:
         figure('figures/neuron.png', width=250)
     text('Fonte: Bear, Connors e Paradiso (2016)', x=500, y=500, size=15, width=250)
 
-with slide('Modelo computacional'):
+with slide('Modelos computacionais'):
     with group(x='auto', y='center') as g1:
         itemize(['ReMoto',
-                 'Modelo de neurônio',
+                 'Modelos dos neurônios',
                  'Versões: Java, Python e Fortran'])
     with group(x='auto', y='center') as g2:
         figure('figures/cisimodel.png', width=250)
     text('Fonte: Cisi e Kohn (2008)', x=500, y=500, size=15)
-
-section('Métodos')
-subsection('Desempenho computacional')
-with slide():
-    tableofcontents(currentsection=True)
 
 with slide('Desempenho computacional'):
     itemize(['Duas abordagens: Cluster e vetorização',
@@ -76,7 +90,7 @@ with slide('Desempenho computacional'):
              'Simulação simples'], x=100, y=210)
 
 with slide('Desempenho computacional'):
-    itemize(['Matrizes de condutâncias'], y=210)
+    itemize(['Vetorização'], y=210)
     itemize(['Matriz com condutâncias de um grupo de neurônios',
              'Oito processadores i7-2600 a 3.40 GHz e 7.8 GB de RAM',
              'Python 2.7.14, distribuição Anaconda2 5.0.1-1'],
@@ -87,6 +101,7 @@ subsection('Parametrizações e validações')
 with slide('Parametrização de motoneurônios'):
     itemize(['Composição do núcleo motor',
              'Ativação do núcleo motor'])
+    figure('figures/mupres.png', x=550, y=40, width='28%')
     figure('figures/mntab.png', width='90%')
     text('Referências: (a) Mrówczyński, Celichowski e Krutki (2006), (b) Burke et al. (1971) e (c) Zengel et al. (1985)', y=500, size=15, width='90%')
 
@@ -127,15 +142,15 @@ with slide('Parametrização de célula de Renshaw'):
     figure('figures/metdin.png', y=230, width='40%')
     text('Fonte: Adaptado de Uchiyama, Johansson e Windhorst (2003)', y=520, size=15)
 
-with slide('Validações'):
+with slide('Resultados experimentais usados para validações'):
     figure('figures/methists.png', width='50%')
     text('Fonte: Adaptado de Hamm et al. (1987)', y=460, size=15, width='50%')
 
-with slide('Validações'):
+with slide('Resultados experimentais usados para validações'):
     figure('figures/metstatic.png', width='50%')
     text('Fonte: Cleveland, Kuschmierz e Ross (1981)', y=510, size=15, width='50%')
 
-with slide('Validações'):
+with slide('Resultados experimentais usados para validações'):
     figure('figures/meteccles.png', width='50%')
     text('Fonte: Eccles et al. (1961)', size=15, y=450, width='50%')
 
@@ -164,18 +179,37 @@ with slide('Efeito da célula de Renshaw em simulações'):
              'Coeficiente de sincronia'], x=100, y=300)
 
 with slide('Efeito da célula de Renshaw em simulações'):
-    itemize(['Modulação: $10sen(2\pi0.5t)+5sen(2\pi1.0t)+2.5sen(2\pi2.5t)$',
-             r'$Q_1=\frac{B_1}{B_2}$',
+    itemize(['Modulação das taxas de disparos das fibras descendentes'], y=150)
+    itemize([r'$10sen(2\pi0.5t)+5sen(2\pi1.0t)+2.5sen(2\pi2.5t)$'],
+             x=100, y=200)
+    itemize([r'$Q_1=\frac{B_1}{B_2}$',
              r'$Q_2=\frac{B_1}{B_3}$',
              r'$Q_3=\frac{\sqrt{B_1^2+B_2^2+B_3^2}}{\sqrt{B_j^2}}$',
-             'CST'
-             ])
+             'CST'],
+             y=250)
+    figure('figures/auxq.png', x=350, y=250, width='50%')
+    text(r'$B_1$', x=430, y=300, size=15)
+    text(r'$B_2$', x=450, y=390, size=15)
+    text(r'$B_3$', x=515, y=440, size=15)
+
+with slide('Efeito da célula de Renshaw em simulações'):
+    itemize(['Modulação das taxas de disparos das fibras descendentes'], y=150)
+    itemize([r'$10sen(2\pi0.5t)+5sen(2\pi1.0t)+2.5sen(2\pi2.5t)$'],
+             x=100, y=200)
+    itemize([r'$Q_1=\frac{B_1}{B_2}$',
+             r'$Q_2=\frac{B_1}{B_3}$',
+             r'$Q_3=\frac{\sqrt{B_1^2+B_2^2+B_3^2}}{\sqrt{B_j^2}}$',
+             'CST'],
+             y=250)
+    figure('figures/metcst.png', x=350, y=250, width='50%')
+    text('Fonte: Adaptado de Farina et al. (2014)',
+         x=400, y=510, size=15, width='50%')
 
 section('Resultados e discussões')
 with slide():
     tableofcontents(currentsection=True)
 
-with slide('Desepenho computacional'):
+with slide('Desempenho computacional'):
     figure('figures/resaguia.png', width='70%')
     figure('figures/resG.png', width='70%')
 
@@ -215,37 +249,53 @@ with slide('Característica dinâmica e depressão pós-sináptica'):
          x=50, y=500, size=15, width='50%')
 
 with slide('Características de PIPS recorrentes'):
-    figure('figures/reshists1.png', width='70%')
+    figure('figures/methists.png', width='40%')
+    figure('figures/reshists1.png', width='80%')
+    figure('figures/auxpips.png', y=100, x=550, width='35%')
+    text('Fonte: Adaptado de Hamm et al. (1987)', y=300, size=15)
+    arrow(x=632, y=197, dx=35, dy=0, style='<->')
 
 with slide('Características de PIPS recorrentes'):
     figure('figures/reshists2.png', width='70%')
 
 with slide('Características estáticas'):
+    figure('figures/metstatic.png', width='30%')
+    text('Fonte: Cleveland, Kuschmierz e Ross (1981)', y=320, size=15)
     figure('figures/resstatic.png', width='70%')
 
 with slide('Resposta ao estímulo antidrômico'):
     figure('figures/resantidro.png', width='70%')
 
-with slide('Recrutamento dos motoneurônios'):
-    itemize([r'$i(t)=40t/1000$'])
-    figure('figures/resrecruit1.png', width='30%')
-    figure('figures/resrecruit2.png', width='70%')
+with slide('Diminuição da força'):
+    figure('figures/forcedecr.png', y=100, width='50%')
+    text('Fonte: Adaptado de Granit e Renkin (1961)', y=300, size=15)
+    figure('figures/resforce.png', y=350, width='70%')
 
 with slide('Recrutamento dos motoneurônios'):
-    itemize([r'$FD(t)=1500t/1000$'])
-    figure('figures/resrecruit3.png', width='30%')
-    figure('figures/resrecruit4.png', width='70%')
+    itemize([r'$i(t)=40t/1000$'], y=100)
+    figure('figures/resrecruit1.png', y=150, width='30%')
+    figure('figures/resrecruit2.png', y=350, width='70%')
+
+with slide('Recrutamento dos motoneurônios'):
+    itemize([r'$FD(t)=1500t/1000$'], y=100)
+    figure('figures/resrecruit3.png', y=150, width='30%')
+    figure('figures/resrecruit4.png', y=350, width='70%')
+    text('Sem célula de Renshaw', x=430, y=550, size=15)
+    text('Com célula de Renshaw', x=170, y=550, size=15)
 
 with slide('Taxas de disparos de motoneurônios recrutados'):
     itemize([''])
     figure('figures/fdeq.png', y=115, x=70, width='30%')
     figure('figures/resonion.png', width='75%')
-
-with slide('Diminuição da força'):
-    figure('figures/resforce.png', width='70%')
+    text('Sem célula de Renshaw', x=160, y=500, size=15)
+    text('Com célula de Renshaw', x=440, y=500, size=15)
 
 with slide('Análise espectral'):
     figure('figures/resspect1.png', width='70%')
+    text(r'5\% CMV', x=273, y=286, size=12)
+    text(r'5\% CMV', x=553, y=286, size=12)
+    text(r'70\% CMV', x=553, y=527, size=12)
+    text(r'70\% CMV', x=273, y=527, size=12)
 
 with slide('Análise espectral'):
     figure('figures/resspect2.png', width='70%')
@@ -257,8 +307,12 @@ with slide('Análise espectral'):
     figure('figures/resspect4.png', width='80%')
 
 with slide('Contrações isométricas'):
-    figure('figures/resiso.png', width='70%')
-    figure('figures/resiso2.png', width='70%')
+    figure('figures/resiso.png', y=120, width='70%')
+    figure('figures/resiso2.png', y=350, width='70%')
+    text(r'5\% CMV', x=250, y=547, size=12)
+    text(r'70\% CMV', x=533, y=547, size=12)
+    itemize(['Desenvolvimento da força'], y=90)
+    itemize(['Coeficientes'], y=320)
 
 with slide('Contrações isométricas'):
     figure('figures/resiso3.png', width='90%')
@@ -269,12 +323,15 @@ with slide('Distorções e controle da força'):
              r'$Q_3=\frac{\sqrt{B_1^2+B_2^2+B_3^2}}{\sqrt{B_j^2}}$'
              ])
     figure('figures/resqs.png', width='50%')
+    figure('figures/resfft.png', y=100, x=300, width='55%')
 
 with slide('Distorções e controle da força'):
-    figure('figures/resfft.png', width='70%')
-
-with slide('Distorções e controle da força'):
+    #draw_axes(show_ticks=True)
     figure('figures/rescst1.png', width='70%')
+    text('Sem CR', x=273, y=286, size=12)
+    text('Com CR', x=543, y=286, size=12)
+    text('Com CR', x=543, y=522, size=12)
+    text('Sem CR', x=273, y=522, size=12)
 
 with slide('Distorções e controle da força'):
     figure('figures/rescst2.png', width='90%')
@@ -284,7 +341,6 @@ with slide('Distorções e controle da força'):
 
 section('Conclusão')
 with slide('Conclusões'):
-    #draw_axes(show_ticks=True)
     itemize(['Desempenho computacional'], y=100)
     itemize(['Possíveis melhorias'], x=100, y=150)
     itemize(['Modelo da célula de Renshaw'], y=200)

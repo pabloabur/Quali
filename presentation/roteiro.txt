@@ -42,7 +42,27 @@ diferentes dependendo do tipo de fibras que eles inervam. Por exemplo
 MNs de unidades motoras S são menores, enquanto que
 MNs de unidades FF são os maiores.
 
+O Fortran oferece suporte a operações vetorizadas. Isso significa que ...
+complementa com links:
+https://github.com/rnwatanabe/projectPR/blob/master/doc/latex/refman.pdf
+http://www.ic.unicamp.br/~edson/disciplinas/lncc14/lab-vetorizacao.html
+https://en.wikipedia.org/wiki/Array_programming
+
 Falar sobre uso das versões e porques na hora que mostrar tableofcontents
 
 Quando for falar da parametrização das CRs, dizer que o objetivo foi
 reproduzir fenômenos descritos na literatura.
+
+Razoavelmente mimetiza ... então podemos estudar ...
+
+p. 37 da dissertação
+
+PEPS bicudo pois sinapse mais complexa (ACh spillover, colinérgico, glutamatérgico
+etc, trabalho futuro)
+
+AMplitudes PIPS. perto são mais fortes e longe, que são muitas, fracas,
+então faz sentido, já que acaba decaindo e a maioria não é muito afetada.
+N.B. não é a mesma situação que o experimento
+
+Trabalho de Fyffe pode explicar varabilidade nos PIPS recorrentes, pois
+tipos e localização das sinapses
