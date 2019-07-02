@@ -1,61 +1,129 @@
-Bom, obrigado professor andre, obrigado professor leonardo
-e renato por aceitarem participar da banca e também obrigado a
-vocês que vieram assistir a minha apresentação. O titulo desse trabalho
-é ... . Trate-se de um trabalho na área de neurociência computacional, e 
-nesse caso o foco foi, por meio de simulações, tentar entender um pouco
-melhor o papel desse neurônio chamado de célula de Reshaw nesse sistema, que
-envolve interações entre o sistema nervoso e o sistema muscular.
+* Agradecer andre, banca e convidados
+* Ler titulo
+* resumo
+"trata-se de um trabalho na area de neurociencia computacional e que o foco 
+foi, por meio de simulacoes, explorar e tentar entender um pouco melhor como 
+esses neuronios, chamados de cr, afetam a atividade de neuronios
+responsaveis pela ativacao muscular."
+* Realizado em gatos
+"Por conta da escassez de dados experimentais de seres humanos, esse
+estudo foi realizado baseando-se em dados experimentais de gatos disponiveis
+na literatura."
 
-Bom primeiramente é importante entender esse sistema neuromuscular. Essa
-figura aqui ilustra a medula espinhal do ser humano com cortes transversais
-em alguns segmentos. Nesses cortes, como mostrado nessa outra
-figura, nós podemos ver que essa região, conhecida como corno ventral,
-abriga neurônios com axônios que se extendem e inervam diretamente fibras
-musculares, que constituem o músculo. Ou seja, para executar um movimento,
-há um comando descendente que é enviado aqui pelo encéfalo e transmitido
+* Falar da intro
+"por causa do tempo nao vou poder explicar alguns conceitos mas agora
+no comeco da apresentacao eu vou introduzir os principais necessarios
+para entender esse trabalho."
+
+* Medula espinhal do ser humano, figura da esquerda
+"Bom primeiramente é importante entender esse sistema neuromuscular. Essa
+figura aqui ilustra a medula espinhal do ser humano. Eu acabei de falar que
+nesse estudo foram utilizados dados experimentais de gatos, mas as observações
+que eu vou fazer aqui também se aplicam para o caso de gatos. Ok, nesses pontos
+aqui são mostrados alguns cortes transversais, ou seja, é como um corte aqui
+e voce vê o interior da medula. Nessa regiao central aqui em formato de
+borboleta existem muitos neurônios e eles se conectam e interagem entre si
+formando circuitos de neurônios com uma alta complexidade."
+* Introduzir MN alfa
+"Um dos neuronios importantes aqui nessa regiao conhecida como corno ventral
+é o MN alfa, ilustrado aqui em verde, e nós podemos ver que ele possui
+axônios que se extendem e inervam diretamente fibras
+musculares, que constituem o músculo. Mas não é só nesse corte transversal
+que eles existem. Na verdade eles estão distribuídos como uma coluna de MNs
+que percorem aqui a medula espinhal."
+* Resumo de como se dá um movimento
+"Ou seja, para executar um movimento,
+há um comando descendente que é enviado aqui pelo encéfalo e que se propaga
 por essa medula espinhal até esses neurônios e aqui vai ser aquela história:
 o potencial de membrana deles vai aumentar e se ultrapassar o limiar
 eles vão gerar um potencial de ação que se propaga por esse axônio 
-e gera uma ativação muscular. Por causa dessa função bem específica
-esses neurônios recebem o nome de MN alfa. Existem outros neurônios nessa
-região, como por exemplo o MN gama, que inerva um tipo diferenciado
-de fibra muscular, e as CR.
+e gera uma ativação muscular.
 
-Mas antes de falar sobre as CRs é importante passar por mais
-algumas definições. A primeira delas é relacionado com os tipos de fibras
-musculares. Na literatura é comum encontrar três tipos: lentas
-pra contrair, mas com
+* Tipos de fibras e MNs
+"Bom algumas definicoes agora se fazem importantes.
+Na literatura de gatos é comum encontrar três tipos de fibras musculares:
+a primeira é a lenta pra contrair, mas com
 contração sustentada por um bom tempo sem fadiga. Essas são chamadas
 fibras do tipo S, que vem da abreviação da palavra em inglês slow; a outra que
 gera contrações relativamente rápidas e fortes, sendo resistentes à fadiga.
 Essas são chamadas de tipo FR, do inglês fatigue resistant; e por último
 a que gera contrações mais rápidas e fortes, mas que fadigam mais
 rapidamente. Essas são as do tipo FF, do inglês fast fatiguable.
-Outra definição importante é a de unidade motora.
-Nessa figura nós temos um motoneurônio, seu axônio e todas as fibras
+Nesse momento
+é importante definir o que é uma unidade motora, que é mostrada nessa figura.
+Nela nós temos um motoneurônio, seu axônio e todas as fibras
 musculares que ele inerva. A esse conjunto nós damos o nome de unidade
-motora. Cada unidade motora contém fibras musculares de um único tipo e
-por isso é comum também se referir a unidades
-motoras ou MNs como do tipo S, FR, e FF.
-É importante dizer que as propriedades dos motoneurônios também são
+motora e como cada unidade motora contém fibras musculares de um único tipo,
+é comum também se referir a elas ou seus MNs como do tipo S, FR, ou FF.
+* tamanho vs tipo
+"É importante dizer que as propriedades dos motoneurônios também são
 diferentes dependendo do tipo de fibras que eles inervam. Por exemplo
 MNs de unidades motoras S são menores, enquanto que
-MNs de unidades FF são os maiores.
+MNs de unidades FF são os maiores. E o FR está aí como intermediario.
 
-O Fortran oferece suporte a operações vetorizadas. Isso significa que ...
-complementa com links:
-https://github.com/rnwatanabe/projectPR/blob/master/doc/latex/refman.pdf
-http://www.ic.unicamp.br/~edson/disciplinas/lncc14/lab-vetorizacao.html
-https://en.wikipedia.org/wiki/Array_programming
+* Introduzir CRs
+"Ok, aquela figura que mostrei de um corte transversal é uma simplificacao.
+Como eu falei existem muitos neuronios na medula espinhal e se nós quisermos
+mostrar um pouco mais de complexidade e mostrar um pouco mais d
+neuronios, nós poderíamos
+ver algo como isso aqui em um daqueles cortes. São muitos neuronios, mas eu
+quero destacar aqui a CR, identificada pela sigla CR, que é o foco desse
+estudo. Ela também se distribui como uma coluna em algumas partes da medula
+espinhal e elas se encontram próximas aos MNs.
+* falar por alto das conexoes e ja foca no circuito de inibicao recorrente
+"Como nos podemos ver aqui sao muitas conexoes. Triangulos em branco
+significam sinapses excitatorias enquanto que os em preto sao sinapses
+inibitorias. Então as CRs estao sobre influencias excitatorias de MNs alfa,
+aferentes sensoriais, comandos descendentes, ao mesmo tempo que sao inibidas
+por outras CRs e por outros elementos desses aqui novamente. A CR, por sua vez,
+faz sinapse inibitoria com vários elementos, como representado
+aqui por essas linhas que saem dela e terminam com esse triangulo em preto.
+Essa diminuicao pode ser observada como um diminuicao no numero de potenciais
+de acao gerados por um neuronio.
+Eu não vou descrever com detalhes
+essas conexoes por que elas nao sao o foco desse estudo. O foco é esse circuito
+aqui em que um MNs alfa, ao mesmo tempo que ativa um musculo, tambem ativa 
+uma CR, que por sua vez inibe a atividade desse MN. Esse é denominado circuito
+de inibicao recorrente."
+* Falar que nos metodos tem mais sobre CR
+"Eu vou dar uma pouco mais de detalhes sobre as CRs quando eu for falar
+sobre a metodologia"
 
-Falar sobre uso das versões e porques na hora que mostrar tableofcontents
+* Teorias
+"Por hora, eu gostaria de falar um pouco sobre a funcao das CRs. A grande
+motivacao dos estudos envolvendo as CRs é tentar explicar pra que
+elas servem. Qual é a principal função desse neuronio. Ela foi descoberta
+em 46 e até hj nao se tem uma resposta clara pra essa pergunta. Aqui eu 
+dou alguns exemplos do que já foi discutido na literatura. Alguns autores
+acreditam que elas sejam responsáveis por uma inversão na ordem de recrutamento
+dos MNs. Essa não é muito bem vista atualmente por que sabe-se que de forma
+geral os MNs são recrutados de forma ordenada, do menor para o maior.
+Essa aqui é um pouco mais bem vista, apesar de ela tambem ter suas limitacoes.
+Ela considera que uma CR inibe um MN, mas existem comandos descendentes que
+podem ter efeitos excitatorios ou inibitorios sobre elas. Entao seria possivel
+controlar a atividade das CRs, algo que é conhecido como modulacao. Ou seja
+ela regula o ganho de um MN no sentido de que ela inibe e diminue e numero
+de potenciais de acao desse MN, mas a forca dessa inibicao pode ser alterada
+por elementos descendentes. Essa aqui veio de estudo computacionais e diz
+a CR diminue as correlações negativas e positivas entre os disparos de MNs.
+Isso em outras palavras significa que as CRs sao capazes de sincronizar ou
+desincronizar MNs, dependendo da situacao. E existem outras teorias que eu 
+nao vou entrar em detalhe aqui por que sao muitas e algumas delas sao 
+conflitantes entre si. Entretanto, de forma geral, hj em dia acredita-se que a
+CR nao necessariamente tem uma unica funcao"
 
-Quando for falar da parametrização das CRs, dizer que o objetivo foi
-reproduzir fenômenos descritos na literatura.
+* Fala dos topicos
+* "Essas parametrizações e avaliacoes, tanto dos MNs quanto das CRs, foram
+baseadas em dados da literatura."
+* "A ideia aqui é que, tendo um modelo que razoavelmente mimetiza
+comportamentos descritos na literatura, nos poderiamos ter mais confianca nos
+resultados dos estudos exploratorios, que éjustamente o proximo objetivo
+listado. Nesse caso o intuito é realizar uma serie de simulacoes e comparar
+os resultados sem e com o modelo de CR parametrizado."
 
-Razoavelmente mimetiza ... então podemos estudar ...
+* ler topico
 
-p. 37 da dissertação
+...
 
 PEPS bicudo pois sinapse mais complexa (ACh spillover, colinérgico, glutamatérgico
 etc, trabalho futuro)

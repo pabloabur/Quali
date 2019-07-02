@@ -40,7 +40,7 @@ with slide('A circuitaria da medula espinhal'):
 with slide('Teorias sobre possíveis funções da célula de Renshaw'):
     itemize(['Ordem de recrutamento',
              'Regulador de ganho variável',
-             'Descorrelação',
+             'Redução de correlações positivas e negativas',
              'Outras hipóteses'])
 
 with slide('Objetivos'):
@@ -48,7 +48,7 @@ with slide('Objetivos'):
             y=100)
     itemize(['Avaliar estratégias'], x=100, y=150)
     itemize(['Parametrização e avaliação'], y=200)
-    itemize(['Célula de Renshaw e circuito de inibição recorrente',
+    itemize(['Célula de Renshaw e motoneurônio',
              'Dados experimentais da literatura de gatos'],
              x=100, y=250)
     itemize(['Estudos exploratórios'],
@@ -60,7 +60,7 @@ with slide('Objetivos'):
 section('Metodologia')
 subsection('Desempenho computacional')
 with slide():
-    tableofcontents(currentsection=True)
+    tableofcontents(currentsubsection=True)
 
 with slide('Modelos computacionais'):
     with group(x='auto', y='center') as g1:
@@ -98,9 +98,12 @@ with slide('Desempenho computacional'):
     itemize([r'$S=\frac{t_s}{t_p}$ e $E=\frac{t_s}{N_{proc}t_p}$'], y=410)
 
 subsection('Parametrizações e validações')
+with slide():
+    tableofcontents(currentsubsection=True)
 with slide('Parametrização de motoneurônios'):
     itemize(['Composição do núcleo motor',
-             'Ativação do núcleo motor'])
+             'Ativação do núcleo motor',
+             'Dados da literatura utilizados'])
     figure('figures/mupres.png', x=550, y=40, width='28%')
     figure('figures/mntab.png', width='90%')
     text('Referências: (a) Mrówczyński, Celichowski e Krutki (2006), (b) Burke et al. (1971) e (c) Zengel et al. (1985)', y=500, size=15, width='90%')
@@ -115,7 +118,7 @@ with slide('Parametrização de célula de Renshaw'):
 
 with slide('Parametrização de célula de Renshaw'):
     itemize(['Características de disparos'], y=120)
-    itemize(['Limiar, comprimento e diâmetro'], y=170, x=100)
+    itemize(['Disparos espontâneos, limiar, comprimento e diâmetro'], y=170, x=100)
     itemize([r'Curva $F\times I$ e AHP'], y=220, x=100)
     itemize(['Variáveis de transição', 'densidade de condutâncias iônicas'],
              y=270, x=200)
@@ -155,30 +158,32 @@ with slide('Resultados experimentais usados para validações'):
     text('Fonte: Eccles et al. (1961)', size=15, y=450, width='50%')
 
 subsection('Estudos exploratórios')
-with slide('Efeito da célula de Renshaw em simulações'):
+with slide():
+    tableofcontents(currentsubsection=True)
+with slide('Efeitos da célula de Renshaw em simulações'):
     itemize(['Disparos de motoneurônios'], y=150)
     itemize([r'$i(t)=40t/1000$', r'$FD(t)=1500t/1000$'], x=100, y=200)
     itemize([''], x=100, y=400)
     figure('figures/fdeq.png', y=320, x=120, width='60%')
 
-with slide('Efeito da célula de Renshaw em simulações'):
+with slide('Efeitos da célula de Renshaw em simulações'):
     itemize(['Diminuição da força'], y=150)
     figure('figures/forcedecr.png', y=200, width='70%')
     text('Fonte: Adaptado de Granit e Renkin (1961)', y=450, size=15)
 
-with slide('Efeito da célula de Renshaw em simulações'):
+with slide('Efeitos da célula de Renshaw em simulações'):
     itemize(['Análise espectral'], y=130)
     figure('figures/mettabdci.png', y=180, width='50%')
     figure('figures/metspectral.png', y=330, width='70%')
     text('Fonte: Adaptado de Williams e Baker (2009)', y=550, size=15)
 
-with slide('Efeito da célula de Renshaw em simulações'):
+with slide('Efeitos da célula de Renshaw em simulações'):
     itemize(['Contrações isométricas'], y=250)
     itemize(['Diferentes porcentagens da contração voluntária máxima',
              'Coeficiente de variação',
              'Coeficiente de sincronia'], x=100, y=300)
 
-with slide('Efeito da célula de Renshaw em simulações'):
+with slide('Efeitos da célula de Renshaw em simulações'):
     itemize(['Modulação das taxas de disparos das fibras descendentes'], y=150)
     itemize([r'$10sen(2\pi0.5t)+5sen(2\pi1.0t)+2.5sen(2\pi2.5t)$'],
              x=100, y=200)
@@ -192,7 +197,7 @@ with slide('Efeito da célula de Renshaw em simulações'):
     text(r'$B_2$', x=450, y=390, size=15)
     text(r'$B_3$', x=515, y=440, size=15)
 
-with slide('Efeito da célula de Renshaw em simulações'):
+with slide('Efeitos da célula de Renshaw em simulações'):
     itemize(['Modulação das taxas de disparos das fibras descendentes'], y=150)
     itemize([r'$10sen(2\pi0.5t)+5sen(2\pi1.0t)+2.5sen(2\pi2.5t)$'],
              x=100, y=200)
@@ -264,7 +269,9 @@ with slide('Características estáticas'):
     figure('figures/resstatic.png', width='70%')
 
 with slide('Resposta ao estímulo antidrômico'):
-    figure('figures/resantidro.png', width='70%')
+    figure('figures/meteccles.png', width='30%')
+    figure('figures/resantidro.png', width='50%')
+    text('Fonte: Eccles et al. (1961)', size=15, y=250, width='50%')
 
 with slide('Diminuição da força'):
     figure('figures/forcedecr.png', y=100, width='50%')
@@ -273,8 +280,7 @@ with slide('Diminuição da força'):
 
 with slide('Recrutamento dos motoneurônios'):
     itemize([r'$i(t)=40t/1000$'], y=100)
-    figure('figures/resrecruit1.png', y=150, width='30%')
-    figure('figures/resrecruit2.png', y=350, width='70%')
+    figure('figures/resrecruit1.png', y=150, width='60%')
 
 with slide('Recrutamento dos motoneurônios'):
     itemize([r'$FD(t)=1500t/1000$'], y=100)
@@ -298,9 +304,6 @@ with slide('Análise espectral'):
     text(r'70\% CMV', x=273, y=527, size=12)
 
 with slide('Análise espectral'):
-    figure('figures/resspect2.png', width='70%')
-
-with slide('Análise espectral'):
     figure('figures/resspect3.png', width='70%')
 
 with slide('Análise espectral'):
@@ -314,9 +317,6 @@ with slide('Contrações isométricas'):
     itemize(['Desenvolvimento da força'], y=90)
     itemize(['Coeficientes'], y=320)
 
-with slide('Contrações isométricas'):
-    figure('figures/resiso3.png', width='90%')
-
 with slide('Distorções e controle da força'):
     itemize([r'$Q_1=\frac{B_1}{B_2}$',
              r'$Q_2=\frac{B_1}{B_3}$',
@@ -327,16 +327,19 @@ with slide('Distorções e controle da força'):
 
 with slide('Distorções e controle da força'):
     #draw_axes(show_ticks=True)
-    figure('figures/rescst1.png', width='70%')
-    text('Sem CR', x=273, y=286, size=12)
-    text('Com CR', x=543, y=286, size=12)
-    text('Com CR', x=543, y=522, size=12)
-    text('Sem CR', x=273, y=522, size=12)
+    itemize(['CSTs de motoneurônios'], y=100)
+    figure('figures/rescst1.png', y=130, width='70%')
+    text('Sem CR', x=273, y=311, size=12)
+    text('Com CR', x=543, y=311, size=12)
+    text('Com CR', x=543, y=547, size=12)
+    text('Sem CR', x=273, y=547, size=12)
 
 with slide('Distorções e controle da força'):
+    itemize(['CSTs de células de Renshaw'])
     figure('figures/rescst2.png', width='90%')
 
 with slide('Distorções e controle da força'):
+    itemize(['Aumento do recrutamento de motoneurônios'])
     figure('figures/reslast.png', width='90%')
 
 section('Conclusão')
@@ -352,4 +355,7 @@ with slide('Conclusões'):
              r'velocidade da força $\times$ qualidade do sinal transmitido'
              ], x=100, y=450)
 
-save('pres.pdf')
+with slide():
+    itemize(['Obrigado!'])
+
+save('pres.html')
